@@ -1,0 +1,60 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+    "name":"Inner Space Uplink",
+    "events": {
+        "GamesChanged": {},
+        "OnSessionConnected": {},
+        "OnSessionRenamed": {},
+        "OnSessionDisconnected": {},
+        "OnRemoteSessionConnected": {"restricted": true},
+        "OnRemoteSessionDisconnected": {"restricted": true},
+        "OnUplinkConnected": {"restricted": true},
+        "OnUplinkRenamed": {"restricted": true},
+        "OnUplinkDisconnected": {"restricted": true}
+    },
+    "commands": {
+        "MainWindow": {},
+        "WindowSize": {},
+        "Speak": {},
+        "Encode": {
+            "restricted": true
+        },
+        "RestoreGamma": {},
+        "RelayGroup": {},
+        "Name": {},
+        "RelayTargets": {},
+        "Sessions": {},
+        "Kill": {},
+        "Attach": {},
+        "Open": {},
+        "Focus": {},
+        "MakeShortcut": {},
+        "RemoteUplink": {
+            "restricted": true
+        }
+    },
+    "types": {
+        "licenseserver": {},
+        "session": {},
+        "remoteuplink": {
+            "restricted": true
+        },
+        "speech": {},
+        "ismenuitem": {},
+        "ismenu": {},
+        "ismenucommand": {},
+        "ismenuseparator": {},
+        "videofeed": {}
+    },
+    "topLevelObjects": {
+        "LicenseServer": {},
+        "Sessions": {},
+        "Session": {},
+        "RemoteUplink": {
+            "restricted": true
+        },
+        "ISMenu": {},
+        "VideoFeed": {},
+        "Speech": {}
+    }
+}

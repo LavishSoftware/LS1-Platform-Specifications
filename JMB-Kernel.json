@@ -1,0 +1,691 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+    "name":"Joe Multiboxer Kernel",
+    "types":{
+        "joemultiboxer":{
+            "name":"joemultiboxer",
+            "members":{
+                "Version":{
+                    "forms":[
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "Build":{
+                    "forms":[
+                        {
+                            "type":"int"
+                        }
+                    ]
+                },
+                "Uplink":{
+                    "forms":[
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "Slot":{
+                    "forms":[
+                        {
+                            "type":"jmbslot"
+                        },
+                        {
+                            "parameters":[
+                                {
+                                    "type":"uint",
+                                    "name":"numSlot",
+                                    "description":"Slot Number (1-based)"
+                                }
+                            ],
+                            "type":"jmbslot"
+                        }
+                    ]                    
+                },
+                "Slots":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                },
+                "Teams":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                },
+                "Characters":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                },
+                "Agents":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                },
+                "ForegroundSlot":{
+                    "forms":[
+                        {
+                            "type":"jmbslot"
+                        }
+                    ]
+                },
+                "MouseOverSlot":{
+                    "forms":[
+                        {
+                            "type":"jmbslot"
+                        }
+                    ]
+                }
+            }
+        },
+        "jmbcharacter":{
+            "members":{
+                "ID":{
+                    "forms":[
+                        {
+                            "type":"int64"
+                        }
+                    ]
+                },
+                "DisplayName":{
+                    "forms":[
+                        {
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "ActualName":{
+                    "forms":[
+                        {
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "Server":{
+                    "forms":[
+                        {
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "Game":{
+                    "forms":[
+                        {
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "GameProfile":{
+                    "forms":[
+                        {
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "Metadata":{
+                    "forms":[
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
+                "VirtualFile":{
+                    "forms":[
+                        {
+                            "type":"jmbvirtualfile",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name":"pattern"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "VirtualFiles":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "Remove":{
+                    "forms":[
+
+                    ]
+                },
+                "SetDisplayName":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetActualName":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetServer":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetGame":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetGameProfile":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "AddVirtualFile":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "constant":"-exact",
+                                    "optional":true
+                                },
+                                {
+                                    "type":"string",
+                                    "name":"pattern"
+                                },
+                                {
+                                    "type":"string",
+                                    "name":"replacement"
+                                },
+                                {
+                                    "type":"string",
+                                    "name":"target",
+                                    "optional":true,
+                                    "default":"all"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RemoveVirtualFile":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"pattern"
+                                }
+                            ]
+                        }                        
+                    ]
+                },
+                "ClearVirtualFiles":{
+                    "forms": [
+                        {
+
+                        }
+                    ]
+                }
+
+
+
+            }
+        },
+        "jmbteam":{
+            "members":{
+                "ID":{
+                    "forms":[
+                        {
+                            "type":"int64"
+                        }
+                    ]
+                },
+                "DisplayName":{
+                    "forms":[
+                        {
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "Metadata":{
+                    "forms":[
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
+                "VirtualFile":{
+                    "forms":[
+                        {
+                            "type":"jmbvirtualfile",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name":"pattern"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "VirtualFiles":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                },
+                "Slot":{
+                    "forms": [
+                        {
+                            "type":"int64",
+                            "parameters": [
+                                {
+                                    "type":"uint",
+                                    "name":"numSlot"
+                                }
+                            ],
+                            "description": "Retrieves the Character ID for a given Slot number"
+                        }
+                    ]
+                },
+                "Slots":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                },
+                "Character":{
+                    "forms": [
+                        {
+                            "type":"jmbcharacter",
+                            "parameters": [
+                                {
+                                    "type":"uint",
+                                    "name":"numSlot"
+                                }
+                            ],
+                            "description": "Retrieves the Character for a given Slot number"
+                        }
+                    ]
+                },
+                "Characters":{
+                    "forms":[
+                        {
+                            "type":"jsonarray"
+                        }
+                    ]
+                },
+                "AddCharacter":{
+                    "forms": [
+                        {
+                            "type":"uint",
+                            "parameters": [
+                                {
+                                    "type":"int64",
+                                    "name":"characterID"
+                                }
+                            ],
+                            "description":"Adds a Character to the Team, returning its new Slot number"
+                        }
+                    ]
+                }
+                
+            },
+            "methods": {
+                "Remove":{
+                    "forms": [
+                        {
+
+                        }
+                    ]
+                },
+                "SetDisplayName":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "AddVirtualFile":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "constant":"-exact",
+                                    "optional":true
+                                },
+                                {
+                                    "type":"string",
+                                    "name":"pattern"
+                                },
+                                {
+                                    "type":"string",
+                                    "name":"replacement"
+                                },
+                                {
+                                    "type":"string",
+                                    "name":"target",
+                                    "optional":true,
+                                    "default":"all"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RemoveVirtualFile":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"pattern"
+                                }
+                            ]
+                        }                        
+                    ]
+                },
+                "ClearVirtualFiles":{
+                    "forms": [
+                        {
+
+                        }
+                    ]
+                },
+                "ClearSlots":{
+                    "forms": [
+                        {
+
+                        }
+                    ]
+                },
+                "AddCharacter":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"int64",
+                                    "name": "characterID"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RemoveCharacter":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"int64",
+                                    "name": "characterID"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RemoveSlot":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"uint",
+                                    "name": "numSlot"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "jmbslot":{
+            "members":{
+                "ID":{
+                    "forms":[
+                        {
+                            "type":"uint"
+                        }
+                    ]
+                },
+                "ProcessID":{
+                    "forms":[
+                        {
+                            "type":"uint"
+                        }
+                    ]
+                },
+                "Character":{
+                    "forms":[
+                        {
+                            "type":"jmbcharacter"
+                        }
+                    ]
+                }
+            },
+            "methods":{
+                "Launch":{
+                    "forms":[
+                        {
+                        }
+                    ]
+                },
+                "Close":{
+                    "forms":[
+                        {
+
+                        }
+                    ]
+                },
+                "Remove":{
+                    "forms":[
+                        {
+
+                        }
+                    ]
+                },
+                "SetCharacter":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "characterID"
+                                }
+                            ]
+                        },
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"characterName"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "jmbvirtualfile":{
+            "members": {
+                "Pattern":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "Replacement":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "ExactMatch":{
+                    "forms": [
+                        {
+                            "type":"bool"
+                        }
+                    ]
+                },
+                "IsStarted":{
+                    "forms": [
+                        {
+                            "type":"bool"
+                        }
+                    ]
+                },
+                "Target":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "SetPattern":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name": "pattern"
+                                },
+                                {
+                                    "type":"bool",
+                                    "name":"exactMatch",
+                                    "default":false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetReplacement":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"replacement"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetTarget":{
+                    "forms":[
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"target"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Start":{
+                    "forms": [
+                        {
+
+                        }
+                    ]
+                },
+                "Stop":{
+                    "forms":[
+                        {
+
+                        }
+                    ]
+                }
+            }
+        }
+        
+    },
+    "topLevelObjects": {
+        "JMB":{
+            "forms": [
+                {
+                    "type": "joemultiboxer"
+                }
+            ]
+        }
+    },
+    "events": {
+        "JMB_OnSlotUpdated":{
+            "name":"JMB_OnSlotUpdated"
+        },
+        "JMB_OnCharacterChanged":{
+            "name":"JMB_OnCharacterChanged"
+        },
+        "JMB_OnCharacterUpdated":{
+            "name":"JMB_OnCharacterUpdated"
+        },
+        "JMB_OnCharactersUpdated":{
+            "name":"JMB_OnCharactersUpdated"
+        },
+        "JMB_OnSlotsUpdated":{
+            "name":"JMB_OnSlotsUpdated"
+        },
+        "JMB_OnTeamsUpdated":{
+            "name":"JMB_OnTeamsUpdated"
+        },
+        "JMB_OnTeamUpdated":{
+            "name":"JMB_OnTeamUpdated"
+        },
+        "JMB_OnTeamChanged":{
+            "name":"JMB_OnTeamChanged"
+        }
+    }
+}

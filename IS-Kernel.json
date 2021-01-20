@@ -1,0 +1,163 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+    "name": "Inner Space Kernel",
+    "types":{
+        "innerspace":{
+            "restricted": true
+        },
+        "dataset":{},
+        "display":{},
+        "monitor":{},
+        "audio":{},
+        "audiovoice":{},
+        "audiostream":{},
+        "bind":{},
+        "keyboard":{},
+        "input":{},
+        "g15":{},
+        "button":{},
+        "axis":{},
+        "dpad":{},
+        "inputdevice":{},
+        "mouse":{},
+        "console":{
+            "restricted": true
+        },
+        "extension":{
+            "restricted": true
+        },
+        "navigation":{
+            "restricted": true
+        },
+        "navpoint":{
+            "restricted": true
+        },
+        "navworld":{
+            "restricted": true
+        },
+        "navpath":{
+            "restricted": true
+        },
+        "midi":{},
+        "midiindevice":{},
+        "midioutdevice":{},
+        "midiinevent":{},
+        "webrequest":{},
+        "agent":{},
+        "sequenceedit":{
+            "restricted": true
+        },
+        "gdiwindow":{},
+        "localization":{},
+        "lgui2videofeedsource":{},
+        "lgui2remotecontrol":{},
+        "lgui2videofeed":{},
+        "lgui2broadcaster":{},
+        "lavishsettings":{},
+        "settingnode":{},
+        "setting":{},
+        "settingattribute":{},
+        "settingset":{},
+        "settingcomment":{}
+    },
+    "topLevelObjects": {
+        "Game":{},
+        "Profile":{},
+        "Mouse":{},
+        "Keyboard":{},
+        "Input":{},
+        "Display":{},
+        "Audio":{},
+        "Console":{
+            "restricted": true
+        },
+        "MIDI":{},
+        "NavPath":{
+            "restricted": true
+        },
+        "Navigation":{
+            "restricted": true
+        },
+        "Extension":{
+            "restricted": true
+        },
+        "SettingXML":{},
+        "InnerSpace":{
+            "restricted": true
+        },
+        "Localization":{},
+        "NETObject":{
+            "restricted": true
+        },
+        "LavishSettings":{}
+    },
+    "events": {
+        "LavishVM Frame Ends":{},
+
+        "OnFrame":{},
+        "OnMouseEnter":{},
+        "OnMouseExit":{},
+        "OnConsoleLine":{},
+        "OnConsoleLineStripped":{},
+        "OnCursorPositionUpdated":{
+            "restricted": true
+        },
+        "OnCursorStateChanged":{
+            "restricted": true
+        },
+        "remoteControlSenderAdded":{
+            "restricted": true
+        },
+        "remoteControlSenderRemoved":{"restricted": true},
+        "OnButtonDown":{},
+        "OnButtonUp":{},
+        "OnButtonMove":{},
+        "OnAxisMove":{},
+        "OnDPadMove":{},
+        "OnMouseMove":{},
+        "OnMouseWheel":{},
+    
+        "OnButtonDownLastChance":{},
+        "OnButtonUpLastChance":{},
+        "OnButtonMoveLastChance":{},
+        "OnMouseWheelLastChance":{}
+    },
+    "commands": {
+        "Version":{},
+        "ConsoleClear":{},
+        "ConsoleRedirect":{},
+        "Exit":{},
+        "Wireframe":{
+            "restricted": true
+        },
+        "Gamma":{},
+        "FPS":{},
+        "DisplayInfo":{},
+        "GlobalKey":{},
+        "Bind":{ "restricted": true},
+        "Console":{"restricted": true},
+        "Press":{"restricted": true},
+        "Type":{"restricted": true},
+        "Services":{},
+        "Extension":{"restricted": true},
+        "GlobalBind":{},
+        "MouseTo":{"restricted": true},
+        "MouseClick":{"restricted": true},
+        "MouseWheel":{"restricted": true},
+        "PlaySound":{},
+        "Log":{},
+        "MaxFPS":{},
+        "NavPath":{"restricted": true},
+        "NavPoint":{"restricted": true},
+        "Navigation":{"restricted": true},
+        "XMLSetting":{},
+        "HUDGroup":{"restricted": true},
+        "HUD":{"restricted": true},
+        "HUDSet":{"restricted": true},
+        "HTTPGet":{},
+        "Diagnostics":{},
+        "Relay":{},
+        "DotNet":{"restricted": true},
+        "DotScript":{"restricted": true}
+    }
+}

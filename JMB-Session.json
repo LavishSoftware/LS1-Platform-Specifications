@@ -1,0 +1,12 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+    "name": "Joe Multiboxer Session",
+    "types":{
+        "jmbsession":{}
+    },
+    "topLevelObjects": {
+        "JMBSession":{
+            
+        }
+    }
+}

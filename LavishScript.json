@@ -1,0 +1,1348 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+    "name": "LavishScript",
+    "description": "LavishScript base API",
+    "events": {},
+    "types": {
+        "int": {
+            "category": "Numeric",
+            "members": {
+                "Float": {
+                    "forms": [
+                        {
+                            "type": "float"
+                        }
+                    ]
+                },
+                "Hex": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "LeadingZeroes": {
+                    "forms": [
+                        {
+                            "type":"string",
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name":"digits"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Reverse": {
+                    "forms": [
+                        {
+                            "type":"int"
+                        }
+                    ]
+                },
+                "Between": {
+                    "forms": [
+                        {
+                            "type": "bool",
+                            "parameters": [
+                                {
+                                    "type": "int"
+                                },
+                                {
+                                    "type": "int"
+                                }
+                            ],
+                            "minimumBuild": 6779
+                        }
+                    ]
+                },
+                "Unsigned": {
+                    "forms":[
+                        {
+                            "type":"uint"
+                        }
+                    ]
+                },
+                "Equal": {
+                    "forms":[
+                        {
+                            "type":"bool",
+                            "parameters": [
+                                {
+                                    "type":"int",
+                                    "name": "expression"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "AsJSON": {
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "Reverse": {
+                    "forms": [
+                        {
+                            
+                        }
+                    ]
+                },
+                "Inc": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"int",
+                                    "name":"expression",
+                                    "optional": true,
+                                    "default":1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Dec": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"int",
+                                    "name":"expression",
+                                    "optional": true,
+                                    "default":1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Set": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"int",
+                                    "name":"expression"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "initializer": {
+                "forms": [
+                    {
+                        "parameters": [
+                            {
+                                "type": "int",
+                                "name": "value"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "asString": {}
+        },
+        "uint": {
+            "category": "Numeric",
+            "members": {
+                "Float": {},
+                "Hex": {},
+                "LeadingZeroes": {},
+                "Reverse": {},
+                "Between": {
+                    "forms": [
+                        {
+                            "type": "bool",
+                            "parameters": [
+                                {
+                                    "type": "int"
+                                },
+                                {
+                                    "type": "int"
+                                }
+                            ],
+                            "minimumBuild": 6779
+                        }
+                    ]
+                },
+                "Signed": {},
+                "Equal": {},
+                "AsJSON": {}
+            },
+            "initializer": {
+                "forms": [
+                    {
+                        "parameters": [
+                            {
+                                "type": "uint",
+                                "name": "value"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "methods": {
+                "Reverse": {},
+                "Inc": {},
+                "Dec": {},
+                "Set": {}
+            },
+            "asString": {}
+        },
+        "string": {
+            "members": {
+                "Mid": {},
+                "Left": {},
+                "Right": {},
+                "Find": {},
+                "Length": {},
+                "Upper": {},
+                "Lower": {},
+                "Compare": {},
+                "CompareCS": {},
+                "Equal": {},
+                "NotEqual": {},
+                "EqualCS": {},
+                "NotEqualCS": {},
+                "Equals": {},
+                "NotEquals": {},
+                "EqualsCS": {},
+                "NotEqualsCS": {},
+                "Count": {},
+                "Token": {},
+                "EscapeQuotes": {},
+                "Escape": {},
+                "Replace": {},
+                "GetAt": {},
+                "UniString": {},
+                "URLEncode": {},
+                "NotNULLOrEmpty": {},
+                "AsJSON": {},
+                "Trim": {},
+                "ReplaceSubstring": {},
+                "StartsWith": {},
+                "EndsWith": {}
+            },
+            "index": {
+                "forms": [
+                    {
+                        "type": "byte",
+                        "parameters": [
+                            {
+                                "type": "uint",
+                                "name": "position"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "variableType": "mutablestring"
+        },
+        "rgb": {
+            "members": {
+                "Red": {},
+                "Green": {},
+                "Blue": {},
+                "Hex": {}
+            },
+            "methods": {
+                "Set": {}
+            },
+            "asString": {}
+        },
+        "byte": {
+            "members": {
+                "Between": {
+                    "forms": [
+                        {
+                            "type": "bool",
+                            "parameters": [
+                                {
+                                    "type": "byte"
+                                },
+                                {
+                                    "type": "byte"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Equal": {}
+            },
+            "methods": {
+                "Inc": {},
+                "Dec": {},
+                "Set": {}
+            },
+            "initializer": {
+                "forms": [
+                    {
+                        "parameters": [
+                            {
+                                "type": "byte",
+                                "name": "value"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "bool": {
+            "members": {
+                "Equal": {},
+                "Not": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Toggle": {},
+                "Set": {}
+            },
+            "asString": {
+                "description": "TRUE (non-zero) or FALSE (zero)"
+            },
+            "initializer": {
+                "forms": [
+                    {
+                        "parameters": [
+                            {
+                                "type": "bool",
+                                "name": "value"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "unistring": {
+            "baseType": "string",
+            "members": {
+                "String": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        "mutablestring": {
+            "baseType": "string",
+            "members": {
+                "String": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "Set": {},
+                "Concat": {},
+                "ToUpper": {},
+                "ToLower": {},
+                "Prepend": {}
+            },
+            "initializer": {
+                "forms": [
+                    {
+                        "parameters": [
+                            {
+                                "type": "string",
+                                "name": "value"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "float": {
+            "members": {
+                "Deci": {},
+                "Centi": {},
+                "Milli": {},
+                "Int": {},
+                "Precision": {},
+                "Ceil": {},
+                "Round": {},
+                "Equal": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Inc": {},
+                "Dec": {},
+                "Set": {}
+            },
+            "asString": {}
+        },
+        "int64": {
+            "members": {
+                "Float": {},
+                "Hex": {},
+                "LeadingZeroes": {},
+                "Between": {
+                    "forms": [
+                        {
+                            "type": "bool",
+                            "parameters": [
+                                {
+                                    "type": "int64"
+                                },
+                                {
+                                    "type": "int64"
+                                }
+                            ],
+                            "minimumBuild": 6779
+                        }
+                    ]
+                },
+                "Equal": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Inc": {},
+                "Dec": {},
+                "Set": {}
+            },
+            "asString": {}
+        },
+        "float64": {
+            "members": {
+                "Deci": {},
+                "Centi": {},
+                "Milli": {},
+                "Int": {},
+                "Precision": {},
+                "Ceil": {},
+                "Round": {},
+                "Equal": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Inc": {},
+                "Dec": {},
+                "Set": {}
+            },
+            "asString": {}
+        },
+        "floatptr": {
+            "baseType": "float",
+            "members": {
+                "Address": {}
+            }
+        },
+        "float64ptr": {
+            "members": {
+                "Deci": {},
+                "Centi": {},
+                "Milli": {},
+                "Int": {},
+                "Precision": {},
+                "Ceil": {},
+                "Round": {},
+                "Equal": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Inc": {},
+                "Dec": {},
+                "Set": {}
+            },
+            "asString": {}
+        },
+        "stringptr": {
+            "baseType": "string",
+            "members": {
+                "Address": {}
+            }
+        },
+        "uintptr": {
+            "baseType": "uint",
+            "members": {
+                "Address": {}
+            }
+        },
+        "intptr": {
+            "baseType": "int",
+            "members": {
+                "Address": {}
+            }
+        },
+        "int64ptr": {
+            "members": {
+                "Float": {},
+                "Hex": {},
+                "LeadingZeroes": {},
+                "Address": {},
+                "Equal": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Inc": {},
+                "Dec": {},
+                "Set": {}
+            },
+            "asString": {}
+        },
+        "rgbptr": {
+            "members": {
+                "Address": {}
+            }
+        },
+        "byteptr": {
+            "baseType": "byte",
+            "members": {
+                "Address": {}
+            }
+        },
+        "boolptr": {
+            "baseType": "bool",
+            "members": {
+                "Address": {}
+            }
+        },
+        "math": {},
+        "type": {},
+        "time": {},
+        "array": {},
+        "system": {},
+        "point3f": {},
+        "lavishscript": {
+            "members": {
+                "Version": {},
+                "CurrentDirectory": {},
+                "RunningTime": {},
+                "HomeDirectory": {},
+                "LSModule": {},
+                "ExecuteAtom": {},
+                "Executable": {},
+                "CommandLine": {},
+                "VariableScope": {},
+                "CreateQuery": {},
+                "RetrieveQueryExpression": {},
+                "QueryEvaluate": {},
+                "Is64Bit": {},
+                "MetaScript": {},
+                "MetaScripts": {},
+                "LoadMetaScript": {},
+                "LoadMetaScriptJSON": {}
+            },
+            "methods": {
+                "ExecuteAtom": {},
+                "RegisterEvent": {},
+                "RegisterAlias": {},
+                "LoadModule": {},
+                "Eval": {},
+                "RegisterEnum": {},
+                "LoadMetaScript": {},
+                "LoadMetaScriptJSON": {}
+            }
+        },
+        "script": {
+            "members": {
+                "ID": {},
+                "Filename": {},
+                "Variable": {},
+                "RunningTime": {},
+                "CurrentDirectory": {},
+                "Paused": {},
+                "Profiling": {},
+                "AllowDebug": {},
+                "ExecuteAtom": {},
+                "VariableScope": {},
+                "Turbo": {},
+                "MetaScript": {},
+                "Retain": {},
+                "Function": {}
+            },
+            "methods": {
+                "End": {},
+                "Squelch": {},
+                "Unsquelch": {},
+                "QueueCommand": {},
+                "Pause": {},
+                "Resume": {},
+                "ExecuteAtom": {},
+                "EnableProfiling": {},
+                "DisableProfiling": {},
+                "DisableDebugging": {},
+                "DumpStack": {},
+                "DumpProfiling": {},
+                "EnableDebugLogging": {},
+                "DisableDebugLogging": {},
+                "SetRetain": {},
+                "Turbo": {}
+            }
+        },
+        "function": {
+            "members": {
+                "Name": {},
+                "Metadata": {}
+            }
+        },
+        "metascript": {
+            "members": {
+                "ID": {},
+                "Script": {}
+            },
+            "methods": {
+                "Start": {},
+                "Stop": {},
+                "Unload": {}
+            }
+        },
+        "variable": {},
+        "exists": {},
+        "filepath": {},
+        "mutablefilepath": {},
+        "file": {},
+        "filelist": {},
+        "filelistentry": {},
+        "binary": {},
+        "scriptobject": {},
+        "event": {
+            "members": {
+                "ID": {},
+                "Name": {}
+            },
+            "methods": {
+                "Clear": {},
+                "AttachAtom": {},
+                "DetachAtom": {},
+                "Unregister": {},
+                "Execute": {},
+                "ThisExecute": {}
+            },
+            "variableType": "eventvar"
+        },
+        "eventvar": {
+            "baseType": "event"
+        },
+        "query": {
+            "members": {
+                "Expression": {},
+                "Test": {}
+            }
+        },
+        "scriptobjecttype": {},
+        "scriptobjectref": {},
+        "weakref": {
+            "members": {
+                "Reference": {}
+            },
+            "methods": {
+                "SetReference": {}
+            }
+        },
+        "objectcontainer": {
+            "members": {
+                "Size": {},
+                "Used": {}
+            },
+            "methods": {
+                "Clear": {},
+                "GetIterator": {}
+            }
+        },
+        "index": {
+            "baseType": "objectcontainer",
+            "members": {
+                "Next": {},
+                "Get": {},
+                "Insert": {},
+                "Expand": {},
+                "ExpandComma": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Shift": {},
+                "Sort": {},
+                "Remove": {},
+                "RemoveByQuery": {},
+                "Collapse": {},
+                "Move": {},
+                "Swap": {},
+                "Set": {},
+                "Insert": {},
+                "Resize": {},
+                "FromJSON": {},
+                "ForEach": {}
+            }
+        },
+        "collection": {
+            "baseType": "objectcontainer",
+            "members": {
+                "Element": {},
+                "Get": {},
+                "FirstValue": {},
+                "NextValue": {},
+                "FirstKey": {},
+                "NextKey": {},
+                "CurrentKey": {},
+                "CurrentValue": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Set": {},
+                "FromJSON": {},
+                "Erase": {},
+                "EraseByQuery": {},
+                "ForEach": {}
+            }
+        },
+        "stack": {
+            "baseType": "objectcontainer",
+            "members": {
+                "Top": {}
+            },
+            "methods": {
+                "Push": {},
+                "Pop": {}
+            }
+        },
+        "queue": {
+            "baseType": "objectcontainer",
+            "members": {
+                "Peek": {}
+            },
+            "methods": {
+                "Queue": {},
+                "Dequeue": {}
+            }
+        },
+        "set": {
+            "baseType": "objectcontainer",
+            "members": {
+                "Contains": {},
+                "FirstKey": {},
+                "NextKey": {},
+                "CurrentKey": {},
+                "AsJSON": {}
+            },
+            "methods": {
+                "Add": {},
+                "Remove": {},
+                "Merge": {},
+                "Intersect": {},
+                "Union": {},
+                "Not": {},
+                "ForEach": {}
+            }
+        },
+        "keyvaluepair": {
+            "members": {
+                "Key": {},
+                "Value": {}
+            }
+        },
+        "iterator": {
+            "members": {
+                "Target": {},
+                "Reversible": {},
+                "Constant": {},
+                "IsValid": {},
+                "RandomAccess": {},
+                "Key": {},
+                "Value": {}
+            },
+            "methods": {
+                "First": {},
+                "Last": {},
+                "Next": {},
+                "Previous": {},
+                "JumpTo": {},
+                "SetValue": {}
+            }
+        },
+        "variablescope": {
+            "methods": {
+                "CreateVariable": {},
+                "DeleteVariable": {},
+                "Clear": {},
+                "GetIterator": {}
+            }
+        },
+        "enumtype": {},
+        "jsonvalue": {
+            "members": {},
+            "methods": {},
+            "variableType": "jsonvaluecontainer"
+        },
+        "jsoniterator": {
+            "members": {
+                "Target": {},
+                "Key": {},
+                "Value": {},
+                "IsValid": {},
+                "Reversible": {},
+                "Constant": {},
+                "RandomAccess": {}
+            },
+            "methods": {
+                "First": {},
+                "Last": {},
+                "Next": {},
+                "Previous": {},
+                "JumpTo": {},
+                "SetValue": {}
+            }
+        },
+        "jsonvaluecontainer": {
+            "members": {
+                "AsString": {},
+                "AsJSON": {},
+                "Type": {},
+                "Value": {}
+            },
+            "methods": {
+                "SetValue": {},
+                "ParseFile": {}
+            }
+        },
+        "jsonvalueref": {
+            "members": {
+                "Reference": {}
+            },
+            "methods": {
+                "SetReference": {}
+            },
+            "initializer": {}
+        },
+        "jsonarray": {
+            "members": {
+                "Get": {},
+                "Size": {},
+                "Used": {},
+                "Type": {},
+                "AsString": {},
+                "AsJSON": {},
+                "Value": {}
+            },
+            "methods": {
+                "GetIterator": {},
+                "Clear": {},
+                "Set": {},
+                "Add": {},
+                "Sort": {},
+                "Erase": {},
+                "EraseByQuery": {},
+                "WriteFile": {},
+                "ForEach": {}
+            }
+        },
+        "jsonobject": {
+            "members": {
+                "Get": {},
+                "Type": {},
+                "AsString": {},
+                "AsJSON": {},
+                "Value": {},
+                "Has": {},
+                "Assert": {},
+                "Keys": {},
+                "Values": {}
+            },
+            "methods": {
+                "GetIterator": {},
+                "Clear": {},
+                "Set": {},
+                "Erase": {},
+                "EraseByQuery": {},
+                "WriteFile": {},
+                "ForEach": {}
+            }
+        },
+        "lavishmachine": {
+            "members": {
+                "NewTaskManager": {},
+                "NewTaskTypeSet": {},
+                "NewTaskType": {},
+                "NewTaskLibrary": {},
+                "TaskManager": {},
+                "TaskTypeSet": {},
+                "TaskType": {},
+                "TaskLibrary": {},
+                "Task": {}
+            },
+            "methods": {
+                "LoadPackageFile": {},
+                "LoadPackageJSON": {},
+                "LoadTaskTypesFile": {},
+                "LoadTaskTypesJSON": {}
+            }
+        },
+        "taskpulseargs": {
+            "members": {
+                "Task": {},
+                "Timestamp": {},
+                "ElapsedMS": {},
+                "TaskState": {},
+                "Error": {}
+            },
+            "methods": {
+                "SetError": {}
+            }
+        },
+        "task": {
+            "members": {
+                "Name": {},
+                "ID": {},
+                "Type": {},
+                "TaskManager": {},
+                "Args": {},
+                "Result": {},
+                "IsRunning": {},
+                "RunningTime": {},
+                "RunningTimeMS": {},
+                "FrameElapsed": {},
+                "FrameElapsedMS": {},
+                "StartTimestamp": {},
+                "LastFrameTimestamp": {},
+                "Duration": {},
+                "DurationMS": {},
+                "IsInstant": {}
+            },
+            "methods": {
+                "Start": {},
+                "Stop": {},
+                "Toggle": {}
+            }
+        },
+        "tasktype": {
+            "members": {
+                "Name": {},
+                "ID": {}
+            },
+            "methods": {
+                "Unregister": {}
+            }
+        },
+        "tasktypeset": {
+            "members": {
+                "Name": {},
+                "ID": {}
+            },
+            "methods": {}
+        },
+        "tasklibrary": {
+            "members": {
+                "Name": {},
+                "ID": {},
+                "AsJSON": {},
+                "Task": {}
+            },
+            "methods": {
+                "Clear": {},
+                "Destroy": {},
+                "AddTask": {},
+                "RemoveTask": {}
+            }
+        },
+        "taskmanager": {
+            "members": {
+                "Name": {},
+                "ID": {},
+                "BeginTask": {},
+                "BeginTaskLibrary": {}
+            },
+            "methods": {
+                "SetTaskTypeSet": {},
+                "BeginTask": {},
+                "BeginTaskLibrary": {},
+                "Clear": {},
+                "Destroy": {},
+                "BeginTasksFile": {},
+                "BeginTasks": {}
+            }
+        }
+    },
+    "topLevelObjects": {
+        "Type": {
+            "forms": [
+                {
+                    "type": "type",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "typeName"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Int": {
+            "forms": [
+                {
+                    "type": "int",
+                    "parameters": [
+                        {
+                            "type": "int",
+                            "name": "value"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Int64": {
+            "forms": [
+                {
+                    "type": "int64",
+                    "parameters": [
+                        {
+                            "type": "int64",
+                            "name": "value"
+                        }
+                    ]
+                }
+            ]
+        },
+        "String": {
+            "forms": [
+                {
+                    "type": "string",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "value"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Float": {
+            "forms": [
+                {
+                    "type": "int",
+                    "parameters": [
+                        {
+                            "type": "int",
+                            "name": "value"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Bool": {
+            "forms": [
+                {
+                    "type": "bool",
+                    "parameters": [
+                        {
+                            "type": "bool",
+                            "name": "value"
+                        }
+                    ]
+                }
+            ]
+        },
+        "If": {
+            "forms": [
+                {
+                    "type": "string",
+                    "description": "If `condition` is non-zero, results in `trueValue`, otherwise `falseValue`",
+                    "parameters": [
+                        {
+                            "type": "float64",
+                            "name": "condition"
+                        },
+                        {
+                            "type": "string",
+                            "name": "trueValue"
+                        },
+                        {
+                            "type": "string",
+                            "name": "falseValue",
+                            "optional": true,
+                            "default": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        "Time": {
+            "forms": [
+                {
+                    "type": "time",
+                    "description": "The current local date/time"
+                }
+            ]
+        },
+        "Enum": {
+            "forms": [
+                {
+                    "type": "enumtype",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "enumName"
+                        }
+                    ]
+                }
+            ]
+        },
+        "ForEach": {
+            "forms": [
+                {
+                    "type": "keyvaluepair",
+                    "description": "Current Key,Value in a currently-executing ForEach"
+                }
+            ]
+        },
+        "Return": {
+            "forms": [
+                {
+                    "type": "object",
+                    "description": "The returned value from the last Call, from the current script"
+                }
+            ]
+        },
+        "Returning": {
+            "forms": [
+                {
+                    "type": "object",
+                    "description": "The instantiated object to be returned from the current function/member"
+                }
+            ]
+        },
+        "Variable": {
+            "forms": [
+                {
+                    "type": "object",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "descriptor",
+                            "description": "The variable to find"
+                        }
+                    ]
+                }
+            ]
+        },
+        "QueuedCommands": {
+            "forms": [
+                {
+                    "type": "bool",
+                    "description": "TRUE if commands are currently queued for the current script"
+                },
+                {
+                    "type": "bool",
+                    "description": "TRUE if commands containing the `commandSubstring` are currently queued for the current script",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "commandSubstring"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Arg": {
+            "forms": [
+                {
+                    "type": "string",
+                    "parameters": [
+                        {
+                            "type": "uint",
+                            "name": "numArg"
+                        },
+                        {
+                            "type": "array",
+                            "name": "args",
+                            "greedy": true
+                        }
+                    ]
+                }
+            ]
+        },
+        "Script": {
+            "forms": [
+                {
+                    "description": "Currently executing script, if any",
+                    "type": "script"
+                },
+                {
+                    "type": "script",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "scriptFile"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Function": {
+            "forms": [
+                {
+                    "description": "Currently executing function, from the current Script, if any",
+                    "type": "function"
+                }
+            ]
+        },
+        "Execute": {
+            "forms": [
+                {
+                    "type": "int",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "command"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Select": {
+            "forms": [
+                {
+                    "type": "int",
+                    "description": "Finds the index of a value within `haystack` matching `needle`",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "needle"
+                        },
+                        {
+                            "type": "array",
+                            "greedy": true,
+                            "name": "haystack"
+                        }
+                    ]
+                }
+            ]
+        },
+        "This": {
+            "forms": [
+                {
+                    "type": "weakref"
+                },
+                {
+                    "type": "weakref",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "parent"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Event": {
+            "forms": [
+                {
+                    "type": "event",
+                    "parameters": [
+                        {
+                            "type": "uint",
+                            "name": "eventID"
+                        }
+                    ]
+                },
+                {
+                    "type": "event",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "eventName"
+                        }
+                    ]
+                }
+            ]
+        },
+        "WaitFor": {
+            "forms": [
+                {
+                    "type": "int",
+                    "description": "The last WaitFor result, from the currently executing script"
+                }
+            ]
+        },
+        "VariableScope": {
+            "forms": [
+                {
+                    "type": "variablescope",
+                    "description": "The current local Variable Scope for the currently executing script if there is one, otherwise the global Variable Scope"
+                }
+            ]
+        },
+        "PersistentObject": {
+            "forms": [
+                {
+                    "type": "weakref",
+                    "parameters": [
+                        {
+                            "type": "uint",
+                            "name": "handle"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Query": {
+            "forms": [
+                {
+                    "type": "bool",
+                    "parameters": [
+                        {
+                            "type": "object",
+                            "name": "obj"
+                        },
+                        {
+                            "type": "string",
+                            "name": "expression"
+                        }
+                    ]
+                }
+            ]
+        },
+        "LMAC": {
+            "forms": [
+                {
+                    "type": "lavishmachine"
+                }
+            ]
+        },
+        "Math": {
+            "forms": [
+                {
+                    "type": "math"
+                }
+            ]
+        },
+        "System": {
+            "forms": [
+                {
+                    "type": "system"
+                }
+            ]
+        },
+        "LavishScript": {
+            "forms": [
+                {
+                    "type": "lavishscript"
+                }
+            ]
+        }
+    },
+    "commands": {
+        "mkdir": {
+            "restricted": true,
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "path"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

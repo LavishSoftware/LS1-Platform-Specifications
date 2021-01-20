@@ -1,0 +1,62 @@
+{
+    "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+    "name":"Inner Space Session",
+    "commands": {
+        "WindowPosition":{},
+        "WindowSize":{},
+        "FocusClick":{},
+        "WindowScale":{},
+        "Uplink":{},
+        "LockForeground":{"restricted": true},
+        "WindowCharacteristics":{},
+        "WindowFrame":{},
+        "WindowText":{},
+        "WindowVisibility":{},
+        "WindowTaskbar":{},
+        "Input":{"restricted": true},
+        "ClipMouse":{},
+        "FileRedirect":{},
+        "ProcLock":{},
+        "GammaLock":{},
+        "VideoMode":{}
+    },
+    "events": {
+        "On Deactivate":{},
+        "On Activate":{},
+        "On Window Position":{},
+        "OnWindowStateChanging":{},
+        "OnInternalActivate":{},
+    
+        "OnRelayReceived":{},
+        "OnSessionRenamed":{},
+        "On3DReset":{},
+        "OnCursorStateChanged":{},
+    
+        "OnVideoSourceAdded":{},
+        "OnVideoSourceUpdated":{},
+        "OnVideoSourceRemoved":{},
+        "OnVideoOutputAdded":{},
+        "OnVideoOutputUpdated":{},
+        "OnVideoOutputRemoved":{},
+    
+        "OnVFSRulesApplied":{},
+        "OnFileOpen":{},
+    
+        "OnCursorPositionUpdated":{}
+
+    },
+    "topLevelObjects": {
+        "ISSession":{"restricted": true},
+        "Session":{},
+        "Sessions":{},
+        "VideoFeed":{},
+        "LogReader":{}
+    },
+    "types": {
+        "innerspacesession":{"restricted": true},
+        "videofeed":{},
+        "videofeedsource":{},
+        "videofeedoutput":{},
+        "logreader":{}
+    }
+}
