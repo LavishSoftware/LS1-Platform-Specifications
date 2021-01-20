@@ -2,7 +2,18 @@
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
     "name": "LavishScript",
     "description": "LavishScript base API",
-    "events": {},
+    "events": {
+        "Alias Added":{},
+        "Alias Removed":{},
+        "Command Added":{},
+        "Command Removed":{},
+        "Object Type Added":{},
+        "Object Type Removed":{},
+        "Top-Level Object Added":{},
+        "Top-Level Object Removed":{},
+        "Fatal Error":{},
+        "Data Sequence Error":{}
+    },
     "types": {
         "int": {
             "category": "Numeric",
@@ -507,12 +518,122 @@
                 "Address": {}
             }
         },
-        "math": {},
-        "type": {},
-        "time": {},
-        "array": {},
-        "system": {},
-        "point3f": {},
+        "math": {
+            "members": {
+                "Abs":{},
+                "Rand":{},
+                "Calc":{},
+                "Sin":{},
+                "Cos":{},
+                "Tan":{},
+                "Asin":{},
+                "Acos":{},
+                "Atan":{},
+                "Hex":{},
+                "Dec":{},
+                "Not":{},
+                "Distance":{},
+                "Sqrt":{},
+                "Calc64":{},
+                "DistancePointLine":{},
+                "Log":{}
+            }
+        },
+        "type": {
+            "members": {
+                "Name":{},
+                "TypeMember":{},
+                "PersistentClass":{},
+                "Metadata":{}
+            },
+            "asString": {
+                "member": "Name"
+            }
+        },
+        "time": {
+            "members": {
+                "Hour":{},
+                "Minute":{},
+                "Second":{},
+                "DayOfWeek":{},
+                "Day":{},
+                "Month":{},
+                "Year":{},
+                "Time12":{},
+                "Time24":{},
+                "Date":{},
+                "Night":{},
+                "SecondsSinceMidnight":{},
+                "Timestamp":{},
+                "DayOfWeekPtr":{},
+                "MonthPtr":{},
+                "YearPtr":{}
+            },
+            "methods": {
+                "Set":{},
+                "Update":{}
+            },
+            "initializer": {},
+            "asString": {}
+        },
+        "array": {
+            "baseType": "objectcontainer",
+            "members": {
+                "Dimensions":{},
+                "Size":{},
+                "Expand":{},
+                "ExpandComma":{},
+                "AsJSON":{}
+            },
+            "methods": {
+                "Sort":{},
+                "ForEach":{}
+            },
+            "index": {}            
+        },
+        "system": {
+            "members": {
+                "OS":{},
+                "MemFree":{},
+                "MemTotal":{},
+                "OSBuild":{},
+                "GetProcAddress":{},
+                "TickCount":{},
+                "GetCurrentDirectory":{},
+                "MemoryUsage":{},
+                "APICall":{
+                    "restricted": true
+                },
+                "Processors":{},
+                "ClipboardText":{},
+                "ProcessID":{},
+                "RegistryValue":{}
+            },
+            "methods": {
+                "APICall":{
+                    "restricted": true
+                },
+                "SetClipboardText":{}
+            },
+            "asString": {}
+        },
+        "point3f": {
+            "members": {
+                "X":{},
+                "Y":{},
+                "Z":{},
+                "XYZ":{},
+                "Adjust":{},
+                "Distance":{},
+                "DistancePointLine":{}
+            },
+            "methods": {
+                "Set":{},
+                "Adjust":{}
+            },
+            "asString": {},
+            "initializer": {}
+        },
         "lavishscript": {
             "members": {
                 "Version": {},
@@ -598,13 +719,108 @@
             }
         },
         "variable": {},
-        "exists": {},
-        "filepath": {},
-        "mutablefilepath": {},
-        "file": {},
-        "filelist": {},
-        "filelistentry": {},
-        "binary": {},
+        "exists": {
+            "description": "Used to determine validity of an object or Data Sequence",
+            "asString": {
+                "constant": "TRUE"
+            }
+        },
+        "filepath": {
+            "baseType": "unistring",
+            "members": {
+                "PathExists":{},
+                "FileExists":{},
+                "Path":{},
+                "AbsolutePath":{}
+            },
+            "variableType": "mutablefilepath"
+        },
+        "mutablefilepath": {
+            "baseType": "mutablestring",
+            "members":{
+                "PathExists":{},
+                "FileExists":{},
+                "Path":{},
+                "AbsolutePath":{}
+            },
+            "methods":{
+                "Set":{},
+                "MakeAbsolute":{},
+                "MakeSubdirectory":{}
+            },
+            "asString": {},
+            "initializer": {}
+        },
+        "file": {
+            "members": {
+                "Open":{},
+                "Path":{},
+                "Filename":{},
+                "Read":{},
+                "ReadBinary":{},
+                "Position":{},
+                "Size":{},
+                "EOF":{}
+            },
+            "methods": {
+                "SetFilename":{},
+                "Open":{},
+                "Close":{},
+                "Write":{},
+                "WriteBinary":{},
+                "Seek":{},
+                "SeekEnd":{},
+                "Skip":{},
+                "Truncate":{},
+                "Flush":{},
+                "Copy":{},
+                "Delete":{},
+                "Rename":{}
+            },
+            "initializer": {},
+            "asString": {}
+        },
+        "filelist": {
+            "members": {
+                "Files":{},
+                "File":{}
+            },
+            "methods": {
+                "GetFiles":{},
+                "GetDirectories":{},
+                "Reset":{}
+            }
+        },
+        "filelistentry": {
+            "members": {
+                "Filename":{},
+                "FullPath":{},
+                "CreationTime":{},
+                "LastWriteTime":{},
+                "LastAccessTime":{},
+                "Size":{}
+            },
+            "asString": {}            
+        },
+        "binary": {
+            "members": {
+                "Int":{},
+                "Byte":{},
+                "Float":{},
+                "Int64":{},
+                "String":{},
+                "Uint":{},
+                "Bool":{},
+                "Size":{}
+            },
+            "methods": {
+                "Resize":{},
+                "Copy":{},
+                "Initialize":{}
+            },
+            "initializer": {},
+            "asString": {}
+        },
         "scriptobject": {},
         "event": {
             "members": {
@@ -630,7 +846,15 @@
                 "Test": {}
             }
         },
-        "scriptobjecttype": {},
+        "scriptobjecttype": {
+            "members": {
+                "Name":{},
+                "Metadata":{}
+            },
+            "asString": {
+                "member": "Name"
+            }
+        },
         "scriptobjectref": {},
         "weakref": {
             "members": {
@@ -768,7 +992,18 @@
                 "GetIterator": {}
             }
         },
-        "enumtype": {},
+        "enumtype": {
+            "members": {
+                "Name":{},
+                "ValueByName":{},
+                "NameByValue":{}    
+            },
+            "methods": {
+                "SetValue":{},
+                "GetIterator":{}
+            },
+            "asString": {}       
+        },
         "jsonvalue": {
             "members": {},
             "methods": {},
@@ -1331,6 +1566,41 @@
         }
     },
     "commands": {
+        "Test":{},
+        "Commands":{},
+        "Alias":{},
+        "LSVersion":{},
+        "Redirect":{},
+        "DeclareVariable":{},
+        "DeleteVariable":{},
+        "RunScript":{},
+        "EndScript":{},
+        "Execute":{},
+        "OSExecute":{
+            "restricted": true
+        },
+        "Return":{},
+        "Call":{},
+        "Wait":{},
+        "WaitScript":{},
+        "ExecuteFile":{
+            "restricted": true
+        },
+        "Cat":{
+            "restricted": true
+        },
+        "Head":{
+            "restricted": true
+        },
+        "Tail":{
+            "restricted": true
+        },
+        "Line":{
+            "restricted": true
+        },
+        "cd":{
+            "restricted": true
+        },
         "mkdir": {
             "restricted": true,
             "forms": [
@@ -1343,6 +1613,40 @@
                     ]
                 }
             ]
-        }
+        },
+        "rmdir":{
+            "restricted": true
+        },
+        "rename":{
+            "restricted": true
+        },
+        "rm":{
+            "restricted": true
+        },
+        "cp":{
+            "restricted": true
+        },
+        "Arg":{},
+        "WaitFrame":{},
+        "Scripts":{},
+        "LSType":{},
+        "TopLevelObject":{},
+        "TimedCommand":{},
+        "QueueCommand":{},
+        "ExecuteQueued":{},
+        "FlushQueued":{},
+        "NoOp":{},
+        "Turbo":{},
+        "Module":{"restricted": true},
+        "APICall":{"restricted": true},
+        "Processor":{},
+        "ExecuteAtom":{},
+        "AddAtom":{},
+        "DeleteAtom":{},
+        "Squelch":{},
+        "Echo":{},
+        "AddTrigger":{},
+        "RemoveTrigger":{},
+        "WaitFor":{}
     }
 }
