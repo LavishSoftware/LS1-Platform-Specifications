@@ -1,163 +1,4126 @@
 {
-    "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
-    "name": "Inner Space Kernel",
-    "types":{
-        "innerspace":{
-            "restricted": true
-        },
-        "dataset":{},
-        "display":{},
-        "monitor":{},
-        "audio":{},
-        "audiovoice":{},
-        "audiostream":{},
-        "bind":{},
-        "keyboard":{},
-        "input":{},
-        "g15":{},
-        "button":{},
-        "axis":{},
-        "dpad":{},
-        "inputdevice":{},
-        "mouse":{},
-        "console":{
-            "restricted": true
-        },
-        "extension":{
-            "restricted": true
-        },
-        "navigation":{
-            "restricted": true
-        },
-        "navpoint":{
-            "restricted": true
-        },
-        "navworld":{
-            "restricted": true
-        },
-        "navpath":{
-            "restricted": true
-        },
-        "midi":{},
-        "midiindevice":{},
-        "midioutdevice":{},
-        "midiinevent":{},
-        "webrequest":{},
-        "agent":{},
-        "sequenceedit":{
-            "restricted": true
-        },
-        "gdiwindow":{},
-        "localization":{},
-        "lgui2videofeedsource":{},
-        "lgui2remotecontrol":{},
-        "lgui2videofeed":{},
-        "lgui2broadcaster":{},
-        "lavishsettings":{},
-        "settingnode":{},
-        "setting":{},
-        "settingattribute":{},
-        "settingset":{},
-        "settingcomment":{}
+  "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
+  "name": "Inner Space Kernel",
+  "description": "",
+  "commands": {
+    "Version": {
+      "forms": [
+        {}
+      ]
     },
-    "topLevelObjects": {
-        "Game":{},
-        "Profile":{},
-        "Mouse":{},
-        "Keyboard":{},
-        "Input":{},
-        "Display":{},
-        "Audio":{},
-        "Console":{
-            "restricted": true
-        },
-        "MIDI":{},
-        "NavPath":{
-            "restricted": true
-        },
-        "Navigation":{
-            "restricted": true
-        },
-        "Extension":{
-            "restricted": true
-        },
-        "SettingXML":{},
-        "InnerSpace":{
-            "restricted": true
-        },
-        "Localization":{},
-        "NETObject":{
-            "restricted": true
-        },
-        "LavishSettings":{}
+    "ConsoleClear": {
+      "forms": [
+        {}
+      ]
     },
-    "events": {
-        "LavishVM Frame Ends":{},
-
-        "OnFrame":{},
-        "OnMouseEnter":{},
-        "OnMouseExit":{},
-        "OnConsoleLine":{},
-        "OnConsoleLineStripped":{},
-        "OnCursorPositionUpdated":{
-            "restricted": true
-        },
-        "OnCursorStateChanged":{
-            "restricted": true
-        },
-        "remoteControlSenderAdded":{
-            "restricted": true
-        },
-        "remoteControlSenderRemoved":{"restricted": true},
-        "OnButtonDown":{},
-        "OnButtonUp":{},
-        "OnButtonMove":{},
-        "OnAxisMove":{},
-        "OnDPadMove":{},
-        "OnMouseMove":{},
-        "OnMouseWheel":{},
-    
-        "OnButtonDownLastChance":{},
-        "OnButtonUpLastChance":{},
-        "OnButtonMoveLastChance":{},
-        "OnMouseWheelLastChance":{}
+    "ConsoleRedirect": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "LGUIconsoleFQN"
+            },
+            {
+              "type": "string",
+              "greedy": true,
+              "name": "command"
+            }
+          ]
+        }
+      ]
     },
-    "commands": {
-        "Version":{},
-        "ConsoleClear":{},
-        "ConsoleRedirect":{},
-        "Exit":{},
-        "Wireframe":{
-            "restricted": true
+    "Exit": {
+      "forms": [
+        {}
+      ]
+    },
+    "Wireframe": {
+      "restricted": true,
+      "forms": [
+        {},
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "on",
+                "off",
+                "toggle"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Gamma": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-reset",
+                "-store",
+                "-display",
+                "-restore"
+              ]
+            }
+          ]
         },
-        "Gamma":{},
-        "FPS":{},
-        "DisplayInfo":{},
-        "GlobalKey":{},
-        "Bind":{ "restricted": true},
-        "Console":{"restricted": true},
-        "Press":{"restricted": true},
-        "Type":{"restricted": true},
-        "Services":{},
-        "Extension":{"restricted": true},
-        "GlobalBind":{},
-        "MouseTo":{"restricted": true},
-        "MouseClick":{"restricted": true},
-        "MouseWheel":{"restricted": true},
-        "PlaySound":{},
-        "Log":{},
-        "MaxFPS":{},
-        "NavPath":{"restricted": true},
-        "NavPoint":{"restricted": true},
-        "Navigation":{"restricted": true},
-        "XMLSetting":{},
-        "HUDGroup":{"restricted": true},
-        "HUD":{"restricted": true},
-        "HUDSet":{"restricted": true},
-        "HTTPGet":{},
-        "Diagnostics":{},
-        "Relay":{},
-        "DotNet":{"restricted": true},
-        "DotScript":{"restricted": true}
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-inc",
+                "-dec",
+                "-set"
+              ]
+            },
+            {
+              "type": "uint",
+              "name": "newLevel"
+            }
+          ]
+        }
+      ]
+    },
+    "FPS": {
+      "forms": [
+        {}
+      ]
+    },
+    "DisplayInfo": {
+      "forms": [
+        {}
+      ]
+    },
+    "GlobalKey": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-keylist",
+                "-list"
+              ]
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-clear"
+            },
+            {
+              "type": "string",
+              "name": "key",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "key"
+            }
+          ]
+        }
+      ]
+    },
+    "Bind": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-keylist",
+                "-list",
+                "-clear"
+              ]
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-delete"
+            },
+            {
+              "type": "string",
+              "name": "name"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-press",
+                "-release"
+              ],
+              "optional": true
+            },
+            {
+              "type": "string",
+              "name": "name"
+            },
+            {
+              "type": "string",
+              "name": "keyCombo"
+            },
+            {
+              "type": "string",
+              "name": "command"
+            }
+          ]
+        }
+      ]
+    },
+    "Console": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "on",
+                "off",
+                "toggle"
+              ]
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "LGUIelementFQN"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "sessionOrUplinkName"
+            }
+          ]
+        }
+      ]
+    },
+    "Press": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-keylist"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-hold",
+                "-release",
+                "-nomodifiers"
+              ],
+              "optional": true
+            },
+            {
+              "type": "string",
+              "name": "keyCombination"
+            },
+            {
+              "type": "uint",
+              "name": "milliseconds"
+            }
+          ]
+        }
+      ]
+    },
+    "Type": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "text"
+            }
+          ]
+        }
+      ]
+    },
+    "Services": {},
+    "Extension": {
+      "restricted": true
+    },
+    "GlobalBind": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type":"string",
+              "enum": ["-list","-clear"]              
+            }            
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type":"string",
+              "constant": "-delete"
+            },
+            {
+              "type":"string",
+              "name": "name"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type":"string",
+              "name": "name"
+            },
+            {
+              "type":"string",
+              "name": "keyCombo"
+            },
+            {
+              "type":"string",
+              "greedy": true,
+              "name": "command"
+            }
+          ]
+        }
+      ]
+    },
+    "MouseTo": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-relative",
+              "optional": true
+            },
+            {
+              "type": "string",
+              "name": "XandY"
+            }
+          ]
+        }
+      ]
+    },
+    "MouseClick": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-hold",
+                "-release"
+              ],
+              "optional": true
+            },
+            {
+              "type":"string",
+              "enum": ["left","right"]
+            }
+          ]
+        }
+      ]
+    },
+    "MouseWheel": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "int",
+              "name": "offset"
+            }
+          ]
+        }
+      ]
+    },
+    "PlaySound": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "filename"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "on",
+                "off"
+              ]
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "SystemAsterisk",
+                "SystemDefault",
+                "SystemExclamation",
+                "SystemExit",
+                "SystemHand",
+                "SystemQuestion",
+                "SystemStart",
+                "SystemWelcome"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Log": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "filename"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "off"
+            }
+          ]
+        }
+      ]
+    },
+    "MaxFPS": {
+      "forms": [
+        {
+          "type": "string",
+          "enum": [
+            "-fg",
+            "-bg"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "-calculate",
+            "-absolute"
+          ],
+          "optional": true
+        },
+        {
+          "type": "string",
+          "constant": "-disable",
+          "optional": true
+        },
+        {
+          "type": "uint",
+          "name": "newMaxFPS"
+        }
+      ]
+    },
+    "NavPath": {
+      "restricted": true
+    },
+    "NavPoint": {
+      "restricted": true
+    },
+    "Navigation": {
+      "restricted": true
+    },
+    "XMLSetting": {},
+    "HUDGroup": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "-list"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "enum": [
+                "-hide",
+                "-show",
+                "-toggle"
+              ]
+            },
+            {
+              "type": "string",
+              "name": "name"
+            }
+          ]
+        }
+      ]
+    },
+    "HUD": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-list"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-remove"
+            },
+            {
+              "type": "string",
+              "name": "name"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-add"
+            },
+            {
+              "type": "string",
+              "name": "name"
+            },
+            {
+              "type": "string",
+              "name": "XandY",
+              "description": "#,#"
+            },
+            {
+              "type": "string",
+              "name": "text"
+            }
+          ]
+        }
+      ]
+    },
+    "HUDSet": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "name"
+            },
+            {
+              "type": "string",
+              "constant": "-s",
+              "optional": true,
+              "followingPparameters": [
+                {
+                  "type": "string",
+                  "string": "widthAndHeight",
+                  "description": "#x#"
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "constant": "-c",
+              "optional": true,
+              "followingPparameters": [
+                {
+                  "type": "string",
+                  "name": "hexRGBColor"
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "constant": "-l",
+              "optional": true,
+              "followingPparameters": [
+                {
+                  "type": "string",
+                  "name": "XandY",
+                  "description": "#,#"
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "constant": "-t",
+              "optional": true,
+              "followingPparameters": [
+                {
+                  "type": "string",
+                  "name": "text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "HTTPGet": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type":"string",
+              "optional": true,
+              "constant": "-postparam",
+              "followingPparameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                },
+                {
+                  "type":"string",
+                  "name":"value"
+                }
+              ]
+            },
+            {
+              "type":"string",
+              "optional": true,
+              "constant": "-postfile",
+              "followingPparameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                },
+                {
+                  "type":"string",
+                  "name":"filename"
+                }
+              ]
+            },
+            {
+              "type":"string",
+              "constant": "-atom",
+              "optional": true,
+              "followingPparameters": [
+                {
+                  "type":"string",
+                  "name":"atomName"
+                }
+              ]
+            },
+            {
+              "type":"string",
+              "constant": "-file",
+              "optional": true,
+              "followingPparameters": [
+                {
+                  "type":"string",
+                  "name":"fileName"
+                }
+              ]
+            },
+            {
+              "type":"string",
+              "name":"url"
+            }
+          ]
+        }
+      ]
+    },
+    "Diagnostics": {
+      "forms": [
+        {}
+      ]
+    },
+    "Relay": {
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "target"
+            },
+            {
+              "type": "string",
+              "constant": "-echo",
+              "followingParameters": [
+                {
+                  "type": "string",
+                  "greedy": true,
+                  "name": "message"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "target"
+            },
+            {
+              "type": "string",
+              "constant": "-event",
+              "followingParameters": [
+                {
+                  "type": "string",
+                  "name": "eventName"
+                },
+                {
+                  "type": "string",
+                  "optional": true,
+                  "greedy": true,
+                  "name": "eventParam"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "target"
+            },
+            {
+              "type": "string",
+              "constant": "-noredirect",
+              "optional": true
+            },
+            {
+              "type": "string",
+              "greedy": true,
+              "name": "command"
+            }
+          ]
+        }
+      ]
+    },
+    "DotNet": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-disableconcurrentgc"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-list"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-unload"
+            },
+            {
+              "type": "string",
+              "name": "appDomain"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "appDomain"
+            },
+            {
+              "type": "string",
+              "name": "assemblyName"
+            },
+            {
+              "type": "string",
+              "greedy": true,
+              "name": "appParameters"
+            }
+          ]
+        }
+      ]
+    },
+    "DotScript": {
+      "restricted": true,
+      "forms": [
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-list"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "constant": "-unload"
+            },
+            {
+              "type": "string",
+              "name": "appDomain"
+            }
+          ]
+        },
+        {
+          "parameters": [
+            {
+              "type": "string",
+              "name": "xmlFilename"
+            },
+            {
+              "type": "string",
+              "greedy": true,
+              "name": "appParameters"
+            }
+          ]
+        }
+      ]
     }
+  },
+  "events": {
+    "LavishVM Frame Ends": {
+      "description": ""
+    },
+    "OnFrame": {
+      "description": ""
+    },
+    "OnMouseEnter": {
+      "description": ""
+    },
+    "OnMouseExit": {
+      "description": ""
+    },
+    "OnConsoleLine": {
+      "description": ""
+    },
+    "OnConsoleLineStripped": {
+      "description": ""
+    },
+    "OnCursorPositionUpdated": {
+      "description": "",
+      "restricted": true
+    },
+    "OnCursorStateChanged": {
+      "description": "",
+      "restricted": true
+    },
+    "remoteControlSenderAdded": {
+      "description": "",
+      "restricted": true
+    },
+    "remoteControlSenderRemoved": {
+      "description": "",
+      "restricted": true
+    },
+    "OnButtonDown": {
+      "description": ""
+    },
+    "OnButtonUp": {
+      "description": ""
+    },
+    "OnButtonMove": {
+      "description": ""
+    },
+    "OnAxisMove": {
+      "description": ""
+    },
+    "OnDPadMove": {
+      "description": ""
+    },
+    "OnMouseMove": {
+      "description": ""
+    },
+    "OnMouseWheel": {
+      "description": ""
+    },
+    "OnButtonDownLastChance": {
+      "description": ""
+    },
+    "OnButtonUpLastChance": {
+      "description": ""
+    },
+    "OnButtonMoveLastChance": {
+      "description": ""
+    },
+    "OnMouseWheelLastChance": {
+      "description": ""
+    }
+  },
+  "types": {
+    "innerspace": {
+      "members": {
+        "Version": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Returns the Inner Space version number"
+            }
+          ]
+        },
+        "ISXDK": {
+          "restricted": true,
+          "forms": [
+            {
+              "type": "string",
+              "description": "Returns the ISXDK version"
+            }
+          ]
+        },
+        "Build": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Returns the Inner Space build number"
+            }
+          ]
+        },
+        "Stealth": {
+          "restricted": true
+        },
+        "Uplink": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Returns the Name of the current Uplink"
+            }
+          ]
+        },
+        "RemoteControlSenders": {
+          "restricted": true
+        },
+        "Configuration": {
+          "restricted": true,
+          "forms": [
+            {
+              "type": "settingsetref",
+              "description": "The main Inner Space settings (InnerSpace.XML)"
+            }
+          ]
+        },
+        "GameConfiguration": {
+          "forms": [
+            {
+              "type": "settingsetref",
+              "description": "The Inner Space Game Configuration settings (GameConfiguration.XML)"
+            }
+          ]
+        },
+        "InputConfiguration": {
+          "forms": [
+            {
+              "type": "settingsetref",
+              "description": "The Inner Space Input Devices configuration settings (InputDevices.XML)"
+            }
+          ]
+        },
+        "Agent": {
+          "forms": [
+            {
+              "type": "agent",
+              "description": "Retrieves an [[ISKernel:Agent|Agent]], by ID",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "Agents": {
+          "forms": [
+            {
+              "type": "jsonarray",
+              "description": "Retrieves an array of JSON objects briefly describing all currently defined Agents"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "LoadExtension": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Loads &lt;name> extension",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "EnableStealth": {
+          "restricted": true
+        },
+        "ScanAgentsFolder": {},
+        "AddAgent": {
+          "forms": [
+            {
+              "description": "Adds an Agent via a standalone JSON definition",
+              "parameters": [
+                {
+                  "name": "json"
+                }
+              ]
+            }
+          ]
+        },
+        "FireAgentEvent": {}
+      },
+      "restricted": true
+    },
+    "dataset": {
+      "members": {
+        "GUID": {},
+        "Name": {},
+        "Keys": {},
+        "Key": {},
+        "Set": {},
+        "Sets": {},
+        "GetString": {},
+        "GetInt": {},
+        "GetFloat": {}
+      },
+      "methods": {
+        "SetName": {},
+        "Set": {},
+        "UnSet": {},
+        "Clear": {},
+        "AddSet": {},
+        "RemoveSet": {},
+        "Unload": {},
+        "Reload": {},
+        "Sort": {},
+        "Save": {}
+      }
+    },
+    "display": {
+      "members": {
+        "GetSize": {},
+        "TaskbarAutoHide": {},
+        "System": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the current display system (e.g. Direct3D9)"
+            }
+          ]
+        },
+        "Windowed": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the application is really windowed"
+            }
+          ]
+        },
+        "AppWindowed": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the application thinks it is windowed"
+            }
+          ]
+        },
+        "Width": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "The games actual resolution width"
+            }
+          ]
+        },
+        "Height": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "The games actual resolution height"
+            }
+          ]
+        },
+        "X": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "X position of the full windows left edge"
+            }
+          ]
+        },
+        "Y": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Y position of the full windows top edge"
+            }
+          ]
+        },
+        "WindowWidth": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Width of the full window"
+            }
+          ]
+        },
+        "WindowHeight": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Height of the full window"
+            }
+          ]
+        },
+        "Monitors": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Number of monitors"
+            }
+          ]
+        },
+        "Monitor": {
+          "forms": [
+            {
+              "type": "monitor",
+              "description": "Monitor assigned to the application"
+            },
+            {
+              "type": "monitor",
+              "description": "The #th monitor attached to the system (1-based)",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "DesktopX": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "X position of the left edge of the windows desktop on the current monitor"
+            }
+          ]
+        },
+        "DesktopY": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Y position of the top edge of the windows desktop on the current monitor"
+            }
+          ]
+        },
+        "DesktopWidth": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Width of the windows desktop on the current monitor"
+            }
+          ]
+        },
+        "DesktopHeight": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Height of the windows desktop on the current monitor"
+            }
+          ]
+        },
+        "ViewableX": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "X position of the left edge of the windows viewable portion (does not include the border, etc)"
+            }
+          ]
+        },
+        "ViewableY": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Y position of the top edge of the windows viewable portion (does not include the border, etc)"
+            }
+          ]
+        },
+        "ViewableWidth": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Width of the windows viewable portion"
+            }
+          ]
+        },
+        "ViewableHeight": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Height of the windows viewable portion"
+            }
+          ]
+        },
+        "Foreground": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the window is currently the active window on the system"
+            }
+          ]
+        },
+        "GetPixel": {
+          "restricted": true,
+          "forms": [
+            {
+              "type": "rgb",
+              "description": "Retrieves color information of a specific pixel. Coordinates are relative to the viewable portion of the window, not the games actual display mode",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            }
+          ]
+        },
+        "PixelSearch": {
+          "restricted": true,
+          "forms": [
+            {
+              "type": "string",
+              "description": "See [[Inner_Space:Pixel_Search]] for more information."
+            }
+          ]
+        },
+        "TextureMem": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Available texture memory, in megabytes"
+            }
+          ]
+        },
+        "FPS": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "Sustained frames per second (calculated from the last 64 frames)"
+            }
+          ]
+        },
+        "Window": {
+          "forms": [
+            {
+              "type": "GDIWindow"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "SetTaskbarAutoHide": {},
+        "Screencap": {},
+        "EnumWindows": {},
+        "EnumVisibleWindows": {}
+      },
+      "asString": {
+        "member": "System"
+      }
+    },
+    "monitor": {
+      "members": {
+        "Width": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Width of the monitor in pixels"
+            }
+          ]
+        },
+        "Height": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Height of the monitor in pixels"
+            }
+          ]
+        },
+        "Left": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Left pixel of the monitor (X coordinate)"
+            }
+          ]
+        },
+        "Top": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Top pixel of the monitor (Y coordinate)"
+            }
+          ]
+        },
+        "Right": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Right pixel of the monitor (X coordinate)"
+            }
+          ]
+        },
+        "Bottom": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Bottom pixel of the monitor (Y coordinate)"
+            }
+          ]
+        },
+        "MaximizeWidth": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Width used for maximized windows on this monitor"
+            }
+          ]
+        },
+        "MaximizeHeight": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Height used for maximized windows on this monitor"
+            }
+          ]
+        },
+        "MaximizeLeft": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Left-most pixel used for maximized windows on this monitor"
+            }
+          ]
+        },
+        "MaximizeTop": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Top pixel used for maximized windows on this monitor"
+            }
+          ]
+        },
+        "MaximizeRight": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Right-most pixel used for maximized windows on this monitor"
+            }
+          ]
+        },
+        "MaximizeBottom": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Bottom pixel used for maximized windows on this monitor"
+            }
+          ]
+        },
+        "IsPrimary": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the monitor is the Primary monitor"
+            }
+          ]
+        },
+        "ID": {},
+        "Name": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the monitor (e.g. \\\\.\\DISPLAY1 -- you will need to use string.Escape to see the entire thing, or use string.Right[1] to get the monitor number for example)"
+            }
+          ]
+        },
+        "asJSON": {}
+      },
+      "asString": {
+        "description": "The monitor's 'name' according to Windows"
+      }
+    },
+    "audio": {
+      "members": {
+        "VolumeLeft": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "(Windows) Current Process left-channel volume level, as per Windows Volume Mixer. 0.0 for silent, 1.0 for full volume."
+            }
+          ]
+        },
+        "VolumeRight": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "(Windows) Current Process right-channel volume level, as per Windows Volume Mixer. 0.0 for silent, 1.0 for full volume."
+            }
+          ]
+        },
+        "Volume": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "(Windows) Current Process volume level, as per Windows Volume Mixer. 0.0 for silent, 1.0 for full volume."
+            }
+          ]
+        },
+        "IsMuted": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "(Windows) Current Process Mute setting, as per Windows Volume Mixer"
+            }
+          ]
+        },
+        "Voice": {
+          "forms": [
+            {
+              "type": "audiovoice",
+              "description": "Retrieves an Audio Voice (something that makes sounds) by ID",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "Voices": {
+          "forms": [
+            {
+              "type": "jsonarray",
+              "description": "Retrieves a JSON array containing the list of currently available Voices (things that make sounds)"
+            }
+          ]
+        },
+        "Stream": {
+          "forms": [
+            {
+              "type": "audiostream",
+              "description": "Retrieves an Audio Stream (a sound) by ID",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "Streams": {
+          "forms": [
+            {
+              "type": "jsonarray",
+              "description": "Retrieves a JSON array containing the list of currently available Streams (sounds)"
+            }
+          ]
+        },
+        "EngineVolume": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "The current Master volume level for Inner Spaces audio engine"
+            }
+          ]
+        },
+        "EngineVolumes": {}
+      },
+      "methods": {
+        "FadeVolume": {
+          "forms": [
+            {
+              "description": "(Windows) Fades (adjusts) the Current Process volume level to the specified value, over the specified number of seconds.",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "seconds"
+                }
+              ]
+            }
+          ]
+        },
+        "SetVolume": {
+          "forms": [
+            {
+              "description": "(Windows) Sets the Current Process volume level to the specified value",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            },
+            {
+              "description": "(Windows) Sets the Current Process volume level to the specified left and right channel values",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "IncVolume": {
+          "forms": [
+            {
+              "description": "(Windows) Increases the Current Process volume level by the specified value",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            },
+            {
+              "description": "(Windows) Increases the Current Process volume level by the specified left and right channel values",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "SetMute": {
+          "forms": [
+            {
+              "description": "(Windows) Sets the Current Process Mute setting",
+              "parameters": [
+                {
+                  "name": "bool"
+                }
+              ]
+            }
+          ]
+        },
+        "SetEngineVolume": {
+          "forms": [
+            {
+              "description": "Sets the Master volume level for Inner Spaces audio engine to the specified value",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "IncEngineVolume": {
+          "forms": [
+            {
+              "description": "Increments the Master volume level for Inner Spaces audio engine by the specified value",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "AddVoice": {
+          "forms": [
+            {
+              "description": "Creates a new Audio Voice (thing that makes sounds) with the specified name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "RemoveVoice": {
+          "forms": [
+            {
+              "description": "Removes an Audio Voice with the specified name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "AddStream": {
+          "forms": [
+            {
+              "description": "Creates a new Audio Stream (a sound) with the specified name. The filename specifies the sound file to use for this stream.",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "filename"
+                }
+              ]
+            }
+          ]
+        },
+        "RemoveStream": {
+          "forms": [
+            {
+              "description": "Removes an Audio Stream with the specified name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "audiovoice": {
+      "members": {
+        "Name": {},
+        "ID": {},
+        "NumChannels": {},
+        "SampleRate": {},
+        "Volume": {},
+        "Volumes": {},
+        "NowPlaying": {},
+        "IsStarted": {},
+        "IsPaused": {}
+      },
+      "methods": {
+        "SetVolume": {},
+        "IncVolume": {},
+        "Start": {},
+        "Stop": {},
+        "Pause": {},
+        "ClearQueue": {},
+        "PlayStream": {},
+        "EnqueueStream": {}
+      },
+      "asString": {
+        "constant": "audiovoice"
+      }
+    },
+    "audiostream": {
+      "members": {
+        "Name": {},
+        "ID": {},
+        "NumChannels": {},
+        "SampleRate": {},
+        "Filename": {},
+        "State": {}
+      },
+      "methods": {
+        "BeginLoad": {},
+        "Unload": {}
+      },
+      "asString": {
+        "constant": "audiostream"
+      }
+    },
+    "bind": {
+      "members": {
+        "Name": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The name of the bind"
+            }
+          ]
+        },
+        "Combo": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The key combination used for the bind"
+            }
+          ]
+        },
+        "PressCommand": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The command executed when this bind is pressed"
+            }
+          ]
+        },
+        "ReleaseCommand": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The command executed when this bind is released"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "SetName": {
+          "forms": [
+            {
+              "description": "Renames the bind",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "SetCombo": {
+          "forms": [
+            {
+              "description": "Changes the key combination used by the bind",
+              "parameters": [
+                {
+                  "name": "combo"
+                }
+              ]
+            }
+          ]
+        },
+        "SetPressCommand": {
+          "forms": [
+            {
+              "description": "Sets the command executed when this bind is pressed",
+              "parameters": [
+                {
+                  "name": "command"
+                }
+              ]
+            }
+          ]
+        },
+        "SetReleaseCommand": {
+          "forms": [
+            {
+              "description": "Sets the command executed when this bind is released",
+              "parameters": [
+                {
+                  "name": "command"
+                }
+              ]
+            }
+          ]
+        },
+        "Press": {},
+        "Release": {},
+        "Delete": {
+          "forms": [
+            {
+              "description": "Deletes the bind"
+            }
+          ]
+        }
+      },
+      "asString": {
+        "constant": "TRUE"
+      }
+    },
+    "keyboard": {
+      "members": {
+        "System": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the currently active system for keyboard input (DirectInput, Win32I)"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Bind": {
+          "forms": [
+            {
+              "description": "Binds a command to a key combination, with a given name (see [[ISSession:Bind (Command)|Bind command]])",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "combination",
+                  "type": "key"
+                },
+                {
+                  "name": "command"
+                }
+              ]
+            },
+            {
+              "description": "Binds a command to a key combination, with a given name (see [[ISSession:Bind (Command)|Bind command]])",
+              "parameters": [
+                {
+                  "name": "-press|-release"
+                },
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "combination",
+                  "type": "key"
+                },
+                {
+                  "name": "command"
+                }
+              ]
+            }
+          ]
+        },
+        "GetButtonIterator": {},
+        "GetAxisIterator": {},
+        "GetDpadIterator": {},
+        "GetDeviceIterator": {},
+        "GetBindIterator": {},
+        "DisableBinds": {},
+        "EnableBinds": {}
+      }
+    },
+    "input": {
+      "members": {
+        "G15": {},
+        "Pending": {},
+        "Button": {
+          "forms": [
+            {
+              "type": "button",
+              "description": "Retrieves a button object by name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Axis": {
+          "forms": [
+            {
+              "type": "axis",
+              "description": "Retrieves an axis object by name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Device": {},
+        "DPad": {
+          "forms": [
+            {
+              "type": "dpad",
+              "description": "Retrieves a d-pad object by name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Bind": {
+          "forms": [
+            {
+              "type": "bind",
+              "description": "Retrieves the bind with the given name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "BindsEnabled": {
+          "forms": [
+            {
+              "type": "bool"
+            }
+          ]
+        }
+      }
+    },
+    "g15": {
+      "members": {
+        "M1Light": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the M1 light is on"
+            }
+          ]
+        },
+        "M2Light": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the M2 light is on"
+            }
+          ]
+        },
+        "M3Light": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the M3 light is on"
+            }
+          ]
+        },
+        "MRLight": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the MR light is on"
+            }
+          ]
+        },
+        "MLights": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "Bit field with M-light states (M1=1,M2=2,M3=4,MR=8)"
+            }
+          ]
+        },
+        "BacklightLevel": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "Keyboard backlight level (0 off, 1 medium, 2 high)"
+            }
+          ]
+        },
+        "LCDBacklightLevel": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "LCD backlight level (0 off, 1 medium, 2 high)"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "SetM1Light": {
+          "forms": [
+            {
+              "description": "TRUE for on, FALSE for off",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetM2Light": {
+          "forms": [
+            {
+              "description": "TRUE for on, FALSE for off",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetM3Light": {
+          "forms": [
+            {
+              "description": "TRUE for on, FALSE for off",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetMRLight": {
+          "forms": [
+            {
+              "description": "TRUE for on, FALSE for off",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetMLights": {
+          "forms": [
+            {
+              "description": "Set all 4 M-lights with a bit field (M1=1,M2=2,M3=4,MR=8)",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBacklightLevel": {
+          "forms": [
+            {
+              "description": "Set keyboard backlight level (0 off, 1 medium, 2 high)",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "SetLCDBacklightLevel": {
+          "forms": [
+            {
+              "description": "Set LCD backlight level (0 off, 1 medium, 2 high)",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "constant": "TRUE"
+      }
+    },
+    "button": {
+      "members": {
+        "Name": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the button"
+            }
+          ]
+        },
+        "Device": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the input device hosting this button"
+            }
+          ]
+        },
+        "ID": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "ID number of the button -- 255 and under are assigned by Windows, 256 and above are generated by Inner Space for non-keyboard buttons"
+            }
+          ]
+        },
+        "Pressed": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if this button is pressed"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Press": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Presses and releases the button"
+            }
+          ]
+        },
+        "Hold": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Presses and holds the button"
+            }
+          ]
+        },
+        "Release": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Releases the (pressed) button"
+            }
+          ]
+        }
+      }
+    },
+    "axis": {
+      "members": {
+        "Name": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the axis"
+            }
+          ]
+        },
+        "Device": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the input device hosting this axis"
+            }
+          ]
+        },
+        "ID": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "ID number of the axis (independent of buttons or d-pads)"
+            }
+          ]
+        },
+        "Position": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "Value between 0 and 1 indicating the axis position.  Generally 0 is to the left or downward, and 1 is to the right or upward.  Some axes are a bit more strange, such as Xbox 360 conroller triggers, where the value is the average position of the two triggers -- 0 is left trigger pulled, 1 is right trigger pulled, and 0.5 indicates both triggers are at rest, or both pulled.  The precision of this position is entirely based on the device and its driver (e.g. the values will not just be 0, 0.5, or 1, there might be thousands of possible values)."
+            }
+          ]
+        }
+      },
+      "asString": {
+        "member": "Name"
+      }
+    },
+    "dpad": {
+      "members": {
+        "Name": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the d-pad"
+            }
+          ]
+        },
+        "Device": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the input device hosting this d-pad"
+            }
+          ]
+        },
+        "ID": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "ID number of the d-pad (independent of axes or buttons)"
+            }
+          ]
+        },
+        "Position": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "Value between 0.00 and 360.00 clockwise, indicating the position as a direction.  A value of -1 indicates that the d-pad is at rest (in the middle)"
+            }
+          ]
+        }
+      },
+      "asString": {
+        "member": "Name"
+      }
+    },
+    "inputdevice": {
+      "members": {
+        "Name": {},
+        "ID": {},
+        "CurrentKeySet": {}
+      },
+      "methods": {
+        "SelectKeySet": {}
+      }
+    },
+    "mouse": {
+      "members": {
+        "Speed": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "Current system mouse speed, 1.0 = 100%"
+            }
+          ]
+        },
+        "Threshold1": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Current system mouse acceleration threshold 1"
+            }
+          ]
+        },
+        "Threshold2": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Current system mouse acceleration threshold 2"
+            }
+          ]
+        },
+        "Acceleration": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Current system mouse acceleration setting"
+            }
+          ]
+        },
+        "DoubleClickTime": {},
+        "DoubleClickWidth": {},
+        "DoubleClickHeight": {},
+        "System": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the currently active system for mouse input (DirectInput, Win32I)"
+            }
+          ]
+        },
+        "X": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Current mouse X position (horizontal)"
+            }
+          ]
+        },
+        "Y": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Current mouse Y position (vertical)"
+            }
+          ]
+        },
+        "Position": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Position of the mouse, in the form X,Y, such as 0,0 or 263,475"
+            }
+          ]
+        },
+        "ConvertPosition": {},
+        "TranslateX": {},
+        "TranslateY": {},
+        "ScaleX": {},
+        "ScaleY": {},
+        "Cursor": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if system cursor is visible"
+            }
+          ]
+        },
+        "BackgroundCursor": {
+          "restricted": true,
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if Inner Space is rendering the cursor (while the game is inactive)"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "LeftClick": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Presses and immediately releases the left mouse button"
+            }
+          ]
+        },
+        "RightClick": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Presses and immediately releases the right mouse button"
+            }
+          ]
+        },
+        "HoldLeft": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Presses and holds the left mouse button"
+            }
+          ]
+        },
+        "ReleaseLeft": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Releases the left mouse button"
+            }
+          ]
+        },
+        "HoldRight": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Presses and holds the right mouse button"
+            }
+          ]
+        },
+        "ReleaseRight": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Releases the right mouse button"
+            }
+          ]
+        },
+        "Wheel": {
+          "restricted": true,
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "SetPosition": {
+          "restricted": true,
+          "forms": [
+            {
+              "description": "Sets the mouse position",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBackgroundCursor": {
+          "restricted": true,
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "name": "bool"
+                }
+              ]
+            }
+          ]
+        },
+        "ResetSpeed": {
+          "forms": [
+            {
+              "description": "Resets system mouse speed to 100% (Speed=1.0) -- this will cause system lag when applied"
+            }
+          ]
+        },
+        "DisableAcceleration": {
+          "forms": [
+            {
+              "description": "Disables system mouse acceleration -- this will cause system lag when applied"
+            }
+          ]
+        },
+        "ShowCursor": {
+          "forms": [
+            {}
+          ]
+        },
+        "HideCursor": {
+          "forms": [
+            {}
+          ]
+        }
+      },
+      "asString": {
+        "member": "Position"
+      }
+    },
+    "console": {
+      "members": {
+        "Open": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the console is currently visible"
+            }
+          ]
+        },
+        "Echo": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if console \"echo\" is enabled (i.e. not squelched, and echo off has not been used)"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Toggle": {
+          "forms": [
+            {
+              "description": "Toggles the console visibility"
+            }
+          ]
+        },
+        "Open": {
+          "forms": [
+            {
+              "description": "Opens the console"
+            }
+          ]
+        },
+        "Close": {
+          "forms": [
+            {
+              "description": "Closes the console"
+            }
+          ]
+        }
+      },
+      "restricted": true
+    },
+    "extension": {
+      "members": {
+        "Filename": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The extensions filename"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Unload": {
+          "forms": [
+            {
+              "description": "Unloads the extension"
+            }
+          ]
+        }
+      },
+      "restricted": true
+    },
+    "navigation": {
+      "members": {
+        "World": {
+          "forms": [
+            {
+              "type": "navworld",
+              "description": "Retrieves the navigation world with this name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "methods": {
+        "AddWorld": {
+          "forms": [
+            {
+              "description": "Adds the world &lt;name> to the known universe.",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "RemoveWorld": {
+          "forms": [
+            {
+              "description": "Removes the world &lt;name> from the known universe.",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Export": {
+          "forms": [
+            {
+              "description": "Exports a given world or universe into &lt;filename>",
+              "parameters": [
+                {
+                  "name": "filename"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "restricted": true
+    },
+    "navpoint": {
+      "members": {
+        "ID": {},
+        "X": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "X coordinate"
+            }
+          ]
+        },
+        "Y": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "Y coordinate"
+            }
+          ]
+        },
+        "Z": {
+          "forms": [
+            {
+              "type": "float",
+              "description": "Z coordinate"
+            }
+          ]
+        },
+        "Name": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the navigational point"
+            }
+          ]
+        },
+        "ConnectsTo": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the point connects to a specified point",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "ConnectsFrom": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the point connects from a specified point",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Outgoing": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Number of outgoing connections from this point"
+            },
+            {
+              "type": "navpoint",
+              "description": "nth point with a connection from this point",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            }
+          ]
+        },
+        "Incoming": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Number of incoming connections to this point"
+            },
+            {
+              "type": "navpoint",
+              "description": "nth point with a connection to this point",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            }
+          ]
+        },
+        "Custom": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "value of the custom setting &lt;name>",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Note": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "A user-defined note set with the navigational point"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "SetCustom": {
+          "forms": [
+            {
+              "description": "Sets a Custom data for this point",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "RemoveCustom": {
+          "forms": [
+            {
+              "description": "Removes a Custom data",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "SetPosition": {
+          "forms": [
+            {
+              "description": "Changes the location of the navigational point",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "SetName": {
+          "forms": [
+            {
+              "description": "Changes the name of the nav point",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "SetNote": {
+          "forms": [
+            {
+              "description": "Attaches a note to the navigational point",
+              "parameters": [
+                {
+                  "name": "note"
+                }
+              ]
+            }
+          ]
+        },
+        "Delete": {
+          "forms": [
+            {
+              "description": "Deletes the nav point"
+            }
+          ]
+        },
+        "Rename": {
+          "forms": [
+            {
+              "description": "Renames a point to &lt;newname>",
+              "parameters": [
+                {
+                  "name": "newname"
+                }
+              ]
+            }
+          ]
+        },
+        "AddConnection": {
+          "forms": [
+            {
+              "description": "Adds a connection to a nav point",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "description": "Adds a bidirectional connection to a nav point",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "bidirectional"
+                }
+              ]
+            }
+          ]
+        },
+        "RemoveConnection": {}
+      },
+      "restricted": true,
+      "asString": {
+        "member": "Name"
+      }
+    },
+    "navworld": {
+      "members": {
+        "Name": {},
+        "Point": {
+          "forms": [
+            {
+              "type": "navpoint",
+              "description": "Retrieves the point with the given name",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Points": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Total number of points in this world"
+            }
+          ]
+        },
+        "LastID": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "The highest point ID number in this world"
+            }
+          ]
+        },
+        "NearestPoint": {
+          "forms": [
+            {
+              "type": "navpoint",
+              "description": "For use in a single coordinate plane system, retrieves the nearest point to (x,0,0)",
+              "parameters": [
+                {
+                  "name": "x"
+                }
+              ]
+            },
+            {
+              "type": "navpoint",
+              "description": "Retrieves the nearest point to (x,y,0)",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "type": "navpoint",
+              "description": "Retrieves the nearest point to (x,y,z)",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                },
+                {
+                  "name": "z"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Set": {
+          "forms": [
+            {
+              "description": "For use in a single coordinate plane system, sets a point with the given name at (x,0,0)",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "x"
+                }
+              ]
+            },
+            {
+              "description": "Sets a point with the given name at (x,y,0)",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "description": "Sets a point with the given name at (x,y,z)",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                },
+                {
+                  "name": "z"
+                }
+              ]
+            }
+          ]
+        },
+        "Export": {
+          "forms": [
+            {
+              "description": "Exports a world to &lt;filename>",
+              "parameters": [
+                {
+                  "name": "filename"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "restricted": true,
+      "asString": {
+        "member": "Name"
+      }
+    },
+    "navpath": {
+      "members": {
+        "Points": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "The total number of points on this path"
+            }
+          ]
+        },
+        "Point": {
+          "forms": [
+            {
+              "type": "point3f",
+              "description": "Retrieves a point on the path. (Valid # is 1-Points)",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "PointName": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Retrieves the original name of a point on the path. (Valid # is 1-Points)",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "NearestPoint": {
+          "forms": [
+            {
+              "type": "int",
+              "description": "Retrieves the number of the nearest point on the path to location (x,0,0)",
+              "parameters": [
+                {
+                  "name": "x"
+                }
+              ]
+            },
+            {
+              "type": "int",
+              "description": "Retrieves the number of the nearest point on the path to location (x,y,0)",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                }
+              ]
+            },
+            {
+              "type": "int",
+              "description": "Retrieves the number of the nearest point on the path to location (x,y,z)",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                },
+                {
+                  "name": "z"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Clear": {
+          "forms": [
+            {
+              "description": "Resets the path so it contains no points"
+            }
+          ]
+        },
+        "Reverse": {
+          "forms": [
+            {
+              "description": "Reverses the path"
+            }
+          ]
+        },
+        "GetPath": {
+          "forms": [
+            {
+              "description": "Gets the shortest path from point A to point B (clearing is not required, it is done automatically)",
+              "parameters": [
+                {
+                  "name": "world"
+                },
+                {
+                  "name": "a",
+                  "type": "point"
+                },
+                {
+                  "name": "b",
+                  "type": "point"
+                }
+              ]
+            },
+            {
+              "description": "Gets the shortest path from point A to point B to point C to point D ad infinitum (clearing is not required, it is done automatically)",
+              "parameters": [
+                {
+                  "name": "world"
+                },
+                {
+                  "name": "a",
+                  "type": "point"
+                },
+                {
+                  "name": "b",
+                  "type": "point"
+                },
+                {
+                  "name": "points ...",
+                  "type": "additional"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "restricted": true
+    },
+    "midi": {
+      "members": {
+        "NumAttachedInDevices": {},
+        "AttachedInDevice": {},
+        "AttachedInDevices": {},
+        "InDevice": {
+          "forms": [
+            {
+              "type": "midiindevice",
+              "description": "A MIDI In Device by its ID number (NOT the same number as Attached devices)",
+              "parameters": [
+                {
+                  "name": "#"
+                }
+              ]
+            }
+          ]
+        },
+        "NumInDevices": {},
+        "InDevices": {
+          "forms": [
+            {
+              "type": "jsonarray",
+              "description": "A JSON array describing all open MIDI In devices"
+            }
+          ]
+        },
+        "NumAttachedOutDevices": {},
+        "AttachedOutDevice": {},
+        "AttachedOutDevices": {},
+        "OutDevice": {},
+        "NumOutDevices": {},
+        "OutDevices": {}
+      },
+      "methods": {
+        "OpenAllDevicesIn": {
+          "forms": [
+            {
+              "description": "Opens all MIDI In devices, with controls mapped through [[LavishGUI 2]]. The port names will be generated as MIDI 1, MIDI 2, etc"
+            }
+          ]
+        },
+        "CloseAllDevicesIn": {
+          "forms": [
+            {
+              "description": "Closes all open MIDI In devices"
+            }
+          ]
+        },
+        "OpenDeviceIn": {
+          "forms": [
+            {
+              "description": "Opens the #th attached MIDI device (1-based), with controls mapped through [[LavishGUI 2]]. The specified portName is assigned to the device and can be used with the InDevice member",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "portName"
+                }
+              ]
+            },
+            {
+              "description": "Opens the #th attached MIDI device (1-based), with controls mapped through a [[LavishScript]] object method. The specified portName is assigned to the device and can be used with the InDevice member",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "portName"
+                },
+                {
+                  "name": "object"
+                },
+                {
+                  "name": "method"
+                }
+              ]
+            }
+          ]
+        },
+        "OpenAllDevicesOut": {},
+        "CloseAllDevicesOut": {},
+        "OpenDeviceOut": {}
+      },
+      "asString": {
+        "constant": "midi"
+      }
+    },
+    "midiindevice": {
+      "members": {
+        "AsJSON": {
+          "forms": [
+            {
+              "type": "jsonobject",
+              "description": "A JSON summary of this device"
+            }
+          ]
+        },
+        "Metadata": {
+          "forms": [
+            {
+              "type": "jsonobject",
+              "description": "Metadata associated with this device"
+            }
+          ]
+        },
+        "Name": {
+          "forms": [
+            {
+              "type": "unistring",
+              "description": "The Port Name from this device, as passed to MIDI:OpenDeviceIn"
+            }
+          ]
+        },
+        "DeviceName": {
+          "forms": [
+            {
+              "type": "unistring",
+              "description": "The Name of the device itself, as specified by the device"
+            }
+          ]
+        },
+        "Retain": {}
+      },
+      "methods": {
+        "Start": {
+          "forms": [
+            {
+              "description": "Starts receiving MIDI input, to the receiver specified to MIDI:OpenDeviceIn (either [[LavishGUI 2]] or a LavishScript object method)"
+            }
+          ]
+        },
+        "Stop": {
+          "forms": [
+            {
+              "description": "Stops receiving MIDI input"
+            }
+          ]
+        },
+        "Reset": {
+          "forms": [
+            {
+              "description": "Resets MIDI input"
+            }
+          ]
+        },
+        "Close": {
+          "forms": [
+            {
+              "description": "Closes the midiindevice, which will then be removed from MIDI.InDevices and must be opened again via MIDI:OpenDeviceIn"
+            }
+          ]
+        },
+        "SetRetain": {}
+      },
+      "asString": {
+        "constant": "midiindevice"
+      }
+    },
+    "midioutdevice": {
+      "members": {
+        "AsJSON": {},
+        "Metadata": {},
+        "Name": {},
+        "DeviceName": {}
+      },
+      "methods": {
+        "SendMessage": {},
+        "SendSysEx": {},
+        "SendNoteOn": {},
+        "SendNoteOff": {},
+        "SendNoteOnInt": {},
+        "SendNoteOffInt": {},
+        "SendProgram": {},
+        "SendControl": {},
+        "SendControlInt": {},
+        "SendPitchWheel": {},
+        "SendPolyphonicAftertouch": {},
+        "SendChannelAftertouch": {},
+        "SendPolyphonicAftertouchInt": {},
+        "SendChannelAftertouchInt": {},
+        "Close": {}
+      },
+      "asString": {
+        "constant": "midioutdevice"
+      }
+    },
+    "midiinevent": {
+      "members": {
+        "Message": {
+          "forms": [
+            {
+              "type": "emidimessage",
+              "description": "The Windows MIDI message: Open, Close, Data, LongData, Error, LongError"
+            }
+          ]
+        },
+        "Byte1": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "Byte 1 of Data"
+            }
+          ]
+        },
+        "Byte2": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "Byte 2 of Data"
+            }
+          ]
+        },
+        "Value": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "This is a combination of Status, Byte1 and Byte2 (rather, they are derived from this value)"
+            }
+          ]
+        },
+        "Timestamp": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "The MIDI timestamp from the event. This is the length of time since the midiindevice was Started or Reset"
+            }
+          ]
+        },
+        "Device": {
+          "forms": [
+            {
+              "type": "midiindevice",
+              "description": "The midiindevice that produced the event"
+            }
+          ]
+        },
+        "Status": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "This is generally a combination of StatusCode and Channel (rather, they are derived from this value)"
+            }
+          ]
+        },
+        "StatusCode": {
+          "forms": [
+            {
+              "type": "emidistatuscode",
+              "description": "The MIDI Status Code: NoteOff, NoteOn, PolyphonicAftertouch, Control, Program, ChannelAftertouch, Pitch, System"
+            }
+          ]
+        },
+        "Channel": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "For Channel-based Status Codes (all but System), this is the MIDI channel number"
+            }
+          ]
+        }
+      },
+      "asString": {
+        "constant": "midiinevent"
+      }
+    },
+    "webrequest": {
+      "members": {
+        "State": {
+          "forms": [
+            {
+              "type": "ewebrequeststate",
+              "description": "State of the webrequest, e.g. Idle, Queued, Working, Completed, Aborted"
+            }
+          ]
+        },
+        "InterpretAs": {
+          "forms": [
+            {
+              "type": "ewebrequestas",
+              "description": "How to interpret the servers response content, such as file, string, json or binary"
+            }
+          ]
+        },
+        "URL": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The URL to request"
+            }
+          ]
+        },
+        "POST": {
+          "forms": [
+            {
+              "type": "jsonarray",
+              "description": "A JSON array containing a list of objects that describe each POST parameter"
+            }
+          ]
+        },
+        "Filename": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The output filename, when interpreting as file"
+            }
+          ]
+        },
+        "Result": {
+          "forms": [
+            {
+              "type": "jsonobject",
+              "description": "A JSON object containing response codes and data received as a result of the request"
+            }
+          ]
+        },
+        "Binary": {
+          "forms": [
+            {
+              "type": "binary",
+              "description": "A binary object containing the servers response content"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "FromJSON": {
+          "forms": [
+            {
+              "description": "Initializes the webrequest via a JSON object. The webrequest must be in its Idle (Reset) state",
+              "parameters": [
+                {
+                  "name": "json"
+                }
+              ]
+            }
+          ]
+        },
+        "Reset": {
+          "forms": [
+            {
+              "description": "Resets the webrequest to its original Idle state, clearing any settings. The webrequest must not be in Working state. If in Queued state, this will act as :Abort instead"
+            }
+          ]
+        },
+        "SetURL": {
+          "forms": [
+            {
+              "description": "Sets the URL to use. The webrequest must be in Idle or Queued state to change the URL.",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            }
+          ]
+        },
+        "InterpretAs": {
+          "forms": [
+            {
+              "description": "Tells the webrequest to provide the result as one of &lt;tt>string&lt;/tt>, &lt;tt>json&lt;/tt>, &lt;tt>binary&lt;/tt>",
+              "parameters": [
+                {
+                  "name": "as"
+                }
+              ]
+            },
+            {
+              "description": "Tells the webrequest to provide the result as a file, to the specified absolute filename (it is recommended to include the full path)",
+              "parameters": [
+                {
+                  "name": "file"
+                },
+                {
+                  "name": "filename",
+                  "type": "absolute"
+                }
+              ]
+            }
+          ]
+        },
+        "Begin": {
+          "forms": [
+            {
+              "description": "Begins the webrequest. The webrequest must be in Idle state, and a URL must be set"
+            }
+          ]
+        },
+        "Abort": {
+          "forms": [
+            {
+              "description": "Aborts the webrequest. The webrequest must be in Queued state; an aborted webrequest will change to Aborted state when it otherwise would have changed to Working state."
+            }
+          ]
+        }
+      },
+      "asString": {
+        "constant": "webrequest"
+      }
+    },
+    "agent": {
+      "members": {
+        "ID": {
+          "forms": [
+            {
+              "type": "uint",
+              "description": "The Agents ID number, assigned when the Agent is loaded"
+            }
+          ]
+        },
+        "Name": {
+          "forms": [
+            {
+              "type": "unistring",
+              "description": "The Name of the Agent"
+            }
+          ]
+        },
+        "Started": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the Agent is Started"
+            }
+          ]
+        },
+        "AutoStart": {},
+        "Metadata": {
+          "forms": [
+            {
+              "type": "jsonobject",
+              "description": "Metadata associated with the Agent"
+            }
+          ]
+        },
+        "Args": {},
+        "Directory": {
+          "forms": [
+            {
+              "type": "filepath",
+              "description": "If the Agent is in its own directory, this is that directory"
+            }
+          ]
+        },
+        "Version": {},
+        "Description": {},
+        "LGUI2MainElementName": {},
+        "LGUI2MainElement": {},
+        "MinimumBuild": {},
+        "Provides": {},
+        "Conflicts": {},
+        "Dependencies": {}
+      },
+      "methods": {
+        "Start": {
+          "forms": [
+            {
+              "description": "Starts the Agent. Event handlers will start firing"
+            }
+          ]
+        },
+        "Stop": {
+          "forms": [
+            {
+              "description": "Stops the Agent. Event handlers will stop firing"
+            }
+          ]
+        },
+        "Remove": {
+          "forms": [
+            {
+              "description": "Stops and Removes the Agent"
+            }
+          ]
+        },
+        "SetAutoStart": {},
+        "SetEventHandler": {
+          "forms": [
+            {
+              "description": "Where &lt;tt>type&lt;/tt> is one of \"global\" \"platform\" or \"process\", this sets a specified event handler to the given json",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "json"
+                }
+              ]
+            }
+          ]
+        },
+        "FireEvent": {
+          "forms": [
+            {
+              "description": "Fires the event by the specified name. Event handlers are processed in the following order: global, platform, process",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "description": "Fires the event by the specified name, in reverse order. This is used, for example, for \"onAgentShutdown\" to initiate the process shutdown, then platform shutdown, then global shutdown handlers",
+              "parameters": [
+                {
+                  "name": "-reverse"
+                },
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "constant": "agent"
+      }
+    },
+    "sequenceedit": {
+      "methods": {
+        "SetSequence": {},
+        "New": {},
+        "Remove": {}
+      },
+      "restricted": true,
+      "asString": {}
+    },
+    "gdiwindow": {
+      "members": {
+        "ProcessID": {},
+        "ProcessName": {},
+        "IsForeground": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "Monitor": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "HWND": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "IsMaximized": {},
+        "IsVisible": {},
+        "IsMouseOver": {},
+        "Width": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "Height": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "X": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "Y": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "ViewableX": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "ViewableY": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "ViewableWidth": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "ViewableHeight": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "MenuWidth": {},
+        "MenuHight": {},
+        "Text": {},
+        "AlwaysOnTop": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "Frame": {
+          "forms": [
+            {
+              "type": "???"
+            }
+          ]
+        },
+        "Style": {}
+      },
+      "methods": {
+        "Set": {},
+        "SetTaskbarTabVisible": {},
+        "MouseMove": {
+          "restricted": true
+        },
+        "MouseWheel": {
+          "restricted": true
+        },
+        "Click": {
+          "restricted": true
+        },
+        "Press": {
+          "restricted": true
+        },
+        "SendMessage": {
+          "restricted": true
+        },
+        "PostMessage": {
+          "restricted": true
+        },
+        "Paste": {
+          "restricted": true
+        },
+        "SetMenu": {
+          "restricted": true
+        },
+        "SelectMenuItem": {
+          "restricted": true
+        },
+        "Flash": {
+          "forms": [
+            {
+              "description": "Causes window frame to flash"
+            }
+          ]
+        },
+        "SetText": {
+          "forms": [
+            {
+              "description": "Set window title"
+            }
+          ]
+        }
+      },
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "name": "hexHWND",
+                "type": "string"
+              }
+            ]
+          }
+        ]
+      },
+      "asString": {
+        "description": "hex HWND"
+      }
+    },
+    "localization": {
+      "members": {
+        "Language": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Name of the current language"
+            }
+          ]
+        },
+        "GetString": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "Retrieves a localized string with the given name, in the given category, if both exist",
+              "parameters": [
+                {
+                  "name": "category"
+                },
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "description": "Same as above, but will create the category and name if they do not exist, and the string will be populated with the default",
+              "parameters": [
+                {
+                  "name": "category"
+                },
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "default"
+                }
+              ]
+            }
+          ]
+        },
+        "HasCategory": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if a category with the given name exists in the current localization set",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "methods": {
+        "SetString": {
+          "forms": [
+            {
+              "description": "Sets a localized string with the given name in the given category, creating both if necessary",
+              "parameters": [
+                {
+                  "name": "category"
+                },
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "RemoveString": {
+          "forms": [
+            {
+              "description": "Removes a localized string with the given name from the given category",
+              "parameters": [
+                {
+                  "name": "category"
+                },
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "RemoveCategory": {
+          "forms": [
+            {
+              "description": "Removes a given category (and any settings in it)",
+              "parameters": [
+                {
+                  "name": "category"
+                }
+              ]
+            }
+          ]
+        },
+        "ExportLanguage": {
+          "forms": [
+            {
+              "description": "Stores the current localization set (all categories and strings) as the given language (e.g. give a language name, not a filename)",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "language"
+                }
+              ]
+            }
+          ]
+        },
+        "ImportLanguage": {
+          "forms": [
+            {
+              "description": "Imports a language into the current localization set, replacing any existing strings with those in the new language",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "language"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "member": "Language"
+      }
+    },
+    "lgui2videofeedsource": {
+      "baseType": "lgui2element",
+      "members": {
+        "FeedName": {},
+        "Feed": {}
+      },
+      "methods": {
+        "SetFeedName": {}
+      },
+      "asString": {
+        "constant": "lgui2videofeedsource"
+      }
+    },
+    "lgui2remotecontrol": {
+      "baseType": "lgui2element",
+      "members": {
+        "KeyboardEnabled": {
+          "restricted": true
+        },
+        "MouseEnabled": {
+          "restricted": true
+        },
+        "MouseFeedbackEnabled": {
+          "restricted": true
+        },
+        "UseLocalBindings": {
+          "restricted": true
+        },
+        "SendForegroundOnly": {
+          "restricted": true
+        },
+        "Clones": {
+          "restricted": true
+        }
+      },
+      "methods": {
+        "SetKeyboardEnabled": {
+          "restricted": true
+        },
+        "SetMouseEnabled": {
+          "restricted": true
+        },
+        "SetMouseFeedbackEnabled": {
+          "restricted": true
+        },
+        "SetUseLocalBindings": {
+          "restricted": true
+        },
+        "SetSendForegroundOnly": {
+          "restricted": true
+        },
+        "AddClone": {
+          "restricted": true
+        },
+        "RemoveClone": {
+          "restricted": true
+        }
+      },
+      "asString": {
+        "constant": "lgui2remotecontrol"
+      }
+    },
+    "lgui2videofeed": {
+      "baseType": "lgui2remotecontrol",
+      "members": {
+        "FeedName": {},
+        "Feed": {},
+        "Permanent": {}
+      },
+      "methods": {
+        "SetFeedName": {},
+        "SetPermanent": {}
+      },
+      "asString": {
+        "constant": "lgui2videofeed"
+      }
+    },
+    "lgui2broadcaster": {
+      "baseType": "lgui2remoteonctrol",
+      "members": {
+        "BroadcastTarget": {
+          "restricted": true
+        },
+        "BlockLocal": {
+          "restricted": true
+        },
+        "Receiver": {
+          "restricted": true
+        }
+      },
+      "methods": {
+        "SetBroadcastTarget": {
+          "restricted": true
+        },
+        "SetBlockLocal": {
+          "restricted": true
+        },
+        "SetReceiver": {
+          "restricted": true
+        }
+      },
+      "asString": {
+        "constant": "lgui2broadcaster"
+      }
+    },
+    "lavishsettings": {
+      "baseType": "settingset",
+      "members": {
+        "Version": {},
+        "Tree": {},
+        "SetByID": {}
+      },
+      "asString": {
+        "member": "Name"
+      }
+    },
+    "settingnode": {
+      "members": {
+        "Parent": {},
+        "Next": {},
+        "Previous": {}
+      },
+      "methods": {
+        "Remove": {}
+      }
+    },
+    "setting": {
+      "baseType": "settingnode",
+      "members": {
+        "Name": {},
+        "String": {},
+        "Int": {},
+        "Float": {},
+        "FindAttribute": {},
+        "AsJSON": {}
+      },
+      "methods": {
+        "Rename": {},
+        "Set": {},
+        "AddAttribute": {}
+      },
+      "asString": {
+        "member": "String"
+      }
+    },
+    "settingattribute": {
+      "baseType": "settingnode",
+      "members": {
+        "Name": {},
+        "String": {},
+        "Int": {},
+        "Float": {}
+      },
+      "methods": {
+        "Rename": {},
+        "Set": {}
+      },
+      "asString": {
+        "member": "String"
+      }
+    },
+    "settingset": {
+      "baseType": "settingnode",
+      "members": {
+        "Children": {},
+        "AsJSON": {},
+        "Name": {},
+        "GUID": {},
+        "Get": {},
+        "FindSet": {},
+        "FindSetting": {},
+        "FindAttribute": {}
+      },
+      "methods": {
+        "Import": {},
+        "Reload": {},
+        "ImportJSON": {},
+        "Export": {},
+        "ExportJSON": {},
+        "AddSet": {},
+        "AddComment": {},
+        "AddSetting": {},
+        "AddAttribute": {},
+        "Rename": {},
+        "Clear": {},
+        "Sort": {},
+        "Copy": {},
+        "GetIterator": {},
+        "GetSetIterator": {},
+        "GetSettingIterator": {},
+        "GetCommentIterator": {}
+      },
+      "index": {
+        "forms": [
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "asString": {
+        "member": "GUID"
+      }
+    },
+    "settingcomment": {
+      "baseType": "settingnode",
+      "members": {
+        "Text": {}
+      },
+      "methods": {
+        "Set": {}
+      },
+      "asString": {
+        "member": "Text"
+      }
+    },
+    "settingsetref": {
+      "baseType": "settingset",
+      "members": {
+        "GUID": {}
+      },
+      "methods": {
+        "Set": {}
+      },
+      "initializer": {
+        "forms": [
+          {},
+          {
+            "parameters": [
+              {
+                "type": "uint"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "topLevelObjects": {
+    "Game": {},
+    "Profile": {},
+    "Mouse": {},
+    "Keyboard": {},
+    "Input": {},
+    "Display": {},
+    "Audio": {},
+    "Console": {
+      "restricted": true
+    },
+    "MIDI": {},
+    "NavPath": {
+      "restricted": true
+    },
+    "Navigation": {
+      "restricted": true
+    },
+    "Extension": {
+      "restricted": true
+    },
+    "SettingXML": {},
+    "InnerSpace": {
+      "restricted": true
+    },
+    "Localization": {},
+    "NETObject": {
+      "restricted": true
+    },
+    "LavishSettings": {}
+  }
 }

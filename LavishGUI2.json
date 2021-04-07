@@ -1,84 +1,6104 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
     "name": "LavishGUI 2",
-    "topLevelObjects": {
-        "LGUI2":{
-            "forms": [
-                {
-                    "type":"lgui2",                    
-                }
-            ]
-        }
-    },
     "types": {
-        "lgui2":{},
-        "lgui2eventargs":{},
-        "lgui2animateargs":{},
-        "lgui2itemviewgeneratorargs":{},
-        "lgui2canvasrenderer":{},
-        "lgui2brush":{},
-        "lgui2animation":{},
-        "lgui2thickness":{},
-        "lgui2fontstyle":{},
-        "lgui2eventhandler":{},
-        "lgui2databinding":{},
-        "lgui2inputbinding":{},
-        "lgui2trigger":{},
-        "lgui2inputhook":{},
-        "lgui2item":{},
-        "lgui2radialitem":{},
-        "lgui2radialguageneedle":{
-            "minimumBuild":6779
+      "lgui2": {
+        "baseType": "lgui2layer",
+        "members": {
+          "Layer": {
+            "forms": [
+              {
+                "type": "lgui2layer"
+              }
+            ]
+          },
+          "Element": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves an Element by ID #",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "type": "uint"
+                  }
+                ]
+              },
+              {
+                "type": "lgui2element",
+                "parameters": [
+                  {
+                    "name": "locateArgs",
+                    "type": "string",
+                    "greedy": true
+                  }
+                ]
+              },
+              {
+                "type": "...",
+                "description": "[[LGUI2:Locate|Locates]] an Element",
+                "parameters": [
+                  {
+                    "name": "elementName"
+                  },
+                  {
+                    "name": "elementType"
+                  },
+                  {
+                    "name": "locateFlags"
+                  }
+                ]
+              }
+            ]
+          },
+          "ElementType": {
+            "forms": [
+              {
+                "type": "lgui2elementtype",
+                "description": "Retrieves an Element Type by name",
+                "parameters": [
+                  {
+                    "name": "name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "AnimationType": {
+            "forms": [
+              {
+                "type": "lgui2animationtype",
+                "description": "Retrieves an [[LGUI2:Animation Type|Animation Type]] by name",
+                "parameters": [
+                  {
+                    "name": "name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "Skin": {
+            "forms": [
+              {
+                "type": "lgui2skin",
+                "description": "Retrieves a Skin by name",
+                "parameters": [
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "optional": true
+                  }
+                ]
+              },
+              {
+                "type": "lgui2skin",
+                "description": "The currently active Skin"
+              }
+            ]
+          },
+          "Template": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "description": "Retrieves a skinned Template, applying the current Skin stack",
+                "parameters": [
+                  {
+                    "name": "name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "TemplateValue": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "minimumBuild": 6788,
+                "description": "Retrieves a skinned Template value, applying the current Skin stack",
+                "parameters": [
+                  {
+                    "name": "templateName",
+                    "type": "string"
+                  },
+                  {
+                    "name": "valueName",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "DataBindingContext": {
+            "forms": [
+              {
+                "type": "object",
+                "description": "When processing a [[LGUI2:Data Binding|Data Binding]], this is the element or other object that owns the binding"
+              }
+            ]
+          },
+          "TriggerContext": {
+            "forms": [
+              {
+                "type": "object",
+                "description": "When processing a [[LGUI2:Trigger|Trigger]], this is the element or other object that owns the trigger"
+              }
+            ]
+          }
         },
-        "lgui2layer":{},
-        "lgui2skin":{},
-        "lgui2animationtype":{},
-        "lgui2element":{},
-        "lgui2elementref":{},
-        "lgui2anchored":{},
-        "lgui2bordered":{},
-        "lgui2contentbase":{},
-        "lgui2headeredcontentbase":{},
-        "lgui2itemlist":{},
-        "lgui2anchor":{},
-        "lgui2border":{},
-        "lgui2button":{},
-        "lgui2sensitivebutton":{},
-        "lgui2knob":{},
-        "lgui2canvas":{},
-        "lgui2checkbox":{},
-        "lgui2dragger":{},
-        "lgui2expander":{},
-        "lgui2imagebox":{},
-        "lgui2inputpicker":{},
-        "lgui2listbox":{},
-        "lgui2objectview":{},
-        "lgui2property":{},
-        "lgui2propertyview":{},
-        "lgui2itemview":{},
-        "lgui2combobox":{},
-        "lgui2panel":{},
-        "lgui2popup":{},
-        "lgui2progressbar":{},
-        "lgui2radialgauge":{},
-        "lgui2radialpanel":{},
-        "lgui2screen":{},
-        "lgui2scrollviewer":{},
-        "lgui2slider":{},
-        "lgui2hud":{},
-        "lgui2scrollbar":{},
-        "lgui2stackpanel":{},
-        "lgui2treepanel":{},
-        "lgui2contextmenu":{},
-        "lgui2tab":{},
-        "lgui2tabcontrol":{},
-        "lgui2textblock":{},
-        "lgui2textbox":{},
-        "lgui2commandbox":{},
-        "lgui2window":{},
-        "lgui2wrappanel":{},
-        "lgui2table":{},
-        "lgui2page":{},
-        "lgui2pagecontrol":{}
+        "methods": {
+          "Clear": {
+            "forms": [
+              {}
+            ]
+          },
+          "LoadSkinFile": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "PushSkin": {
+            "forms": [
+              {
+                "description": "Pushes a [[LGUI2:Skin|Skin]] by name onto the Skin stack",
+                "parameters": [
+                  {
+                    "name": "skinName",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "PopSkin": {
+            "forms": [
+              {
+                "description": "Pops a [[LGUI2:Skin|Skin]] by name off of the Skin stack, if it is the top of the stack",
+                "parameters": [
+                  {
+                    "name": "skinName",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "UnloadSkinFile": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "RegisterAnimationType": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "jsonValue",
+                    "type": "jsonobject"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadTextElementTypesFile": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "filename",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadTextElementTypesJSON": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "jsonValue",
+                    "type": "jsonobject"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadTextElementTypeJSON": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "jsonValue",
+                    "type": "jsonobject"
+                  }
+                ]
+              }
+            ]
+          },
+          "DumpProfiling": {
+            "forms": [
+              {}
+            ]
+          }
+        },
+        "asString": {
+          "constant": "LavishGUI 2.0"
+        }
+      },
+      "lgui2eventargs": {
+        "members": {
+          "Source": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "The source of the event being fired."
+              }
+            ]
+          },
+          "Args": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "Any properties passed with the event"
+              },
+              {
+                "type": "jsonvalue",
+                "description": "A value from the Args object, by its key",
+                "parameters": [
+                  {
+                    "name": "key",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "Handled": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the event has been acknowledged as handled."
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetHandled": {
+            "forms": [
+              {
+                "description": "Sets the event \"Handled\" state to TRUE. This is generally recommended within event handlers. Hooks in particular will ignore the Handled state."
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2eventargs"
+        }
+      },
+      "lgui2animateargs": {
+        "members": {
+          "Element": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The [[LGUI2:Element|Element]] to animate"
+              }
+            ]
+          },
+          "Animation": {
+            "forms": [
+              {
+                "type": "lgui2animation",
+                "description": "The Animation object"
+              }
+            ]
+          },
+          "Args": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "The Item data (also accessible via Item.Data)"
+              },
+              {
+                "type": "jsonvalue",
+                "description": "Retrieves a value from the Item data",
+                "parameters": [
+                  {
+                    "name": "key"
+                  }
+                ]
+              }
+            ]
+          },
+          "Timestamp": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "The current Timestamp"
+              }
+            ]
+          },
+          "FrameState": {
+            "forms": [
+              {
+                "type": "elgui2animationframestate",
+                "description": "The current state (Start, Continue, Stop)"
+              }
+            ]
+          },
+          "Error": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "An error message set by the SetError method, indicating an error condition on the Animation (and resulting in a Stop)"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetError": {
+            "forms": [
+              {
+                "description": "An error message to indicate an error condition on a custom Animation. The Animation will Stop.",
+                "parameters": [
+                  {
+                    "name": "error"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2animateargs"
+        }
+      },
+      "lgui2itemviewgeneratorargs": {
+        "members": {
+          "Item": {
+            "forms": [
+              {
+                "type": "lgui2item",
+                "description": "The Item to generate a view for"
+              }
+            ]
+          },
+          "ItemType": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "The type of Item, either \"default\" or an explicitly specified value also present in Args"
+              }
+            ]
+          },
+          "Args": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "The Item data (also accessible via Item.Data)"
+              },
+              {
+                "type": "jsonvalue",
+                "description": "Retrieves a value from the Item data",
+                "parameters": [
+                  {
+                    "name": "fieldPath",
+                    "type": "string",
+                    "greedy": true
+                  }
+                ]
+              }
+            ]
+          },
+          "Parent": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The parent [[LGUI2:Element|Element]] which will contain the Item View (e.g. the ItemsContainer of an [[LGUI2:Item List|Item List]])"
+              }
+            ]
+          },
+          "View": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The [[LGUI2:Element|Element]] to represent the Item, if it has been set by the Item View Generator"
+              }
+            ]
+          },
+          "Error": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "The Error text, if it has been set by the Item View Generator"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetView": {
+            "forms": [
+              {
+                "description": "Creates a new [[LGUI2:Element|Element]] (View) to represent the Item",
+                "parameters": [
+                  {
+                    "name": "jsonValue",
+                    "type": "jsonobject"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetError": {
+            "forms": [
+              {
+                "description": "Sets a new Error value",
+                "parameters": [
+                  {
+                    "name": "errorText",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {}
+      },
+      "lgui2canvasrenderer": {
+        "members": {
+          "Font": {
+            "forms": [
+              {
+                "type": "lgui2fontstyle",
+                "parameters": [
+                  {
+                    "name": "name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "Brush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "parameters": [
+                  {
+                    "name": "name",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          },
+          "CanvasHeight": {
+            "forms": [
+              {
+                "type": "float"
+              }
+            ]
+          },
+          "CanvasWidth": {
+            "forms": [
+              {
+                "type": "float"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "ClearCanvas": {},
+          "InitializeCanvas": {},
+          "SetCanvasSize": {},
+          "Reset": {
+            "forms": [
+              {}
+            ]
+          },
+          "SetFont": {},
+          "SetBrush": {},
+          "PushFont": {},
+          "PushBrush": {},
+          "PopBrush": {},
+          "PopFont": {},
+          "DrawRect": {},
+          "DrawText": {},
+          "DrawCircle": {},
+          "DrawArc": {},
+          "DrawPrimitives": {},
+          "PushTransform": {},
+          "SetTransform": {},
+          "PopTransform": {},
+          "PushBlendMode": {},
+          "PopBlendMode": {},
+          "Batch": {}
+        },
+        "asString": {}
+      },
+      "lgui2brush": {
+        "members": {
+          "Color": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The Color value applied to the brush"
+              }
+            ]
+          },
+          "ImageOrientation": {
+            "forms": [
+              {
+                "type": "elgui2imageorientation",
+                "description": "Transforms to apply to the image"
+              }
+            ]
+          },
+          "ImageFilename": {
+            "forms": [
+              {
+                "type": "string",
+                "description": "The filename of an image to use for this Brush, if any"
+              }
+            ]
+          },
+          "ImageTransparencyKey": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The transparency key value used for the image"
+              }
+            ]
+          },
+          "ImageBrushName": {},
+          "PixelShader": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "description": "Pixel Shader initialization data, if any"
+              }
+            ]
+          },
+          "VertexShader": {},
+          "AsJSON": {},
+          "Canvas": {}
+        },
+        "methods": {
+          "SetColor": {
+            "forms": [
+              {
+                "description": "Sets the new Color value for the brush. e.g. :SetColor[\"#ffffff\"] -- also accepts #rrggbb",
+                "parameters": [
+                  {
+                    "name": "#aarrggbb"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetImageOrientation": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type": "elgui2imageorientation"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetImage": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "filename"
+                  }
+                ]
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "filename"
+                  },
+                  {
+                    "name": "colorKey"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetImageBrushName": {},
+          "SetPixelShader": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVertexShader": {},
+          "SetCanvas": {}
+        },
+        "asString": {
+          "constant": "lgui2brush"
+        }
+      },
+      "lgui2animation": {
+        "members": {
+          "Name": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "The name of the Animation"
+              }
+            ]
+          },
+          "Element": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The Element being animated"
+              }
+            ]
+          },
+          "Type": {
+            "forms": [
+              {
+                "type": "lgui2animationtype",
+                "description": "The Animation Type doing the animating"
+              }
+            ]
+          },
+          "Parameters": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "Parameters used to create the Animation. Any changes/additions to this object are kept for the lifetime of the Animation."
+              }
+            ]
+          },
+          "IsRunning": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the Animation is running"
+              }
+            ]
+          },
+          "RunningTime": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Running time (elapsed time) of the Animation, in seconds"
+              }
+            ]
+          },
+          "RunningTimeMS": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "Running time (elapsed time) of the Animation, in milliseconds"
+              }
+            ]
+          },
+          "FrameElapsed": {},
+          "FrameElapsedMS": {},
+          "StartTimestamp": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "The Animations Start time (milliseconds)"
+              }
+            ]
+          },
+          "LastFrameTimestamp": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "The Animations last frame (milliseconds)"
+              }
+            ]
+          },
+          "Duration": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Specified duration (total expected length of time) of the Animation, if any, given in seconds"
+              }
+            ]
+          },
+          "DurationMS": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "Specified duration (total expected length of time) of the Animation, if any, given in milliseconds"
+              }
+            ]
+          },
+          "IsInstant": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the Animation is instant"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "Start": {
+            "forms": [
+              {
+                "description": "Start the Animation"
+              }
+            ]
+          },
+          "Stop": {
+            "forms": [
+              {
+                "description": "Stop the Animation"
+              }
+            ]
+          },
+          "Toggle": {
+            "forms": [
+              {
+                "description": "Start/Stop the Animation"
+              }
+            ]
+          },
+          "SetInstant": {
+            "forms": [
+              {
+                "description": "Sets the Instant flag to the specified value",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetDuration": {
+            "forms": [
+              {
+                "description": "Sets the duration of the Animation in seconds, with floating point (e.g. 1.5 for 1.5 seconds)",
+                "parameters": [
+                  {
+                    "name": "float"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetDurationMS": {
+            "forms": [
+              {
+                "description": "Sets the duration of the Animation in milliseconds (e.g. 1500 for 1.5 seconds)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2animation"
+        }
+      },
+      "lgui2thickness": {
+        "members": {
+          "Left": {},
+          "Top": {},
+          "Right": {},
+          "Bottom": {}
+        },
+        "asString": {
+          "description": "left,top,right,bottom"
+        }
+      },
+      "lgui2fontstyle": {
+        "members": {
+          "Face": {
+            "forms": [
+              {
+                "type": "string",
+                "description": "Face of the font, such as \"Arial\""
+              }
+            ]
+          },
+          "Height": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "Font height, in points"
+              }
+            ]
+          },
+          "HeightFactor": {},
+          "HeightOffset": {},
+          "Fixed": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the font requests fixed width glyphs"
+              }
+            ]
+          },
+          "Bold": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the font is bold"
+              }
+            ]
+          },
+          "Flags": {
+            "forms": [
+              {
+                "type": "elgui2fontflags",
+                "description": "Flags indicating which of the font style properties are explicitly provided, rather than inherited"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetFace": {
+            "forms": [
+              {
+                "description": "Sets a new Face for this font",
+                "parameters": [
+                  {
+                    "name": "newFace"
+                  }
+                ]
+              }
+            ]
+          },
+          "UnsetFace": {
+            "forms": [
+              {
+                "description": "Un-sets the Face property from this font, causing this property to be inherited"
+              }
+            ]
+          },
+          "SetHeight": {
+            "forms": [
+              {
+                "description": "Sets a new Height for this font, in points",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "UnsetHeight": {
+            "forms": [
+              {
+                "description": "Un-sets the Height property from this font, causing this property to be inherited"
+              }
+            ]
+          },
+          "SetHeightFactor": {},
+          "SetHeightOffset": {},
+          "SetFixed": {
+            "forms": [
+              {
+                "description": "Sets the fixed width request state for this font",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "UnsetFixed": {
+            "forms": [
+              {
+                "description": "Un-sets the Fixed property from this font, causing this property to be inherited"
+              }
+            ]
+          },
+          "SetBold": {
+            "forms": [
+              {
+                "description": "Sets the Bold state for this font",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "UnsetBold": {
+            "forms": [
+              {
+                "description": "Un-sets the Bold property from this font, causing this property to be inherited"
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2fontstyle"
+        }
+      },
+      "lgui2eventhandler": {
+        "members": {
+          "Owner": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The element that owns this Event Handler"
+              }
+            ]
+          },
+          "AsJSON": {}
+        },
+        "asString": {
+          "constant": "lgui2eventhandler"
+        }
+      },
+      "lgui2databinding": {
+        "members": {
+          "BufferSize": {},
+          "IsAutoPull": {},
+          "IsAutoPush": {},
+          "IsAutoPullOnce": {},
+          "PullReplaceNULL": {},
+          "PullFormat": {},
+          "PushFormat": {},
+          "PushNULLFormat": {},
+          "PullValue": {},
+          "AsJSON": {}
+        },
+        "methods": {
+          "SetBufferSize": {},
+          "SetAutoPull": {},
+          "SetAutoPullOnce": {},
+          "SetAutoPush": {},
+          "SetPullReplaceNULL": {},
+          "SetPullFormat": {},
+          "SetPushFormat": {},
+          "SetPushNULLFormat": {},
+          "PushValue": {},
+          "PullValue": {},
+          "ApplyStyleJSON": {}
+        },
+        "asString": {
+          "constant": "lgui2databinding"
+        }
+      },
+      "lgui2inputbinding": {
+        "members": {
+          "Name": {},
+          "EventHandler": {
+            "forms": [
+              {
+                "type": "lgui2eventhandler",
+                "description": "The Event Handler that will fire when this Input Binding is activated"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetName": {
+            "forms": [
+              {
+                "description": "Changes the name of this Input Binding",
+                "parameters": [
+                  {
+                    "name": "newName"
+                  }
+                ]
+              }
+            ]
+          },
+          "Remove": {}
+        },
+        "asString": {
+          "member": "Name"
+        }
+      },
+      "lgui2trigger": {
+        "members": {
+          "Name": {},
+          "EventHandler": {
+            "forms": [
+              {
+                "type": "lgui2eventhandler",
+                "description": "The Event Handler that will fire when this Trigger is either matched or unmatched (depending on the parameter)",
+                "parameters": [
+                  {
+                    "name": "matched|unmatched"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "methods": {
+          "Update": {
+            "forms": [
+              {
+                "description": "Updates the Trigger, automatically checking the condition again"
+              },
+              {
+                "description": "Updates the Trigger, manually specifying whether the condition is now matched (TRUE) or unmatched (FALSE)",
+                "parameters": [
+                  {
+                    "name": "matched",
+                    "type": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetName": {
+            "forms": [
+              {
+                "description": "Changes the name of this Trigger",
+                "parameters": [
+                  {
+                    "name": "newName"
+                  }
+                ]
+              }
+            ]
+          },
+          "Remove": {
+            "forms": [
+              {
+                "description": "Removes the Trigger"
+              }
+            ]
+          }
+        },
+        "asString": {
+          "member": "Name"
+        }
+      },
+      "lgui2inputhook": {
+        "members": {
+          "Name": {},
+          "EventHandler": {}
+        },
+        "methods": {
+          "SetName": {},
+          "Remove": {}
+        },
+        "asString": {
+          "member": "Name"
+        }
+      },
+      "lgui2item": {
+        "members": {
+          "ItemList": {
+            "forms": [
+              {
+                "type": "lgui2itemlist",
+                "description": "The element hosting this Item"
+              }
+            ]
+          },
+          "Type": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "The Item type"
+              }
+            ]
+          },
+          "Data": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "description": "The Item data"
+              }
+            ]
+          },
+          "Index": {
+            "forms": [
+              {
+                "type": "int64",
+                "description": "The Items index in the ItemList"
+              }
+            ]
+          },
+          "Selected": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the item is selected"
+              }
+            ]
+          },
+          "View": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieve an Item view, by the views parent element ID (usually the ItemList.ItemsContainer.ID)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "Depth": {},
+          "Expanded": {}
+        },
+        "methods": {
+          "SetSelected": {
+            "forms": [
+              {
+                "description": "Selects or de-selects the Item",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetExpanded": {},
+          "ToggleExpanded": {},
+          "Remove": {
+            "forms": [
+              {
+                "description": "Removes the Item from the Item List"
+              }
+            ]
+          },
+          "ClearChildren": {}
+        },
+        "asString": {
+          "constant": "lgui2item"
+        }
+      },
+      "lgui2radialitem": {
+        "members": {
+          "RadialPanel": {
+            "forms": [
+              {
+                "type": "lgui2radialpanel",
+                "description": "The Radial Panel containing this Radial Item"
+              }
+            ]
+          },
+          "Element": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The Child of Radial Panel represented by this Radial Item"
+              }
+            ]
+          },
+          "ArcLength": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The desired arc length, in degrees, of this Radial Item"
+              }
+            ]
+          },
+          "ActualArcLength": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The actual arc length, in degrees, of this Radial Item, after layout"
+              }
+            ]
+          },
+          "InnerRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The inner radius (distance from the center of the panel) of this Radial Item"
+              }
+            ]
+          },
+          "OuterRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The outer radius (distance from the center of the panel) of this Radial Item. (OuterRadius >= InnerRadius)"
+              }
+            ]
+          },
+          "ZoneMargin": {},
+          "LiveZone": {},
+          "ActualArcLocation": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The actual arc location of this Radial Item, after layout"
+              }
+            ]
+          },
+          "Contains": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if this Radial Item contains the point at the given vector from the center of the RadialPanel",
+                "parameters": [
+                  {
+                    "name": "degreesClockwise"
+                  },
+                  {
+                    "name": "distance"
+                  }
+                ]
+              }
+            ]
+          },
+          "ContainsPoint": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if this Radial Item contains the given X,Y coordinate (relative to the Layer, i.e. the game window)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "IsMouseOver": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the mouse cursor is over the Radial Item (i.e. ContainsPoint[${Mouse}])"
+              }
+            ]
+          },
+          "Opacity": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Opacity value for the Radial Item (usually between 0.0 and 1.0, with 1.0 being 100% opaque and 0.0 being fully transparent)"
+              }
+            ]
+          },
+          "BorderThickness": {
+            "forms": [
+              {
+                "type": "lgui2margins",
+                "description": "Retrieves the thickness of the border"
+              }
+            ]
+          },
+          "BorderBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "Retrieves the Brush for the border itself, if applicable"
+              }
+            ]
+          },
+          "BackgroundBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "Retrieves the Brush for the background of the area surrounded by the border, if applicable"
+              }
+            ]
+          },
+          "Style": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "description": "Retrieves a [[LGUI2:Style|Style]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetArcLength": {
+            "forms": [
+              {
+                "description": "Sets the desired arc length, in degrees, of this Radial Item",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetZoneMargin": {},
+          "SetLiveZone": {},
+          "SetArcMargins": {
+            "forms": [
+              {
+                "description": "Sets the left and right arc margins (in degrees) to this value",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOpacity": {
+            "forms": [
+              {
+                "description": "Sets the Opacity value for the Radial Item, with 0.0 being transparent and 1.0 being opaque",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetBorderThickness": {
+            "forms": [
+              {
+                "description": "Sets all of this elements BorderThickness values to this #",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left/Right and Top/Bottom (Inner/Outer) BorderThickness values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left, Top (Outer), Right, Bottom (Inner) BorderThickness values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetBorderBrush": {
+            "forms": [
+              {
+                "description": "Sets the [[LGUI2:Brush|Brush]] used for the border around the Radial Item",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetBackgroundBrush": {
+            "forms": [
+              {
+                "description": "Sets the [[LGUI2:Brush|Brush]] used for the background of the area surrounded by the border, if applicable",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "ApplyStyle": {
+            "forms": [
+              {
+                "description": "Applies a [[LGUI2:Style|Style]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "ApplyStyleJSON": {
+            "forms": [
+              {
+                "description": "Applies a [[LGUI2:Style|Style]] defined by the provided json",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetStyle": {
+            "forms": [
+              {
+                "description": "Adds a [[LGUI2:Style|Style]] with the provided name to the element",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "RemoveStyle": {
+            "forms": [
+              {
+                "description": "Removes a [[LGUI2:Style|Style]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2radialitem"
+        }
+      },
+      "lgui2radialgaugeneedle": {
+        "members": {
+          "RadialGauge": {
+            "forms": [
+              {
+                "type": "lgui2radialgauge",
+                "description": "The Radial Gauge containing this Radial Gauge Needle"
+              }
+            ]
+          },
+          "Name": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "The Name of the needle"
+              }
+            ]
+          },
+          "JSON": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "The needle properties as JSON"
+              }
+            ]
+          },
+          "AsJSON": {},
+          "BackgroundBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "Retrieves the Brush for the background of the needle"
+              }
+            ]
+          },
+          "Origin": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The Origin used for this specific needle, or NULL if not specified (the Radial Gauges origin is used)"
+              }
+            ]
+          },
+          "OuterRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The outer radius (distance from the gauges specified center point) for this needle"
+              }
+            ]
+          },
+          "InnerRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The inner radius (distance from the gauges specified center point) for this needle"
+              }
+            ]
+          },
+          "OuterRadiusFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The outer radius factor for this needle, as a factor of the radial gauges Actual Outer Radius, to be added to OuterRadius"
+              }
+            ]
+          },
+          "InnerRadiusFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The inner radius factor for this needle, as a factor of the radial gauges Actual Outer Radius, to be added to InnerRadius"
+              }
+            ]
+          },
+          "ActualOuterRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The actual outer radius, as calculated by (OuterRadiusFactor*RadialGauge.ActualOuterRadius)+OuterRadius"
+              }
+            ]
+          },
+          "ActualInnerRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The actual inner radius, as calculated by (InnerRadiusFactor*RadialGauge.ActualOuterRadius)+InnerRadius"
+              }
+            ]
+          },
+          "InnerArcLength": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The arc length, in degrees, used for the inner edge of the needle"
+              }
+            ]
+          },
+          "OuterArcLength": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The arc length, in degrees, used for the outer edge of the needle"
+              }
+            ]
+          },
+          "Value": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The current Value for the needle positioning"
+              }
+            ]
+          },
+          "MinValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The minimum Value for the needle positioning, or NULL if not specified (the Radial Gauges Range is used)"
+              }
+            ]
+          },
+          "MaxValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The maximum Value for the needle positioning, or NULL if not specified (the Radial Gauges Range is used)"
+              }
+            ]
+          },
+          "Segments": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "Number of segments (2 triangles each) used to render the needle"
+              }
+            ]
+          },
+          "MaxValueArcLength": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The arc length used for the needle position when Value>=MaxValue, in degrees clockwise from Origin, or NULL if not specified (the Radial Gauges MaxValueArcLength is used)"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "ApplyStyleJSON": {
+            "forms": [
+              {
+                "description": "Applies a [[LGUI2:Style|Style]] defined by the provided json",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetName": {
+            "forms": [
+              {
+                "description": "Sets the Name for the Needle",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetBackgroundBrush": {
+            "forms": [
+              {
+                "description": "Sets the [[LGUI2:Brush|Brush]] used for the Needle",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOrigin": {
+            "forms": [
+              {
+                "description": "Sets the Origin used for this specific needle, in degrees clockwise from the top",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOuterRadius": {
+            "forms": [
+              {
+                "description": "Sets the outer radius (distance from the gauges specified center point) for this needle",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetInnerRadius": {
+            "forms": [
+              {
+                "description": "Sets the inner radius (distance from the gauges specified center point) for this needle",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOuterRadiusFactor": {
+            "forms": [
+              {
+                "description": "Sets the outer radius factor for this needle, as a factor of the radial gauges Actual Outer Radius, to be added to OuterRadius",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetInnerRadiusFactor": {
+            "forms": [
+              {
+                "description": "Sets the inner radius factor for this needle, as a factor of the radial gauges Actual Outer Radius, to be added to InnerRadius",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetInnerArcLength": {
+            "forms": [
+              {
+                "description": "Sets the arc length, in degrees, used for the inner edge of the needle",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOuterArcLength": {
+            "forms": [
+              {
+                "description": "Sets the arc length, in degrees, used for the outer edge of the needle",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetValue": {
+            "forms": [
+              {
+                "description": "Sets the new current Value for the Needle position",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetRange": {
+            "forms": [
+              {
+                "description": "Sets the new minimum and maximum Values for the Needle Range",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetSegments": {
+            "forms": [
+              {
+                "description": "Sets the number of segments (2 triangles each) used to render the needle",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetMaxValueArcLength": {
+            "forms": [
+              {
+                "description": "Sets the arc length used for the needle position when Value>=MaxValue, in degrees clockwise from Origin",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "Remove": {
+            "forms": [
+              {
+                "description": "Removes the Needle from the gauge"
+              }
+            ]
+          }
+        },
+        "minimumBuild": 6779,
+        "asString": {
+          "constant": "lgui2radialgaugeneedle"
+        }
+      },
+      "lgui2layer": {
+        "members": {
+          "Name": {
+            "forms": [
+              {
+                "type": "string",
+                "description": "Name of the layer, such as \"base\" (the default layer)"
+              }
+            ]
+          },
+          "Screen": {
+            "forms": [
+              {
+                "type": "lgui2screen",
+                "description": "The root element for the layer"
+              }
+            ]
+          },
+          "HUD": {
+            "forms": [
+              {
+                "type": "lgui2hud",
+                "description": "Retrieves the HUD element"
+              }
+            ]
+          },
+          "KeyboardState": {
+            "forms": [
+              {
+                "type": "jsonarray",
+                "minimumBuild": 6788
+              }
+            ]
+          },
+          "KeyboardFocusElement": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves the element with keyboard focus, if any"
+              }
+            ]
+          },
+          "MouseFocusElement": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves the element with mouse focus, if any"
+              }
+            ]
+          },
+          "MouseOverElement": {},
+          "MouseCaptureElement": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves the element with Mouse Capture, if any"
+              }
+            ]
+          },
+          "X": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The X coordinate of the top left corner of this layer"
+              }
+            ]
+          },
+          "Y": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The Y coordinate of the top left corner of this layer"
+              }
+            ]
+          },
+          "Width": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The Width of this layer"
+              }
+            ]
+          },
+          "Height": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The Height of this layer"
+              }
+            ]
+          },
+          "CursorX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The X coordinate of the current mouse cursor position"
+              }
+            ]
+          },
+          "CursorY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The Y coordinate of the current mouse cursor position"
+              }
+            ]
+          },
+          "ElementFromPoint": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves a UI element, given an (X,Y) pair",
+                "parameters": [
+                  {
+                    "name": "X"
+                  },
+                  {
+                    "name": "Y"
+                  }
+                ]
+              }
+            ]
+          },
+          "FontScale": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "A scaling factor to be applied to font sizes for this layer"
+              }
+            ]
+          },
+          "LoadFile": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Loads an [[LGUI2:Element|Element]] file into the layer, returning an [[LGUI2:LS1:lgui2element|lgui2element]]-derived object type depending on the LavishGUI 2 element type. A JSON Object is expected in the file.",
+                "parameters": [
+                  {
+                    "name": "filename"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadArrayFile": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "Loads a JSON Array file containing [[LGUI2:Element|Elements]] into the layer, returning the number of elements loaded.",
+                "parameters": [
+                  {
+                    "name": "filename"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadJSON": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Loads an Element, as defined by a json object, into the layer",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "Binding": {},
+          "Bindings": {}
+        },
+        "methods": {
+          "Clear": {},
+          "LoadFile": {
+            "forms": [
+              {
+                "description": "Loads an [[LGUI2:Element|Element]] file into the layer. A JSON Object is expected in the file.",
+                "parameters": [
+                  {
+                    "name": "filename"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadArrayFile": {
+            "forms": [
+              {
+                "description": "Loads a JSON Array file containing [[LGUI2:Element|Elements]] into the layer.",
+                "parameters": [
+                  {
+                    "name": "filename"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadJSON": {
+            "forms": [
+              {
+                "description": "Loads an Element, as defined by a json object, into the layer",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadPackageFile": {
+            "forms": [
+              {
+                "description": "Loads a [[LGUI2:Package|Package]] from file",
+                "parameters": [
+                  {
+                    "name": "filename"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadPackageJSON": {
+            "forms": [
+              {
+                "description": "Loads a [[LGUI2:Package|Package]] as defined by a json object",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "AddBinding": {
+            "forms": [
+              {
+                "description": "Adds an [[LGUI2:Input Binding|Input Binding]] to the layer",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "RemoveBinding": {
+            "forms": [
+              {
+                "description": "Removes an [[LGUI2:Input Binding|Input Binding]] from the layer by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadBindingsFile": {
+            "forms": [
+              {
+                "description": "Loads an [[LGUI2:Input Bindings|Input Bindings]] file into the layer. A JSON Array is expected in the file.",
+                "parameters": [
+                  {
+                    "name": "filename"
+                  }
+                ]
+              }
+            ]
+          },
+          "UnloadFile": {},
+          "UnloadArrayFile": {},
+          "UnloadJSON": {},
+          "UnloadPackageFile": {},
+          "UnloadPackageJSON": {},
+          "UnloadBindingsFile": {},
+          "SetFontScale": {
+            "forms": [
+              {
+                "description": "Sets a new scaling factor to be applied to font sizes for this layer",
+                "parameters": [
+                  {
+                    "name": "float"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "member": "Name"
+        }
+      },
+      "lgui2skin": {
+        "members": {
+          "Name": {
+            "forms": [
+              {
+                "type": "string",
+                "description": "Name of the layer, such as \"base\" (the default layer)"
+              }
+            ]
+          },
+          "Template": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "description": "Retrieves a Template from this Skin, by name",
+                "parameters": [
+                  {
+                    "name": "templateName"
+                  }
+                ]
+              }
+            ]
+          },
+          "TemplateValue": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "description": "Retrieves a Templated value from this Skin, given the Template name, and Key to the value",
+                "parameters": [
+                  {
+                    "name": "templateName"
+                  },
+                  {
+                    "name": "valueKey"
+                  }
+                ]
+              }
+            ]
+          },
+          "Font": {},
+          "Brush": {}
+        },
+        "methods": {
+          "SetTemplate": {
+            "forms": [
+              {
+                "description": "Sets a template within the Skin",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetFont": {},
+          "SetBrush": {}
+        },
+        "asString": {
+          "member": "Name"
+        }
+      },
+      "lgui2animationtype": {
+        "members": {
+          "Name": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "The name of the Animation Type"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "Unregister": {}
+        },
+        "asString": {
+          "member": "Name"
+        }
+      },
+      "lgui2element": {
+        "members": {
+          "ID": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "The unique ID number of this element"
+              }
+            ]
+          },
+          "Name": {
+            "forms": [
+              {
+                "type": "unistring",
+                "description": "The specified Name (if any) of this element"
+              }
+            ]
+          },
+          "Visibility": {
+            "forms": [
+              {
+                "type": "elgui2visibility"
+              }
+            ]
+          },
+          "Layer": {
+            "forms": [
+              {
+                "type": "lgui2layer",
+                "description": "[[LGUI2:Layer|Layer]] containing the element"
+              }
+            ]
+          },
+          "ElementType": {
+            "forms": [
+              {
+                "type": "lgui2elementtype",
+                "description": "The type of Element (e.g. \"window\")"
+              }
+            ]
+          },
+          "AcceptsKeyboardFocus": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the element accepts keyboard focus, allowing non-mouse input events to route to this element"
+              }
+            ]
+          },
+          "AcceptsMouseFocus": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the element accepts mouse focus"
+              }
+            ]
+          },
+          "Metadata": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "The JSON object (if any) containing any Metadata associated with this element"
+              },
+              {
+                "type": "jsonobject",
+                "description": "The JSON object (automatically created if needed) containing any Metadata associated with this element",
+                "parameters": [
+                  {
+                    "name": "TRUE"
+                  }
+                ]
+              }
+            ]
+          },
+          "X": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "X offset for this element"
+              }
+            ]
+          },
+          "Y": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Y offset for this element"
+              }
+            ]
+          },
+          "XFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "X factor for this element"
+              }
+            ]
+          },
+          "YFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Y factor for this element"
+              }
+            ]
+          },
+          "Width": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Width for this element (does not include Margins)"
+              }
+            ]
+          },
+          "WidthFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Width factor for this element (does not include Margins)"
+              }
+            ]
+          },
+          "Height": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Height for this element (does not include Margins)"
+              }
+            ]
+          },
+          "HeightFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Height factor for this element (does not include Margins)"
+              }
+            ]
+          },
+          "StorePlacement": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "Retrieves a [[LGUI2:Style|Style]] generated with the elements current placement information, including sizing and positioning"
+              }
+            ]
+          },
+          "HorizontalAlignment": {
+            "forms": [
+              {
+                "type": "elgui2horizontalalignment"
+              }
+            ]
+          },
+          "VerticalAlignment": {
+            "forms": [
+              {
+                "type": "elgui2verticalalignment"
+              }
+            ]
+          },
+          "ActualX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Actual X position for this element"
+              }
+            ]
+          },
+          "ActualY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Actual Y position for this element"
+              }
+            ]
+          },
+          "ActualWidth": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Actual width of this element (does not include Margins)"
+              }
+            ]
+          },
+          "ActualHeight": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Actual height of this element (does not include Margins)"
+              }
+            ]
+          },
+          "Strata": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "A value essentially indicating the visual \"priority\" of the element, which affects the order of placement and rendering of the element within its parent. In most cases, this affects element Z-Order. 0.0 is considered the normal \"bottom\" and 1.0 is considered the normal \"top\", but the range is not specifically limited."
+              }
+            ]
+          },
+          "Margins": {
+            "forms": [
+              {
+                "type": "lgui2margins",
+                "description": "Margins surrounding this element (outside its bounds)"
+              }
+            ]
+          },
+          "Padding": {
+            "forms": [
+              {
+                "type": "lgui2margins",
+                "description": "Padding surrounding this elements contents (inside its bounds, and border if applicable)"
+              }
+            ]
+          },
+          "Opacity": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Opacity value for the element (usually between 0.0 and 1.0, with 1.0 being 100% opaque and 0.0 being fully transparent)"
+              }
+            ]
+          },
+          "Locate": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "[[LGUI2:Locate|Locates]] an element",
+                "parameters": [
+                  {
+                    "name": "elementName"
+                  },
+                  {
+                    "name": "elementType"
+                  },
+                  {
+                    "name": "flags"
+                  }
+                ]
+              }
+            ]
+          },
+          "Font": {
+            "forms": [
+              {
+                "type": "lgui2fontstyle",
+                "description": "The [[LGUI2:Font|Font]] used for this element"
+              }
+            ]
+          },
+          "Color": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The foreground color value for this element (for convenience, try using Color.Hex)"
+              }
+            ]
+          },
+          "ContextMenu": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The [[LGUI2:contextmenu|contextmenu]] (if any) for this element"
+              }
+            ]
+          },
+          "IsKeyboardFocused": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the element is Keyboard Focused (relating to AcceptsKeyboardFocus)"
+              }
+            ]
+          },
+          "IsMouseFocused": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the element is the current Mouse Focus element for the Layer"
+              }
+            ]
+          },
+          "IsMouseOver": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the element is the current MouseOver element for the Layer"
+              }
+            ]
+          },
+          "IsMouseCaptured": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the element has captured mouse input, allowing mouse input events to route to this element regardless of MouseOver state"
+              }
+            ]
+          },
+          "Parent": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The visual parent, if any, of this element"
+              }
+            ]
+          },
+          "FirstChild": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The first visual child, if any, of this element"
+              }
+            ]
+          },
+          "LastChild": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The last visual child, if any, of this element"
+              }
+            ]
+          },
+          "PreviousSibling": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The previous visual sibling, if any, from this element"
+              }
+            ]
+          },
+          "NextSibling": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The next visual sibling, if any, from this element"
+              }
+            ]
+          },
+          "Style": {
+            "forms": [
+              {
+                "type": "jsonvalue",
+                "description": "Retrieves a [[LGUI2:Style|Style]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "Animation": {
+            "forms": [
+              {
+                "type": "lgui2animation",
+                "description": "Retrieves a loaded [[LGUI2:Animation|Animation]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "Trigger": {
+            "forms": [
+              {
+                "type": "lgui2trigger",
+                "description": "Retrieves a [[LGUI2:Trigger|Trigger]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "InputHook": {},
+          "Tooltip": {}
+        },
+        "methods": {
+          "SetName": {
+            "forms": [
+              {
+                "description": "Assigns a new value to the Name",
+                "parameters": [
+                  {
+                    "name": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVisibility": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type": "elgui2visibility"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAcceptsKeyboardFocus": {
+            "forms": [
+              {
+                "description": "Sets whether the element accepts keyboard focus, allowing non-mouse input events to route to this element",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAcceptsMouseFocus": {
+            "forms": [
+              {
+                "description": "Sets whether the element accepts mouse focus",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetSize": {
+            "forms": [
+              {
+                "description": "Adjusts the requested size of the element (does not include Margins) to the provided Width and Height",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetSizeFactor": {
+            "forms": [
+              {
+                "description": "Adjusts the requested size factor of the element (does not include Margins) to the provided Width and Height",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetLocation": {
+            "forms": [
+              {
+                "description": "Adjusts the requested location of the element to the provided X and Y",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetLocationFactor": {
+            "forms": [
+              {
+                "description": "Adjusts the requested location factor of the element to the provided X and Y",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetStrata": {
+            "forms": [
+              {
+                "description": "Sets the Strata value for the element",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "Clear": {
+            "forms": [
+              {
+                "description": "Clears/frees element resources, and detaches all children from this element"
+              }
+            ]
+          },
+          "ClearChildren": {
+            "forms": [
+              {
+                "description": "Detaches all children from this element"
+              }
+            ]
+          },
+          "Detach": {
+            "forms": [
+              {
+                "description": "Detaches this element from its parent (typically for \"unloading\")"
+              }
+            ]
+          },
+          "Destroy": {
+            "forms": [
+              {
+                "description": "A shortcut for :Clear followed by :Detach"
+              }
+            ]
+          },
+          "SetMargins": {
+            "forms": [
+              {
+                "description": "Sets all of this elements margin values to this #",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left/Right and Top/Bottom margin values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left, Top, Right, Bottom margin values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetPadding": {
+            "forms": [
+              {
+                "description": "Sets all of this elements padding values to this #",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left/Right and Top/Bottom padding values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left, Top, Right, Bottom padding values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetHorizontalAlignment": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type": "elgui2horizontalalignment"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVerticalAlignment": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type": "elgui2verticalalignment"
+                  }
+                ]
+              }
+            ]
+          },
+          "AddTrigger": {
+            "forms": [
+              {
+                "description": "Adds a [[LGUI2:Trigger|Trigger]] defined by the provided json",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "FireEventHandler": {
+            "forms": [
+              {
+                "description": "Fires a specified Event Handler for the element, with no parameters",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              },
+              {
+                "description": "Fires a specified Event Handler for the element, passing the given JSON Object",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              },
+              {
+                "description": "Fires a specified Event Handler for the element, passing the given JSON Object, as from a specified source element",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  },
+                  {
+                    "name": "element id",
+                    "type": "source"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetEventHandler": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "eventName"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "AddHook": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "eventName"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "AddInputHook": {},
+          "SetContextMenu": {
+            "forms": [
+              {
+                "description": "Sets a new ContextMenu",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOpacity": {
+            "forms": [
+              {
+                "description": "Sets the Opacity value for the element, with 1.0 being opaque and 0.0 being transparent",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "KeyboardFocus": {},
+          "CaptureMouse": {
+            "forms": [
+              {
+                "description": "Attempts to Capture mouse input, allowing mouse input events to route to this element regardless of MouseOver state"
+              }
+            ]
+          },
+          "ReleaseMouse": {
+            "forms": [
+              {
+                "description": "Releases the Captured mouse input, restoring the previous state"
+              }
+            ]
+          },
+          "ApplyStyle": {
+            "forms": [
+              {
+                "description": "Applies a [[LGUI2:Style|Style]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "ApplyStyleJSON": {},
+          "SetStyle": {
+            "forms": [
+              {
+                "description": "Adds a [[LGUI2:Style|Style]] with the provided name to the element",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "RemoveStyle": {
+            "forms": [
+              {
+                "description": "Removes a [[LGUI2:Style|Style]] by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "Animate": {
+            "forms": [
+              {
+                "description": "Applies a new [[LGUI2:Animation|Animation]] defined by the provided json",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetColor": {},
+          "SetFont": {},
+          "BubbleToTop": {
+            "forms": [
+              {
+                "description": "Bubbles the element to the top of Z-order. This element will be moved over the top of other elements where Strata is less than or equal to its own, and the process will repeat with the elements visual ancestors"
+              }
+            ]
+          },
+          "SetTooltip": {}
+        },
+        "asString": {
+          "constant": "lgui2element"
+        }
+      },
+      "lgui2elementref": {
+        "members": {
+          "ID": {},
+          "Element": {}
+        },
+        "methods": {
+          "Set": {}
+        },
+        "asString": {
+          "member": "ID"
+        }
+      },
+      "lgui2anchored": {
+        "baseType": "lgui2element",
+        "members": {
+          "AnchorLocationX": {},
+          "AnchorLocationY": {},
+          "AnchorLocationFactorX": {},
+          "AnchorLocationFactorY": {},
+          "AnchorOffsetX": {},
+          "AnchorOffsetY": {},
+          "AnchorOffsetFactorX": {},
+          "AnchorOffsetFactorY": {},
+          "ActualAnchorLocationX": {},
+          "ActualAnchorLocationY": {},
+          "AnchorMode": {},
+          "IsClippedToParent": {}
+        },
+        "methods": {
+          "SetAnchorLocation": {},
+          "SetAnchorLocationFactor": {},
+          "AnchorToCursor": {},
+          "SetAnchorOffset": {},
+          "SetAnchorOffsetFactor": {},
+          "SetClipToParent": {}
+        },
+        "asString": {
+          "constant": "lgui2anchored"
+        }
+      },
+      "lgui2bordered": {
+        "baseType": "lgui2element",
+        "members": {
+          "BorderThickness": {
+            "forms": [
+              {
+                "type": "lgui2margins",
+                "description": "Retrieves the thickness of the border"
+              }
+            ]
+          },
+          "BorderBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "Retrieves the Brush for the border itself, if applicable"
+              }
+            ]
+          },
+          "BackgroundBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "Retrieves the Brush for the background of the area surrounded by the border, if applicable"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetBorderThickness": {
+            "forms": [
+              {
+                "description": "Sets all of this elements BorderThickness values to this #",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left/Right and Top/Bottom BorderThickness values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets Left, Top, Right, Bottom BorderThickness values to these #s (in that order)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetBorderBrush": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetBackgroundBrush": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2bordered"
+        }
+      },
+      "lgui2contentbase": {
+        "baseType": "lgui2element",
+        "members": {
+          "Content": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves the Content stored within the Content Container"
+              }
+            ]
+          },
+          "ContentContainer": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves the Content Container used to display the Content"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetContent": {
+            "forms": [
+              {
+                "description": "Sets new Content",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2contentbase"
+        }
+      },
+      "lgui2headeredcontentbase": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Header": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves the Header stored within the Header Container"
+              }
+            ]
+          },
+          "HeaderContainer": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "Retrieves the Header Container used to display the Content"
+              }
+            ]
+          },
+          "HeaderEdge": {
+            "forms": [
+              {
+                "type": "elgui2edge",
+                "description": "Retrieves the Edge where the Header Container is placed"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetHeader": {
+            "forms": [
+              {
+                "description": "Sets a new Header",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetHeaderEdge": {
+            "forms": [
+              {
+                "description": "Sets the Edge where the Header Container is placed",
+                "parameters": [
+                  {
+                    "type": "elgui2edge"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2headeredcontentbase"
+        }
+      },
+      "lgui2itemlist": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "ItemsContainer": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The element used to contain and display Item views"
+              }
+            ]
+          },
+          "ItemCount": {
+            "forms": [
+              {
+                "type": "int64",
+                "description": "The number of Items contained"
+              }
+            ]
+          },
+          "Item": {
+            "forms": [
+              {
+                "type": "lgui2item",
+                "description": "The item at the given position #",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SelectedItemCount": {
+            "forms": [
+              {
+                "type": "int64",
+                "description": "The number of Items selected"
+              }
+            ]
+          },
+          "SelectedItem": {
+            "forms": [
+              {
+                "type": "lgui2item",
+                "description": "The first selected item"
+              },
+              {
+                "type": "lgui2item",
+                "description": "The nth selected item",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "ItemsBinding": {},
+          "SelectedItemBinding": {},
+          "SelectedItemBindingProperty": {},
+          "ItemByProperty": {},
+          "ItemByValue": {}
+        },
+        "methods": {
+          "ClearItems": {
+            "forms": [
+              {
+                "description": "Clears all Items from the Item List"
+              }
+            ]
+          },
+          "InsertItem": {
+            "forms": [
+              {
+                "description": "Creates a new Item with the given JSON data, inserting it at the end of the Item List",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              },
+              {
+                "description": "Creates a new Item with the given JSON data, inserting it at the given position # within the Item List (pushing later items to a higher position #)",
+                "parameters": [
+                  {
+                    "name": "json"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "MoveItem": {
+            "forms": [
+              {
+                "description": "Moves the Item from position #1 (removing from this position) to be at position #2 (inserting at this new position)",
+                "parameters": [
+                  {
+                    "name": "#1"
+                  },
+                  {
+                    "name": "#2"
+                  }
+                ]
+              }
+            ]
+          },
+          "RemoveItem": {
+            "forms": [
+              {
+                "description": "Removes an Item from Item List, at the given position #",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetItemSelected": {
+            "forms": [
+              {
+                "description": "Sets an Items selected state, at the given position #",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "ClearSelection": {
+            "forms": [
+              {
+                "description": "Clears the set of selected Items"
+              }
+            ]
+          },
+          "PushItemsBinding": {},
+          "PullItemsBinding": {},
+          "PushSelectedItemBinding": {},
+          "PullSelectedItemBinding": {},
+          "Sort": {}
+        },
+        "asString": {
+          "constant": "lgui2itemlist"
+        }
+      },
+      "lgui2anchor": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "AnchorX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "X-coordinate to anchor to"
+              }
+            ]
+          },
+          "AnchorY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Y-coordinate to anchor to"
+              }
+            ]
+          },
+          "AnchorFactorX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "X Factor to anchor to (as a factor to the visual parents size, e.g. 1.0 being the parents full width)"
+              }
+            ]
+          },
+          "AnchorFactorY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Y Factor to anchor to (as a factor to the visual parents size, e.g. 1.0 being the parents full height)"
+              }
+            ]
+          },
+          "AnchorMode": {},
+          "IsClippedToParent": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the anchored element is clipped inside the parent (otherwise, it may leave the parent area)"
+              }
+            ]
+          },
+          "AnchorOffsetX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "X-coordinate to offset the anchored element by"
+              }
+            ]
+          },
+          "AnchorOffsetY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Y-coordinate to offset the anchored element by"
+              }
+            ]
+          },
+          "AnchorOffsetFactorX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "X Factor to offset the anchored element by (as a factor to the anchored elements size, e.g. 0.5 being the anchored elements center)"
+              }
+            ]
+          },
+          "AnchorOffsetFactorY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Y Factor to offset the anchored element by (as a factor to the anchored elements size, e.g. 0.5 being the anchored elements center)"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetAnchorLocation": {
+            "forms": [
+              {
+                "description": "Sets a new X,Y location to anchor to",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAnchorLocationFactor": {
+            "forms": [
+              {
+                "description": "Sets a new location factor (X,Y) to anchor to",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAnchorOffset": {
+            "forms": [
+              {
+                "description": "Sets a new X,Y offset for the anchored element",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAnchorOffsetFactor": {
+            "forms": [
+              {
+                "description": "Sets a new X,Y offset factor for the anchored element (as a factor to the anchored elements size, e.g. 0.5,0.5 being the anchored elements center)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "AnchorToCursor": {
+            "forms": [
+              {
+                "description": "Enables anchoring to the cursor location, instead of to the AnchorLocation+AnchorLocationFactor"
+              }
+            ]
+          },
+          "SetClipToParent": {
+            "forms": [
+              {
+                "description": "Sets whether to clip the anchored element inside the parent (if FALSE, it may leave the parent area)",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2anchor"
+        }
+      },
+      "lgui2border": {
+        "baseType": "lgui2bordered",
+        "members": {
+          "Child": {
+            "forms": [
+              {
+                "type": "...",
+                "description": "The one and only Child element contained by the border"
+              }
+            ]
+          },
+          "HorizontalContentAlignment": {
+            "forms": [
+              {
+                "type": "elgui2horizontalalignment",
+                "description": "Horizontal alignment to apply to the Child element"
+              }
+            ]
+          },
+          "VerticalContentAlignment": {
+            "forms": [
+              {
+                "type": "elgui2verticalalignment",
+                "description": "Vertical alignment to apply to the Child element"
+              }
+            ]
+          },
+          "MaintainAspectRatio": {}
+        },
+        "methods": {
+          "SetChild": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetHorizontalContentAlignment": {
+            "forms": [
+              {
+                "description": "New horizontal alignment to apply to the Child element",
+                "parameters": [
+                  {
+                    "type": "elgui2horizontalalignment"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVerticalContentAlignment": {
+            "forms": [
+              {
+                "description": "New vertical alignment to apply to the Child element",
+                "parameters": [
+                  {
+                    "type": "elgui2verticalalignment"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetMaintainAspectRatio": {}
+        },
+        "asString": {
+          "constant": "lgui2border"
+        }
+      },
+      "lgui2button": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Pressed": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the button is currently pressed"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetPressed": {
+            "forms": [
+              {
+                "description": "Sets a new pressed state",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "TogglePressed": {
+            "forms": [
+              {
+                "description": "Toggles the pressed state"
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2button"
+        }
+      },
+      "lgui2sensitivebutton": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Value": {},
+          "ValueBinding": {}
+        },
+        "methods": {
+          "SetValue": {},
+          "PullValueBinding": {},
+          "PushValueBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2sensitivebutton"
+        }
+      },
+      "lgui2knob": {
+        "baseType": "lgui2element",
+        "members": {
+          "Value": {},
+          "ValueBinding": {}
+        },
+        "methods": {
+          "SetValue": {},
+          "PullValueBinding": {},
+          "PushValueBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2knob"
+        }
+      },
+      "lgui2canvas": {
+        "members": {
+          "Font": {
+            "forms": [
+              {
+                "type": "lgui2fontstyle",
+                "description": "Retrieves one of the Canvass Fonts, by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "Brush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "Retrieves one of the Canvass Brushes, by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "CanvasHeight": {},
+          "CanvasWidth": {},
+          "CanvasRenderer": {}
+        },
+        "methods": {
+          "ClearCanvas": {
+            "forms": [
+              {
+                "description": "Clears the Canvas, setting all pixels to transparent #00000000"
+              },
+              {
+                "description": "Clears the Canvas to the specified color",
+                "parameters": [
+                  {
+                    "name": "#aarrggbb"
+                  }
+                ]
+              }
+            ]
+          },
+          "InitializeCanvas": {
+            "forms": [
+              {
+                "description": "Initializes the Canvas by Batching its \"initialize\" array, if it has not been auto-initialized since last allocated. (This call should not usually be needed)"
+              },
+              {
+                "description": "Initializes the Canvas by Batching its \"initialize\" array, even if it has already been auto-initialized. This may be useful after a ClearCanvas",
+                "parameters": [
+                  {
+                    "name": "TRUE"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetCanvasSize": {},
+          "Reset": {
+            "forms": [
+              {
+                "description": "Removes the \"initialize\" array and resets the Brush and Font stacks, but does not automatically clear the canvas or remove Brush and Font definitions."
+              }
+            ]
+          },
+          "SetFont": {
+            "forms": [
+              {
+                "description": "Sets the Canvass font for the given name to a specified [[LGUI2:Font|Font definition]]",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetBrush": {
+            "forms": [
+              {
+                "description": "Sets the Canvass brush for the given name to a specified [[LGUI2:Brush|Brush definition]]",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "PushFont": {
+            "forms": [
+              {
+                "description": "Pushes one of the Canvass defined Fonts onto the stack by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "PushBrush": {
+            "forms": [
+              {
+                "description": "Pushes one of the Canvass defined Brushes onto the stack by name",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "PopBrush": {
+            "forms": [
+              {
+                "description": "Pops a Brush off the stack"
+              },
+              {
+                "description": "Pops a Brush off the stack, if and only if it is the specified brush",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "PopFont": {
+            "forms": [
+              {
+                "description": "Pops a Font off the stack"
+              },
+              {
+                "description": "Pops a Font off the stack, if and only if it is the specified font",
+                "parameters": [
+                  {
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "DrawRect": {
+            "forms": [
+              {
+                "description": "Performs one \"drawRect\" [[LGUI2:Canvas Operation|Canvas Operation]]",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "DrawText": {
+            "forms": [
+              {
+                "description": "Performs one \"drawText\" [[LGUI2:Canvas Operation|Canvas Operation]]",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "DrawCircle": {
+            "forms": [
+              {
+                "description": "Performs one \"drawCircle\" [[LGUI2:Canvas Operation|Canvas Operation]]",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "DrawArc": {
+            "forms": [
+              {
+                "description": "Performs one \"drawArc\" [[LGUI2:Canvas Operation|Canvas Operation]]",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "DrawPrimitives": {
+            "forms": [
+              {
+                "description": "Performs one \"drawPrimitives\" [[LGUI2:Canvas Operation|Canvas Operation]] (rendering any number of vertices)",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "PushTransform": {},
+          "SetTransform": {},
+          "PopTransform": {},
+          "PushBlendMode": {},
+          "PopBlendMode": {},
+          "Batch": {
+            "forms": [
+              {
+                "description": "Performs an array of [[LGUI2:Canvas Operations|Canvas Operations]]",
+                "parameters": [
+                  {
+                    "name": "jsonarray"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2canvas"
+        }
+      },
+      "lgui2checkbox": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Checked": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if checked, FALSE if not checked, or NULL if Indeterminate"
+              }
+            ]
+          },
+          "CheckedBinding": {}
+        },
+        "methods": {
+          "SetChecked": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "newValue"
+                  }
+                ]
+              }
+            ]
+          },
+          "PullCheckedBinding": {},
+          "PushCheckedBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2checkbox"
+        }
+      },
+      "lgui2dragger": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "AllowMove": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the dragger is allowed to be moved"
+              }
+            ]
+          },
+          "AllowResize": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the dragger is allowed to be resized"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetAllowMove": {
+            "forms": [
+              {
+                "description": "Sets a new AllowMove value",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAllowResize": {
+            "forms": [
+              {
+                "description": "Sets a new AllowResize value",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2dragger"
+        }
+      },
+      "lgui2expander": {
+        "baseType": "lgui2headeredcontentbase",
+        "members": {
+          "Expanded": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the content is expanded"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetExpanded": {
+            "forms": [
+              {
+                "description": "Sets a new Expanded state",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "ToggleExpanded": {
+            "forms": [
+              {
+                "description": "Toggles the Expanded state, regardless of the current value"
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2expander"
+        }
+      },
+      "lgui2imagebox": {
+        "baseType": "lgui2bordered",
+        "members": {
+          "ImageBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "The [[LGUI2:Brush|Brush]] used for the subject of the imagebox"
+              }
+            ]
+          },
+          "ScaleToFit": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the image should be scaled to fit"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetImageBrush": {
+            "forms": [
+              {
+                "description": "Sets a new [[LGUI2:Brush|Brush]] for the imagebox",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetScaleToFit": {
+            "forms": [
+              {
+                "description": "Sets a new ScaleToFit value",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2imagebox"
+        }
+      },
+      "lgui2inputpicker": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Value": {},
+          "ValueBinding": {},
+          "IsMultipleControlMode": {},
+          "Summary": {}
+        },
+        "methods": {
+          "SetMultipleControlMode": {},
+          "SetValue": {},
+          "PullValueBinding": {},
+          "PushValueBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2inputpicker"
+        }
+      },
+      "lgui2listbox": {
+        "baseType": "lgui2itemlist",
+        "asString": {
+          "constant": "lgui2listbox"
+        }
+      },
+      "lgui2objectview": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Object": {},
+          "Property": {},
+          "PropertyNames": {}
+        },
+        "methods": {
+          "ClearProperties": {},
+          "AddProperty": {},
+          "RemoveProperty": {}
+        },
+        "asString": {
+          "constant": "lgui2objectview"
+        }
+      },
+      "lgui2property": {
+        "members": {
+          "Name": {},
+          "ObjectView": {},
+          "Object": {},
+          "View": {}
+        },
+        "asString": {
+          "constant": "lgui2property"
+        }
+      },
+      "lgui2propertyview": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Property": {},
+          "ObjectView": {},
+          "Object": {},
+          "Value": {},
+          "ValueBinding": {}
+        },
+        "methods": {
+          "SetValue": {}
+        },
+        "asString": {
+          "constant": "lgui2propertyview"
+        }
+      },
+      "lgui2itemview": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "ItemList": {
+            "forms": [
+              {
+                "type": "lgui2itemlist",
+                "description": "The lgui2itemlist containing the Item"
+              }
+            ]
+          },
+          "Item": {
+            "forms": [
+              {
+                "type": "lgui2item",
+                "description": "The lgui2item responsible for this view"
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2itemview"
+        }
+      },
+      "lgui2combobox": {
+        "baseType": "lgui2listbox",
+        "members": {
+          "Header": {},
+          "HeaderContainer": {},
+          "HeaderEdge": {},
+          "Open": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the combobox drop-down is open"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetHeaderEdge": {},
+          "SetHeader": {},
+          "SetOpen": {
+            "forms": [
+              {
+                "description": "Sets a new Open state",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "ToggleOpen": {
+            "forms": [
+              {
+                "description": "Toggles the Open state"
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2combobox"
+        }
+      },
+      "lgui2panel": {
+        "baseType": "lgui2bordered",
+        "members": {
+          "AddChild": {
+            "forms": [
+              {
+                "type": "...",
+                "description": "Adds a child element to the panel, and returns the element",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "methods": {
+          "AddChild": {
+            "forms": [
+              {
+                "description": "Adds a child element to the panel",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2panel"
+        }
+      },
+      "lgui2popup": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "Open": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "Retrieves the current Open state for the popup"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetOpen": {
+            "forms": [
+              {
+                "description": "Sets a new Open state for the popup",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              },
+              {
+                "description": "Sets a new Open state for the popup, using the provided (x,y) location if it is TRUE",
+                "parameters": [
+                  {
+                    "name": "TRUE"
+                  },
+                  {
+                    "name": "x"
+                  },
+                  {
+                    "name": "y"
+                  }
+                ]
+              }
+            ]
+          },
+          "ToggleOpen": {
+            "forms": [
+              {
+                "description": "Toggles the Open state for the popup"
+              },
+              {
+                "description": "Toggles the Open state for the popup, using the provided (x,y) location if it is changing to TRUE",
+                "parameters": [
+                  {
+                    "name": "x"
+                  },
+                  {
+                    "name": "y"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2popup"
+        }
+      },
+      "lgui2progressbar": {
+        "baseType": "lgui2bordered",
+        "members": {
+          "Value": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The current value from the progressbar"
+              }
+            ]
+          },
+          "MinValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The minimum progressbar value"
+              }
+            ]
+          },
+          "MaxValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The maximum progressbar value"
+              }
+            ]
+          },
+          "FillerBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "The [[LGUI2:Brush|Brush]] used for the progress bar filler"
+              }
+            ]
+          },
+          "OverlayBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "The [[LGUI2:Brush|Brush]] used for an overlay (usually partly transparent) over the progress bar filler"
+              }
+            ]
+          },
+          "FillFromEdge": {
+            "forms": [
+              {
+                "type": "elgui2edge",
+                "description": "The edge to begin filling from"
+              }
+            ]
+          },
+          "ProgressText": {
+            "forms": [
+              {
+                "type": "elgui2progresstext",
+                "description": "The style of progress text, if any, to show on the bar"
+              }
+            ]
+          },
+          "ValueBinding": {}
+        },
+        "methods": {
+          "SetValue": {
+            "forms": [
+              {
+                "description": "Set a new value for the slider",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetRange": {
+            "forms": [
+              {
+                "description": "Set new minimum and maximum values for the progressbar",
+                "parameters": [
+                  {
+                    "name": "min"
+                  },
+                  {
+                    "name": "max"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetFillFromEdge": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "newValue"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetProgressText": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "newValue"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetFillerBrush": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOverlayBrush": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "PullValueBinding": {},
+          "PushValueBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2progressbar"
+        }
+      },
+      "lgui2radialgauge": {
+        "baseType": "lgui2bordered",
+        "members": {
+          "Origin": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Where the radial layout begins, in degrees clockwise from top. 0.0 &lt;= value &lt; 360.0"
+              }
+            ]
+          },
+          "Resolution": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "The number of edges used to render the perimeter of a 360-degree FillerBrush circle. For optimal performance, use the lowest value that still looks good at the desired size"
+              }
+            ]
+          },
+          "MaxValueArcLength": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The full arc length, in degrees clockwise from Origin, when Value>=MaxValue -- default is 360.0"
+              }
+            ]
+          },
+          "Value": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The current Value for the FillerBrush"
+              }
+            ]
+          },
+          "MinValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The minimum Value for the FillerBrush Range"
+              }
+            ]
+          },
+          "MaxValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The maximum Value for the FillerBrush Range"
+              }
+            ]
+          },
+          "FillerBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "The [[LGUI2:Brush|Brush]] used to render the Filler arc"
+              }
+            ]
+          },
+          "OverlayBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "The [[LGUI2:Brush|Brush]] used to render the Overlay after rendering the Filler and any Needles"
+              }
+            ]
+          },
+          "ProgressText": {
+            "forms": [
+              {
+                "type": "elgui2progresstext",
+                "description": "The style of progress text, if any, to show on the bar"
+              }
+            ]
+          },
+          "OuterRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The radius from the CenterPoint to the outer edge of the FillerBrush -- default is 0.0"
+              }
+            ]
+          },
+          "OuterRadiusFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The radius factor, as a factor of the inner size (excluding padding and border) of the radialgauge, to add to OuterRadius -- default is 0.5"
+              }
+            ]
+          },
+          "ActualOuterRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The actual outer radius, as calculated by (OuterRadiusFactor*Size)+OuterRadius, where Size is the smaller between the radial gauges Width and Height"
+              }
+            ]
+          },
+          "InnerRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The radius from the CenterPoint to the inner edge of the FillerBrush -- default is 0.0"
+              }
+            ]
+          },
+          "InnerRadiusFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The radius factor, as a factor of the inner size (excluding padding and border) of the radialgauge, to add to InnerRadius -- default is 0.0"
+              }
+            ]
+          },
+          "ActualInnerRadius": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The actual inner radius, as calculated by (InnerRadiusFactor*Size)+InnerRadius, where Size is the smaller between the radial gauges Width and Height"
+              }
+            ]
+          },
+          "CenterPointX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The X coordinate of the point to use as the center for the FillerBrush and any Needles -- default is 0.0"
+              }
+            ]
+          },
+          "CenterPointY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The Y coordinate of the point to use as the center for the FillerBrush and any Needles -- default is 0.0"
+              }
+            ]
+          },
+          "CenterPointXFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The X Factor (as a factor of the actual width of the radialgauge) of the point to use as the center for the FillerBrush and any Needles -- default is 0.5"
+              }
+            ]
+          },
+          "CenterPointYFactor": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The Y Factor (as a factor of the actual height of the radialgauge) of the point to use as the center for the FillerBrush and any Needles -- default is 0.5"
+              }
+            ]
+          },
+          "NeedleCount": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "The number of Needles"
+              }
+            ]
+          },
+          "Needle": {
+            "forms": [
+              {
+                "type": "lgui2radialgaugeneedle",
+                "description": "The n-th Needle (1-based) if any",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValueBinding": {}
+        },
+        "methods": {
+          "SetOrigin": {
+            "forms": [
+              {
+                "description": "Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 &lt;= value &lt; 360.0, meaning -1 becomes 359, and 361 becomes 1.",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetResolution": {
+            "forms": [
+              {
+                "description": "Sets the number of edges used to render the perimeter of a 360-degree FillerBrush circle. For optimal performance, use the lowest value that still looks good at the desired size",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetMaxValueArcLength": {
+            "forms": [
+              {
+                "description": "Sets the full arc length, in degrees clockwise from Origin, when Value>=MaxValue",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetValue": {
+            "forms": [
+              {
+                "description": "Sets the new current Value for the FillerBrush",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetRange": {
+            "forms": [
+              {
+                "description": "Sets the new minimum and maximum Values for the FillerBrush Range",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetFillerBrush": {
+            "forms": [
+              {
+                "description": "Sets the [[LGUI2:Brush|Brush]] used to render the Filler arc",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOverlayBrush": {
+            "forms": [
+              {
+                "description": "Sets the [[LGUI2:Brush|Brush]] used to render the Overlay after rendering the Filler and any Needles",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetProgressText": {
+            "forms": [
+              {
+                "description": "Sets the style of progress text, if any, to show on the bar. Must be a valid [[LGUI2:LS1:elgui2progresstext|elgui2progresstext]] value",
+                "parameters": [
+                  {
+                    "name": "newValue"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOuterRadius": {
+            "forms": [
+              {
+                "description": "Sets the radius from the CenterPoint to the outer edge of the FillerBrush -- default is 0.0",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOuterRadiusFactor": {
+            "forms": [
+              {
+                "description": "Sets the radius factor, as a factor of the inner size (excluding padding and border) of the radialgauge, to add to OuterRadius -- default is 0.5",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetInnerRadius": {
+            "forms": [
+              {
+                "description": "Sets the radius from the CenterPoint to the inner edge of the FillerBrush -- default is 0.0",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetInnerRadiusFactor": {
+            "forms": [
+              {
+                "description": "Sets the radius factor, as a factor of the inner size (excluding padding and border) of the radialgauge, to add to InnerRadius -- default is 0.0",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetCenterPoint": {
+            "forms": [
+              {
+                "description": "Sets the point to use as the center for the FillerBrush and any Needles -- default is 0,0",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetCenterPointFactor": {
+            "forms": [
+              {
+                "description": "Sets the X,Y Factor  (as a factor of the actual width and height of the radialgauge) of the point to use as the center for the FillerBrush and any Needles -- default is 0.5,0.5",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetNeedle": {
+            "forms": [
+              {
+                "description": "Sets a Needle with the specified name, with a [[LGUI2:radialgaugeneedle|radialgaugeneedle]] definition. If a Needle already exists with the given name, it is removed",
+                "parameters": [
+                  {
+                    "name": "name"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "ClearNeedles": {
+            "forms": [
+              {
+                "description": "Clears all Needles"
+              }
+            ]
+          },
+          "PushValueBinding": {},
+          "PullValueBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2radialgauge"
+        }
+      },
+      "lgui2radialpanel": {
+        "baseType": "lgiu2panel",
+        "members": {
+          "DeadZone": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The radius of the Dead Zone in the center of the panel"
+              }
+            ]
+          },
+          "LiveZone": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The radius of the Live Zone, the default size for added Radial Items"
+              }
+            ]
+          },
+          "ZoneMargin": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The distance between the Dead Zone and Live Zone"
+              }
+            ]
+          },
+          "Origin": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Where the radial layout begins, in degrees clockwise from top. 0.0 &lt;= value &lt; 360.0"
+              }
+            ]
+          },
+          "Resolution": {
+            "forms": [
+              {
+                "type": "uint",
+                "description": "The number of edges used to render the perimeter of the circle. For optimal performance, use the lowest value that still looks good at the desired size"
+              }
+            ]
+          },
+          "ChildWidth": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Width reserved for child elements"
+              }
+            ]
+          },
+          "ChildHeight": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Height reserved for child elements"
+              }
+            ]
+          },
+          "RadialItemByElement": {
+            "forms": [
+              {
+                "type": "lgui2radialitem",
+                "description": "Retrieves a [[LGUI2:Radial Item|Radial Item]] from a Child elements ID",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "RadialItemByVector": {
+            "forms": [
+              {
+                "type": "lgui2radialitem",
+                "description": "Retrieves the [[LGUI2:Radial Item|Radial Item]], if any, at a specified angle and distance from the center",
+                "parameters": [
+                  {
+                    "name": "degreesClockwise"
+                  },
+                  {
+                    "name": "distance"
+                  }
+                ]
+              }
+            ]
+          },
+          "RadialItemByPoint": {
+            "forms": [
+              {
+                "type": "lgui2radialitem",
+                "description": "Retrieves the [[LGUI2:Radial Item|Radial Item]], if any, at a specified X,Y location (relative to the Layer, i.e. the game window)",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "MouseOverItem": {
+            "forms": [
+              {
+                "type": "lgui2radialitem",
+                "description": "Retrieves the Radial Item that falls under the mouse cursor"
+              }
+            ]
+          },
+          "RadialItemTemplate": {
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "The base template used for Radial Items added to this panel"
+              }
+            ]
+          },
+          "DeadZoneBrush": {
+            "forms": [
+              {
+                "type": "lgui2brush",
+                "description": "The [[LGUI2:Brush|Brush]] used to render the Dead Zone in the center of the panel"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetDeadZone": {
+            "forms": [
+              {
+                "description": "Sets the radius of the Dead Zone in the center of the panel",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetChildSize": {
+            "forms": [
+              {
+                "description": "Sets the reserved size for child elements to a square of this size",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              },
+              {
+                "description": "Sets the reserved size for child elements to the provided Width and Height",
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetRadialItemTemplate": {
+            "forms": [
+              {
+                "description": "Sets the base template used for Radial Items added to this panel",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetLiveZone": {
+            "forms": [
+              {
+                "description": "Sets the radius of the Live Zone, the default size for added Radial Items",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetZoneMargin": {
+            "forms": [
+              {
+                "description": "Sets the distance between the Dead Zone and Live Zone",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetOrigin": {
+            "forms": [
+              {
+                "description": "Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 &lt;= value &lt; 360.0, meaning -1 becomes 359, and 361 becomes 1.",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetResolution": {
+            "forms": [
+              {
+                "description": "Sets the number of edges used to render the perimeter of the circle. For optimal performance, use the lowest value that still looks good at the desired size",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetDeadZoneBrush": {
+            "forms": [
+              {
+                "description": "Sets the [[LGUI2:Brush|Brush]] used to render the Dead Zone in the center of the panel",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2radialpanel"
+        }
+      },
+      "lgui2screen": {
+        "baseType": "lgui2element",
+        "asString": {
+          "constant": "lgui2screen"
+        }
+      },
+      "lgui2scrollviewer": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "ViewOffsetX": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The scrolled offset, in pixels, of the views top left corner"
+              }
+            ]
+          },
+          "ViewOffsetY": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "The scrolled offset, in pixels, of the views top left corner"
+              }
+            ]
+          },
+          "MaxViewExtentsWidth": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Maximum scrollable width of the viewed contents, or -1 for automatic"
+              }
+            ]
+          },
+          "MaxViewExtentsHeight": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Maximum scrollable height of the viewed contents, or -1 for automatic"
+              }
+            ]
+          },
+          "MinViewExtentsWidth": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Minimum scrollable width of the viewed contents"
+              }
+            ]
+          },
+          "MinViewExtentsHeight": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Minimum scrollable height of the viewed contents"
+              }
+            ]
+          },
+          "ActualViewExtentsWidth": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Actual scrollable width of the viewed contents"
+              }
+            ]
+          },
+          "ActualViewExtentsHeight": {
+            "forms": [
+              {
+                "type": "float",
+                "description": "Actual scrollable height of the viewed contents"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetViewOffset": {
+            "forms": [
+              {
+                "description": "Sets the scrolled offset, in pixels, of the views top left corner",
+                "parameters": [
+                  {
+                    "name": "x"
+                  },
+                  {
+                    "name": "y"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetMinViewExtents": {
+            "forms": [
+              {
+                "description": "Sets the minimum scrollable extents for the viewed contents",
+                "parameters": [
+                  {
+                    "name": "width"
+                  },
+                  {
+                    "name": "height"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetMaxViewExtents": {
+            "forms": [
+              {
+                "description": "Sets the maximum scrollable extents for the viewed contents",
+                "parameters": [
+                  {
+                    "name": "width"
+                  },
+                  {
+                    "name": "height"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2scrollviewer"
+        }
+      },
+      "lgui2slider": {
+        "baseType": "lgui2bordered",
+        "members": {
+          "Value": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The current value from the slider"
+              }
+            ]
+          },
+          "MinValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The minimum slider value"
+              }
+            ]
+          },
+          "MaxValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The maximum slider value"
+              }
+            ]
+          },
+          "Handle": {
+            "forms": [
+              {
+                "type": "lgui2element",
+                "description": "The sliders handle"
+              }
+            ]
+          },
+          "SlideFromEdge": {
+            "forms": [
+              {
+                "type": "elgui2edge",
+                "description": "The edge the slider begins sliding from"
+              }
+            ]
+          },
+          "ValueBinding": {}
+        },
+        "methods": {
+          "SetValue": {
+            "forms": [
+              {
+                "description": "Sets a new Value for the slider",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetRange": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetSlideFromEdge": {
+            "forms": [
+              {
+                "description": "Sets the edge the slider begins sliding from",
+                "parameters": [
+                  {
+                    "type": "elgui2edge"
+                  }
+                ]
+              }
+            ]
+          },
+          "PullValueBinding": {},
+          "PushValueBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2slider"
+        }
+      },
+      "lgui2dockpanel": {
+        "baseType": "lgui2panel",
+        "asString": {
+          "constant": "lgui2dockpanel"
+        }
+      },
+      "lgui2hud": {
+        "baseType": "lgui2contentbase",
+        "members": {
+          "IndicatorIconContainer": {
+            "forms": [
+              {
+                "type": "lgui2element"
+              }
+            ]
+          },
+          "NotificationIconContainer": {
+            "forms": [
+              {
+                "type": "lgui2element"
+              }
+            ]
+          },
+          "TooltipContainer": {
+            "forms": [
+              {
+                "type": "lgui2element"
+              }
+            ]
+          },
+          "TooltipOwner": {
+            "forms": [
+              {
+                "type": "lgui2element"
+              }
+            ]
+          },
+          "AddIndicatorIcon": {
+            "forms": [
+              {
+                "type": "lgui2item",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "AddNotificationIcon": {
+            "forms": [
+              {
+                "type": "lgui2item",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "methods": {
+          "AddIndicatorIcon": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "RemoveIndicatorIcon": {},
+          "AddNotificationIcon": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "RemoveNotificationIcon": {},
+          "SetTooltip": {
+            "forms": [
+              {
+                "description": "Sets the active tooltip",
+                "parameters": [
+                  {
+                    "name": "element"
+                  },
+                  {
+                    "name": "x"
+                  },
+                  {
+                    "name": "y"
+                  },
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "UnsetTooltip": {
+            "forms": [
+              {
+                "description": "Un-sets (deactivates) the active tooltip",
+                "parameters": [
+                  {
+                    "name": "element"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2hud"
+        }
+      },
+      "lgui2scrollbar": {
+        "baseType": "lgui2dockpanel",
+        "members": {
+          "Value": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The current value from the scrollbar"
+              }
+            ]
+          },
+          "MinValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The minimum scrollbar value"
+              }
+            ]
+          },
+          "MaxValue": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "The maximum scrollbar value"
+              }
+            ]
+          },
+          "Increment": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "Amount to adjust the current value per Mouse Wheel tick"
+              }
+            ]
+          },
+          "PageIncrement": {
+            "forms": [
+              {
+                "type": "int",
+                "description": "Amount to adjust the current value per Page Up/Down"
+              }
+            ]
+          },
+          "ValueBinding": {}
+        },
+        "methods": {
+          "IncValue": {},
+          "SetValue": {
+            "forms": [
+              {
+                "description": "Sets a new Value for the scrollbar",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetRange": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "#"
+                  },
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetIncrement": {
+            "forms": [
+              {
+                "description": "Sets a new Increment value",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetPageIncrement": {
+            "forms": [
+              {
+                "description": "Sets a new PageIncrement value",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "PullValueBinding": {},
+          "PushValueBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2scrollbar"
+        }
+      },
+      "lgui2stackpanel": {
+        "baseType": "lgui2panel",
+        "members": {
+          "Horizontal": {
+            "forms": [
+              {
+                "type": "bool"
+              }
+            ]
+          },
+          "Uniform": {
+            "forms": [
+              {
+                "type": "bool"
+              }
+            ]
+          },
+          "Reversed": {},
+          "HorizontalContentAlignment": {
+            "forms": [
+              {
+                "type": "elgui2horizontalalignment"
+              }
+            ]
+          },
+          "VerticalContentAlignment": {
+            "forms": [
+              {
+                "type": "elgui2verticalalignment"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetHorizontal": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetUniform": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetReversed": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetHorizontalContentAlignment": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "newValue"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVerticalContentAlignment": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name": "newValue"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2stackpanel"
+        }
+      },
+      "lgui2treepanel": {
+        "baseType": "lgui2stackpanel",
+        "asString": {
+          "constant": "lgui2treepanel"
+        }
+      },
+      "lgui2contextmenu": {
+        "baseType": "lgui2itemlist",
+        "members": {
+          "Open": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the Context Menu is currently open"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "Open": {
+            "forms": [
+              {
+                "description": "Open the Context Menu at the given (x,y) location",
+                "parameters": [
+                  {
+                    "name": "x"
+                  },
+                  {
+                    "name": "y"
+                  }
+                ]
+              }
+            ]
+          },
+          "Close": {
+            "forms": [
+              {
+                "description": "Closes the Context Menu"
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2contextmenu"
+        }
+      },
+      "lgui2tab": {
+        "baseType": "lgui2headeredcontentbase",
+        "members": {
+          "IsSelected": {},
+          "TabControl": {}
+        },
+        "methods": {
+          "Select": {}
+        },
+        "asString": {
+          "constant": "lgui2tab"
+        }
+      },
+      "lgui2tabcontrol": {
+        "baseType": "lgui2headeredcontentbase",
+        "members": {
+          "SelectedTab": {
+            "forms": [
+              {
+                "type": "LS1:lgui2tab",
+                "description": "The currently selected [[LGUI2:tab|tab]]"
+              }
+            ]
+          },
+          "Tab": {
+            "forms": [
+              {
+                "type": "LS1:lgui2tab",
+                "description": "The #th tab",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "Tabs": {
+            "forms": [
+              {
+                "type": "int64",
+                "description": "Number of tabs"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SelectTab": {
+            "forms": [
+              {
+                "description": "Selects the #th tab",
+                "parameters": [
+                  {
+                    "name": "#"
+                  }
+                ]
+              }
+            ]
+          },
+          "AddTab": {
+            "forms": [
+              {
+                "description": "Adds a tab, given a JSON object defining a [[LGUI2:tab|tab]] element",
+                "parameters": [
+                  {
+                    "name": "json"
+                  }
+                ]
+              }
+            ]
+          },
+          "RemoveTab": {}
+        },
+        "asString": {
+          "constant": "lgui2tabcontrol"
+        }
+      },
+      "lgui2textblock": {
+        "baseType": "lgui2element",
+        "members": {
+          "Text": {
+            "forms": [
+              {
+                "type": "string",
+                "description": "The text contained in the textblock"
+              }
+            ]
+          },
+          "Wrap": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the text should be wrapped to additional lines in order to fit"
+              }
+            ]
+          },
+          "HorizontalContentAlignment": {},
+          "VerticalContentAlignment": {},
+          "TextBinding": {}
+        },
+        "methods": {
+          "SetText": {
+            "forms": [
+              {
+                "description": "Sets a new Text value",
+                "parameters": [
+                  {
+                    "name": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetWrap": {
+            "forms": [
+              {
+                "description": "Sets a new Wrap value",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetHorizontalContentAlignment": {},
+          "SetVerticalContentAlignment": {},
+          "PushTextBinding": {},
+          "PullTextBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2textblock"
+        }
+      },
+      "lgui2textbox": {
+        "baseType": "lgui2bordered",
+        "members": {
+          "Text": {
+            "forms": [
+              {
+                "type": "string",
+                "description": "The text contained in the textbox"
+              }
+            ]
+          },
+          "Wrap": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the text should be wrapped to additional lines in order to fit"
+              }
+            ]
+          },
+          "Multiline": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the textbox allows multiple lines of text"
+              }
+            ]
+          },
+          "TextBinding": {}
+        },
+        "methods": {
+          "SetText": {
+            "forms": [
+              {
+                "description": "Sets a new Text value",
+                "parameters": [
+                  {
+                    "name": "text"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetWrap": {
+            "forms": [
+              {
+                "description": "Sets a new Wrap value",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetMultiline": {
+            "forms": [
+              {
+                "description": "Sets a new Multiline value",
+                "parameters": [
+                  {
+                    "name": "bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "PushTextBinding": {},
+          "PullTextBinding": {}
+        },
+        "asString": {
+          "constant": "lgui2textbox"
+        }
+      },
+      "lgui2commandbox": {
+        "baseType": "lgui2textbox",
+        "asString": {
+          "constant": "lgui2commandbox"
+        }
+      },
+      "lgui2window": {
+        "baseType": "lgui2headeredcontentbase",
+        "members": {
+          "Shade": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the window is shaded (\"minimized\" in place but shown as the header)"
+              }
+            ]
+          },
+          "SizeToContent": {
+            "forms": [
+              {
+                "type": "elgui2sizetocontent"
+              }
+            ]
+          },
+          "HideOnClose": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if the window should Hide instead of Close (and no longer exist), when the Close button is clicked"
+              }
+            ]
+          },
+          "AnchorLocationX": {},
+          "AnchorLocationY": {},
+          "AnchorLocationFactorX": {},
+          "AnchorLocationFactorY": {},
+          "AnchorOffsetX": {},
+          "AnchorOffsetY": {},
+          "AnchorOffsetFactorX": {},
+          "AnchorOffsetFactorY": {},
+          "ActualAnchorLocationX": {},
+          "ActualAnchorLocationY": {},
+          "IsHeightResizable": {},
+          "IsWidthResizable": {},
+          "AnchorMode": {},
+          "IsClippedToParent": {}
+        },
+        "methods": {
+          "SetShade": {
+            "forms": [
+              {
+                "description": "Sets a new Shade state",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "ToggleShade": {
+            "forms": [
+              {
+                "description": "Toggles the Shade state, regardless of the current value"
+              }
+            ]
+          },
+          "SetSizeToContent": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type": "elgui2sizetocontent"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetHideOnClose": {
+            "forms": [
+              {
+                "description": "Sets a new HideOnClose state",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAnchorLocation": {},
+          "SetAnchorLocationFactor": {},
+          "AnchorToCursor": {},
+          "SetHeightResizable": {},
+          "SetWidthResizable": {},
+          "SetAnchorOffset": {},
+          "SetAnchorOffsetFactor": {},
+          "SetClipToParent": {}
+        },
+        "asString": {
+          "constant": "lgui2window"
+        }
+      },
+      "lgui2wrappanel": {
+        "baseType": "lgui2stackpanel",
+        "members": {
+          "ChildHeight": {},
+          "ChildWidth": {}
+        },
+        "methods": {
+          "SetChildSize": {}
+        },
+        "asString": {
+          "constant": "lgui2wrappanel"
+        }
+      },
+      "lgui2table": {
+        "baseType": "lgui2panel",
+        "members": {
+          "NumRows": {},
+          "NumColumns": {},
+          "CellSpacingWidth": {},
+          "CellSpacingHeight": {},
+          "CellSpacingWidthFactor": {},
+          "CellSpacingHeightFactor": {},
+          "RowHeight": {},
+          "RowHeightFactor": {},
+          "ColumnWidth": {},
+          "ColumnWidthFactor": {},
+          "AutoFillFirstRow": {},
+          "AutoFillLastRow": {},
+          "AutoFillFirstColumn": {},
+          "AutoFillLastColumn": {},
+          "GetElementCell": {},
+          "GetCellElement": {},
+          "Rows": {},
+          "Columns": {}
+        },
+        "methods": {
+          "SetCellSpacing": {},
+          "SetCellSpacingFactor": {},
+          "SetRow": {},
+          "SetColumn": {},
+          "SetAutoFillRows": {},
+          "SetAutoFillColumns": {},
+          "SetRows": {},
+          "SetColumns": {}
+        },
+        "asString": {
+          "constant": "lgui2table"
+        }
+      },
+      "lgui2page": {
+        "baseType": "lgui2tab",
+        "members": {
+          "PageControl": {}
+        },
+        "asString": {
+          "constant": "lgui2page"
+        }
+      },
+      "lgui2pagecontrol": {
+        "baseType": "lgui2tabcontrol",
+        "members": {
+          "SelectedPage": {},
+          "Page": {},
+          "Pages": {}
+        },
+        "methods": {
+          "SelectPage": {},
+          "AddPage": {},
+          "RemovePage": {}
+        },
+        "asString": {
+          "constant": "lgui2pagecontrol"
+        }
+      }
+    },
+    "topLevelObjects": {
+      "LGUI2": {
+        "forms": [
+          {
+            "type": "lgui2"
+          }
+        ]
+      }
     }
-}
+  }

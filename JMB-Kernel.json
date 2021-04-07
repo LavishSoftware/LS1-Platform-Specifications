@@ -1,540 +1,874 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
-    "name":"Joe Multiboxer Kernel",
-    "types":{
-        "joemultiboxer":{
-            "name":"joemultiboxer",
-            "members":{
-                "Version":{
-                    "forms":[
+    "name": "Joe Multiboxer Kernel",
+    "types": {
+        "joemultiboxer": {
+            "name": "joemultiboxer",
+            "members": {
+                "Version": {
+                    "forms": [
                         {
-                            "type":"string"
+                            "type": "string"
                         }
                     ]
                 },
-                "Build":{
-                    "forms":[
+                "Build": {
+                    "forms": [
                         {
-                            "type":"int"
+                            "type": "int"
                         }
                     ]
                 },
-                "Uplink":{
-                    "forms":[
+                "Uplink": {
+                    "forms": [
                         {
-                            "type":"string"
+                            "type": "string"
                         }
                     ]
                 },
-                "Slot":{
-                    "forms":[
+                "Slot": {
+                    "forms": [
                         {
-                            "type":"jmbslot"
+                            "type": "jmbslot"
                         },
                         {
-                            "parameters":[
+                            "parameters": [
                                 {
-                                    "type":"uint",
-                                    "name":"numSlot",
-                                    "description":"Slot Number (1-based)"
+                                    "type": "uint",
+                                    "name": "numSlot",
+                                    "description": "Slot Number (1-based)"
                                 }
                             ],
-                            "type":"jmbslot"
-                        }
-                    ]                    
-                },
-                "Slots":{
-                    "forms":[
-                        {
-                            "type":"jsonarray"
+                            "type": "jmbslot"
                         }
                     ]
                 },
-                "Teams":{
-                    "forms":[
+                "Slots": {
+                    "forms": [
                         {
-                            "type":"jsonarray"
+                            "type": "jsonarray"
                         }
                     ]
                 },
-                "Characters":{
-                    "forms":[
+                "Team": {
+                    "forms": [
                         {
-                            "type":"jsonarray"
-                        }
-                    ]
-                },
-                "Agents":{
-                    "forms":[
+                            "type": "lgui2team",
+                            "minimumBuild": 6788
+                        },
                         {
-                            "type":"jsonarray"
-                        }
-                    ]
-                },
-                "ForegroundSlot":{
-                    "forms":[
+                            "type": "lgui2team",
+                            "minimumBuild": 6778,
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "id"
+                                }
+                            ]
+                        },
                         {
-                            "type":"jmbslot"
-                        }
-                    ]
-                },
-                "MouseOverSlot":{
-                    "forms":[
-                        {
-                            "type":"jmbslot"
-                        }
-                    ]
-                }
-            }
-        },
-        "jmbcharacter":{
-            "members":{
-                "ID":{
-                    "forms":[
-                        {
-                            "type":"int64"
-                        }
-                    ]
-                },
-                "DisplayName":{
-                    "forms":[
-                        {
-                            "type":"unistring"
-                        }
-                    ]
-                },
-                "ActualName":{
-                    "forms":[
-                        {
-                            "type":"unistring"
-                        }
-                    ]
-                },
-                "Server":{
-                    "forms":[
-                        {
-                            "type":"unistring"
-                        }
-                    ]
-                },
-                "Game":{
-                    "forms":[
-                        {
-                            "type":"unistring"
-                        }
-                    ]
-                },
-                "GameProfile":{
-                    "forms":[
-                        {
-                            "type":"unistring"
-                        }
-                    ]
-                },
-                "Metadata":{
-                    "forms":[
-                        {
-                            "type":"jsonobject"
-                        }
-                    ]
-                },
-                "VirtualFile":{
-                    "forms":[
-                        {
-                            "type":"jmbvirtualfile",
+                            "type": "lgui2team",
+                            "minimumBuild": 6778,
                             "parameters": [
                                 {
                                     "type": "string",
-                                    "name":"pattern"
+                                    "name": "search"
                                 }
                             ]
                         }
                     ]
                 },
-                "VirtualFiles":{
-                    "forms":[
+                "Teams": {
+                    "forms": [
                         {
-                            "type":"jsonarray"
+                            "minimumBuild": 6778,
+                            "type": "jsonarray"
+                        }
+                    ]
+                },
+                "Character": {
+                    "forms": [
+                        {
+                            "type": "lgui2character",
+                            "minimumBuild": 6788
+                        },
+                        {
+                            "minimumBuild": 6778,
+                            "type": "lgui2character",
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "id"
+                                }
+                            ]
+                        },
+                        {
+                            "minimumBuild": 6778,
+                            "type": "lgui2character",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "search"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Characters": {
+                    "forms": [
+                        {
+                            "type": "jsonarray"
+                        }
+                    ]
+                },
+                "Agent": {
+                    "forms": [
+                        {
+                            "type": "uint",
+                            "name": "id"
+                        },
+                        {
+                            "type": "string",
+                            "name": "name"
+                        }
+                    ]
+                },
+                "Agents": {
+                    "forms": [
+                        {
+                            "type": "jsonarray"
+                        }
+                    ]
+                },
+                "ForegroundSlot": {
+                    "forms": [
+                        {
+                            "type": "jmbslot"
+                        }
+                    ]
+                },
+                "MouseOverSlot": {
+                    "forms": [
+                        {
+                            "type": "jmbslot"
+                        }
+                    ]
+                },
+                "MasterSlot": {
+                    "forms": [
+                        {
+                            "minimumBuild": 6779,
+                            "type": "jmbslot"
+                        }
+                    ]
+                },
+                "AddTeam": {
+                    "forms": [
+                        {
+                            "type":"jmbteam",
+                            "parameters": [
+                                {
+                                    "type": "jsonobject",
+                                    "name": "json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "AddSlot": {
+                    "forms": [
+                        {
+                            "type":"jmbslot"
+                        }
+                    ]
+                },
+                "AddCharacter": {
+                    "forms": [
+                        {
+                            "type":"jmbcharacter",
+                            "parameters": [
+                                {
+                                    "type": "jsonobject",
+                                    "name": "json"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "GameConfiguration": {
+                    "forms": [
+                        {
+                            "type": "settingsetref"
+                        }
+                    ]
+                },
+                "InputConfiguration": {
+                    "forms": [
+                        {
+                            "type": "settingsetref"
                         }
                     ]
                 }
             },
             "methods": {
-                "Remove":{
-                    "forms":[
-
-                    ]
-                },
-                "SetDisplayName":{
-                    "forms":[
+                "AddCharacter": {
+                    "forms": [
                         {
-                            "parameters": [
-                                {
-                                    "type":"string",
-                                    "name":"newValue"
-                                }
-                            ]
+                            "type": "jsonobject",
+                            "name": "json"
                         }
                     ]
                 },
-                "SetActualName":{
-                    "forms":[
+                "AddTeam": {
+                    "forms": [
                         {
-                            "parameters": [
-                                {
-                                    "type":"string",
-                                    "name":"newValue"
-                                }
-                            ]
+                            "type": "jsonobject",
+                            "name": "json"
                         }
                     ]
                 },
-                "SetServer":{
-                    "forms":[
-                        {
-                            "parameters": [
-                                {
-                                    "type":"string",
-                                    "name":"newValue"
-                                }
-                            ]
-                        }
+                "AddSlot": {
+                    "forms": [
+                        {}
                     ]
                 },
-                "SetGame":{
-                    "forms":[
-                        {
-                            "parameters": [
-                                {
-                                    "type":"string",
-                                    "name":"newValue"
-                                }
-                            ]
-                        }
+                "ClearSlots": {
+                    "forms": [
+                        {}
                     ]
                 },
-                "SetGameProfile":{
-                    "forms":[
-                        {
-                            "parameters": [
-                                {
-                                    "type":"string",
-                                    "name":"newValue"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "AddVirtualFile":{
-                    "forms":[
+                "LoadJMBSettings": {
+                    "forms": [
+                        {},
                         {
                             "parameters": [
                                 {
                                     "type": "string",
-                                    "constant":"-exact",
-                                    "optional":true
-                                },
-                                {
-                                    "type":"string",
-                                    "name":"pattern"
-                                },
-                                {
-                                    "type":"string",
-                                    "name":"replacement"
-                                },
-                                {
-                                    "type":"string",
-                                    "name":"target",
-                                    "optional":true,
-                                    "default":"all"
+                                    "name": "filename"
                                 }
                             ]
                         }
                     ]
                 },
-                "RemoveVirtualFile":{
+                "StoreJMBSettings": {
+                    "forms": [
+                        {},
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "filename"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetMasterSlot": {
+                    "forms": [
+                        {
+                            "minimumBuild": 6779,
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "numSlot"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "ScanAgentsFolder": {
+                    "forms": [
+                        {}
+                    ]
+                },
+                "AddAgent": {
                     "forms": [
                         {
                             "parameters": [
                                 {
-                                    "type":"string",
-                                    "name":"pattern"
+                                    "type": "jsonobject",
+                                    "name": "json"
                                 }
                             ]
-                        }                        
+                        }
                     ]
                 },
-                "ClearVirtualFiles":{
+                "FireAgentEvent": {
                     "forms": [
                         {
-
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "constant": "-reverse",
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                },
+                                {
+                                    "type": "jsonobject",
+                                    "name": "eventArgs"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "AddTeamSlots": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "teamID"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RemoveTeamSlots": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "teamID"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RemoveUnusedSlots": {
+                    "forms": []
+                }
+            }
+        },
+        "jmbcharacter": {
+            "members": {
+                "AsJSON": {
+                    "forms": [
+                        {
+                            "type": "jsonobject",
+                            "minimumBuild": 6786
+                        }
+                    ]
+                },
+                "ID": {
+                    "forms": [
+                        {
+                            "type": "int64"
+                        }
+                    ]
+                },
+                "DisplayName": {
+                    "forms": [
+                        {
+                            "type": "unistring"
+                        }
+                    ]
+                },
+                "ActualName": {
+                    "forms": [
+                        {
+                            "type": "unistring"
+                        }
+                    ]
+                },
+                "Server": {
+                    "forms": [
+                        {
+                            "type": "unistring"
+                        }
+                    ]
+                },
+                "Game": {
+                    "forms": [
+                        {
+                            "type": "unistring"
+                        }
+                    ]
+                },
+                "GameProfile": {
+                    "forms": [
+                        {
+                            "type": "unistring"
+                        }
+                    ]
+                },
+                "Metadata": {
+                    "forms": [
+                        {
+                            "type": "jsonobject"
+                        }
+                    ]
+                },
+                "VirtualFile": {
+                    "forms": [
+                        {
+                            "type": "jmbvirtualfile",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "pattern"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "VirtualFiles": {
+                    "forms": [
+                        {
+                            "type": "jsonarray"
                         }
                     ]
                 }
-
-
-
-            }
-        },
-        "jmbteam":{
-            "members":{
-                "ID":{
-                    "forms":[
-                        {
-                            "type":"int64"
-                        }
+            },
+            "methods": {
+                "Remove": {
+                    "forms": [
+                        {}
                     ]
                 },
-                "DisplayName":{
-                    "forms":[
+                "SetDisplayName": {
+                    "forms": [
                         {
-                            "type":"unistring"
-                        }
-                    ]
-                },
-                "Metadata":{
-                    "forms":[
-                        {
-                            "type":"jsonobject"
-                        }
-                    ]
-                },
-                "VirtualFile":{
-                    "forms":[
-                        {
-                            "type":"jmbvirtualfile",
                             "parameters": [
                                 {
                                     "type": "string",
-                                    "name":"pattern"
+                                    "name": "newValue"
                                 }
                             ]
                         }
                     ]
                 },
-                "VirtualFiles":{
-                    "forms":[
+                "SetActualName": {
+                    "forms": [
                         {
-                            "type":"jsonarray"
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
                         }
                     ]
                 },
-                "Slot":{
+                "SetServer": {
                     "forms": [
                         {
-                            "type":"int64",
                             "parameters": [
                                 {
-                                    "type":"uint",
-                                    "name":"numSlot"
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetGame": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetGameProfile": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "AddVirtualFile": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "constant": "-exact",
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "pattern"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "replacement"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "target",
+                                    "optional": true,
+                                    "default": "all"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RemoveVirtualFile": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "pattern"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "ClearVirtualFiles": {
+                    "forms": [
+                        {}
+                    ]
+                }
+            },
+            "asString": {
+                "member": "ID"
+            }
+        },
+        "jmbteam": {
+            "minimumBuild": 6778,
+            "members": {
+                "AsJSON": {
+                    "forms": [
+                        {
+                            "type": "jsonobject",
+                            "minimumBuild": 6786
+                        }
+                    ]
+                },
+                "ID": {
+                    "forms": [
+                        {
+                            "type": "int64"
+                        }
+                    ]
+                },
+                "DisplayName": {
+                    "forms": [
+                        {
+                            "type": "unistring"
+                        }
+                    ]
+                },
+                "Metadata": {
+                    "forms": [
+                        {
+                            "type": "jsonobject"
+                        }
+                    ]
+                },
+                "VirtualFile": {
+                    "forms": [
+                        {
+                            "type": "jmbvirtualfile",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "pattern"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "VirtualFiles": {
+                    "forms": [
+                        {
+                            "type": "jsonarray"
+                        }
+                    ]
+                },
+                "Slot": {
+                    "forms": [
+                        {
+                            "type": "int64",
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "numSlot"
                                 }
                             ],
                             "description": "Retrieves the Character ID for a given Slot number"
                         }
                     ]
                 },
-                "Slots":{
-                    "forms":[
+                "Slots": {
+                    "forms": [
                         {
-                            "type":"jsonarray"
+                            "type": "jsonarray"
                         }
                     ]
                 },
-                "Character":{
+                "Character": {
                     "forms": [
                         {
-                            "type":"jmbcharacter",
+                            "type": "jmbcharacter",
                             "parameters": [
                                 {
-                                    "type":"uint",
-                                    "name":"numSlot"
+                                    "type": "uint",
+                                    "name": "numSlot"
                                 }
                             ],
                             "description": "Retrieves the Character for a given Slot number"
                         }
                     ]
                 },
-                "Characters":{
-                    "forms":[
+                "Characters": {
+                    "forms": [
                         {
-                            "type":"jsonarray"
+                            "type": "jsonarray"
                         }
                     ]
                 },
-                "AddCharacter":{
+                "AddCharacter": {
                     "forms": [
                         {
-                            "type":"uint",
+                            "type": "uint",
                             "parameters": [
                                 {
-                                    "type":"int64",
-                                    "name":"characterID"
+                                    "type": "int64",
+                                    "name": "characterID"
                                 }
                             ],
-                            "description":"Adds a Character to the Team, returning its new Slot number"
+                            "description": "Adds a Character to the Team, returning its new Slot number"
+                        }
+                    ]
+                },
+                "MasterSlot": {
+                    "forms": [
+                        {
+                            "minimumBuild": 6779,
+                            "type": "uint"
+                        }
+                    ]
+                },
+                "DefaultMasterSlot": {
+                    "forms": [
+                        {
+                            "minimumBuild": 6779,
+                            "type": "uint"
                         }
                     ]
                 }
-                
             },
             "methods": {
-                "Remove":{
+                "SetDefaultMasterSlot": {
                     "forms": [
                         {
-
-                        }
-                    ]
-                },
-                "SetDisplayName":{
-                    "forms":[
-                        {
+                            "minimumBuild": 6779,
                             "parameters": [
                                 {
-                                    "type":"string",
-                                    "name":"newValue"
+                                    "type": "uint",
+                                    "name": "numSlot"
                                 }
                             ]
                         }
                     ]
                 },
-                "AddVirtualFile":{
-                    "forms":[
+                "Remove": {
+                    "forms": [
+                        {}
+                    ]
+                },
+                "SetDisplayName": {
+                    "forms": [
                         {
                             "parameters": [
                                 {
                                     "type": "string",
-                                    "constant":"-exact",
-                                    "optional":true
-                                },
-                                {
-                                    "type":"string",
-                                    "name":"pattern"
-                                },
-                                {
-                                    "type":"string",
-                                    "name":"replacement"
-                                },
-                                {
-                                    "type":"string",
-                                    "name":"target",
-                                    "optional":true,
-                                    "default":"all"
+                                    "name": "newValue"
                                 }
                             ]
                         }
                     ]
                 },
-                "RemoveVirtualFile":{
+                "AddVirtualFile": {
                     "forms": [
                         {
                             "parameters": [
                                 {
-                                    "type":"string",
-                                    "name":"pattern"
+                                    "type": "string",
+                                    "constant": "-exact",
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "pattern"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "replacement"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "target",
+                                    "optional": true,
+                                    "default": "all"
                                 }
                             ]
-                        }                        
-                    ]
-                },
-                "ClearVirtualFiles":{
-                    "forms": [
-                        {
-
                         }
                     ]
                 },
-                "ClearSlots":{
-                    "forms": [
-                        {
-
-                        }
-                    ]
-                },
-                "AddCharacter":{
+                "RemoveVirtualFile": {
                     "forms": [
                         {
                             "parameters": [
                                 {
-                                    "type":"int64",
+                                    "type": "string",
+                                    "name": "pattern"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "ClearVirtualFiles": {
+                    "forms": [
+                        {}
+                    ]
+                },
+                "ClearSlots": {
+                    "forms": [
+                        {}
+                    ]
+                },
+                "AddCharacter": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "int64",
                                     "name": "characterID"
                                 }
                             ]
                         }
                     ]
                 },
-                "RemoveCharacter":{
+                "RemoveCharacter": {
                     "forms": [
                         {
                             "parameters": [
                                 {
-                                    "type":"int64",
+                                    "type": "int64",
                                     "name": "characterID"
                                 }
                             ]
                         }
                     ]
                 },
-                "RemoveSlot":{
+                "RemoveSlot": {
                     "forms": [
                         {
                             "parameters": [
                                 {
-                                    "type":"uint",
+                                    "type": "uint",
                                     "name": "numSlot"
                                 }
                             ]
                         }
                     ]
                 }
+            },
+            "asString": {
+                "member": "ID"
             }
         },
-        "jmbslot":{
-            "members":{
-                "ID":{
-                    "forms":[
+        "jmbslot": {
+            "members": {
+                "AsJSON": {
+                    "forms": [
                         {
-                            "type":"uint"
+                            "type": "jsonobject",
+                            "minimumBuild": 6786,
+                            "description": "JSON representation of the Slot"
                         }
                     ]
                 },
-                "ProcessID":{
-                    "forms":[
+                "ID": {
+                    "forms": [
                         {
-                            "type":"uint"
+                            "type": "uint"
                         }
                     ]
                 },
-                "Character":{
-                    "forms":[
+                "ProcessID": {
+                    "forms": [
                         {
-                            "type":"jmbcharacter"
+                            "type": "uint"
+                        }
+                    ]
+                },
+                "Character": {
+                    "forms": [
+                        {
+                            "type": "jmbcharacter",
+                            "description": "The Character, if any, assigned to the Slot"
+                        }
+                    ]
+                },
+                "Team": {
+                    "forms": [
+                        {
+                            "type": "jmbteam",
+                            "minimumBuild": 6786,
+                            "description": "The Team, if any, assigned to the Slot"
+                        }
+                    ]
+                },
+                "TeamSlot": {
+                    "forms": [
+                        {
+                            "type": "uint",
+                            "minimumBuild": 6786,
+                            "description": "The Team Slot (number within the Team) assigned to this Slot"
+                        }
+                    ]
+                },
+                "IsMasterSlot": {
+                    "forms": [
+                        {
+                            "minimumBuild": 6779,
+                            "type": "bool",
+                            "description": "TRUE if the Slot is currently assigned Team's Master Slot"
                         }
                     ]
                 }
             },
-            "methods":{
-                "Launch":{
-                    "forms":[
+            "methods": {
+                "Launch": {
+                    "forms": [
                         {
+                            "description": "Launches the Slot, if not already running"
                         }
                     ]
                 },
-                "Close":{
-                    "forms":[
+                "Close": {
+                    "forms": [
                         {
-
+                            "description": "Requests the Slot close gracefully, possibly allowing the process to save data, etc"
                         }
                     ]
                 },
-                "Remove":{
-                    "forms":[
+                "Remove": {
+                    "forms": [
                         {
-
+                            "description": "Removes the Slot"
                         }
                     ]
                 },
-                "SetCharacter":{
-                    "forms":[
+                "SetCharacter": {
+                    "forms": [
                         {
                             "parameters": [
                                 {
@@ -546,115 +880,131 @@
                         {
                             "parameters": [
                                 {
-                                    "type":"string",
-                                    "name":"characterName"
+                                    "type": "string",
+                                    "name": "characterName"
                                 }
                             ]
                         }
                     ]
+                },
+                "SetMasterSlot": {
+                    "forms": [
+                        {
+                            "minimumBuild": 6779
+                        }
+                    ]
                 }
+            },
+            "asString": {
+                "member": "ID"
             }
         },
-        "jmbvirtualfile":{
+        "jmbvirtualfile": {
             "members": {
-                "Pattern":{
+                "AsJSON": {
                     "forms": [
                         {
-                            "type":"string"
+                            "type": "jsonobject",
+                            "minimumBuild": 6786
                         }
                     ]
                 },
-                "Replacement":{
+                "Pattern": {
                     "forms": [
                         {
-                            "type":"string"
+                            "type": "string"
                         }
                     ]
                 },
-                "ExactMatch":{
+                "Replacement": {
                     "forms": [
                         {
-                            "type":"bool"
+                            "type": "string"
                         }
                     ]
                 },
-                "IsStarted":{
+                "ExactMatch": {
                     "forms": [
                         {
-                            "type":"bool"
+                            "type": "bool"
                         }
                     ]
                 },
-                "Target":{
+                "IsStarted": {
                     "forms": [
                         {
-                            "type":"string"
+                            "type": "bool"
+                        }
+                    ]
+                },
+                "Target": {
+                    "forms": [
+                        {
+                            "type": "string"
                         }
                     ]
                 }
             },
             "methods": {
-                "SetPattern":{
+                "SetPattern": {
                     "forms": [
                         {
                             "parameters": [
                                 {
-                                    "type":"string",
+                                    "type": "string",
                                     "name": "pattern"
                                 },
                                 {
-                                    "type":"bool",
-                                    "name":"exactMatch",
-                                    "default":false
+                                    "type": "bool",
+                                    "name": "exactMatch",
+                                    "default": false
                                 }
                             ]
                         }
                     ]
                 },
-                "SetReplacement":{
-                    "forms":[
-                        {
-                            "parameters": [
-                                {
-                                    "type":"string",
-                                    "name":"replacement"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "SetTarget":{
-                    "forms":[
-                        {
-                            "parameters": [
-                                {
-                                    "type":"string",
-                                    "name":"target"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "Start":{
+                "SetReplacement": {
                     "forms": [
                         {
-
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "replacement"
+                                }
+                            ]
                         }
                     ]
                 },
-                "Stop":{
-                    "forms":[
+                "SetTarget": {
+                    "forms": [
                         {
-
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "target"
+                                }
+                            ]
                         }
                     ]
+                },
+                "Start": {
+                    "forms": [
+                        {}
+                    ]
+                },
+                "Stop": {
+                    "forms": [
+                        {}
+                    ]
                 }
+            },
+            "asString": {
+                "constant": "virtualfile"
             }
         }
-        
     },
     "topLevelObjects": {
-        "JMB":{
+        "JMB": {
             "forms": [
                 {
                     "type": "joemultiboxer"
@@ -663,29 +1013,36 @@
         }
     },
     "events": {
-        "JMB_OnSlotUpdated":{
-            "name":"JMB_OnSlotUpdated"
+        "JMB_OnSlotUpdated": {
+            "name": "JMB_OnSlotUpdated"
         },
-        "JMB_OnCharacterChanged":{
-            "name":"JMB_OnCharacterChanged"
+        "JMB_OnCharacterChanged": {
+            "name": "JMB_OnCharacterChanged"
         },
-        "JMB_OnCharacterUpdated":{
-            "name":"JMB_OnCharacterUpdated"
+        "JMB_OnCharacterUpdated": {
+            "name": "JMB_OnCharacterUpdated"
         },
-        "JMB_OnCharactersUpdated":{
-            "name":"JMB_OnCharactersUpdated"
+        "JMB_OnCharactersUpdated": {
+            "name": "JMB_OnCharactersUpdated"
         },
-        "JMB_OnSlotsUpdated":{
-            "name":"JMB_OnSlotsUpdated"
+        "JMB_OnSlotsUpdated": {
+            "name": "JMB_OnSlotsUpdated"
         },
-        "JMB_OnTeamsUpdated":{
-            "name":"JMB_OnTeamsUpdated"
+        "JMB_OnTeamsUpdated": {
+            "name": "JMB_OnTeamsUpdated",
+            "minimumBuild": 6778
         },
-        "JMB_OnTeamUpdated":{
-            "name":"JMB_OnTeamUpdated"
+        "JMB_OnTeamUpdated": {
+            "name": "JMB_OnTeamUpdated",
+            "minimumBuild": 6778
         },
-        "JMB_OnTeamChanged":{
-            "name":"JMB_OnTeamChanged"
+        "JMB_OnTeamChanged": {
+            "name": "JMB_OnTeamChanged",
+            "minimumBuild": 6778
+        },
+        "JMB_OnMasterSlotChanged": {
+            "name": "JMB_OnMasterSlotChanged",
+            "minimumBuild": 6779
         }
     }
 }

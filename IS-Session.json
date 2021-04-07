@@ -1,62 +1,1130 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
-    "name":"Inner Space Session",
+    "name": "Inner Space Session",
     "commands": {
-        "WindowPosition":{},
-        "WindowSize":{},
-        "FocusClick":{},
-        "WindowScale":{},
-        "Uplink":{},
-        "LockForeground":{"restricted": true},
-        "WindowCharacteristics":{},
-        "WindowFrame":{},
-        "WindowText":{},
-        "WindowVisibility":{},
-        "WindowTaskbar":{},
-        "Input":{"restricted": true},
-        "ClipMouse":{},
-        "FileRedirect":{},
-        "ProcLock":{},
-        "GammaLock":{},
-        "VideoMode":{}
+        "WindowPosition": {
+            "forms": [
+                {},
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-stealth",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "constant": "-viewable",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "name": "XandY",
+                            "description": "#,#"
+                        }
+                    ]
+                }
+            ]
+        },
+        "WindowSize": {
+            "forms": [
+                {},
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-rescale",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "constant": "-fullscreen"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-rescale",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "constant": "-reset"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-rescale",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "constant": "-viewable",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "name": "widthAndHeight",
+                            "description": "#x#"
+                        }
+                    ]
+                }
+            ]
+        },
+        "FocusClick": {
+            "forms": [
+                {},
+                {
+                    "parameters": [
+                        {
+                            "enum": [
+                                "application",
+                                "eat",
+                                "click"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "WindowScale": {
+            "forms": [
+                {},
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-rescale",
+                            "optional": true
+                        },
+                        {
+                            "type": "float",
+                            "name": "newPercent"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Uplink": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "greedy": true,
+                            "name": "fullCommand"
+                        }
+                    ]
+                }
+            ]
+        },
+        "LockForeground": {
+            "restricted": true,
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "on",
+                                "off"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "WindowCharacteristics": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "constant": "-stealth",
+                            "optional": true
+                        },
+                        {
+                            "greedy": true,
+                            "name": "options",
+                            "parameterGroup": [
+                                {
+                                    "type": "string",
+                                    "enum": [
+                                        "-lock",
+                                        "-unlock"
+                                    ],
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-restore",
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "enum": [
+                                        "-flash",
+                                        "-stopflash"
+                                    ],
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-size",
+                                    "optional": true,
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "constant": "-viewable",
+                                            "optional": true
+                                        },
+                                        {
+                                            "type": "string",
+                                            "constant": "fullscreen"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-size",
+                                    "optional": true,
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "constant": "-viewable",
+                                            "optional": true
+                                        },
+                                        {
+                                            "type": "string",
+                                            "name": "widthAndHeight",
+                                            "description": "#x#"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-pos",
+                                    "optional": true,
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "constant": "-viewable",
+                                            "optional": true
+                                        },
+                                        {
+                                            "type": "string",
+                                            "name": "XandY",
+                                            "description": "#,#"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-visibility",
+                                    "optional": true,
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "constant": "-noactivate",
+                                            "optional": true
+                                        },
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "foreground",
+                                                "alwaysontop",
+                                                "down",
+                                                "behind",
+                                                "bottom",
+                                                "minimize",
+                                                "restore"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-visibility",
+                                    "optional": true,
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "constant": "-noactivate",
+                                            "optional": true
+                                        },
+                                        {
+                                            "type": "string",
+                                            "constant": "behindwindow"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "name": "hexHWND"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-frame",
+                                    "optional": true,
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "none",
+                                                "thick",
+                                                "thin"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }                        
+                    ]
+                }
+            ]
+        },
+        "WindowFrame": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-stealth",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "thin",
+                                "thick"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "WindowText": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "greedy": true,
+                            "name": "newValue"
+                        }
+                    ]
+                }
+            ]
+        },
+        "WindowVisibility": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-noactivate",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "enum": [
+                                "foreground",
+                                "alwaysontop",
+                                "down",
+                                "behind",
+                                "bottom",
+                                "minimize",
+                                "restore"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "WindowTaskbar": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "off"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "on"
+                        },
+                        {
+                            "type": "string",
+                            "greedy": true,
+                            "name": "tooltip"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Input": {
+            "restricted": true,
+            "forms": [
+                {},
+                {
+                    "parameters": [
+                        {
+                            "type": "uint",
+                            "name": "numMouse"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "nameMouse"
+                        }
+                    ]
+                }
+            ]
+        },
+        "ClipMouse": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-lock",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "enum": [
+                                "allow",
+                                "off",
+                                "on",
+                                "toggle"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "FileRedirect": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-list"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-remove"
+                        },
+                        {
+                            "type": "string",
+                            "name": "originalFilename"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "originalFilename"
+                        },
+                        {
+                            "type": "string",
+                            "name": "newFilename",
+                            "optional": true
+                        }
+                    ]
+                }
+            ]
+        },
+        "ProcLock": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "on",
+                                "off"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "GammaLock": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "on",
+                                "off"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "VideoMode": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-list"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-add"
+                        },
+                        {
+                            "type": "string",
+                            "name": "widthAndHeight",
+                            "description": "#x#"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-emulate"
+                        },
+                        {
+                            "type": "string",
+                            "name": "widthAndHeight",
+                            "description": "#x#"
+                        }
+                    ]
+                }
+            ]
+        }
     },
     "events": {
-        "On Deactivate":{},
-        "On Activate":{},
-        "On Window Position":{},
-        "OnWindowStateChanging":{},
-        "OnInternalActivate":{},
-    
-        "OnRelayReceived":{},
-        "OnSessionRenamed":{},
-        "On3DReset":{},
-        "OnCursorStateChanged":{},
-    
-        "OnVideoSourceAdded":{},
-        "OnVideoSourceUpdated":{},
-        "OnVideoSourceRemoved":{},
-        "OnVideoOutputAdded":{},
-        "OnVideoOutputUpdated":{},
-        "OnVideoOutputRemoved":{},
-    
-        "OnVFSRulesApplied":{},
-        "OnFileOpen":{},
-    
-        "OnCursorPositionUpdated":{}
-
+        "On Deactivate": {},
+        "On Activate": {},
+        "On Window Position": {},
+        "OnWindowStateChanging": {},
+        "OnInternalActivate": {},
+        "OnRelayReceived": {},
+        "OnSessionRenamed": {},
+        "On3DReset": {},
+        "OnCursorStateChanged": {},
+        "OnVideoSourceAdded": {},
+        "OnVideoSourceUpdated": {},
+        "OnVideoSourceRemoved": {},
+        "OnVideoOutputAdded": {},
+        "OnVideoOutputUpdated": {},
+        "OnVideoOutputRemoved": {},
+        "OnVFSRulesApplied": {},
+        "OnFileOpen": {},
+        "OnCursorPositionUpdated": {}
     },
     "topLevelObjects": {
-        "ISSession":{"restricted": true},
-        "Session":{},
-        "Sessions":{},
-        "VideoFeed":{},
-        "LogReader":{}
+        "ISSession": {
+            "restricted": true,
+            "forms": [
+                {
+                    "type": "innerspacesession"
+                }
+            ]
+        },
+        "Session": {},
+        "Sessions": {},
+        "VideoFeed": {
+            "forms": [
+                {
+                    "type": "videofeed"
+                }
+            ]
+        },
+        "LogReader": {
+            "forms": [
+                {
+                    "type": "logreader"
+                }
+            ]
+        }
     },
     "types": {
-        "innerspacesession":{"restricted": true},
-        "videofeed":{},
-        "videofeedsource":{},
-        "videofeedoutput":{},
-        "logreader":{}
+        "innerspacesession": {
+            "restricted": true,
+            "members": {
+                "Name": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "AllowFlashWindow": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                },
+                "PreStartupCommand": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "StartupCommand": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "Is2DMode": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                },
+                "ProcessOptions": {
+                    "forms": [
+                        {
+                            "type": "jsonobject"
+                        }
+                    ]
+                },
+                "ProcessOptionsRepo": {
+                    "forms": [
+                        {
+                            "type": "jsonobject"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "SetFlashWindow": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "bool",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetPrestartupCommand": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetStartupCommand": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "asString": {
+                "member": "Name"
+            }
+        },
+        "videofeed": {
+            "members": {
+                "Source": {
+                    "forms": [
+                        {
+                            "type": "videofeedsource",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Output": {
+                    "forms": [
+                        {
+                            "type": "videofeedoutput",
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "PermanentVideoFeeds": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "GetSourceIterator": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "weakref",
+                                    "name": "iteratorObj"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "GetOutputIterator": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "weakref",
+                                    "name": "iteratorObj"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RegisterSource": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "sessionName"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "hexHwnd"
+                                }
+                            ]
+                        },
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "sessionName"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "hexHwnd"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "left"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "top"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "right"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "bottom"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "RegisterOutput": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "left"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "top"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "right"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "bottom"
+                                },
+                                {
+                                    "type": "byte",
+                                    "name": "alpha"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "hexRGBBorderColor"
+                                },
+                                {
+                                    "type": "bool",
+                                    "name": "permanent"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetPermanentVideoFeeds": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "bool",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "UnregisterSource": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "UnregisterOutput": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "name"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "videofeedsource": {
+            "members": {
+                "Name": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "X": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Y": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "X2": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Y2": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Width": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Height": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "ClientAreaOnly": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                },
+                "Window": {
+                    "forms": [
+                        {
+                            "type": "gdiwindow"
+                        }
+                    ]
+                },
+                "Session": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "Remove": {
+                    "forms": [
+                        {}
+                    ]
+                }
+            },
+            "asString": {
+                "member": "Name"
+            }
+        },
+        "videofeedoutput": {
+            "members": {
+                "Name": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "X": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Y": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "X2": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Y2": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Width": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Height": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Alpha": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Border": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                },
+                "BorderColor": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "IsRendering": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "SetRect": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "int",
+                                    "name": "left"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "top"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "right"
+                                },
+                                {
+                                    "type": "int",
+                                    "name": "bottom"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetAlpha": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "byte",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetBorder": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "bool",
+                                    "name": "expression"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetBorderColor": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "hexRGB"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Remove": {
+                    "forms": [
+                        {}
+                    ]
+                }
+            },
+            "asString": {
+                "member": "Name"
+            }
+        },
+        "logreader": {
+            "methods": {
+                "RegisterLog": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "filenameFilter"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "eventname"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "UnregisterLog": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "filenameFilter"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "eventname"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
     }
 }

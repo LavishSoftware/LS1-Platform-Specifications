@@ -1,60 +1,733 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
-    "name":"Inner Space Uplink",
+    "name": "Inner Space Uplink",
     "events": {
         "GamesChanged": {},
         "OnSessionConnected": {},
         "OnSessionRenamed": {},
         "OnSessionDisconnected": {},
-        "OnRemoteSessionConnected": {"restricted": true},
-        "OnRemoteSessionDisconnected": {"restricted": true},
-        "OnUplinkConnected": {"restricted": true},
-        "OnUplinkRenamed": {"restricted": true},
-        "OnUplinkDisconnected": {"restricted": true}
-    },
-    "commands": {
-        "MainWindow": {},
-        "WindowSize": {},
-        "Speak": {},
-        "Encode": {
+        "OnRemoteSessionConnected": {
             "restricted": true
         },
-        "RestoreGamma": {},
-        "RelayGroup": {},
-        "Name": {},
-        "RelayTargets": {},
-        "Sessions": {},
-        "Kill": {},
-        "Attach": {},
-        "Open": {},
-        "Focus": {},
-        "MakeShortcut": {},
-        "RemoteUplink": {
+        "OnRemoteSessionDisconnected": {
+            "restricted": true
+        },
+        "OnUplinkConnected": {
+            "restricted": true
+        },
+        "OnUplinkRenamed": {
+            "restricted": true
+        },
+        "OnUplinkDisconnected": {
             "restricted": true
         }
     },
-    "types": {
-        "licenseserver": {},
-        "session": {},
-        "remoteuplink": {
-            "restricted": true
+    "commands": {
+        "MainWindow": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "-show",
+                                "-hide",
+                                "-toggle"
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
-        "speech": {},
-        "ismenuitem": {},
-        "ismenu": {},
-        "ismenucommand": {},
+        "WindowSize": {
+            "forms": [
+                {},
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-rescale",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "enum": [
+                                "-fullscreen",
+                                "-reset"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-rescale",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "constant": "-viewable",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "name": "widthAndHeight",
+                            "description": "#x#"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Speak": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-async",
+                            "optional": true
+                        },
+                        {
+                            "type": "string",
+                            "constant": "-volume",
+                            "optional": true,
+                            "followingParameters": [
+                                {
+                                    "type": "float",
+                                    "name": "newVolume",
+                                    "description": "A number between 0 and 1, with 1 being 100% volume"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "string",
+                            "constant": "-speed",
+                            "optional": true,
+                            "followingParameters": [
+                                {
+                                    "type": "float",
+                                    "name": "newSpeed",
+                                    "description": "A number between 0 and 2, with 1 being 100% volume"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "string",
+                            "name": "text"
+                        }
+                    ]
+                }
+            ]
+        },
+        "RestoreGamma": {
+            "forms": [
+                {}
+            ]
+        },
+        "RelayGroup": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "-list",
+                                "-clear"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "enum": [
+                                "-join",
+                                "-leave"
+                            ]
+                        },
+                        {
+                            "type": "string",
+                            "name": "name"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Name": {
+            "forms": [
+                {
+                    "description": "Sets the Name of the current Session (must be sent from a local Session)",
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "name"
+                        }
+                    ]
+                }
+            ]
+        },
+        "RelayTargets": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "relayTarget"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Sessions": {
+            "forms": [
+                {}
+            ]
+        },
+        "Kill": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "sessionName"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Attach": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "uint",
+                            "name": "pid"
+                        },
+                        {
+                            "type": "string",
+                            "name": "gameName"
+                        },
+                        {
+                            "type": "string",
+                            "name": "gameProfileName"
+                        },
+                        {
+                            "name": "startupOptions",
+                            "optional": true,
+                            "greedy": true,
+                            "parameterGroup": [
+                                {
+                                    "type": "string",
+                                    "constant": "-loader",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "none",
+                                                "minimum",
+                                                "moderate",
+                                                "standard",
+                                                "maximum"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-startup",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "name": "command"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-prestartup",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "name": "command"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-character",
+                                    "followingParameters": [
+                                        {
+                                            "type": "int64",
+                                            "name": "characterID"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "Open": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "gameName"
+                        },
+                        {
+                            "type": "string",
+                            "name": "gameProfileName"
+                        },
+                        {
+                            "name": "startupOptions",
+                            "optional": true,
+                            "greedy": true,
+                            "parameterGroup": [
+                                {
+                                    "type": "string",
+                                    "constant": "-loader",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "none",
+                                                "minimum",
+                                                "moderate",
+                                                "standard",
+                                                "maximum"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"string",
+                                    "constant": "-nogameprofileparams"
+                                },
+                                {
+                                    "type":"string",
+                                    "constant": "-addparam",
+                                    "followingParameters": [
+                                        {
+                                            "type":"string",
+                                            "name": "value"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-startup",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "name": "command"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-prestartup",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "name": "command"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-character",
+                                    "followingParameters": [
+                                        {
+                                            "type": "int64",
+                                            "name": "characterID"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "Focus": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "name": "sessionName"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "enum": ["-next","-previous","-first","-last"]
+                        },
+                        {
+                            "type":"string",
+                            "name": "filter",
+                            "optional": true
+                        }
+                    ]
+                }
+            ]
+        },
+        "MakeShortcut": {
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "gameName"
+                        },
+                        {
+                            "type": "string",
+                            "name": "gameProfileName"
+                        }
+                    ]
+                }
+            ]
+        },
+        "RemoteUplink": {
+            "restricted": true,
+            "forms": [
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-list"
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-connect"
+                        },
+                        {
+                            "type": "string",
+                            "name": "hostname"
+                        },
+                        {
+                            "type": "uint",
+                            "name": "port",
+                            "optional": true
+                        }
+                    ]
+                },
+                {
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "constant": "-disconnect"
+                        },
+                        {
+                            "type": "string",
+                            "name": "nameOrIP"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "types": {
+        "licenseserver": {
+            "members": {
+                "CheckPatchTime": {
+                    "forms": [
+                        {
+                            "type": "uint"
+                        }
+                    ]
+                },
+                "ExpirationDate": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "PatchFiles": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "LiveBuild": {
+                    "forms": [
+                        {
+                            "type": "jsonobject"
+                        }
+                    ]
+                },
+                "DevBuild": {
+                    "forms": [
+                        {
+                            "type": "jsonobject"
+                        }
+                    ]
+                },
+                "UseDevBuild": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "CheckPatch": {},
+                "ApplyPatch": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "branch"
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "version"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "session": {
+            "members": {
+                "Name": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "IsLocal": {
+                    "forms": [
+                        {
+                            "type": "bool"
+                        }
+                    ]
+                },
+                "PID": {
+                    "forms": [
+                        {
+                            "type": "uint",
+                            "minimumBuild": 6790
+                        }
+                    ]
+                },
+                "Window": {
+                    "forms": [
+                        {
+                            "type": "gdiwindow"
+                        }
+                    ]
+                },
+                "Executable": {
+                    "forms": [
+                        {
+                            "type": "string",
+                            "minimumBuild": 6790
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "Execute": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "constant": "-noredirect",
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "command"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Kill": {
+                    "forms": [
+                        {}
+                    ]
+                }
+            },
+            "asString": {
+                "member": "Name"
+            }
+        },
+        "remoteuplink": {
+            "restricted": true,
+            "members": {
+                "Name": {
+                    "forms": [
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "IPAddress": {
+                    "forms": [
+                        {
+                            "type": "string",
+                            "minimumBuild": 6790
+                        }
+                    ]
+                },
+                "Sessions": {
+                    "forms": [
+                        {
+                            "type": "int"
+                        }
+                    ]
+                },
+                "Session": {
+                    "forms": [
+                        {
+                            "type": "session",
+                            "parameters": [
+                                {
+                                    "type": "uint",
+                                    "name": "nthSession"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "Execute": {
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "constant": "-noredirect",
+                                    "optional": true
+                                },
+                                {
+                                    "type": "string",
+                                    "name": "command"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "asString": {
+                "member": "Name"
+            }
+        },
+        "speech": {
+            "members": {
+                "Ready": {}
+            },
+            "methods": {
+                "Speak": {},
+                "Initialize": {},
+                "Stop": {},
+                "DumpVoices": {}
+            }
+        },
+        "ismenuitem": {
+            "members": {
+                "Type": {},
+                "Name": {},
+                "ID": {},
+                "Parent": {},
+                "Next": {},
+                "Previous": {},
+                "IsChecked": {}
+            },
+            "methods": {
+                "SetCheck": {},
+                "Remove": {},
+                "Rename": {}
+            },
+            "asString": {
+                "member": "ID"
+            }
+        },
+        "ismenu": {
+            "members": {
+                "AddCommand": {},
+                "AddSeparator": {},
+                "AddSubMenu": {},
+                "Children": {},
+                "FindChild": {},
+                "ChildCount": {}
+            },
+            "methods": {
+                "Clear": {},
+                "AddCommand": {},
+                "AddSeparator": {},
+                "AddSubMenu": {}
+            },
+            "asString": {}
+        },
+        "ismenucommand": {
+            "members": {
+                "Command": {}
+            },
+            "methods": {
+                "SetCommand": {},
+                "Execute": {}
+            }
+        },
         "ismenuseparator": {},
-        "videofeed": {}
+        "videofeed": {
+            "methods": {
+                "RegisterSource": {},
+                "RegisterOutput": {},
+                "UnregisterSource": {},
+                "UnregisterOutput": {},
+                "DumpSources": {},
+                "DumpOutputs": {}
+            }
+        }
     },
     "topLevelObjects": {
-        "LicenseServer": {},
+        "LicenseServer": {
+            "forms": [
+                {
+                    "type": "licenseserver"
+                }
+            ]
+        },
         "Sessions": {},
         "Session": {},
         "RemoteUplink": {
             "restricted": true
         },
         "ISMenu": {},
-        "VideoFeed": {},
-        "Speech": {}
+        "VideoFeed": {
+            "forms": [
+                {
+                    "type": "videofeed"
+                }
+            ]
+        },
+        "Speech": {
+            "forms": [
+                {
+                    "type": "speech"
+                }
+            ]
+        }
     }
 }
