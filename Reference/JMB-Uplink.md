@@ -3963,8 +3963,8 @@ none.
 - [settingsetref](#Type:%20settingsetref) `InputConfiguration`
 
 ### Methods
-- `AddCharacter`
-- `AddTeam`
+- `AddCharacter[` [jsonobject](#Type:%20jsonobject) `json` `]`
+- `AddTeam[` [jsonobject](#Type:%20jsonobject) `json` `]`
 - `AddSlot`
 - `ClearSlots`
 - `LoadJMBSettings`
