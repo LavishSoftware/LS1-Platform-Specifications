@@ -214,16 +214,20 @@
                 "AddCharacter": {
                     "forms": [
                         {
-                            "type": "jsonobject",
-                            "name": "json"
+                            "parameters": [{
+                                "type": "jsonobject",
+                                "name": "json"    
+                            }]
                         }
                     ]
                 },
                 "AddTeam": {
                     "forms": [
                         {
-                            "type": "jsonobject",
-                            "name": "json"
+                            "parameters": [{
+                                "type": "jsonobject",
+                                "name": "json"    
+                            }]
                         }
                     ]
                 },
