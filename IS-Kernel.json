@@ -4029,6 +4029,19 @@
         "FindAttribute": {}
       },
       "methods": {
+        "ImportINI":{
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "name": "filename",
+                  "type":"string"
+                }
+              ],
+              "minimumBuild":6838
+            }
+          ]
+        },
         "Import": {},
         "Reload": {},
         "ImportJSON": {},

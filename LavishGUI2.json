@@ -2012,7 +2012,15 @@
             ]
           },
           "Binding": {},
-          "Bindings": {}
+          "Bindings": {},
+          "DragDropItem":{
+            "forms": [
+              {
+                "type":"jsonobject",
+                "minimumBuild":6867
+              }
+            ]
+          }
         },
         "methods": {
           "Clear": {},
@@ -3028,7 +3036,26 @@
               }
             ]
           },
-          "SetTooltip": {}
+          "SetTooltip": {},
+          "SetDragDropItem":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"jsonobject"                    
+                  }
+                ],
+                "minimumBuild":6867
+              }
+            ]
+          },
+          "UnsetDragDropItem":{
+            "forms": [
+              {
+                "minimumBuild":6867
+              }
+            ]
+          }
         },
         "asString": {
           "constant": "lgui2element"
@@ -4004,6 +4031,70 @@
               {
                 "type": "bool",
                 "description": "TRUE if the dragger is allowed to be resized"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetAllowMove": {
+            "forms": [
+              {
+                "description": "Sets a new AllowMove value",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAllowResize": {
+            "forms": [
+              {
+                "description": "Sets a new AllowResize value",
+                "parameters": [
+                  {
+                    "name": "TRUE/FALSE"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2dragger"
+        }
+      },
+      "lgui2dragin":{
+        "baseType": "lgui2contentbase",
+        "minimumBuild":6867,
+        "members": {
+          "DraggedIn": {
+            "forms": [
+              {
+                "type": "bool",
+                "description": "TRUE if a valid item is currently dragged in"
+              }
+            ]
+          },
+          "DragDropItemType": {
+            "forms": [
+              {
+                "type": "string",
+                "description": "The expected 'dragDropItemType' property, if specified"
+              }
+            ]
+          },
+          "ValidateItem":{
+            "forms":[
+              {
+                "type":"bool",
+                "parameters": [
+                  {
+                    "type":"jsonobject",
+                    "name":"item"
+                  }
+                ]
               }
             ]
           }
@@ -5358,6 +5449,14 @@
             "forms": [
               {
                 "type": "lgui2element"
+              }
+            ]
+          },
+          "DragDropIcon":{
+            "forms": [
+              {
+                "type":"lgui2item",
+                "minimumBuild":6867
               }
             ]
           },

@@ -6,6 +6,9 @@
         "OnSessionConnected": {},
         "OnSessionRenamed": {},
         "OnSessionDisconnected": {},
+        "OnSessionsUpdated":{
+            "minimumBuild":6858
+        },
         "OnRemoteSessionConnected": {
             "restricted": true
         },
@@ -346,6 +349,16 @@
                                             "name": "characterID"
                                         }
                                     ]
+                                },
+                                {
+                                    "type":"string",
+                                    "constant": "-loaderflags",
+                                    "followingParameters": [
+                                        {
+                                            "type":"string",
+                                            "name":"binary representation of flag changes"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -541,6 +554,22 @@
                             "minimumBuild": 6790
                         }
                     ]
+                },
+                "AsJSON":{
+                    "forms": [
+                        {
+                            "type":"jsonobject",
+                            "minimumBuild":6838
+                        }
+                    ]
+                },
+                "Slot":{
+                    "restricted": true,
+                    "forms": [
+                        {
+                            "type":"uint"
+                        }
+                    ]
                 }
             },
             "methods": {
@@ -644,6 +673,39 @@
                 "DumpVoices": {}
             }
         },
+        "relaygroup":{
+            "members": {
+                "Name":{},
+                "Members":{},
+                "AsJSON":{}
+            },
+            "methods": {
+                "AddMember":{},
+                "RemoveMember":{},
+                "Execute":{}
+            },
+            "asString": {
+                "member": "Name"
+            },
+            "minimumBuild":6838
+        },
+        "innerspaceuplink":{
+            "members": {
+                "Game":{},
+                "Games":{},
+                "RelayGroup":{},
+                "RelayGroups":{},
+                "Session":{},
+                "Sessions":{}
+            },
+            "methods": {
+                "Resolve":{},
+                "AddGame":{},
+                "AddRelayGroup":{},
+                "RemoveGame":{}
+            },
+            "minimumBuild":6838
+        },
         "ismenuitem": {
             "members": {
                 "Type": {},
@@ -652,7 +714,8 @@
                 "Parent": {},
                 "Next": {},
                 "Previous": {},
-                "IsChecked": {}
+                "IsChecked": {},
+                "AsJSON":{}
             },
             "methods": {
                 "SetCheck": {},
@@ -668,6 +731,7 @@
                 "AddCommand": {},
                 "AddSeparator": {},
                 "AddSubMenu": {},
+                "AddFromJSON":{},
                 "Children": {},
                 "FindChild": {},
                 "ChildCount": {}
@@ -676,7 +740,27 @@
                 "Clear": {},
                 "AddCommand": {},
                 "AddSeparator": {},
-                "AddSubMenu": {}
+                "AddSubMenu": {},
+                "AddFromJSON":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"jsonobject"
+                                }
+                            ],
+                            "minimumBuild":6838
+                        },
+                        {
+                            "parameters": [
+                                {
+                                    "type":"jsonarray"
+                                }
+                            ],
+                            "minimumBuild":6838
+                        }
+                    ]
+                }
             },
             "asString": {}
         },
@@ -726,6 +810,14 @@
             "forms": [
                 {
                     "type": "speech"
+                }
+            ]
+        },
+        "ISUplink":{
+            "forms": [
+                {
+                    "type":"innerspaceuplink",
+                    "minimumBuild":6838
                 }
             ]
         }
