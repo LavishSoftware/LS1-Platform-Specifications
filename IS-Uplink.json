@@ -731,7 +731,19 @@
                 "AddCommand": {},
                 "AddSeparator": {},
                 "AddSubMenu": {},
-                "AddFromJSON":{},
+                "AddFromJSON":{
+                    "forms": [
+                        {
+                            "minimumBuild":6864,
+                            "parameters": [
+                                {
+                                    "name": "jsonobject"
+                                }
+                            ],
+                            "type": "ismenuitem"
+                        }
+                    ]
+                },
                 "Children": {},
                 "FindChild": {},
                 "ChildCount": {}
@@ -793,12 +805,63 @@
                 }
             ]
         },
-        "Sessions": {},
-        "Session": {},
+        "Sessions": {
+            "forms": [
+                {
+                    "type":"uint"
+                }
+            ]
+        },
+        "Session": {
+            "forms": [
+                {
+                    "type":"session",
+                    "parameters":[
+                        {
+                            "type":"uint",
+                            "name":"index"
+                        }
+                    ]
+                },
+                {
+                    "type":"session",
+                    "parameters":[
+                        {
+                            "type":"string",
+                            "name":"name"
+                        }
+                    ]
+                }
+            ]
+        },
         "RemoteUplink": {
             "restricted": true
         },
-        "ISMenu": {},
+        "ISMenu": {
+            "forms": [
+                {
+                    "type":"ismenu"
+                },
+                {
+                    "type":"ismenuitem",
+                    "parameters": [
+                        {
+                            "type":"uint",
+                            "name":"id"
+                        }
+                    ]
+                },
+                {
+                    "type":"ismenuitem",
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "name":"name"
+                        }
+                    ]
+                }
+            ]
+        },
         "VideoFeed": {
             "forms": [
                 {

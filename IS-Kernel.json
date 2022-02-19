@@ -973,6 +973,28 @@
               "description": "Retrieves an array of JSON objects briefly describing all currently defined Agents"
             }
           ]
+        },
+        "AgentProviders":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":6871
+            }
+          ]
+        },
+        "AgentProvider":{
+          "forms": [
+            {
+              "minimumBuild":6871,
+              "type":"agentprovider",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "providerName"
+                }
+              ]
+            }
+          ]
         }
       },
       "methods": {
@@ -980,9 +1002,10 @@
           "restricted": true,
           "forms": [
             {
-              "description": "Loads &lt;name> extension",
+              "description": "Loads <name> extension",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "name"
                 }
               ]
@@ -999,13 +1022,40 @@
               "description": "Adds an Agent via a standalone JSON definition",
               "parameters": [
                 {
+                  "type":"jsonobject",
                   "name": "json"
                 }
               ]
             }
           ]
         },
-        "FireAgentEvent": {}
+        "FireAgentEvent": {},
+        "AddAgentProvider":{
+          "forms": [
+            {
+              "minimumBuild":6871,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "jsonFilename"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6871,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "jsonFilename"
+                },
+                {
+                  "type":"jsonobject",
+                  "name":"json"
+                }
+              ]
+            }
+          ]
+        }
       },
       "restricted": true
     },
@@ -2485,7 +2535,7 @@
         "AddWorld": {
           "forms": [
             {
-              "description": "Adds the world &lt;name> to the known universe.",
+              "description": "Adds the world <name> to the known universe.",
               "parameters": [
                 {
                   "name": "name"
@@ -2497,7 +2547,7 @@
         "RemoveWorld": {
           "forms": [
             {
-              "description": "Removes the world &lt;name> from the known universe.",
+              "description": "Removes the world <name> from the known universe.",
               "parameters": [
                 {
                   "name": "name"
@@ -2509,7 +2559,7 @@
         "Export": {
           "forms": [
             {
-              "description": "Exports a given world or universe into &lt;filename>",
+              "description": "Exports a given world or universe into <filename>",
               "parameters": [
                 {
                   "name": "filename"
@@ -2620,7 +2670,7 @@
           "forms": [
             {
               "type": "string",
-              "description": "value of the custom setting &lt;name>",
+              "description": "value of the custom setting <name>",
               "parameters": [
                 {
                   "name": "name"
@@ -2718,7 +2768,7 @@
         "Rename": {
           "forms": [
             {
-              "description": "Renames a point to &lt;newname>",
+              "description": "Renames a point to <newname>",
               "parameters": [
                 {
                   "name": "newname"
@@ -2880,7 +2930,7 @@
         "Export": {
           "forms": [
             {
-              "description": "Exports a world to &lt;filename>",
+              "description": "Exports a world to <filename>",
               "parameters": [
                 {
                   "name": "filename"
@@ -3391,7 +3441,7 @@
         "InterpretAs": {
           "forms": [
             {
-              "description": "Tells the webrequest to provide the result as one of &lt;tt>string&lt;/tt>, &lt;tt>json&lt;/tt>, &lt;tt>binary&lt;/tt>",
+              "description": "Tells the webrequest to provide the result as one of <tt>string</tt>, <tt>json</tt>, <tt>binary</tt>",
               "parameters": [
                 {
                   "name": "as"
@@ -3510,7 +3560,7 @@
         "SetEventHandler": {
           "forms": [
             {
-              "description": "Where &lt;tt>type&lt;/tt> is one of \"global\" \"platform\" or \"process\", this sets a specified event handler to the given json",
+              "description": "Where <tt>type</tt> is one of \"global\" \"platform\" or \"process\", this sets a specified event handler to the given json",
               "parameters": [
                 {
                   "name": "type"
@@ -4103,6 +4153,111 @@
           }
         ]
       }
+    },
+    "agentprovider":{
+      "minimumBuild":6871,
+      "members": {
+        "ID":{
+          "type":"uint"
+        },
+        "Name":{
+          "type":"unistring"
+        },
+        "URL":{
+          "type":"string"
+        },
+        "Description":{
+          "type":"unistring"
+        },
+        "Listing":{
+          "type":"agentlisting",
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"listingCodeName"
+                }
+              ]
+            }
+          ]
+        },
+        "Listings":{
+          "type":"jsonobject"
+        },
+        "AsJSON":{
+          "type":"jsonobject"
+        }
+      },
+      "methods": {
+        "BeginRefresh":{},
+        "Remove":{}
+      },
+      "asString": {"constant": "agentprovider"}
+    },
+    "agentlisting":{
+      "minimumBuild":6871,
+      "members": {
+        "CodeName":{
+          "type":"unistring"
+        },
+        "Name":{
+          "type":"unistring"
+        },
+        "Version":{
+          "type":"unistring"
+        },
+        "URL":{
+          "type":"string"
+        },
+        "Description":{
+          "type":"unistring"
+        },
+        "MinimumBuild":{
+          "type":"uint"
+        },
+        "Provider":{
+          "type":"agentprovider"
+        },
+        "HasDownload":{
+          "type":"bool"
+        },
+        "Collection":{
+          "type":"jsonobject"
+        },
+        "DownloadedCollection":{
+          "type":"jsonobject"
+        },
+        "Downloaded":{
+          "type":"bool"
+        },
+        "Downloading":{
+          "type":"bool"
+        }
+      },
+      "methods": {
+        "BeginDownload":{},
+        "Install":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name":"installCollection",
+                  "optional": true,
+                  "default":false
+                },
+                {
+                  "type":"string",
+                  "name":"listingCodeName",
+                  "optional": true                  
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {"constant": "agentprovider"}
     }
   },
   "topLevelObjects": {
