@@ -4593,7 +4593,7 @@
             "forms": [
               {
                 "type": "float",
-                "description": "Where the radial layout begins, in degrees clockwise from top. 0.0 &lt;= value &lt; 360.0"
+                "description": "Where the radial layout begins, in degrees clockwise from top. 0.0 <= value < 360.0"
               }
             ]
           },
@@ -4768,7 +4768,7 @@
           "SetOrigin": {
             "forms": [
               {
-                "description": "Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 &lt;= value &lt; 360.0, meaning -1 becomes 359, and 361 becomes 1.",
+                "description": "Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 <= value < 360.0, meaning -1 becomes 359, and 361 becomes 1.",
                 "parameters": [
                   {
                     "name": "#"
@@ -5002,7 +5002,7 @@
             "forms": [
               {
                 "type": "float",
-                "description": "Where the radial layout begins, in degrees clockwise from top. 0.0 &lt;= value &lt; 360.0"
+                "description": "Where the radial layout begins, in degrees clockwise from top. 0.0 <= value < 360.0"
               }
             ]
           },
@@ -5175,7 +5175,7 @@
           "SetOrigin": {
             "forms": [
               {
-                "description": "Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 &lt;= value &lt; 360.0, meaning -1 becomes 359, and 361 becomes 1.",
+                "description": "Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 <= value < 360.0, meaning -1 becomes 359, and 361 becomes 1.",
                 "parameters": [
                   {
                     "name": "#"

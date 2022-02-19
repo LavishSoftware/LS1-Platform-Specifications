@@ -488,7 +488,7 @@
             {
               "type": "bool",
               "minimumBuild": 6779,
-              "description": "TRUE if   a&lt;= value and value &lt;= b",
+              "description": "TRUE if   a<= value and value <= b",
               "parameters": [
                 {
                   "type": "int"
@@ -647,7 +647,7 @@
             {
               "type": "bool",
               "minimumBuild": 6779,
-              "description": "TRUE if   a&lt;= value and value &lt;= b",
+              "description": "TRUE if   a<= value and value <= b",
               "parameters": [
                 {
                   "type": "int"
@@ -1092,7 +1092,7 @@
           "forms": [
             {
               "type": "bool",
-              "description": "TRUE if the string is not empty and does not contain the literal NULL. This provides a shortcut for: &lt;tt>if ${MyString.Length} &amp;&amp; !${MyString.Equals[NULL]}&lt;/tt>"
+              "description": "TRUE if the string is not empty and does not contain the literal NULL. This provides a shortcut for: <tt>if ${MyString.Length} &amp;&amp; !${MyString.Equals[NULL]}</tt>"
             }
           ]
         },
@@ -1134,7 +1134,7 @@
             },
             {
               "type": "string",
-              "description": "Performs in-place replacement of a needle in a haystack. For example, &lt;tt>${String[abcdefg].ReplaceSubstring[def,xyz]}&lt;/tt> is &lt;tt>abcxyzg&lt;/tt>",
+              "description": "Performs in-place replacement of a needle in a haystack. For example, <tt>${String[abcdefg].ReplaceSubstring[def,xyz]}</tt> is <tt>abcxyzg</tt>",
               "parameters": [
                 {
                   "name": "needle"
@@ -1574,7 +1574,7 @@
             {
               "type": "bool",
               "minimumBuild": 6790,
-              "description": "TRUE if   a&lt;= value and value &lt;= b",
+              "description": "TRUE if   a<= value and value <= b",
               "parameters": [
                 {
                   "name": "minInclusive",
@@ -1679,7 +1679,7 @@
             {
               "type": "bool",
               "minimumBuild": 6779,
-              "description": "TRUE if   a&lt;= value and value &lt;= b",
+              "description": "TRUE if   a<= value and value <= b",
               "parameters": [
                 {
                   "type": "int64"
@@ -1858,7 +1858,7 @@
             {
               "type": "bool",
               "minimumBuild": 6790,
-              "description": "TRUE if   a&lt;= value and value &lt;= b",
+              "description": "TRUE if   a<= value and value <= b",
               "parameters": [
                 {
                   "name": "minInclusive",
@@ -2102,7 +2102,7 @@
           "forms": [
             {
               "type": "float",
-              "description": "Returns the asin of a given formula in degrees (&lt;tt>asin(sin(x))=x&lt;/tt>)",
+              "description": "Returns the asin of a given formula in degrees (<tt>asin(sin(x))=x</tt>)",
               "parameters": [
                 {
                   "name": "expression",
@@ -2116,7 +2116,7 @@
           "forms": [
             {
               "type": "float",
-              "description": "Returns the acos of a given formula in degrees (&lt;tt>acos(cos(x))=x&lt;/tt>)",
+              "description": "Returns the acos of a given formula in degrees (<tt>acos(cos(x))=x</tt>)",
               "parameters": [
                 {
                   "name": "expression",
@@ -2130,7 +2130,7 @@
           "forms": [
             {
               "type": "float",
-              "description": "Returns the atan of a given formula in degrees (&lt;tt>atan(tan(x))=x&lt;/tt>)",
+              "description": "Returns the atan of a given formula in degrees (<tt>atan(tan(x))=x</tt>)",
               "parameters": [
                 {
                   "name": "expression",
@@ -3009,7 +3009,7 @@
         "RegisterEvent": {
           "forms": [
             {
-              "description": "Registers an event of &lt;name>",
+              "description": "Registers an event of <name>",
               "parameters": [
                 {
                   "name": "name"
@@ -3039,7 +3039,7 @@
         "RegisterEnum": {
           "forms": [
             {
-              "description": "Registers a new enum and LavishScript Object Type with &lt;typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO",
+              "description": "Registers a new enum and LavishScript Object Type with <typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO",
               "parameters": [
                 {
                   "name": "typeName"
@@ -3579,7 +3579,7 @@
           "forms": [
             {
               "type": "filelistentry",
-              "description": "The filelistentry of file &lt;#>",
+              "description": "The filelistentry of file <#>",
               "parameters": [
                 {
                   "name": "#"
@@ -5282,7 +5282,7 @@
               ]
             },
             {
-              "description": "Sets a value within the array, to a new JSON value of any type, e.g. &lt;tt>myJsonArray:Set[1,\"{\\\"subValue\\\":12}\"]&lt;/tt>",
+              "description": "Sets a value within the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Set[1,\"{\\\"subValue\\\":12}\"]</tt>",
               "parameters": [
                 {
                   "name": "#"
@@ -5297,7 +5297,7 @@
         "Add": {
           "forms": [
             {
-              "description": "Adds a value to the end of the array, to a new JSON value of any type, e.g. &lt;tt>myJsonArray:Add[\"{\\\"subValue\\\":12}\"]&lt;/tt>",
+              "description": "Adds a value to the end of the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Add[\"{\\\"subValue\\\":12}\"]</tt>",
               "parameters": [
                 {
                   "name": "newValue",
@@ -5628,7 +5628,7 @@
               ]
             },
             {
-              "description": "Sets a value within the object, to a new JSON value of any type, e.g. &lt;tt>myJsonObject:Set[\"someObject\",\"{\\\"subValue\\\":12}\"]&lt;/tt>",
+              "description": "Sets a value within the object, to a new JSON value of any type, e.g. <tt>myJsonObject:Set[\"someObject\",\"{\\\"subValue\\\":12}\"]</tt>",
               "parameters": [
                 {
                   "name": "valueName"
@@ -6269,7 +6269,7 @@
           "forms": [
             {
               "type": "task",
-              "description": "Begins a Task via the provided JSON object, e.g. &lt;tt>TaskManager:BeginTask[\"{\\\"type\\\":\\\"ls1.echo\\\",\\\"output\\\":\\\"Hello World!\\\"}\"]&lt;/tt>",
+              "description": "Begins a Task via the provided JSON object, e.g. <tt>TaskManager:BeginTask[\"{\\\"type\\\":\\\"ls1.echo\\\",\\\"output\\\":\\\"Hello World!\\\"}\"]</tt>",
               "parameters": [
                 {
                   "name": "jsonobject"
@@ -6297,7 +6297,7 @@
         "BeginTask": {
           "forms": [
             {
-              "description": "Begins a Task via the provided JSON object, e.g. &lt;tt>TaskManager:BeginTask[\"{\\\"type\\\":\\\"ls1.echo\\\",\\\"output\\\":\\\"Hello World!\\\"}\"]&lt;/tt>",
+              "description": "Begins a Task via the provided JSON object, e.g. <tt>TaskManager:BeginTask[\"{\\\"type\\\":\\\"ls1.echo\\\",\\\"output\\\":\\\"Hello World!\\\"}\"]</tt>",
               "parameters": [
                 {
                   "name": "jsonobject"
