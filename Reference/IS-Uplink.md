@@ -304,7 +304,7 @@ LavishScript base API
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` [uint](#type-uint) `digits` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
 - [int](#type-int) `Reverse`: This number, with its bytes reversed (1234 is turned into 3523477504.. easier to see in hex: 00 00 04 D2 -> D2 04 00 00)
-- [bool](#type-bool) `Between[` [int](#type-int) `,` [int](#type-int) `]`: TRUE if   a&lt;= value and value &lt;= b
+- [bool](#type-bool) `Between[` [int](#type-int) `,` [int](#type-int) `]`: TRUE if   a<= value and value <= b
 - [uint](#type-uint) `Unsigned`: This number as 32-bit unsigned
 - [bool](#type-bool) `Equal[` [int](#type-int) `expression` `]`: TRUE if the int matches the specified value
 - [string](#type-string) `AsJSON`: A string with the value of the int, as would be in JSON
@@ -331,7 +331,7 @@ LavishScript base API
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` `#` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
 - [uint](#type-uint) `Reverse`: This number, with its bytes reversed (1234 is turned into 3523477504.. easier to see in hex: 00 00 04 D2 -> D2 04 00 00)
-- [bool](#type-bool) `Between[` [int](#type-int) `,` [int](#type-int) `]`: TRUE if   a&lt;= value and value &lt;= b
+- [bool](#type-bool) `Between[` [int](#type-int) `,` [int](#type-int) `]`: TRUE if   a<= value and value <= b
 - [int](#type-int) `Signed`: This number as 32-bit signed
 - [bool](#type-bool) `Equal[` [formula](#type-formula) `]`: TRUE if the uint matches the specified value
 - [string](#type-string) `AsJSON`: A string with the value of the uint, as would be in JSON
@@ -379,12 +379,12 @@ LavishScript base API
 - [byte](#type-byte) `GetAt[` [uint](#type-uint) `position` `]`: Retrieves a character at the #th position in the string (1-based)
 - [unistring](#type-unistring) `UniString`
 - [string](#type-string) `URLEncode`: Returns a %u encoded version of the string, suitable for urls
-- [bool](#type-bool) `NotNULLOrEmpty`: TRUE if the string is not empty and does not contain the literal NULL. This provides a shortcut for: &lt;tt>if ${MyString.Length} &amp;&amp; !${MyString.Equals[NULL]}&lt;/tt>
+- [bool](#type-bool) `NotNULLOrEmpty`: TRUE if the string is not empty and does not contain the literal NULL. This provides a shortcut for: <tt>if ${MyString.Length} &amp;&amp; !${MyString.Equals[NULL]}</tt>
 - [string](#type-string) `AsJSON`: Returns a JSON encoded version of the string, including surrounding quotes
 - [string](#type-string) `Trim`: Returns a copy of the string with no leading or trailing whitespace
 - [string](#type-string) `ReplaceSubstring[` [string](#type-string) `needle` `]`
 - [string](#type-string) `ReplaceSubstring[` [string](#type-string) `haystack` `]`
-- [string](#type-string) `ReplaceSubstring[` `needle` `,` `replacement` `]`: Performs in-place replacement of a needle in a haystack. For example, &lt;tt>${String[abcdefg].ReplaceSubstring[def,xyz]}&lt;/tt> is &lt;tt>abcxyzg&lt;/tt>
+- [string](#type-string) `ReplaceSubstring[` `needle` `,` `replacement` `]`: Performs in-place replacement of a needle in a haystack. For example, <tt>${String[abcdefg].ReplaceSubstring[def,xyz]}</tt> is <tt>abcxyzg</tt>
 - [string](#type-string) `StartsWith`
 - [string](#type-string) `EndsWith`
 
@@ -492,7 +492,7 @@ none.
 - [int](#type-int) `Round`: The value of this float, rounded to the nearest whole number
 - [bool](#type-bool) `Equal[` [float](#type-float) `expression` `]`: TRUE if the float matches the specified value
 - [string](#type-string) `AsJSON`: A string with the value of the float, as would be in JSON
-- [bool](#type-bool) `Between[` [float](#type-float) `minInclusive` `,` [float](#type-float) `maxInclusive` `]`: TRUE if   a&lt;= value and value &lt;= b
+- [bool](#type-bool) `Between[` [float](#type-float) `minInclusive` `,` [float](#type-float) `maxInclusive` `]`: TRUE if   a<= value and value <= b
 
 ### Methods
 - `Inc[` <[float](#type-float) `expression`=1.0> `]`: Increments this float by a given amount
@@ -511,7 +511,7 @@ none.
 - [float](#type-float) `Float`: This number, converted to a float (NOTE: Float is only accurate to 32 bits of precision)
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` `#` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
-- [bool](#type-bool) `Between[` [int64](#type-int64) `,` [int64](#type-int64) `]`: TRUE if   a&lt;= value and value &lt;= b
+- [bool](#type-bool) `Between[` [int64](#type-int64) `,` [int64](#type-int64) `]`: TRUE if   a<= value and value <= b
 - [bool](#type-bool) `Equal[` [formula](#type-formula) `]`: TRUE if the int64 matches the specified value
 - [string](#type-string) `AsJSON`: A string with the value of the int64, as would be in JSON
 
@@ -538,7 +538,7 @@ none.
 - [int](#type-int) `Round`: The value of this float, rounded to the nearest whole number
 - [bool](#type-bool) `Equal[` [float](#type-float) `expression` `]`: TRUE if the float64 matches the specified value
 - [string](#type-string) `AsJSON`: A string with the value of the float64, as would be in JSON
-- [bool](#type-bool) `Between[` [float64](#type-float64) `minInclusive` `,` [float64](#type-float64) `maxInclusive` `]`: TRUE if   a&lt;= value and value &lt;= b
+- [bool](#type-bool) `Between[` [float64](#type-float64) `minInclusive` `,` [float64](#type-float64) `maxInclusive` `]`: TRUE if   a<= value and value <= b
 
 ### Methods
 - `Inc[` <[float64](#type-float64) `expression`=1> `]`: Increments this float64 by a given amount
@@ -675,9 +675,9 @@ none.
 - [float](#type-float) `Sin[` [float64](#type-float64) `expression` `]`: Returns the sine of a given formula in degrees
 - [float](#type-float) `Cos[` [float64](#type-float64) `expression` `]`: Returns the cosine of a given formula in degrees
 - [float](#type-float) `Tan[` [float64](#type-float64) `expression` `]`: Returns the tangent of a given formula in degrees
-- [float](#type-float) `Asin[` [float64](#type-float64) `expression` `]`: Returns the asin of a given formula in degrees (&lt;tt>asin(sin(x))=x&lt;/tt>)
-- [float](#type-float) `Acos[` [float64](#type-float64) `expression` `]`: Returns the acos of a given formula in degrees (&lt;tt>acos(cos(x))=x&lt;/tt>)
-- [float](#type-float) `Atan[` [float64](#type-float64) `expression` `]`: Returns the atan of a given formula in degrees (&lt;tt>atan(tan(x))=x&lt;/tt>)
+- [float](#type-float) `Asin[` [float64](#type-float64) `expression` `]`: Returns the asin of a given formula in degrees (<tt>asin(sin(x))=x</tt>)
+- [float](#type-float) `Acos[` [float64](#type-float64) `expression` `]`: Returns the acos of a given formula in degrees (<tt>acos(cos(x))=x</tt>)
+- [float](#type-float) `Atan[` [float64](#type-float64) `expression` `]`: Returns the atan of a given formula in degrees (<tt>atan(tan(x))=x</tt>)
 - [float](#type-float) `Atan[` [float64](#type-float64) `expression1` `,` [float64](#type-float64) `expression2` `]`: Returns the atan2 of two given formulae in degrees
 - [string](#type-string) `Hex[` [int](#type-int) `value` `]`: Returns a hexadecimal string equivalent to the #
 - [int](#type-int) `Dec[` [string](#type-string) `hexValue` `]`: Returns the decimal equivalent to the hexadecimal value given
@@ -781,9 +781,15 @@ As Text: Same as `Time24`
 - ??? `Processors[`???`]`
 - ??? `ClipboardText[`???`]`
 - ??? `ProcessID[`???`]`
-- [string](#type-string) `RegistryValue[` `hklm/hkcu` `,` `key` `,` `value` `]`: Retrieve a REG_DWORD, REG_SZ, or REG_EXPAND_SZ value from the system registry
+- [string](#type-string) `RegistryValue[` "hklm"|"hkcu" `,` `key` `,` `value` `]`: Retrieve a REG_DWORD, REG_SZ, or REG_EXPAND_SZ value from the system registry
+- [unistring](#type-unistring) `EnvironmentVariable[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `EnvironmentVariables`
+- [unistring](#type-unistring) `ExpandEnvironmentStrings[` [string](#type-string) `haystack` `]`
 
 ### Methods
+- `SetEnvironmentVariable`
+- `SetEnvironmentVariable[` [string](#type-string) `name` `,` [string](#type-string) `value` `]`
+- `CreateShortcut[` [jsonobject](#type-jsonobject) `json` `]`
 - `APICall[`???`]`
   - Restricted: Yes
 - `SetClipboardText[`???`]`
@@ -837,11 +843,11 @@ As Text: Same as `Time24`
 
 ### Methods
 - `ExecuteAtom[` `name` `,` ... [string](#type-string) `]`: Executes an atom with the given name in global- or script-scope (if a script is currently in context).  Extra parameters are passed as parameters to the atom.
-- `RegisterEvent[` `name` `]`: Registers an event of &lt;name>
+- `RegisterEvent[` `name` `]`: Registers an event of <name>
 - `RegisterAlias[`???`]`
 - `LoadModule[`???`]`
 - `Eval[` `command` `,` [weakref](#type-weakref) `index:string` `]`: Evaluates the given command, directing any lines of output into an index:string
-- `RegisterEnum[` `typeName` `,` `bool` `]`: Registers a new enum and LavishScript Object Type with &lt;typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO
+- `RegisterEnum[` `typeName` `,` `bool` `]`: Registers a new enum and LavishScript Object Type with <typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO
 - `LoadMetaScript[`???`]`
 - `LoadMetaScriptJSON[`???`]`
 
@@ -936,6 +942,8 @@ none.
 - [bool](#type-bool) `FileExists[` [additional](#type-additional) `path` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
 - [string](#type-string) `Path`: The string representation of this path
 - [string](#type-string) `AbsolutePath`: The string representation of this path converted to an absolute path
+- [jsonarray](#type-jsonarray) `GetFiles[` <[string](#type-string) `wildcard`> `]`
+- [jsonarray](#type-jsonarray) `GetDirectories[` <[string](#type-string) `wildcard`> `]`
 
 ### Methods
 none.
@@ -999,7 +1007,7 @@ none.
 
 ### Members
 - [int](#type-int) `Files`: Total file count
-- [filelistentry](#type-filelistentry) `File[` `#` `]`: The filelistentry of file &lt;#>
+- [filelistentry](#type-filelistentry) `File[` `#` `]`: The filelistentry of file <#>
 
 ### Methods
 - `GetFiles[` `*` `]`: Gets all files from the given directory. (Defaults to current directory and * for files.)
@@ -1350,6 +1358,7 @@ As Text: JSON representation of the value
 - `SetValue[` <"-lazy"> `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
 - `SetValue[` `json` `]`: Sets the contained json value, e.g. myJsonValueContainer:SetValue["{\"someValue\":17}"] will set myJsonValueContainers value to a jsonobject that in turn contains one value
 - `ParseFile[` [string](#type-string) `filename` `]`: Sets the contained json value to the contents of a specified json file
+- `ImportINI[` [string](#type-string) `filename` `]`: Sets the contained json value to the contents of a specified INI file converted to json
 
 
 
@@ -1389,8 +1398,13 @@ As Text: JSON representation of the array
 - `GetIterator[` [weakref](#type-weakref) `iteratorObject` `]`: Sets a jsoniterator to iterate this JSON array
 - `Clear`: Clears all values from the array
 - `Set[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
-- `Set[` `#` `,` `json` `]`: Sets a value within the array, to a new JSON value of any type, e.g. &lt;tt>myJsonArray:Set[1,"{\"subValue\":12}"]&lt;/tt>
-- `Add[` [jsonvalue](#type-jsonvalue) `newValue` `]`: Adds a value to the end of the array, to a new JSON value of any type, e.g. &lt;tt>myJsonArray:Add["{\"subValue\":12}"]&lt;/tt>
+- `Set[` [uint](#type-uint) `key` `,` [jsonvalue](#type-jsonvalue) `json` `]`: Sets a value within the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Set[1,"{\"subValue\":12}"]</tt>
+- `SetString[` [uint](#type-uint) `key` `,` [string](#type-string) `newValue` `]`: Sets a value within the array, to a new string value
+- `SetInteger[` [uint](#type-uint) `key` `,` [int64](#type-int64) `newValue` `]`: Sets a value within the array, to a new integer (int64) value
+- `SetNumber[` [uint](#type-uint) `key` `,` [float64](#type-float64) `newValue` `]`: Sets a value within the array, to a new number (float64) value
+- `SetBool[` [uint](#type-uint) `key` `,` [bool](#type-bool) `newValue` `]`: Sets a value within the array, to a new boolean value
+- `SetNULL[` [uint](#type-uint) `key` `]`: Sets a value within the array, to a null value
+- `Add[` [jsonvalue](#type-jsonvalue) `newValue` `]`: Adds a value to the end of the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Add["{\"subValue\":12}"]</tt>
 - `Sort[` <[string](#type-string) `keyProperty`> `]`
 - `Erase[` [uint](#type-uint) `key` `]`: Erases the nth value from the array, shifting later items toward 0
 - `EraseByQuery[` [string](#type-string) `queryText` `,` <[bool](#type-bool) `removeMatches`=true> `]`: Erases items either matching or not matching the query from the array (depending on the 2nd parameter), shifting later elements toward 0
@@ -1426,7 +1440,12 @@ As Text: JSON representation of the object
 - `GetIterator[` [weakref](#type-weakref) `iteratorObject` `]`: Sets a jsoniterator to iterate this JSON object
 - `Clear`: Clears all values from the object
 - `Set[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
-- `Set[` `valueName` `,` `json` `]`: Sets a value within the object, to a new JSON value of any type, e.g. &lt;tt>myJsonObject:Set["someObject","{\"subValue\":12}"]&lt;/tt>
+- `Set[` [string](#type-string) `key` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`: Sets a value within the object, to a new JSON value of any type, e.g. <tt>myJsonObject:Set["someObject","{\"subValue\":12}"]</tt>
+- `SetString[` [string](#type-string) `key` `,` [string](#type-string) `newValue` `]`: Sets a value within the object, to a new string value
+- `SetInteger[` [string](#type-string) `key` `,` [int64](#type-int64) `newValue` `]`: Sets a value within the object, to a new integer (int64) value
+- `SetNumber[` [string](#type-string) `key` `,` [float64](#type-float64) `newValue` `]`: Sets a value within the object, to a new number (float64) value
+- `SetBool[` [string](#type-string) `key` `,` [bool](#type-bool) `newValue` `]`: Sets a value within the object, to a new boolean value
+- `SetNULL[` [string](#type-string) `key` `]`: Sets a value within the object, to a null value
 - `Erase[` [string](#type-string) `fieldName` `]`: Erases the specified value from the object
 - `EraseByQuery[` [string](#type-string) `queryText` `,` <[bool](#type-bool) `removeMatches`=true> `]`: Erases items either matching or not matching the query from the object (depending on the 2nd parameter)
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the object
@@ -1543,12 +1562,12 @@ none.
 ### Members
 - [string](#type-string) `Name`: Name of the Task Manager
 - [uint](#type-uint) `ID`: The ID number assigned to the Task Manager
-- [task](#type-task) `BeginTask[` `jsonobject` `]`: Begins a Task via the provided JSON object, e.g. &lt;tt>TaskManager:BeginTask["{\"type\":\"ls1.echo\",\"output\":\"Hello World!\"}"]&lt;/tt>
+- [task](#type-task) `BeginTask[` `jsonobject` `]`: Begins a Task via the provided JSON object, e.g. <tt>TaskManager:BeginTask["{\"type\":\"ls1.echo\",\"output\":\"Hello World!\"}"]</tt>
 - [task](#type-task) `BeginTaskLibrary[` `name` `]`: Begins every Task in a given Task Library, wrapped in a parallel Task
 
 ### Methods
 - `SetTaskTypeSet[`???`]`
-- `BeginTask[` `jsonobject` `]`: Begins a Task via the provided JSON object, e.g. &lt;tt>TaskManager:BeginTask["{\"type\":\"ls1.echo\",\"output\":\"Hello World!\"}"]&lt;/tt>
+- `BeginTask[` `jsonobject` `]`: Begins a Task via the provided JSON object, e.g. <tt>TaskManager:BeginTask["{\"type\":\"ls1.echo\",\"output\":\"Hello World!\"}"]</tt>
 - `BeginTaskLibrary[` `name` `]`: Begins every Task in a given Task Library, wrapped in a parallel Task
 - `Clear`: Stops all running Tasks
 - `Destroy`: Stops all running Tasks, and destroys the Task Manager itself
@@ -1654,7 +1673,7 @@ As Text: "lgui2animateargs"
 - [unistring](#type-unistring) `Error`: The Error text, if it has been set by the Item View Generator
 
 ### Methods
-- `SetView[` [jsonobject](#type-jsonobject) `jsonValue` `]`: Creates a new [[LGUI2:Element|Element]] (View) to represent the Item
+- `SetView[` [jsonobject](#type-jsonobject) `jsonValue` `,` <[weakref](#type-weakref) `context`> `]`: Creates a new [[LGUI2:Element|Element]] (View) to represent the Item
 - `SetError[` [string](#type-string) `errorText` `]`: Sets a new Error value
 
 
@@ -2007,19 +2026,22 @@ As Text: Same as `Name`
 - [float](#type-float) `CursorY`: The Y coordinate of the current mouse cursor position
 - [lgui2element](#type-lgui2element) `ElementFromPoint[` `X` `,` `Y` `]`: Retrieves a UI element, given an (X,Y) pair
 - [float](#type-float) `FontScale`: A scaling factor to be applied to font sizes for this layer
-- [lgui2element](#type-lgui2element) `LoadFile[` `filename` `]`: Loads an [[LGUI2:Element|Element]] file into the layer, returning an [[LGUI2:LS1:lgui2element|lgui2element]]-derived object type depending on the LavishGUI 2 element type. A JSON Object is expected in the file.
-- [uint](#type-uint) `LoadArrayFile[` `filename` `]`: Loads a JSON Array file containing [[LGUI2:Element|Elements]] into the layer, returning the number of elements loaded.
-- [lgui2element](#type-lgui2element) `LoadJSON[` `json` `]`: Loads an Element, as defined by a json object, into the layer
-- ??? `Binding[`???`]`
-- ??? `Bindings[`???`]`
+- [lgui2element](#type-lgui2element) `LoadFile[` [string](#type-string) `filename` `,` <[weakref](#type-weakref) `context`> `]`: Loads an [[LGUI2:Element|Element]] file into the layer, returning an [[LGUI2:LS1:lgui2element|lgui2element]]-derived object type depending on the LavishGUI 2 element type. A JSON Object is expected in the file.
+- [uint](#type-uint) `LoadArrayFile[` [string](#type-string) `filename` `,` <[weakref](#type-weakref) `context`> `]`: Loads a JSON Array file containing [[LGUI2:Element|Elements]] into the layer, returning the number of elements loaded.
+- [lgui2element](#type-lgui2element) `LoadReference[` [jsonvalueref](#type-jsonvalueref) `ref` `,` <[weakref](#type-weakref) `context`> `]`: Loads en Element, as defined by a referenced json object, into the layer
+- [lgui2element](#type-lgui2element) `LoadJSON[` [jsonobject](#type-jsonobject) `json` `,` <[weakref](#type-weakref) `context`> `]`: Loads an Element, as defined by a json object, into the layer
+- [lgui2inputbinding](#type-lgui2inputbinding) `Binding[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `Bindings`
+- [jsonobject](#type-jsonobject) `DragDropItem`
 
 ### Methods
 - `Clear[`???`]`
-- `LoadFile[` `filename` `]`: Loads an [[LGUI2:Element|Element]] file into the layer. A JSON Object is expected in the file.
-- `LoadArrayFile[` `filename` `]`: Loads a JSON Array file containing [[LGUI2:Element|Elements]] into the layer.
-- `LoadJSON[` `json` `]`: Loads an Element, as defined by a json object, into the layer
-- `LoadPackageFile[` `filename` `]`: Loads a [[LGUI2:Package|Package]] from file
-- `LoadPackageJSON[` `json` `]`: Loads a [[LGUI2:Package|Package]] as defined by a json object
+- `LoadFile[` `filename` `,` <[weakref](#type-weakref) `context`> `]`: Loads an [[LGUI2:Element|Element]] file into the layer. A JSON Object is expected in the file.
+- `LoadArrayFile[` `filename` `,` <[weakref](#type-weakref) `context`> `]`: Loads a JSON Array file containing [[LGUI2:Element|Elements]] into the layer.
+- `LoadJSON[` `json` `,` <[weakref](#type-weakref) `context`> `]`: Loads an Element, as defined by a json object, into the layer
+- `LoadReference[` [jsonvalueref](#type-jsonvalueref) `ref` `,` <[weakref](#type-weakref) `context`> `]`: Loads an Element, as defined by a referenced json object, into the layer
+- `LoadPackageFile[` `filename` `,` <[weakref](#type-weakref) `context`> `]`: Loads a [[LGUI2:Package|Package]] from file
+- `LoadPackageJSON[` `json` `,` <[weakref](#type-weakref) `context`> `]`: Loads a [[LGUI2:Package|Package]] as defined by a json object
 - `AddBinding[` `json` `]`: Adds an [[LGUI2:Input Binding|Input Binding]] to the layer
 - `RemoveBinding[` `name` `]`: Removes an [[LGUI2:Input Binding|Input Binding]] from the layer by name
 - `LoadBindingsFile[` `filename` `]`: Loads an [[LGUI2:Input Bindings|Input Bindings]] file into the layer. A JSON Array is expected in the file.
@@ -2114,6 +2136,7 @@ As Text: "lgui2element"
 - [lgui2trigger](#type-lgui2trigger) `Trigger[` `name` `]`: Retrieves a [[LGUI2:Trigger|Trigger]] by name
 - ??? `InputHook[`???`]`
 - ??? `Tooltip[`???`]`
+- [weakref](#type-weakref) `Context[` "self"|"visual"|"logical" `]`
 
 ### Methods
 - `SetName[` `value` `]`: Assigns a new value to the Name
@@ -2158,6 +2181,9 @@ As Text: "lgui2element"
 - `SetFont[`???`]`
 - `BubbleToTop`: Bubbles the element to the top of Z-order. This element will be moved over the top of other elements where Strata is less than or equal to its own, and the process will repeat with the elements visual ancestors
 - `SetTooltip[`???`]`
+- `SetDragDropItem[` [jsonobject](#type-jsonobject) `]`
+- `UnsetDragDropItem`
+- `SetContext[` [weakref](#type-weakref) `ref` `]`
 
 
 
@@ -2232,7 +2258,7 @@ As Text: "lgui2contentbase"
 - [lgui2element](#type-lgui2element) `ContentContainer`: Retrieves the Content Container used to display the Content
 
 ### Methods
-- `SetContent[` `json` `]`: Sets new Content
+- `SetContent[` [jsonvalue](#type-jsonvalue) `json` `,` <[weakref](#type-weakref) `context`> `]`: Sets new Content
 
 
 
@@ -2247,7 +2273,7 @@ As Text: "lgui2headeredcontentbase"
 - [elgui2edge](#type-elgui2edge) `HeaderEdge`: Retrieves the Edge where the Header Container is placed
 
 ### Methods
-- `SetHeader[` `json` `]`: Sets a new Header
+- `SetHeader[` [jsonvalue](#type-jsonvalue) `json` `,` <[weakref](#type-weakref) `context`> `]`: Sets a new Header
 - `SetHeaderEdge[` [elgui2edge](#type-elgui2edge) `]`: Sets the Edge where the Header Container is placed
 
 
@@ -2325,7 +2351,7 @@ As Text: "lgui2border"
 - ??? `MaintainAspectRatio[`???`]`
 
 ### Methods
-- `SetChild[` `json` `]`
+- `SetChild[` `json` `,` <[weakref](#type-weakref) `context`> `]`
 - `SetHorizontalContentAlignment[` [elgui2horizontalalignment](#type-elgui2horizontalalignment) `]`: New horizontal alignment to apply to the Child element
 - `SetVerticalContentAlignment[` [elgui2verticalalignment](#type-elgui2verticalalignment) `]`: New vertical alignment to apply to the Child element
 - `SetMaintainAspectRatio[`???`]`
@@ -2449,6 +2475,22 @@ As Text: "lgui2dragger"
 
 
 
+## Type: lgui2dragin
+- Base Type: [lgui2contentbase](#type-lgui2contentbase)
+
+As Text: "lgui2dragger"
+
+### Members
+- [bool](#type-bool) `DraggedIn`: TRUE if a valid item is currently dragged in
+- [string](#type-string) `DragDropItemType`: The expected 'dragDropItemType' property, if specified
+- [bool](#type-bool) `ValidateItem[` [jsonobject](#type-jsonobject) `item` `]`
+
+### Methods
+- `SetAllowMove[` `TRUE/FALSE` `]`: Sets a new AllowMove value
+- `SetAllowResize[` `TRUE/FALSE` `]`: Sets a new AllowResize value
+
+
+
 ## Type: lgui2expander
 - Base Type: [lgui2headeredcontentbase](#type-lgui2headeredcontentbase)
 
@@ -2488,12 +2530,14 @@ As Text: "lgui2inputpicker"
 - ??? `ValueBinding[`???`]`
 - ??? `IsMultipleControlMode[`???`]`
 - ??? `Summary[`???`]`
+- [bool](#type-bool) `IsComboMode`
 
 ### Methods
 - `SetMultipleControlMode[`???`]`
 - `SetValue[`???`]`
 - `PullValueBinding[`???`]`
 - `PushValueBinding[`???`]`
+- `SetComboMode[` [bool](#type-bool) `value` `]`
 
 
 
@@ -2582,7 +2626,7 @@ As Text: "lgui2combobox"
 
 ### Methods
 - `SetHeaderEdge[`???`]`
-- `SetHeader[`???`]`
+- `SetHeader[` [jsonvalue](#type-jsonvalue) `json` `,` <[weakref](#type-weakref) `context`> `]`
 - `SetOpen[` `TRUE/FALSE` `]`: Sets a new Open state
 - `ToggleOpen`: Toggles the Open state
 
@@ -2594,10 +2638,22 @@ As Text: "lgui2combobox"
 As Text: "lgui2panel"
 
 ### Members
-- [...](#type-...) `AddChild[` `json` `]`: Adds a child element to the panel, and returns the element
+- [lgui2element](#type-lgui2element) `AddChild[` [jsonvalue](#type-jsonvalue) `json` `,` <[weakref](#type-weakref) `context`> `]`: Adds a child element to the panel, and returns the element
 
 ### Methods
-- `AddChild[` `json` `]`: Adds a child element to the panel
+- `AddChild[` [jsonvalue](#type-jsonvalue) `json` `,` <[weakref](#type-weakref) `context`> `]`: Adds a child element to the panel
+
+
+
+## Type: lgui2overlay
+- Base Type: [lgui2contentbase](#type-lgui2contentbase)
+
+### Members
+- [lgui2element](#type-lgui2element) `OverlayContainer`
+- [lgui2element](#type-lgui2element) `Overlay`
+
+### Methods
+- `SetOverlay[` [jsonvalue](#type-jsonvalue) `json` `,` <[weakref](#type-weakref) `context`> `]`
 
 
 
@@ -2650,7 +2706,7 @@ As Text: "lgui2progressbar"
 As Text: "lgui2radialgauge"
 
 ### Members
-- [float](#type-float) `Origin`: Where the radial layout begins, in degrees clockwise from top. 0.0 &lt;= value &lt; 360.0
+- [float](#type-float) `Origin`: Where the radial layout begins, in degrees clockwise from top. 0.0 <= value < 360.0
 - [uint](#type-uint) `Resolution`: The number of edges used to render the perimeter of a 360-degree FillerBrush circle. For optimal performance, use the lowest value that still looks good at the desired size
 - [float](#type-float) `MaxValueArcLength`: The full arc length, in degrees clockwise from Origin, when Value>=MaxValue -- default is 360.0
 - [int](#type-int) `Value`: The current Value for the FillerBrush
@@ -2674,7 +2730,7 @@ As Text: "lgui2radialgauge"
 - ??? `ValueBinding[`???`]`
 
 ### Methods
-- `SetOrigin[` `#` `]`: Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 &lt;= value &lt; 360.0, meaning -1 becomes 359, and 361 becomes 1.
+- `SetOrigin[` `#` `]`: Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 <= value < 360.0, meaning -1 becomes 359, and 361 becomes 1.
 - `SetResolution[` `#` `]`: Sets the number of edges used to render the perimeter of a 360-degree FillerBrush circle. For optimal performance, use the lowest value that still looks good at the desired size
 - `SetMaxValueArcLength[` `#` `]`: Sets the full arc length, in degrees clockwise from Origin, when Value>=MaxValue
 - `SetValue[` `#` `]`: Sets the new current Value for the FillerBrush
@@ -2704,7 +2760,7 @@ As Text: "lgui2radialpanel"
 - [float](#type-float) `DeadZone`: The radius of the Dead Zone in the center of the panel
 - [float](#type-float) `LiveZone`: The radius of the Live Zone, the default size for added Radial Items
 - [float](#type-float) `ZoneMargin`: The distance between the Dead Zone and Live Zone
-- [float](#type-float) `Origin`: Where the radial layout begins, in degrees clockwise from top. 0.0 &lt;= value &lt; 360.0
+- [float](#type-float) `Origin`: Where the radial layout begins, in degrees clockwise from top. 0.0 <= value < 360.0
 - [uint](#type-uint) `Resolution`: The number of edges used to render the perimeter of the circle. For optimal performance, use the lowest value that still looks good at the desired size
 - [float](#type-float) `ChildWidth`: Width reserved for child elements
 - [float](#type-float) `ChildHeight`: Height reserved for child elements
@@ -2722,7 +2778,7 @@ As Text: "lgui2radialpanel"
 - `SetRadialItemTemplate[` `json` `]`: Sets the base template used for Radial Items added to this panel
 - `SetLiveZone[` `#` `]`: Sets the radius of the Live Zone, the default size for added Radial Items
 - `SetZoneMargin[` `#` `]`: Sets the distance between the Dead Zone and Live Zone
-- `SetOrigin[` `#` `]`: Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 &lt;= value &lt; 360.0, meaning -1 becomes 359, and 361 becomes 1.
+- `SetOrigin[` `#` `]`: Sets where the radial layout begins, in degrees clockwise from top. This value will automatically adjust into the range 0.0 <= value < 360.0, meaning -1 becomes 359, and 361 becomes 1.
 - `SetResolution[` `#` `]`: Sets the number of edges used to render the perimeter of the circle. For optimal performance, use the lowest value that still looks good at the desired size
 - `SetDeadZoneBrush[` `json` `]`: Sets the [[LGUI2:Brush|Brush]] used to render the Dead Zone in the center of the panel
 
@@ -2802,6 +2858,7 @@ As Text: "lgui2hud"
 ### Members
 - [lgui2element](#type-lgui2element) `IndicatorIconContainer`
 - [lgui2element](#type-lgui2element) `NotificationIconContainer`
+- [lgui2item](#type-lgui2item) `DragDropIcon`
 - [lgui2element](#type-lgui2element) `TooltipContainer`
 - [lgui2element](#type-lgui2element) `TooltipOwner`
 - [lgui2item](#type-lgui2item) `AddIndicatorIcon[` `json` `]`
@@ -2950,6 +3007,7 @@ As Text: "lgui2textbox"
 - [bool](#type-bool) `Wrap`: TRUE if the text should be wrapped to additional lines in order to fit
 - [bool](#type-bool) `Multiline`: TRUE if the textbox allows multiple lines of text
 - ??? `TextBinding[`???`]`
+- [bool](#type-bool) `TextBindingUsesFocus`
 
 ### Methods
 - `SetText[` `text` `]`: Sets a new Text value
@@ -2957,6 +3015,7 @@ As Text: "lgui2textbox"
 - `SetMultiline[` `bool` `]`: Sets a new Multiline value
 - `PushTextBinding[`???`]`
 - `PullTextBinding[`???`]`
+- `SetTextBindingUsesFocus[` [bool](#type-bool) `value` `]`
 
 
 
@@ -3008,6 +3067,7 @@ As Text: "lgui2window"
 - `SetAnchorOffset[`???`]`
 - `SetAnchorOffsetFactor[`???`]`
 - `SetClipToParent[`???`]`
+- `SetTitle[` [jsonvalue](#type-jsonvalue) `elementdefinition` `]`
 
 
 
@@ -3372,6 +3432,10 @@ Restricted: Yes
 
 ## TLO: LavishSettings
 
+## TLO: DotNet
+Restricted: Yes
+- [dotnet](#type-dotnet) `DotNet`
+
 
 ---
 # Types
@@ -3394,15 +3458,19 @@ Restricted: Yes
 - [settingsetref](#type-settingsetref) `InputConfiguration`: The Inner Space Input Devices configuration settings (InputDevices.XML)
 - [agent](#type-agent) `Agent[` `#` `]`: Retrieves an [[ISKernel:Agent|Agent]], by ID
 - [jsonarray](#type-jsonarray) `Agents`: Retrieves an array of JSON objects briefly describing all currently defined Agents
+- [jsonarray](#type-jsonarray) `AgentProviders`
+- [agentprovider](#type-agentprovider) `AgentProvider[` [string](#type-string) `providerName` `]`
 
 ### Methods
-- `LoadExtension[` `name` `]`: Loads &lt;name> extension
+- `LoadExtension[` [string](#type-string) `name` `]`: Loads <name> extension
   - Restricted: Yes
 - `EnableStealth[`???`]`
   - Restricted: Yes
 - `ScanAgentsFolder[`???`]`
-- `AddAgent[` `json` `]`: Adds an Agent via a standalone JSON definition
+- `AddAgent[` [jsonobject](#type-jsonobject) `json` `]`: Adds an Agent via a standalone JSON definition
 - `FireAgentEvent[`???`]`
+- `AddAgentProvider[` [string](#type-string) `jsonFilename` `]`
+- `AddAgentProvider[` [string](#type-string) `jsonFilename` `,` [jsonobject](#type-jsonobject) `json` `]`
 
 
 
@@ -3468,12 +3536,22 @@ As Text: Same as `System`
 - [int](#type-int) `TextureMem`: Available texture memory, in megabytes
 - [float](#type-float) `FPS`: Sustained frames per second (calculated from the last 64 frames)
 - [GDIWindow](#type-GDIWindow) `Window`
+- [uint](#type-uint) `CurrentMaxFPS`
+- [bool](#type-bool) `CurrentMaxFPSCalculate`
+- [uint](#type-uint) `ForegroundMaxFPS`
+- [bool](#type-bool) `ForegroundMaxFPSCalculate`
+- [uint](#type-uint) `BackgroundMaxFPS`
+- [bool](#type-bool) `BackgroundMaxFPSCalculate`
 
 ### Methods
 - `SetTaskbarAutoHide[`???`]`
 - `Screencap[`???`]`
 - `EnumWindows[`???`]`
 - `EnumVisibleWindows[`???`]`
+- `SetForegroundMaxFPS[` [uint](#type-uint) `value` `]`
+- `SetForegroundMaxFPSCalculate[` [bool](#type-bool) `value` `]`
+- `SetBackgroundMaxFPS[` [uint](#type-uint) `value` `]`
+- `SetBackgroundMaxFPSCalculate[` [bool](#type-bool) `value` `]`
 
 
 
@@ -3798,9 +3876,9 @@ As Text: Same as `Position`
 - [navworld](#type-navworld) `World[` `name` `]`: Retrieves the navigation world with this name
 
 ### Methods
-- `AddWorld[` `name` `]`: Adds the world &lt;name> to the known universe.
-- `RemoveWorld[` `name` `]`: Removes the world &lt;name> from the known universe.
-- `Export[` `filename` `]`: Exports a given world or universe into &lt;filename>
+- `AddWorld[` `name` `]`: Adds the world <name> to the known universe.
+- `RemoveWorld[` `name` `]`: Removes the world <name> from the known universe.
+- `Export[` `filename` `]`: Exports a given world or universe into <filename>
 
 
 
@@ -3821,7 +3899,7 @@ As Text: Same as `Name`
 - [navpoint](#type-navpoint) `Outgoing[` `n` `]`: nth point with a connection from this point
 - [int](#type-int) `Incoming`: Number of incoming connections to this point
 - [navpoint](#type-navpoint) `Incoming[` `n` `]`: nth point with a connection to this point
-- [string](#type-string) `Custom[` `name` `]`: value of the custom setting &lt;name>
+- [string](#type-string) `Custom[` `name` `]`: value of the custom setting <name>
 - [string](#type-string) `Note`: A user-defined note set with the navigational point
 
 ### Methods
@@ -3831,7 +3909,7 @@ As Text: Same as `Name`
 - `SetName[` `name` `]`: Changes the name of the nav point
 - `SetNote[` `note` `]`: Attaches a note to the navigational point
 - `Delete`: Deletes the nav point
-- `Rename[` `newname` `]`: Renames a point to &lt;newname>
+- `Rename[` `newname` `]`: Renames a point to <newname>
 - `AddConnection[` `name` `]`: Adds a connection to a nav point
 - `AddConnection[` `name` `,` `bidirectional` `]`: Adds a bidirectional connection to a nav point
 - `RemoveConnection[`???`]`
@@ -3856,7 +3934,7 @@ As Text: Same as `Name`
 - `Set[` `name` `,` `x` `]`: For use in a single coordinate plane system, sets a point with the given name at (x,0,0)
 - `Set[` `name` `,` `x` `,` `y` `]`: Sets a point with the given name at (x,y,0)
 - `Set[` `name` `,` `x` `,` `y` `,` `z` `]`: Sets a point with the given name at (x,y,z)
-- `Export[` `filename` `]`: Exports a world to &lt;filename>
+- `Export[` `filename` `]`: Exports a world to <filename>
 
 
 
@@ -3993,7 +4071,7 @@ As Text: "webrequest"
 - `FromJSON[` `json` `]`: Initializes the webrequest via a JSON object. The webrequest must be in its Idle (Reset) state
 - `Reset`: Resets the webrequest to its original Idle state, clearing any settings. The webrequest must not be in Working state. If in Queued state, this will act as :Abort instead
 - `SetURL[` `url` `]`: Sets the URL to use. The webrequest must be in Idle or Queued state to change the URL.
-- `InterpretAs[` `as` `]`: Tells the webrequest to provide the result as one of &lt;tt>string&lt;/tt>, &lt;tt>json&lt;/tt>, &lt;tt>binary&lt;/tt>
+- `InterpretAs[` `as` `]`: Tells the webrequest to provide the result as one of <tt>string</tt>, <tt>json</tt>, <tt>binary</tt>
 - `InterpretAs[` `file` `,` [absolute](#type-absolute) `filename` `]`: Tells the webrequest to provide the result as a file, to the specified absolute filename (it is recommended to include the full path)
 - `Begin`: Begins the webrequest. The webrequest must be in Idle state, and a URL must be set
 - `Abort`: Aborts the webrequest. The webrequest must be in Queued state; an aborted webrequest will change to Aborted state when it otherwise would have changed to Working state.
@@ -4024,9 +4102,10 @@ As Text: "agent"
 ### Methods
 - `Start`: Starts the Agent. Event handlers will start firing
 - `Stop`: Stops the Agent. Event handlers will stop firing
+- `Reload`
 - `Remove`: Stops and Removes the Agent
 - `SetAutoStart[`???`]`
-- `SetEventHandler[` `type` `,` `json` `]`: Where &lt;tt>type&lt;/tt> is one of "global" "platform" or "process", this sets a specified event handler to the given json
+- `SetEventHandler[` `type` `,` `json` `]`: Where <tt>type</tt> is one of "global" "platform" or "process", this sets a specified event handler to the given json
 - `FireEvent[` `name` `]`: Fires the event by the specified name. Event handlers are processed in the following order: global, platform, process
 - `FireEvent[` `-reverse` `,` `name` `]`: Fires the event by the specified name, in reverse order. This is used, for example, for "onAgentShutdown" to initiate the process shutdown, then platform shutdown, then global shutdown handlers
 
@@ -4181,10 +4260,13 @@ As Text: "lgui2videofeed"
 - ??? `FeedName[`???`]`
 - ??? `Feed[`???`]`
 - ??? `Permanent[`???`]`
+- ??? `FeedNameBinding[`???`]`
 
 ### Methods
 - `SetFeedName[`???`]`
 - `SetPermanent[`???`]`
+- `PullFeedNameBinding[`???`]`
+- `PushFeedNameBinding[`???`]`
 
 
 
@@ -4293,6 +4375,7 @@ As Text: Same as `GUID`
 - ??? `FindAttribute[`???`]`
 
 ### Methods
+- `ImportINI[` [string](#type-string) `filename` `]`
 - `Import[`???`]`
 - `Reload[`???`]`
 - `ImportJSON[`???`]`
@@ -4341,6 +4424,63 @@ As Text: Same as `Text`
 
 
 
+## Type: agentprovider
+
+As Text: "agentprovider"
+
+### Members
+- ??? `ID[`???`]`
+- ??? `Name[`???`]`
+- ??? `URL[`???`]`
+- ??? `Description[`???`]`
+- ??? `Listing[` [string](#type-string) `listingCodeName` `]`
+- ??? `Listings[`???`]`
+- ??? `AsJSON[`???`]`
+
+### Methods
+- `BeginRefresh[`???`]`
+- `Remove[`???`]`
+
+
+
+## Type: agentlisting
+
+As Text: "agentprovider"
+
+### Members
+- ??? `CodeName[`???`]`
+- ??? `Name[`???`]`
+- ??? `Version[`???`]`
+- ??? `URL[`???`]`
+- ??? `Description[`???`]`
+- ??? `MinimumBuild[`???`]`
+- ??? `Provider[`???`]`
+- ??? `HasDownload[`???`]`
+- ??? `Collection[`???`]`
+- ??? `DownloadedCollection[`???`]`
+- ??? `Downloaded[`???`]`
+- ??? `Downloading[`???`]`
+
+### Methods
+- `BeginDownload[`???`]`
+- `Install[` <[bool](#type-bool) `installCollection`=false> `,` <[string](#type-string) `listingCodeName`> `]`
+- `InstallFromCollection[`???`]`
+
+
+
+## Type: dotnet
+
+### Members
+- [bool](#type-bool) `Ready`
+- [jsonarray](#type-jsonarray) `Domains`
+- [bool](#type-bool) `Domain[` [string](#type-string) `name` `]`
+
+### Methods
+- `Execute[` [string](#type-string) `name` `,` [string](#type-string) `executable` `,` ... [string](#type-string) `params` `]`
+- `Unload[` [string](#type-string) `name` `]`
+
+
+
 Inner Space Uplink API Specification (LavishScript)
 
 ---
@@ -4352,6 +4492,8 @@ Inner Space Uplink API Specification (LavishScript)
 ## Event: OnSessionRenamed
 
 ## Event: OnSessionDisconnected
+
+## Event: OnSessionsUpdated
 
 ## Event: OnRemoteSessionConnected
 - Restricted: Yes
@@ -4415,9 +4557,13 @@ Inner Space Uplink API Specification (LavishScript)
 ### Syntax
 * `Attach` <[uint](#type-uint) `pid`> <[string](#type-string) `gameName`> <[string](#type-string) `gameProfileName`> [... `startupOptions` ["-loader" "none"|"minimum"|"moderate"|"standard"|"maximum"|"-startup" <[string](#type-string) `command`>|"-prestartup" <[string](#type-string) `command`>|"-character" <[int64](#type-int64) `characterID`>]]
 
+## Command: Launch
+### Syntax
+* `Launch` <[string](#type-string) `gamePath`> <[string](#type-string) `gameExecutable`> [[string](#type-string) `gameParameters`] [... `startupOptions` ["-loader" "none"|"minimum"|"moderate"|"standard"|"maximum"|"-nogameprofileparams"|"-addparam" <[string](#type-string) `value`>|"-startup" <[string](#type-string) `command`>|"-prestartup" <[string](#type-string) `command`>|"-character" <[int64](#type-int64) `characterID`>|"-loaderflags" <[string](#type-string) `binary representation of flag changes`>]]
+
 ## Command: Open
 ### Syntax
-* `Open` <[string](#type-string) `gameName`> <[string](#type-string) `gameProfileName`> [... `startupOptions` ["-loader" "none"|"minimum"|"moderate"|"standard"|"maximum"|"-nogameprofileparams"|"-addparam" <[string](#type-string) `value`>|"-startup" <[string](#type-string) `command`>|"-prestartup" <[string](#type-string) `command`>|"-character" <[int64](#type-int64) `characterID`>]]
+* `Open` <[string](#type-string) `gameName`> <[string](#type-string) `gameProfileName`> [... `startupOptions` ["-loader" "none"|"minimum"|"moderate"|"standard"|"maximum"|"-nogameprofileparams"|"-addparam" <[string](#type-string) `value`>|"-startup" <[string](#type-string) `command`>|"-prestartup" <[string](#type-string) `command`>|"-character" <[int64](#type-int64) `characterID`>|"-loaderflags" <[string](#type-string) `binary representation of flag changes`>]]
 
 ## Command: Focus
 ### Syntax
@@ -4443,19 +4589,28 @@ Inner Space Uplink API Specification (LavishScript)
 - [licenseserver](#type-licenseserver) `LicenseServer`
 
 ## TLO: Sessions
+- [uint](#type-uint) `Sessions`
 
 ## TLO: Session
+- [session](#type-session) `Session[` [uint](#type-uint) `index` `]`
+- [session](#type-session) `Session[` [string](#type-string) `name` `]`
 
 ## TLO: RemoteUplink
 Restricted: Yes
 
 ## TLO: ISMenu
+- [ismenu](#type-ismenu) `ISMenu`
+- [ismenuitem](#type-ismenuitem) `ISMenu[` [uint](#type-uint) `id` `]`
+- [ismenuitem](#type-ismenuitem) `ISMenu[` [string](#type-string) `name` `]`
 
 ## TLO: VideoFeed
 - [videofeed](#type-videofeed) `VideoFeed`
 
 ## TLO: Speech
 - [speech](#type-speech) `Speech`
+
+## TLO: ISUplink
+- [innerspaceuplink](#type-innerspaceuplink) `ISUplink`
 
 
 ---
@@ -4486,6 +4641,9 @@ As Text: Same as `Name`
 - [uint](#type-uint) `PID`
 - [gdiwindow](#type-gdiwindow) `Window`
 - [string](#type-string) `Executable`
+- [jsonobject](#type-jsonobject) `AsJSON`
+- [uint](#type-uint) `Slot`
+  - Restricted: Yes
 
 ### Methods
 - `Execute[` <"-noredirect"> `,` [string](#type-string) `command` `]`
@@ -4501,7 +4659,7 @@ As Text: Same as `Name`
 ### Members
 - [string](#type-string) `Name`
 - [string](#type-string) `IPAddress`
-- [int](#type-int) `Sessions`
+- [uint](#type-uint) `Sessions`
 - [session](#type-session) `Session[` [uint](#type-uint) `nthSession` `]`
 
 ### Methods
@@ -4522,6 +4680,40 @@ As Text: Same as `Name`
 
 
 
+## Type: relaygroup
+
+As Text: Same as `Name`
+
+### Members
+- ??? `Name[`???`]`
+- ??? `Members[`???`]`
+- ??? `AsJSON[`???`]`
+
+### Methods
+- `AddMember[`???`]`
+- `RemoveMember[`???`]`
+- `Execute[`???`]`
+
+
+
+## Type: innerspaceuplink
+
+### Members
+- ??? `Game[`???`]`
+- ??? `Games[`???`]`
+- ??? `RelayGroup[`???`]`
+- ??? `RelayGroups[`???`]`
+- ??? `Session[`???`]`
+- ??? `Sessions[`???`]`
+
+### Methods
+- `Resolve[`???`]`
+- `AddGame[`???`]`
+- `AddRelayGroup[`???`]`
+- `RemoveGame[`???`]`
+
+
+
 ## Type: ismenuitem
 
 As Text: Same as `ID`
@@ -4534,6 +4726,7 @@ As Text: Same as `ID`
 - ??? `Next[`???`]`
 - ??? `Previous[`???`]`
 - ??? `IsChecked[`???`]`
+- ??? `AsJSON[`???`]`
 
 ### Methods
 - `SetCheck[`???`]`
@@ -4549,6 +4742,7 @@ As Text: Same as `ID`
 - ??? `AddCommand[`???`]`
 - ??? `AddSeparator[`???`]`
 - ??? `AddSubMenu[`???`]`
+- [ismenuitem](#type-ismenuitem) `AddFromJSON[` `jsonobject` `]`
 - ??? `Children[`???`]`
 - ??? `FindChild[`???`]`
 - ??? `ChildCount[`???`]`
@@ -4558,6 +4752,8 @@ As Text: Same as `ID`
 - `AddCommand[`???`]`
 - `AddSeparator[`???`]`
 - `AddSubMenu[`???`]`
+- `AddFromJSON[` [jsonobject](#type-jsonobject) `]`
+- `AddFromJSON[` [jsonarray](#type-jsonarray) `]`
 
 
 
