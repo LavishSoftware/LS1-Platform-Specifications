@@ -698,6 +698,22 @@
                             "type": "bool"
                         }
                     ]
+                },
+                "Sources":{
+                    "forms": [
+                        {
+                            "type":"jsonarray",
+                            "minimumBuild":6900
+                        }
+                    ]
+                },
+                "Outputs":{
+                    "forms": [
+                        {
+                            "type":"jsonarray",
+                            "minimumBuild":6900
+                        }
+                    ]
                 }
             },
             "methods": {
@@ -926,6 +942,13 @@
                             "type": "string"
                         }
                     ]
+                },
+                "AsJSON":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
                 }
             },
             "methods": {
@@ -1015,6 +1038,13 @@
                     "forms": [
                         {
                             "type": "bool"
+                        }
+                    ]
+                },
+                "AsJSON":{
+                    "forms": [
+                        {
+                            "type":"string"
                         }
                     ]
                 }

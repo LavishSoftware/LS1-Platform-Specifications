@@ -2752,7 +2752,12 @@
               "description": "Retrieve a REG_DWORD, REG_SZ, or REG_EXPAND_SZ value from the system registry",
               "parameters": [
                 {
-                  "name": "hklm/hkcu"
+                  "name":"registry",
+                  "type":"string",
+                  "enum": [
+                    "hklm",
+                    "hkcu"
+                  ]
                 },
                 {
                   "name": "key"
@@ -2763,9 +2768,78 @@
               ]
             }
           ]
+        },
+        "EnvironmentVariable":{
+          "forms": [
+            {
+              "minimumBuild":6900,
+              "type":"unistring",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type":"string"
+                }
+              ]
+            }
+          ]
+        },
+        "EnvironmentVariables":{
+          "forms": [
+            {
+              "minimumBuild":6900,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "ExpandEnvironmentStrings":{
+          "forms": [
+            {
+              "minimumBuild":6900,
+              "type":"unistring",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"haystack"
+                }
+              ]
+            }
+          ]
         }
       },
       "methods": {
+        "SetEnvironmentVariable":{
+          "forms": [
+            {
+              "minimumBuild":6900  
+            },
+            {
+              "minimumBuild":6900,
+              "parameters": [
+                {
+                  "name":"name",
+                  "type":"string"
+                },
+                {
+                  "name":"value",
+                  "type":"string"
+                }
+              ]
+            }
+          ]
+        },
+        "CreateShortcut":{
+          "forms": [
+            {
+              "minimumBuild":6872,
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "json"
+                }
+              ]
+            }
+          ]
+        },
         "APICall": {
           "restricted": true
         },
@@ -3341,6 +3415,36 @@
             {
               "type": "string",
               "description": "The string representation of this path converted to an absolute path"
+            }
+          ]
+        },
+        "GetFiles":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":6900,
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "name":"wildcard"
+                }
+              ]
+            }
+          ]
+        },
+        "GetDirectories":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":6900,
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "name":"wildcard"
+                }
+              ]
             }
           ]
         }
@@ -5285,10 +5389,98 @@
               "description": "Sets a value within the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Set[1,\"{\\\"subValue\\\":12}\"]</tt>",
               "parameters": [
                 {
-                  "name": "#"
+                  "name": "key",
+                  "type":"uint"
                 },
                 {
-                  "name": "json"
+                  "name": "json",
+                  "type":"jsonvalue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetString":{
+          "forms":[
+            {
+              "description": "Sets a value within the array, to a new string value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"string",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetInteger":{
+          "forms":[
+            {
+              "description": "Sets a value within the array, to a new integer (int64) value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"int64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetNumber":{
+          "forms":[
+            {
+              "description": "Sets a value within the array, to a new number (float64) value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"float64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBool":{
+          "forms":[
+            {
+              "description": "Sets a value within the array, to a new boolean value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetNULL":{
+          "forms":[
+            {
+              "description": "Sets a value within the array, to a null value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
                 }
               ]
             }
@@ -5631,10 +5823,98 @@
               "description": "Sets a value within the object, to a new JSON value of any type, e.g. <tt>myJsonObject:Set[\"someObject\",\"{\\\"subValue\\\":12}\"]</tt>",
               "parameters": [
                 {
-                  "name": "valueName"
+                  "type":"string",
+                  "name": "key"
                 },
                 {
-                  "name": "json"
+                  "name": "newValue",
+                  "type":"jsonvalue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetString":{
+          "forms":[
+            {
+              "description": "Sets a value within the object, to a new string value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"key"
+                },
+                {
+                  "type":"string",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetInteger":{
+          "forms":[
+            {
+              "description": "Sets a value within the object, to a new integer (int64) value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"key"
+                },
+                {
+                  "type":"int64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetNumber":{
+          "forms":[
+            {
+              "description": "Sets a value within the object, to a new number (float64) value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"key"
+                },
+                {
+                  "type":"float64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBool":{
+          "forms":[
+            {
+              "description": "Sets a value within the object, to a new boolean value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"key"
+                },
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetNULL":{
+          "forms":[
+            {
+              "description": "Sets a value within the object, to a null value",
+              "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"key"
                 }
               ]
             }

@@ -461,6 +461,11 @@
                   {
                     "name": "jsonValue",
                     "type": "jsonobject"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -1979,7 +1984,13 @@
                 "description": "Loads an [[LGUI2:Element|Element]] file into the layer, returning an [[LGUI2:LS1:lgui2element|lgui2element]]-derived object type depending on the LavishGUI 2 element type. A JSON Object is expected in the file.",
                 "parameters": [
                   {
-                    "name": "filename"
+                    "name": "filename",
+                    "type":"string"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -1992,7 +2003,33 @@
                 "description": "Loads a JSON Array file containing [[LGUI2:Element|Elements]] into the layer, returning the number of elements loaded.",
                 "parameters": [
                   {
-                    "name": "filename"
+                    "name": "filename",
+                    "type":"string"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadReference":{
+            "forms": [
+              {
+                "minimumBuild":6900,
+                "type":"lgui2element",
+                "description": "Loads en Element, as defined by a referenced json object, into the layer",
+                "parameters": [
+                  {
+                    "name":"ref",
+                    "type":"jsonvalueref"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -2005,14 +2042,39 @@
                 "description": "Loads an Element, as defined by a json object, into the layer",
                 "parameters": [
                   {
-                    "name": "json"
+                    "name": "json",
+                    "type":"jsonobject"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
             ]
           },
-          "Binding": {},
-          "Bindings": {},
+          "Binding": {
+            "forms": [
+              {
+                "type":"lgui2inputbinding",
+                "parameters": [
+                  {
+                    "name":"name",
+                    "type":"string"
+                  }
+                ]
+              }
+            ]
+          },
+          "Bindings": {
+            "forms": [
+              {
+                "minimumBuild":6900,
+                "type":"jsonarray"
+              }
+            ]
+          },
           "DragDropItem":{
             "forms": [
               {
@@ -2031,6 +2093,11 @@
                 "parameters": [
                   {
                     "name": "filename"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -2043,6 +2110,11 @@
                 "parameters": [
                   {
                     "name": "filename"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -2055,6 +2127,29 @@
                 "parameters": [
                   {
                     "name": "json"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
+                  }
+                ]
+              }
+            ]
+          },
+          "LoadReference":{
+            "forms": [
+              {
+                "description": "Loads an Element, as defined by a referenced json object, into the layer",
+                "parameters": [
+                  {
+                    "name":"ref",
+                    "type":"jsonvalueref"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -2067,6 +2162,11 @@
                 "parameters": [
                   {
                     "name": "filename"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -2079,6 +2179,11 @@
                 "parameters": [
                   {
                     "name": "json"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -2605,7 +2710,27 @@
             ]
           },
           "InputHook": {},
-          "Tooltip": {}
+          "Tooltip": {},
+          "Context":{
+            "forms": [
+              {
+                "minimumBuild":6900,
+                "type": "weakref",
+                "parameters": [
+                  {
+                    "name": "source",
+                    "type":"string",
+                    "enum": [
+                      "self",
+                      "visual",
+                      "logical"
+                    ],
+                    "default":"logical"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "methods": {
           "SetName": {
@@ -3055,6 +3180,19 @@
                 "minimumBuild":6867
               }
             ]
+          },
+          "SetContext":{
+            "forms": [
+              {
+                "minimumBuild":6900,
+                "parameters": [
+                  {
+                    "name":"ref",
+                    "type":"weakref"
+                  }
+                ]
+              }
+            ]
           }
         },
         "asString": {
@@ -3224,7 +3362,13 @@
                 "description": "Sets new Content",
                 "parameters": [
                   {
-                    "name": "json"
+                    "name": "json",
+                    "type":"jsonvalue"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -3270,7 +3414,13 @@
                 "description": "Sets a new Header",
                 "parameters": [
                   {
-                    "name": "json"
+                    "name": "json",
+                    "type":"jsonvalue"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -3644,6 +3794,11 @@
                 "parameters": [
                   {
                     "name": "json"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -4222,13 +4377,34 @@
           "Value": {},
           "ValueBinding": {},
           "IsMultipleControlMode": {},
-          "Summary": {}
+          "Summary": {},
+          "IsComboMode":{
+            "forms": [
+              {
+                "type":"bool",
+                "minimumBuild":6875
+              }
+            ]
+          }
         },
         "methods": {
           "SetMultipleControlMode": {},
           "SetValue": {},
           "PullValueBinding": {},
-          "PushValueBinding": {}
+          "PushValueBinding": {},
+          "SetComboMode":{
+            "forms": [
+              {
+                "minimumBuild":6875,
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"value"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "asString": {
           "constant": "lgui2inputpicker"
@@ -4324,7 +4500,23 @@
         },
         "methods": {
           "SetHeaderEdge": {},
-          "SetHeader": {},
+          "SetHeader": {
+            "forms": [
+              {
+                "parameters":[
+                  {
+                    "name":"json",
+                    "type":"jsonvalue"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
+                  }             
+                ]   
+              }
+            ]
+          },
           "SetOpen": {
             "forms": [
               {
@@ -4355,11 +4547,17 @@
           "AddChild": {
             "forms": [
               {
-                "type": "...",
+                "type": "lgui2element",
                 "description": "Adds a child element to the panel, and returns the element",
                 "parameters": [
                   {
-                    "name": "json"
+                    "name": "json",
+                    "type":"jsonvalue"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -4373,7 +4571,13 @@
                 "description": "Adds a child element to the panel",
                 "parameters": [
                   {
-                    "name": "json"
+                    "name": "json",
+                    "type":"jsonvalue"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
                   }
                 ]
               }
@@ -4382,6 +4586,45 @@
         },
         "asString": {
           "constant": "lgui2panel"
+        }
+      },
+      "lgui2overlay":{
+        "baseType":"lgui2contentbase",
+        "minimumBuild":6872,
+        "members": {
+          "OverlayContainer":{
+            "forms": [
+              {
+                "type":"lgui2element"
+              }
+            ]
+          },
+          "Overlay":{
+            "forms": [
+              {
+                "type":"lgui2element"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetOverlay":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "name":"json",
+                    "type":"jsonvalue"
+                  },
+                  {
+                    "name":"context",
+                    "type":"weakref",
+                    "optional": true
+                  }
+                ]
+              }
+            ]
+          }
         }
       },
       "lgui2popup": {
@@ -5967,7 +6210,15 @@
               }
             ]
           },
-          "TextBinding": {}
+          "TextBinding": {},
+          "TextBindingUsesFocus":{
+            "forms": [
+              {
+                "type":"bool",
+                "minimumBuild":6875
+              }
+            ]
+          }
         },
         "methods": {
           "SetText": {
@@ -6007,7 +6258,20 @@
             ]
           },
           "PushTextBinding": {},
-          "PullTextBinding": {}
+          "PullTextBinding": {},
+          "SetTextBindingUsesFocus":{
+            "forms": [
+              {
+                "minimumBuild":6875,
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"value"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "asString": {
           "constant": "lgui2textbox"
@@ -6110,7 +6374,20 @@
           "SetWidthResizable": {},
           "SetAnchorOffset": {},
           "SetAnchorOffsetFactor": {},
-          "SetClipToParent": {}
+          "SetClipToParent": {},
+          "SetTitle":{
+            "forms": [
+              {
+                "minimumBuild":6872,
+                "parameters": [
+                  {
+                    "type":"jsonvalue",
+                    "name": "elementdefinition"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "asString": {
           "constant": "lgui2window"

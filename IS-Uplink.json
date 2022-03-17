@@ -273,6 +273,105 @@
                 }
             ]
         },
+        "Launch": {
+            "forms": [
+                {
+                    "minimumBuild":6900,
+                    "parameters": [
+                        {
+                            "type": "string",
+                            "name": "gamePath"
+                        },
+                        {
+                            "type": "string",
+                            "name": "gameExecutable"
+                        },
+                        {
+                            "type": "string",
+                            "name": "gameParameters",
+                            "optional": true
+                        },
+                        {
+                            "name": "startupOptions",
+                            "optional": true,
+                            "greedy": true,
+                            "parameterGroup": [
+                                {
+                                    "type": "string",
+                                    "constant": "-loader",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "none",
+                                                "minimum",
+                                                "moderate",
+                                                "standard",
+                                                "maximum"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"string",
+                                    "constant": "-nogameprofileparams"
+                                },
+                                {
+                                    "type":"string",
+                                    "constant": "-addparam",
+                                    "followingParameters": [
+                                        {
+                                            "type":"string",
+                                            "name": "value"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-startup",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "name": "command"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-prestartup",
+                                    "followingParameters": [
+                                        {
+                                            "type": "string",
+                                            "name": "command"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "constant": "-character",
+                                    "followingParameters": [
+                                        {
+                                            "type": "int64",
+                                            "name": "characterID"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type":"string",
+                                    "constant": "-loaderflags",
+                                    "followingParameters": [
+                                        {
+                                            "type":"string",
+                                            "name":"binary representation of flag changes"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
         "Open": {
             "forms": [
                 {
@@ -621,7 +720,7 @@
                 "Sessions": {
                     "forms": [
                         {
-                            "type": "int"
+                            "type": "uint"
                         }
                     ]
                 },

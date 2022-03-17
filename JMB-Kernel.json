@@ -399,6 +399,30 @@
                         }
                     ]
                 },
+                "Path":{
+                    "forms": [
+                        {
+                            "minimumBuild":6881,
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "Executable":{
+                    "forms": [
+                        {
+                            "minimumBuild":6881,
+                            "type":"unistring"
+                        }
+                    ]
+                },
+                "Parameters":{
+                    "forms": [
+                        {
+                            "minimumBuild":6881,
+                            "type":"unistring"
+                        }
+                    ]
+                },
                 "Metadata": {
                     "forms": [
                         {
@@ -484,6 +508,45 @@
                 "SetGameProfile": {
                     "forms": [
                         {
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetPath": {
+                    "forms": [
+                        {
+                            "minimumBuild":6881,
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetExecutable": {
+                    "forms": [
+                        {
+                            "minimumBuild":6881,
+                            "parameters": [
+                                {
+                                    "type": "string",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetParameters": {
+                    "forms": [
+                        {
+                            "minimumBuild":6881,
                             "parameters": [
                                 {
                                     "type": "string",

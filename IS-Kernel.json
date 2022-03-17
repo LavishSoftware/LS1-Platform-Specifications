@@ -1305,13 +1305,113 @@
               "type": "GDIWindow"
             }
           ]
+        },
+        "CurrentMaxFPS":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "type":"uint"
+            }
+          ]
+        },
+        "CurrentMaxFPSCalculate":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "type":"bool"
+            }
+          ]
+        },
+        "ForegroundMaxFPS":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "type":"uint"
+            }
+          ]
+        },
+        "ForegroundMaxFPSCalculate":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "type":"bool"
+            }
+          ]
+        },
+        "BackgroundMaxFPS":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "type":"uint"
+            }
+          ]
+        },
+        "BackgroundMaxFPSCalculate":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "type":"bool"
+            }
+          ]
         }
       },
       "methods": {
         "SetTaskbarAutoHide": {},
         "Screencap": {},
         "EnumWindows": {},
-        "EnumVisibleWindows": {}
+        "EnumVisibleWindows": {},
+        "SetForegroundMaxFPS":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetForegroundMaxFPSCalculate":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBackgroundMaxFPS":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBackgroundMaxFPSCalculate":{
+          "forms": [
+            {
+              "minimumBuild":6875,
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        }
       },
       "asString": {
         "member": "System"
@@ -3549,6 +3649,13 @@
             }
           ]
         },
+        "Reload":{
+          "forms": [
+            {
+              "minimumBuild":6875
+            }
+          ]
+        },
         "Remove": {
           "forms": [
             {
@@ -3972,11 +4079,14 @@
       "members": {
         "FeedName": {},
         "Feed": {},
-        "Permanent": {}
+        "Permanent": {},
+        "FeedNameBinding":{}
       },
       "methods": {
         "SetFeedName": {},
-        "SetPermanent": {}
+        "SetPermanent": {},
+        "PullFeedNameBinding":{},
+        "PushFeedNameBinding":{}
       },
       "asString": {
         "constant": "lgui2videofeed"
@@ -4255,9 +4365,77 @@
               ]
             }
           ]
-        }
+        },
+        "InstallFromCollection":{}
       },
       "asString": {"constant": "agentprovider"}
+    },
+    "dotnet":{
+      "minimumBuild":6900,
+      "members": {
+        "Ready":{
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
+        },
+        "Domains":{
+          "forms": [
+            {
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Domain":{
+          "forms":[
+            {
+              "type":"bool",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type":"string"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Execute":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "name":"name",
+                  "type":"string"
+                },
+                {
+                  "name":"executable",
+                  "type":"string"
+                },
+                {
+                  "greedy": true,
+                  "name": "params",
+                  "type":"string"
+                }
+              ]
+            }
+          ]
+        },
+        "Unload":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "name":"name",
+                  "type":"string"
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "topLevelObjects": {
@@ -4283,12 +4461,22 @@
     },
     "SettingXML": {},
     "InnerSpace": {
-      "restricted": true
+      "restricted": true,
+      "type":"innerspace"
     },
     "Localization": {},
     "NETObject": {
       "restricted": true
     },
-    "LavishSettings": {}
+    "LavishSettings": {},
+    "DotNet":{
+      "restricted": true,
+      "forms": [
+        {
+          "minimumBuild":6900,
+          "type": "dotnet"
+        }
+      ]
+    }
   }
 }
