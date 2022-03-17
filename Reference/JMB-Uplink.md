@@ -238,7 +238,7 @@ LavishScript base API
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Initializers
-- `int[` [int](#type-int) `value` `]`
+- `int[` <[int](#type-int) `value`=0> `]`
 
 
 ### Members
@@ -265,7 +265,7 @@ LavishScript base API
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Initializers
-- `uint[` [uint](#type-uint) `value` `]`
+- `uint[` <[uint](#type-uint) `value`=0> `]`
 
 
 ### Members
@@ -355,7 +355,7 @@ As Text: Same as `Hex`
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Initializers
-- `byte[` [byte](#type-byte) `value` `]`
+- `byte[` <[byte](#type-byte) `value`=0> `]`
 
 ### Members
 - [bool](#type-bool) `Between[` [byte](#type-byte) `,` [byte](#type-byte) `]`
@@ -374,7 +374,7 @@ As Text: Same as `Hex`
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Initializers
-- `bool[` [bool](#type-bool) `value` `]`
+- `bool[` <[bool](#type-bool) `value`=false> `]`
 
 As Text: TRUE (non-zero) or FALSE (zero)
 
@@ -405,7 +405,7 @@ none.
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Initializers
-- `mutablestring[` [string](#type-string) `value` `]`
+- `mutablestring[` <[string](#type-string) `value`=""> `]`
 
 ### Members
 - [string](#type-string) `String`: Retrieves the appropriate string object from this mutablestring
@@ -656,7 +656,7 @@ none.
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Initializers
-- `time[` [int](#type-int) `timestamp` `]`
+- `time[` <[int](#type-int) `timestamp`=0> `]`
 
 As Text: Same as `Time24`
 
@@ -891,6 +891,8 @@ none.
 - Base Type: [mutablestring](#type-mutablestring)
 - Persistent: No ([weakref](#type-weakref) not supported)
 
+### Initializers
+- `mutablefilepath[` <[string](#type-string) `value`=""> `]`
 
 
 ### Members
@@ -909,6 +911,8 @@ none.
 ## Type: file
 - Persistent: No ([weakref](#type-weakref) not supported)
 
+### Initializers
+- `file[` <[string](#type-string) `filePath`=""> `]`
 
 
 ### Members
@@ -1086,14 +1090,14 @@ none.
 - [uint](#type-uint) `Next[` `#` `]`: Retrieves the ID of the next valid element in the index, given an ID number
 - [sub-type](#type-sub-type) `Get[` `#` `]`: Retrieves the #th element in the index
 - [uint](#type-uint) `Insert[` ... [string](#type-string) `]`: Inserts an element in the index.  The parameters will be passed to the object initialization routine for the index sub-type, and an object will be created.  The returned value is the ID of the new element.  The index will be resized to fit the new object if necessary.
-- [mutablestring](#type-mutablestring) `Expand[` [begin](#type-begin) `#` `,` `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by spaces.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
-- [mutablestring](#type-mutablestring) `ExpandComma[` [begin](#type-begin) `#` `,` `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by commas.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
+- [mutablestring](#type-mutablestring) `Expand[` [uint](#type-uint) `beginNum` `,` [uint](#type-uint) `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by spaces.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
+- [mutablestring](#type-mutablestring) `ExpandComma[` [uint](#type-uint) `beginNum` `,` [uint](#type-uint) `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by commas.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON array representation of this index, with each element converted by using its AsJSON member
 
 ### Methods
-- `Shift[` [#](#type-#) `position` `,` [#](#type-#) `places` `]`: Makes room for # places elements at # position, by shifting toward index.Size. The index will not be implicitly Resized, and elements at the end of the index may be destroyed.
+- `Shift[` [uint](#type-uint) `position` `,` [uint](#type-uint) `places` `]`: Makes room for # places elements at # position, by shifting toward index.Size. The index will not be implicitly Resized, and elements at the end of the index may be destroyed.
 - `Sort[`???`]`
-- `Remove[` `#` `]`: Removes a single element from the index, by ID
+- `Remove[` [uint](#type-uint) `id` `]`: Removes a single element from the index, by ID
 - `RemoveByQuery[` [uint](#type-uint) `query_id` `]`: Erases any elements in the index matching the given [[LavishScript:Object_Queries|Query]]
 - `RemoveByQuery[` [uint](#type-uint) `query_id` `,` [bool](#type-bool) `remove_MATCHES` `]`: Erases any elements in the index that either match or do not match the given [[LavishScript:Object_Queries|Query]]
 - `Collapse`: Removes gaps in the index (from removal of elements) by shifting elements toward 1
@@ -1281,7 +1285,7 @@ As Text: JSON representation of the value
 - Base Type: [jsonvalue](#type-jsonvalue)
 
 ### Initializers
-- `jsonvaluecontainer[` [jsonvalue](#type-jsonvalue) `newValue` `]`
+- `jsonvaluecontainer[` <[jsonvalue](#type-jsonvalue) `newValue`=null> `]`
 
 As Text: JSON representation of the value
 
@@ -1303,7 +1307,7 @@ As Text: JSON representation of the value
 ## Type: jsonvalueref
 
 ### Initializers
-- `jsonvalueref[` [weakref](#type-weakref) `jsonValue` `]`
+- `jsonvalueref[` <[weakref](#type-weakref) `jsonValue`=null> `]`
 
 As Text: JSON representation of the referenced value
 
@@ -1954,7 +1958,6 @@ As Text: Same as `Name`
 - [jsonarray](#type-jsonarray) `KeyboardState`
 - [lgui2element](#type-lgui2element) `KeyboardFocusElement`: Retrieves the element with keyboard focus, if any
 - [lgui2element](#type-lgui2element) `MouseFocusElement`: Retrieves the element with mouse focus, if any
-- ??? `MouseOverElement[`???`]`
 - [lgui2element](#type-lgui2element) `MouseCaptureElement`: Retrieves the element with Mouse Capture, if any
 - [float](#type-float) `X`: The X coordinate of the top left corner of this layer
 - [float](#type-float) `Y`: The Y coordinate of the top left corner of this layer
@@ -2127,14 +2130,17 @@ As Text: "lgui2element"
 
 ## Type: lgui2elementref
 
+### Initializers
+- `lgui2elementref[` <[uint](#type-uint) `id`> `]`
+
 As Text: Same as `ID`
 
 ### Members
-- ??? `ID[`???`]`
-- ??? `Element[`???`]`
+- [uint](#type-uint) `ID`
+- [lgui2element](#type-lgui2element) `Element`
 
 ### Methods
-- `Set[`???`]`
+- `Set[` [uint](#type-uint) `id` `]`
 
 
 
@@ -2416,7 +2422,7 @@ As Text: "lgui2dragger"
 ## Type: lgui2dragin
 - Base Type: [lgui2contentbase](#type-lgui2contentbase)
 
-As Text: "lgui2dragger"
+As Text: "lgui2dragin"
 
 ### Members
 - [bool](#type-bool) `DraggedIn`: TRUE if a valid item is currently dragged in
@@ -2424,8 +2430,8 @@ As Text: "lgui2dragger"
 - [bool](#type-bool) `ValidateItem[` [jsonobject](#type-jsonobject) `item` `]`
 
 ### Methods
-- `SetAllowMove[` `TRUE/FALSE` `]`: Sets a new AllowMove value
-- `SetAllowResize[` `TRUE/FALSE` `]`: Sets a new AllowResize value
+- `SetDraggedIn[` [bool](#type-bool) `value` `]`: Sets a new DraggedIn value
+- `SetDragDropItemType[` [string](#type-string) `value` `]`: Sets a new DragDropItemType value
 
 
 
@@ -3292,7 +3298,7 @@ As Text: Same as `System`
 - [bool](#type-bool) `Foreground`: TRUE if the window is currently the active window on the system
 - [int](#type-int) `TextureMem`: Available texture memory, in megabytes
 - [float](#type-float) `FPS`: Sustained frames per second (calculated from the last 64 frames)
-- [GDIWindow](#type-GDIWindow) `Window`
+- [gdiwindow](#type-gdiwindow) `Window`
 - [uint](#type-uint) `CurrentMaxFPS`
 - [bool](#type-bool) `CurrentMaxFPSCalculate`
 - [uint](#type-uint) `ForegroundMaxFPS`
@@ -3782,8 +3788,8 @@ As Text: Same as `Language`
 - `SetString[` `category` `,` `name` `,` `value` `]`: Sets a localized string with the given name in the given category, creating both if necessary
 - `RemoveString[` `category` `,` `name` `]`: Removes a localized string with the given name from the given category
 - `RemoveCategory[` `category` `]`: Removes a given category (and any settings in it)
-- `ExportLanguage[` [language](#type-language) `name` `]`: Stores the current localization set (all categories and strings) as the given language (e.g. give a language name, not a filename)
-- `ImportLanguage[` [language](#type-language) `name` `]`: Imports a language into the current localization set, replacing any existing strings with those in the new language
+- `ExportLanguage[` [string](#type-string) `languageName` `]`: Stores the current localization set (all categories and strings) as the given language (e.g. give a language name, not a filename)
+- `ImportLanguage[` [string](#type-string) `languageName` `]`: Imports a language into the current localization set, replacing any existing strings with those in the new language
 
 
 
