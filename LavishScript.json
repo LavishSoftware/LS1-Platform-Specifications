@@ -593,7 +593,9 @@
             "parameters": [
               {
                 "name": "value",
-                "type": "int"
+                "type": "int",
+                "optional": true,
+                "default":0
               }
             ]
           }
@@ -746,7 +748,9 @@
             "parameters": [
               {
                 "name": "value",
-                "type": "uint"
+                "type": "uint",
+                "optional": true,
+                "default":0
               }
             ]
           }
@@ -1309,7 +1313,9 @@
             "parameters": [
               {
                 "name": "value",
-                "type": "byte"
+                "type": "byte",
+                "optional": true,
+                "default":0
               }
             ]
           }
@@ -1378,7 +1384,9 @@
             "parameters": [
               {
                 "name": "value",
-                "type": "bool"
+                "type": "bool",
+                "optional": true,
+                "default":false
               }
             ]
           }
@@ -1475,7 +1483,9 @@
             "parameters": [
               {
                 "name": "value",
-                "type": "string"
+                "type": "string",
+                "optional": true,
+                "default":""
               }
             ]
           }
@@ -2554,7 +2564,9 @@
             "parameters": [
               {
                 "name": "timestamp",
-                "type": "int"
+                "type": "int",
+                "optional": true,
+                "default":0
               }
             ]
           }
@@ -3452,7 +3464,7 @@
       "persistent": false
     },
     "mutablefilepath": {
-      "baseType": "mutablestring",
+      "baseType": "mutablestring",      
       "members": {
         "PathExists": {},
         "FileExists": {},
@@ -3464,7 +3476,20 @@
         "MakeAbsolute": {},
         "MakeSubdirectory": {}
       },
-      "initializer": {},
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "type":"string",
+                "name":"value",
+                "optional": true,
+                "default":""
+              }
+            ]
+          }
+        ]
+      },
       "persistent": false,
       "asString": {}
     },
@@ -3665,7 +3690,20 @@
         "Delete": {},
         "Rename": {}
       },
-      "initializer": {},
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "type":"string",
+                "name":"filePath",
+                "optional": true,
+                "default":""
+              }
+            ]
+          }
+        ]
+      },
       "persistent": false,
       "asString": {}
     },
@@ -4082,6 +4120,7 @@
     },
     "index": {
       "baseType": "objectcontainer",
+      "usesSubType": true,
       "members": {
         "Next": {
           "forms": [
@@ -4130,11 +4169,12 @@
               "description": "Retrieves the text representation of each existing object in the index as quoted parameters, separated by spaces.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.",
               "parameters": [
                 {
-                  "name": "#",
-                  "type": "begin"
+                  "name": "beginNum",
+                  "type": "uint"
                 },
                 {
-                  "name": "length"
+                  "name": "length",
+                  "type":"uint"
                 }
               ]
             }
@@ -4147,11 +4187,12 @@
               "description": "Retrieves the text representation of each existing object in the index as quoted parameters, separated by commas.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.",
               "parameters": [
                 {
-                  "name": "#",
-                  "type": "begin"
+                  "name": "beginNum",
+                  "type": "uint"
                 },
                 {
-                  "name": "length"
+                  "name": "length",
+                  "type":"uint"
                 }
               ]
             }
@@ -4174,11 +4215,11 @@
               "parameters": [
                 {
                   "name": "position",
-                  "type": "#"
+                  "type": "uint"
                 },
                 {
                   "name": "places",
-                  "type": "#"
+                  "type": "uint"
                 }
               ]
             }
@@ -4191,7 +4232,8 @@
               "description": "Removes a single element from the index, by ID",
               "parameters": [
                 {
-                  "name": "#"
+                  "name": "id",
+                  "type":"uint"
                 }
               ]
             }
@@ -4319,6 +4361,7 @@
     },
     "collection": {
       "baseType": "objectcontainer",
+      "usesSubType": true,
       "members": {
         "Element": {
           "forms": [
@@ -4472,6 +4515,7 @@
     },
     "stack": {
       "baseType": "objectcontainer",
+      "usesSubType": true,
       "members": {
         "Top": {
           "forms": [
@@ -5209,7 +5253,9 @@
             "parameters": [
               {
                 "name": "newValue",
-                "type": "jsonvalue"
+                "type": "jsonvalue",
+                "optional": true,
+                "default":null
               }
             ]
           }
@@ -5249,7 +5295,9 @@
             "parameters": [
               {
                 "name": "jsonValue",
-                "type": "weakref"
+                "type": "weakref",
+                "optional": true,
+                "default":null
               }
             ]
           }

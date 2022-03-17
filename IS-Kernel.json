@@ -1302,7 +1302,7 @@
         "Window": {
           "forms": [
             {
-              "type": "GDIWindow"
+              "type": "gdiwindow"
             }
           ]
         },
@@ -3987,8 +3987,8 @@
               "description": "Stores the current localization set (all categories and strings) as the given language (e.g. give a language name, not a filename)",
               "parameters": [
                 {
-                  "name": "name",
-                  "type": "language"
+                  "name": "languageName",
+                  "type": "string"
                 }
               ]
             }
@@ -4000,8 +4000,8 @@
               "description": "Imports a language into the current localization set, replacing any existing strings with those in the new language",
               "parameters": [
                 {
-                  "name": "name",
-                  "type": "language"
+                  "name": "languageName",
+                  "type": "string"
                 }
               ]
             }

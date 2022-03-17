@@ -1896,7 +1896,6 @@
               }
             ]
           },
-          "MouseOverElement": {},
           "MouseCaptureElement": {
             "forms": [
               {
@@ -3200,12 +3199,48 @@
         }
       },
       "lgui2elementref": {
+        "initializer": {
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "name":"id",
+                  "type":"uint",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        },
         "members": {
-          "ID": {},
-          "Element": {}
+          "ID": {
+            "forms": [
+              {
+                "type":"uint"                
+              }
+            ]
+          },
+          "Element": {
+            "forms": [
+              {
+                "type":"lgui2element"
+              }
+            ]
+          }
         },
         "methods": {
-          "Set": {}
+          "Set": {
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"uint",
+                    "name":"id"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "asString": {
           "member": "ID"
@@ -4255,25 +4290,27 @@
           }
         },
         "methods": {
-          "SetAllowMove": {
+          "SetDraggedIn": {
             "forms": [
               {
-                "description": "Sets a new AllowMove value",
+                "description": "Sets a new DraggedIn value",
                 "parameters": [
                   {
-                    "name": "TRUE/FALSE"
+                    "name":"value",
+                    "type":"bool"
                   }
                 ]
               }
             ]
           },
-          "SetAllowResize": {
+          "SetDragDropItemType": {
             "forms": [
               {
-                "description": "Sets a new AllowResize value",
+                "description": "Sets a new DragDropItemType value",
                 "parameters": [
                   {
-                    "name": "TRUE/FALSE"
+                    "type":"string",
+                    "name": "value"
                   }
                 ]
               }
@@ -4281,7 +4318,7 @@
           }
         },
         "asString": {
-          "constant": "lgui2dragger"
+          "constant": "lgui2dragin"
         }
       },
       "lgui2expander": {
