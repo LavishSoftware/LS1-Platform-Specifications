@@ -445,6 +445,40 @@
   "types": {
     "int": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int",
+              "description": "Returns this int, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "int",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int",
+              "description": "Returns this int, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "int",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
         "Float": {
           "forms": [
             {
@@ -607,6 +641,40 @@
     },
     "uint": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "uint",
+              "description": "Returns this uint, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "uint",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "uint",
+              "description": "Returns this uint, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "uint",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
         "Float": {
           "forms": [
             {
@@ -1239,6 +1307,40 @@
     },
     "byte": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "byte",
+              "description": "Returns this byte, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "byte",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "byte",
+              "description": "Returns this byte, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "byte",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },        
         "Between": {
           "forms": [
             {
@@ -1495,6 +1597,40 @@
     },
     "float": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float",
+              "description": "Returns this float, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "float",
+                  "optional": true,
+                  "default": 1.0
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float",
+              "description": "Returns this float, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "float",
+                  "optional": true,
+                  "default": 1.0
+                }
+              ]
+            }
+          ]
+        },
         "Deci": {
           "forms": [
             {
@@ -1655,6 +1791,40 @@
     },
     "int64": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Returns this int64, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "int64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Returns this int64, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "int64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
         "Float": {
           "forms": [
             {
@@ -1779,6 +1949,40 @@
     },
     "float64": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Returns this float64, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "float64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Returns this float64, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "float64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
         "Deci": {
           "forms": [
             {
@@ -1946,6 +2150,40 @@
     },
     "float64ptr": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Returns this float64, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "float64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Returns this float64, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "float64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
         "Deci": {},
         "Centi": {},
         "Milli": {},
@@ -1987,6 +2225,40 @@
     },
     "int64ptr": {
       "members": {
+        "Inc":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Returns this int64, plus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "int64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Dec":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Returns this int64, minus a given amount",
+              "parameters": [
+                {
+                  "name": "expression",
+                  "type": "int64",
+                  "optional": true,
+                  "default": 1
+                }
+              ]
+            }
+          ]
+        },        
         "Float": {},
         "Hex": {},
         "LeadingZeroes": {},
@@ -2855,7 +3127,36 @@
         "APICall": {
           "restricted": true
         },
-        "SetClipboardText": {}
+        "SetClipboardText": {},
+        "LoadDLL":{
+          "forms": [
+            {
+              "minimumBuild":6923,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "filePath"
+                },
+                {
+                  "type":"string",
+                  "name":"flags",
+                  "optional": true,
+                  "greedy": true,
+                  "enum": [
+                    "+imports",
+                    "+exports",
+                    "+direct",
+                    "+disable",
+                    "-imports",
+                    "-exports",
+                    "-direct",
+                    "-disable"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       },
       "persistent": false,
       "asString": {}
@@ -4986,7 +5287,7 @@
           "forms": [
             {
               "type": "string",
-              "description": "The type of JSON object stored; one of: null, object, string, number, array, true, false, integer. Note that while the JSON standard does not differentiate between floating-point numbers and integers, LavishScript does"
+              "description": "The type of JSON object stored; one of: null, object, string, number, array, boolean, integer. Note that while the JSON standard does not differentiate between floating-point numbers and integers, LavishScript does"
             }
           ]
         },
@@ -5340,6 +5641,105 @@
             }
           ]
         },
+        "GetNumber": {
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Gets a value stored within this array, by its index (1-based)",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "GetInteger": {
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Gets a value stored within this array, by its index (1-based)",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "GetBool": {
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "bool",
+              "description": "Gets a value stored within this array, by its index (1-based)",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "minimumBuild":6921,
+              "type": "bool",
+              "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects",
+              "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
         "Size": {
           "forms": [
             {
@@ -5443,6 +5843,36 @@
                 {
                   "name": "json",
                   "type":"jsonvalue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetByRef":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"jsonvalueref",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "AddByRef":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name":"newValue"
                 }
               ]
             }
@@ -5689,6 +6119,105 @@
             }
           ]
         },
+        "GetNumber": {
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Gets a value stored within this object, by its name",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "minimumBuild":6921,
+              "type": "float64",
+              "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays",
+              "parameters": [
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "GetInteger": {
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Gets a value stored within this object, by its name",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "minimumBuild":6921,
+              "type": "int64",
+              "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays",
+              "parameters": [
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "GetBool": {
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "type": "bool",
+              "description": "Gets a value stored within this object, by its name",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "minimumBuild":6921,
+              "type": "bool",
+              "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays",
+              "parameters": [
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
         "Type": {
           "forms": [
             {
@@ -5882,6 +6411,23 @@
             }
           ]
         },
+        "SetByRef":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"key"
+                },
+                {
+                  "type":"jsonvalueref",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
         "SetString":{
           "forms":[
             {
@@ -6043,6 +6589,40 @@
                 }
               ]
             }
+          ]
+        },
+        "Merge":{
+          "forms": [
+            {
+              "minimumBuild":6921,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"jsonObject"
+                },
+                {
+                  "type":"bool",
+                  "name": "replace",
+                  "optional": true,
+                  "default":true
+                }
+              ]
+            },
+            {
+              "minimumBuild":6921,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name":"jsonObject"
+                },
+                {
+                  "type":"bool",
+                  "name": "replace",
+                  "optional": true,
+                  "default":true
+                }
+              ]
+            }            
           ]
         }
       },

@@ -3862,6 +3862,13 @@
               "description": "Set window title"
             }
           ]
+        },
+        "SetForegroundWindow":{
+          "forms": [
+            {
+              "minimumBuild":6921
+            }
+          ]
         }
       },
       "initializer": {

@@ -2,7 +2,20 @@
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
     "name": "Joe Multiboxer Session",
     "types":{
-        "jmbsession":{}
+        "jmbsession":{
+            "members": {
+
+            },
+            "methods": {
+                "DisableDPIAwareness":{
+                    "forms": [
+                        {
+                            "minimumBuild":6921
+                        }
+                    ]
+                }
+            }
+        }
     },
     "topLevelObjects": {
         "JMBSession":{

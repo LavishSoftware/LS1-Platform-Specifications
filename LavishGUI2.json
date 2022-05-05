@@ -2729,6 +2729,14 @@
                 ]
               }
             ]
+          },
+          "ContextBinding":{
+            "forms": [
+              {
+                "minimumBuild":6921,
+                "type":"lgui2databinding"
+              }
+            ]
           }
         },
         "methods": {
@@ -3190,6 +3198,13 @@
                     "type":"weakref"
                   }
                 ]
+              }
+            ]
+          },
+          "PullContextBinding":{
+            "forms": [
+              {
+                "minimumBuild":6921
               }
             ]
           }
@@ -4453,17 +4468,460 @@
           "constant": "lgui2listbox"
         }
       },
+      "lgui2map": {
+        "baseType": "lgui2itemlist",
+        "minimumBuild":6927,
+        "members": {
+          "VirtualCenterMode":{
+            "forms": [
+              {
+                "type":"bool",
+                "description": "TRUE if the view's virtual alignment mode is Center. FALSE if it is Corner (based on Virtual Origin)."
+              }
+            ]
+          },
+          "VirtualCenter":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "The view's virtual center location, in the form 1.234,5.678"
+              }
+            ]
+          },
+          "VirtualCenterX":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's virtual center location X-value"
+              }
+            ]            
+          },
+          "VirtualCenterY":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's virtual center location Y-value"
+              }
+            ]            
+          },          
+          "VirtualOrigin":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "The view's virtual origin (top left) location, in the form 1.234,5.678"
+              }
+            ]
+          },
+          "VirtualLeft":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's left-most virtual X-coordinate"
+              }
+            ]
+          },
+          "VirtualRight":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's right-most virtual X-coordinate"
+              }
+            ]
+          },
+          "VirtualTop":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's top-most virtual Y-coordinate"
+              }
+            ]
+          },
+          "VirtualBottom":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's bottom-most virtual Y-coordinate"
+              }
+            ]
+          },
+    
+          "VirtualScaleMode":{
+            "forms": [
+              {
+                "type":"bool",
+                "description": "TRUE if the view's virtual size mode is to Scale. FALSE if it is Fixed Size."
+              }
+            ]
+          },
+          "VirtualSize":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "The view's virtual size, in the form 1.234,5.678"
+              }
+            ]
+          },
+          "VirtualWidth":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's virtual width"
+              }
+            ]
+          },
+          "VirtualHeight":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's virtual height"
+              }
+            ]
+          },
+    
+          "VirtualScale":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "The view's virtual scale, in the form 1.234,5.678"
+              }
+            ]
+          },
+          "VirtualScaleX":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's virtual X-scale"
+              }
+            ]
+          },
+          "VirtualScaleY":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The view's virtual Y-scale"
+              }
+            ]
+          },
+          "ScreenToVirtual":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "Transforms a Screen position (e.g. cursor location, ${Mouse}) to a Virtual position in the view; result in the form 1.234,5.678",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name": "X"
+                  },
+                  {
+                    "type":"float",
+                    "name": "Y"
+                  }
+                ]
+              }
+            ]
+          },
+          "VirtualToScreen":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "Transforms a Virtual position in the view to a Screen position (e.g. cursor location, ${Mouse}); result in the form 1.234,5.678",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name": "X"
+                  },
+                  {
+                    "type":"float",
+                    "name": "Y"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetVirtualCenter":{
+            "forms": [
+              {
+                "description": "Sets the view's Virtual center point, and changes the Virtual Alignment mode to Center",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name":"X"
+                  },
+                  {
+                    "type":"float",
+                    "name": "Y"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVirtualOrigin":{
+            "forms": [
+              {
+                "description": "Sets the view's Virtual origin (top left) point, and changes the Virtual Alignment mode to Corner",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name":"X"
+                  },
+                  {
+                    "type":"float",
+                    "name": "Y"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVirtualSize":{
+            "forms": [
+              {
+                "description": "Sets the view's Virtual size, and changes the Virtual size mode to Fixed Size",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name":"newWidth"
+                  },
+                  {
+                    "type":"float",
+                    "name": "newHeight"
+                  }
+                ]
+              },
+              {
+                "description": "Sets the view's Virtual size, and changes the Virtual size mode to Fixed Size",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name": "newWidthAndHeight"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVirtualScale":{
+            "forms": [
+              {
+                "description": "Sets the view's Virtual scale, and changes the Virtual size mode to Scale",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name":"scaleX"
+                  },
+                  {
+                    "type":"float",
+                    "name": "scaleY"
+                  }
+                ]
+              },
+              {
+                "description": "Sets the view's Virtual scale, and changes the Virtual size mode to Scale",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name": "scaleXandY"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2map"
+        }
+      },
+      "lgui2mapitemview": {
+        "baseType": "lgui2itemview",
+        "members": {
+          "VirtualCenterMode":{
+            "forms": [
+              {
+                "type":"bool",
+                "description": "TRUE if the item's virtual alignment mode is Center. FALSE if it is Corner (based on Virtual Origin)."
+              }
+            ]
+          },
+          "VirtualCenter":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "The item's virtual center location, in the form 1.234,5.678"
+              }
+            ]
+          },
+          "VirtualCenterX":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's virtual center location X-value"
+              }
+            ]            
+          },
+          "VirtualCenterY":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's virtual center location Y-value"
+              }
+            ]            
+          },          
+          "VirtualOrigin":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "The item's virtual origin (top left) location, in the form 1.234,5.678"
+              }
+            ]
+          },
+          "VirtualLeft":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's left-most virtual X-coordinate"
+              }
+            ]
+          },
+          "VirtualRight":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's right-most virtual X-coordinate"
+              }
+            ]
+          },
+          "VirtualTop":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's top-most virtual Y-coordinate"
+              }
+            ]
+          },
+          "VirtualBottom":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's bottom-most virtual Y-coordinate"
+              }
+            ]
+          },
+          "VirtualSize":{
+            "forms": [
+              {
+                "type":"string",
+                "description": "The item's virtual size, in the form 1.234,5.678"
+              }
+            ]
+          },
+          "VirtualWidth":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's virtual width"
+              }
+            ]
+          },
+          "VirtualHeight":{
+            "forms": [
+              {
+                "type":"float",
+                "description": "The item's virtual height"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetVirtualCenter":{
+            "forms": [
+              {
+                "description": "Sets the item's Virtual center point, and changes the Virtual Alignment mode to Center",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name":"X"
+                  },
+                  {
+                    "type":"float",
+                    "name": "Y"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVirtualOrigin":{
+            "forms": [
+              {
+                "description": "Sets the item's Virtual origin (top left) point, and changes the Virtual Alignment mode to Corner",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name":"X"
+                  },
+                  {
+                    "type":"float",
+                    "name": "Y"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVirtualSize":{
+            "forms": [
+              {
+                "description": "Sets the item's Virtual size",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name":"newWidth"
+                  },
+                  {
+                    "type":"float",
+                    "name": "newHeight"
+                  }
+                ]
+              },
+              {
+                "description": "Sets the item's Virtual size",
+                "parameters": [
+                  {
+                    "type":"float",
+                    "name": "newWidthAndHeight"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant": "lgui2mapitemview"
+        }
+      },
       "lgui2objectview": {
         "baseType": "lgui2contentbase",
         "members": {
           "Object": {},
           "Property": {},
-          "PropertyNames": {}
+          "PropertyNames": {},
+          "ObjectBinding":{
+            "forms": [
+              {
+                "minimumBuild":6921
+              }
+            ]
+          }
         },
         "methods": {
           "ClearProperties": {},
           "AddProperty": {},
-          "RemoveProperty": {}
+          "RemoveProperty": {},
+          "PullObjectBinding":{
+            "forms": [
+              {
+                "minimumBuild":6921
+              }
+            ]
+          }
         },
         "asString": {
           "constant": "lgui2objectview"
@@ -5565,6 +6023,22 @@
                 "description": "Actual scrollable height of the viewed contents"
               }
             ]
+          },
+          "HorizontalContentAlignment":{
+            "forms": [
+              {
+                "minimumBuild":6921,
+                "type":"elgui2horizontalalignment"
+              }
+            ]
+          },
+          "VerticalContentAlignment":{
+            "forms": [
+              {
+                "minimumBuild":6921,
+                "type":"elgui2verticalalignment"
+              }
+            ]
           }
         },
         "methods": {
@@ -5608,6 +6082,30 @@
                   },
                   {
                     "name": "height"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetHorizontalContentAlignment":{
+            "forms": [
+              {
+                "minimumBuild":6921,
+                "parameters": [
+                  {
+                    "type":"elgui2horizontalalignment"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetVerticalContentAlignment":{
+            "forms": [
+              {
+                "minimumBuild":6921,
+                "parameters": [
+                  {
+                    "type":"elgui2verticalalignment"
                   }
                 ]
               }

@@ -699,6 +699,14 @@
                         }
                     ]
                 },
+                "DefaultSkin":{
+                    "forms": [
+                        {
+                            "minimumBuild":6923,
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
                 "AddCharacter": {
                     "forms": [
                         {
@@ -859,6 +867,23 @@
                             "type": "jsonobject",
                             "minimumBuild": 6786,
                             "description": "JSON representation of the Slot"
+                        }
+                    ]
+                },
+                "Metadata":{
+                    "forms": [
+                        {
+                            "minimumBuild":6924,
+                            "type":"jsonobject",
+                            "parameters": [
+                                {
+                                    "type":"bool",
+                                    "name": "autoCreate",
+                                    "description": "Automatically create Metadata object for the Slot, if it does not already exist",
+                                    "optional": true,
+                                    "default":false
+                                }
+                            ]
                         }
                     ]
                 },
