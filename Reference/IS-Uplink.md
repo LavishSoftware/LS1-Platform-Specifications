@@ -300,6 +300,8 @@ LavishScript base API
 
 
 ### Members
+- [int](#type-int) `Inc[` <[int](#type-int) `expression`=1> `]`: Returns this int, plus a given amount
+- [int](#type-int) `Dec[` <[int](#type-int) `expression`=1> `]`: Returns this int, minus a given amount
 - [float](#type-float) `Float`: This number, converted to a float
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` [uint](#type-uint) `digits` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
@@ -327,6 +329,8 @@ LavishScript base API
 
 
 ### Members
+- [uint](#type-uint) `Inc[` <[uint](#type-uint) `expression`=1> `]`: Returns this uint, plus a given amount
+- [uint](#type-uint) `Dec[` <[uint](#type-uint) `expression`=1> `]`: Returns this uint, minus a given amount
 - [float](#type-float) `Float`: This number, converted to a float
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` `#` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
@@ -416,6 +420,8 @@ As Text: Same as `Hex`
 - `byte[` <[byte](#type-byte) `value`=0> `]`
 
 ### Members
+- [byte](#type-byte) `Inc[` <[byte](#type-byte) `expression`=1> `]`: Returns this byte, plus a given amount
+- [byte](#type-byte) `Dec[` <[byte](#type-byte) `expression`=1> `]`: Returns this byte, minus a given amount
 - [bool](#type-bool) `Between[` [byte](#type-byte) `,` [byte](#type-byte) `]`
 - ??? `Equal[`???`]`
 
@@ -483,6 +489,8 @@ none.
 
 
 ### Members
+- [float](#type-float) `Inc[` <[float](#type-float) `expression`=1.0> `]`: Returns this float, plus a given amount
+- [float](#type-float) `Dec[` <[float](#type-float) `expression`=1.0> `]`: Returns this float, minus a given amount
 - [string](#type-string) `Deci`: The value of this float, to the nearest tenth
 - [string](#type-string) `Centi`: The value of this float, to the nearest hundredth
 - [string](#type-string) `Milli`: The value of this float, to the nearest thousandth
@@ -508,6 +516,8 @@ none.
 
 
 ### Members
+- [int64](#type-int64) `Inc[` <[int64](#type-int64) `expression`=1> `]`: Returns this int64, plus a given amount
+- [int64](#type-int64) `Dec[` <[int64](#type-int64) `expression`=1> `]`: Returns this int64, minus a given amount
 - [float](#type-float) `Float`: This number, converted to a float (NOTE: Float is only accurate to 32 bits of precision)
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` `#` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
@@ -529,6 +539,8 @@ none.
 
 
 ### Members
+- [float64](#type-float64) `Inc[` <[float64](#type-float64) `expression`=1> `]`: Returns this float64, plus a given amount
+- [float64](#type-float64) `Dec[` <[float64](#type-float64) `expression`=1> `]`: Returns this float64, minus a given amount
 - [string](#type-string) `Deci`: The value of this float, to the nearest tenth
 - [string](#type-string) `Centi`: The value of this float, to the nearest hundredth
 - [string](#type-string) `Milli`: The value of this float, to the nearest thousandth
@@ -565,6 +577,8 @@ none.
 
 
 ### Members
+- [float64](#type-float64) `Inc[` <[float64](#type-float64) `expression`=1> `]`: Returns this float64, plus a given amount
+- [float64](#type-float64) `Dec[` <[float64](#type-float64) `expression`=1> `]`: Returns this float64, minus a given amount
 - ??? `Deci[`???`]`
 - ??? `Centi[`???`]`
 - ??? `Milli[`???`]`
@@ -620,6 +634,8 @@ none.
 
 
 ### Members
+- [int64](#type-int64) `Inc[` <[int64](#type-int64) `expression`=1> `]`: Returns this int64, plus a given amount
+- [int64](#type-int64) `Dec[` <[int64](#type-int64) `expression`=1> `]`: Returns this int64, minus a given amount
 - ??? `Float[`???`]`
 - ??? `Hex[`???`]`
 - ??? `LeadingZeroes[`???`]`
@@ -793,6 +809,7 @@ As Text: Same as `Time24`
 - `APICall[`???`]`
   - Restricted: Yes
 - `SetClipboardText[`???`]`
+- `LoadDLL[` [string](#type-string) `filePath` `,` <"+imports"|"+exports"|"+direct"|"+disable"|"-imports"|"-exports"|"-direct"|"-disable"> `]`
 
 
 
@@ -1311,7 +1328,7 @@ As Text: JSON representation of the value
 - [string](#type-string) `AsString`: The contained value as a string
 - [unistring](#type-unistring) `AsJSON[` <"multiline"> `]`: The contained value as multiline JSON text. multiline is literal, e.g. ${MyValue.AsJSON[multiline]}
 - [string](#type-string) `AsJSON`: The contained value as single-line JSON text
-- [string](#type-string) `Type`: The type of JSON object stored; one of: null, object, string, number, array, true, false, integer. Note that while the JSON standard does not differentiate between floating-point numbers and integers, LavishScript does
+- [string](#type-string) `Type`: The type of JSON object stored; one of: null, object, string, number, array, boolean, integer. Note that while the JSON standard does not differentiate between floating-point numbers and integers, LavishScript does
 - [object](#type-object) `Value`: The contained value
 
 ### Methods
@@ -1391,6 +1408,12 @@ As Text: JSON representation of the array
 ### Members
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [...](#type-...) `Get[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
+- [float64](#type-float64) `GetNumber[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [int64](#type-int64) `GetInteger[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
+- [int64](#type-int64) `GetInteger[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [bool](#type-bool) `GetBool[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
+- [bool](#type-bool) `GetBool[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
 - [uint](#type-uint) `Size`: Allocated capacity of the array
 - [uint](#type-uint) `Used`: Total number of values currently in the array
 - [string](#type-string) `Type`
@@ -1403,6 +1426,8 @@ As Text: JSON representation of the array
 - `Clear`: Clears all values from the array
 - `Set[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
 - `Set[` [uint](#type-uint) `key` `,` [jsonvalue](#type-jsonvalue) `json` `]`: Sets a value within the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Set[1,"{\"subValue\":12}"]</tt>
+- `SetByRef[` [uint](#type-uint) `key` `,` [jsonvalueref](#type-jsonvalueref) `newValue` `]`
+- `AddByRef[` [jsonvalueref](#type-jsonvalueref) `newValue` `]`
 - `SetString[` [uint](#type-uint) `key` `,` [string](#type-string) `newValue` `]`: Sets a value within the array, to a new string value
 - `SetInteger[` [uint](#type-uint) `key` `,` [int64](#type-int64) `newValue` `]`: Sets a value within the array, to a new integer (int64) value
 - `SetNumber[` [uint](#type-uint) `key` `,` [float64](#type-float64) `newValue` `]`: Sets a value within the array, to a new number (float64) value
@@ -1428,6 +1453,12 @@ As Text: JSON representation of the object
 ### Members
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [...](#type-...) `Get[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
+- [float64](#type-float64) `GetNumber[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [int64](#type-int64) `GetInteger[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
+- [int64](#type-int64) `GetInteger[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [bool](#type-bool) `GetBool[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
+- [bool](#type-bool) `GetBool[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
 - [string](#type-string) `Type`
 - [string](#type-string) `AsString`
 - [unistring](#type-unistring) `AsJSON[` <"multiline"> `]`
@@ -1445,6 +1476,7 @@ As Text: JSON representation of the object
 - `Clear`: Clears all values from the object
 - `Set[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
 - `Set[` [string](#type-string) `key` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`: Sets a value within the object, to a new JSON value of any type, e.g. <tt>myJsonObject:Set["someObject","{\"subValue\":12}"]</tt>
+- `SetByRef[` [string](#type-string) `key` `,` [jsonvalueref](#type-jsonvalueref) `newValue` `]`
 - `SetString[` [string](#type-string) `key` `,` [string](#type-string) `newValue` `]`: Sets a value within the object, to a new string value
 - `SetInteger[` [string](#type-string) `key` `,` [int64](#type-int64) `newValue` `]`: Sets a value within the object, to a new integer (int64) value
 - `SetNumber[` [string](#type-string) `key` `,` [float64](#type-float64) `newValue` `]`: Sets a value within the object, to a new number (float64) value
@@ -1455,6 +1487,8 @@ As Text: JSON representation of the object
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the object
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
 - `ForEach[` [string](#type-string) `command` `]`: For each value in the object, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `Merge[` [string](#type-string) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
+- `Merge[` [jsonvalueref](#type-jsonvalueref) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 
 
 
@@ -2140,6 +2174,7 @@ As Text: "lgui2element"
 - ??? `InputHook[`???`]`
 - ??? `Tooltip[`???`]`
 - [weakref](#type-weakref) `Context[` "self"|"visual"|"logical" `]`
+- [lgui2databinding](#type-lgui2databinding) `ContextBinding`
 
 ### Methods
 - `SetName[` `value` `]`: Assigns a new value to the Name
@@ -2187,6 +2222,7 @@ As Text: "lgui2element"
 - `SetDragDropItem[` [jsonobject](#type-jsonobject) `]`
 - `UnsetDragDropItem`
 - `SetContext[` [weakref](#type-weakref) `ref` `]`
+- `PullContextBinding`
 
 
 
@@ -2558,6 +2594,68 @@ none.
 none.
 
 
+## Type: lgui2map
+- Base Type: [lgui2itemlist](#type-lgui2itemlist)
+
+As Text: "lgui2map"
+
+### Members
+- [bool](#type-bool) `VirtualCenterMode`: TRUE if the view's virtual alignment mode is Center. FALSE if it is Corner (based on Virtual Origin).
+- [string](#type-string) `VirtualCenter`: The view's virtual center location, in the form 1.234,5.678
+- [float](#type-float) `VirtualCenterX`: The view's virtual center location X-value
+- [float](#type-float) `VirtualCenterY`: The view's virtual center location Y-value
+- [string](#type-string) `VirtualOrigin`: The view's virtual origin (top left) location, in the form 1.234,5.678
+- [float](#type-float) `VirtualLeft`: The view's left-most virtual X-coordinate
+- [float](#type-float) `VirtualRight`: The view's right-most virtual X-coordinate
+- [float](#type-float) `VirtualTop`: The view's top-most virtual Y-coordinate
+- [float](#type-float) `VirtualBottom`: The view's bottom-most virtual Y-coordinate
+- [bool](#type-bool) `VirtualScaleMode`: TRUE if the view's virtual size mode is to Scale. FALSE if it is Fixed Size.
+- [string](#type-string) `VirtualSize`: The view's virtual size, in the form 1.234,5.678
+- [float](#type-float) `VirtualWidth`: The view's virtual width
+- [float](#type-float) `VirtualHeight`: The view's virtual height
+- [string](#type-string) `VirtualScale`: The view's virtual scale, in the form 1.234,5.678
+- [float](#type-float) `VirtualScaleX`: The view's virtual X-scale
+- [float](#type-float) `VirtualScaleY`: The view's virtual Y-scale
+- [string](#type-string) `ScreenToVirtual[` [float](#type-float) `X` `,` [float](#type-float) `Y` `]`: Transforms a Screen position (e.g. cursor location, ${Mouse}) to a Virtual position in the view; result in the form 1.234,5.678
+- [string](#type-string) `VirtualToScreen[` [float](#type-float) `X` `,` [float](#type-float) `Y` `]`: Transforms a Virtual position in the view to a Screen position (e.g. cursor location, ${Mouse}); result in the form 1.234,5.678
+
+### Methods
+- `SetVirtualCenter[` [float](#type-float) `X` `,` [float](#type-float) `Y` `]`: Sets the view's Virtual center point, and changes the Virtual Alignment mode to Center
+- `SetVirtualOrigin[` [float](#type-float) `X` `,` [float](#type-float) `Y` `]`: Sets the view's Virtual origin (top left) point, and changes the Virtual Alignment mode to Corner
+- `SetVirtualSize[` [float](#type-float) `newWidth` `,` [float](#type-float) `newHeight` `]`: Sets the view's Virtual size, and changes the Virtual size mode to Fixed Size
+- `SetVirtualSize[` [float](#type-float) `newWidthAndHeight` `]`: Sets the view's Virtual size, and changes the Virtual size mode to Fixed Size
+- `SetVirtualScale[` [float](#type-float) `scaleX` `,` [float](#type-float) `scaleY` `]`: Sets the view's Virtual scale, and changes the Virtual size mode to Scale
+- `SetVirtualScale[` [float](#type-float) `scaleXandY` `]`: Sets the view's Virtual scale, and changes the Virtual size mode to Scale
+
+
+
+## Type: lgui2mapitemview
+- Base Type: [lgui2itemview](#type-lgui2itemview)
+
+As Text: "lgui2mapitemview"
+
+### Members
+- [bool](#type-bool) `VirtualCenterMode`: TRUE if the item's virtual alignment mode is Center. FALSE if it is Corner (based on Virtual Origin).
+- [string](#type-string) `VirtualCenter`: The item's virtual center location, in the form 1.234,5.678
+- [float](#type-float) `VirtualCenterX`: The item's virtual center location X-value
+- [float](#type-float) `VirtualCenterY`: The item's virtual center location Y-value
+- [string](#type-string) `VirtualOrigin`: The item's virtual origin (top left) location, in the form 1.234,5.678
+- [float](#type-float) `VirtualLeft`: The item's left-most virtual X-coordinate
+- [float](#type-float) `VirtualRight`: The item's right-most virtual X-coordinate
+- [float](#type-float) `VirtualTop`: The item's top-most virtual Y-coordinate
+- [float](#type-float) `VirtualBottom`: The item's bottom-most virtual Y-coordinate
+- [string](#type-string) `VirtualSize`: The item's virtual size, in the form 1.234,5.678
+- [float](#type-float) `VirtualWidth`: The item's virtual width
+- [float](#type-float) `VirtualHeight`: The item's virtual height
+
+### Methods
+- `SetVirtualCenter[` [float](#type-float) `X` `,` [float](#type-float) `Y` `]`: Sets the item's Virtual center point, and changes the Virtual Alignment mode to Center
+- `SetVirtualOrigin[` [float](#type-float) `X` `,` [float](#type-float) `Y` `]`: Sets the item's Virtual origin (top left) point, and changes the Virtual Alignment mode to Corner
+- `SetVirtualSize[` [float](#type-float) `newWidth` `,` [float](#type-float) `newHeight` `]`: Sets the item's Virtual size
+- `SetVirtualSize[` [float](#type-float) `newWidthAndHeight` `]`: Sets the item's Virtual size
+
+
+
 ## Type: lgui2objectview
 - Base Type: [lgui2contentbase](#type-lgui2contentbase)
 
@@ -2567,11 +2665,13 @@ As Text: "lgui2objectview"
 - ??? `Object[`???`]`
 - ??? `Property[`???`]`
 - ??? `PropertyNames[`???`]`
+- ??? `ObjectBinding`
 
 ### Methods
 - `ClearProperties[`???`]`
 - `AddProperty[`???`]`
 - `RemoveProperty[`???`]`
+- `PullObjectBinding`
 
 
 
@@ -2815,11 +2915,15 @@ As Text: "lgui2scrollviewer"
 - [float](#type-float) `MinViewExtentsHeight`: Minimum scrollable height of the viewed contents
 - [float](#type-float) `ActualViewExtentsWidth`: Actual scrollable width of the viewed contents
 - [float](#type-float) `ActualViewExtentsHeight`: Actual scrollable height of the viewed contents
+- [elgui2horizontalalignment](#type-elgui2horizontalalignment) `HorizontalContentAlignment`
+- [elgui2verticalalignment](#type-elgui2verticalalignment) `VerticalContentAlignment`
 
 ### Methods
 - `SetViewOffset[` `x` `,` `y` `]`: Sets the scrolled offset, in pixels, of the views top left corner
 - `SetMinViewExtents[` `width` `,` `height` `]`: Sets the minimum scrollable extents for the viewed contents
 - `SetMaxViewExtents[` `width` `,` `height` `]`: Sets the maximum scrollable extents for the viewed contents
+- `SetHorizontalContentAlignment[` [elgui2horizontalalignment](#type-elgui2horizontalalignment) `]`
+- `SetVerticalContentAlignment[` [elgui2verticalalignment](#type-elgui2verticalalignment) `]`
 
 
 
@@ -4184,6 +4288,7 @@ As Text: hex HWND
   - Restricted: Yes
 - `Flash`: Causes window frame to flash
 - `SetText`: Set window title
+- `SetForegroundWindow`
 
 
 
