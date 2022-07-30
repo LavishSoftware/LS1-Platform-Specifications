@@ -4502,8 +4502,20 @@
       "description": "A Distributed Scope works like a jsonobject, with values distributed among a specified set of sessions depending on `Distribution`.",
       "persistent": true,
       "members": {
-        "ID":{},
-        "Name":{},
+        "ID":{
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
+        "Name":{
+          "forms": [
+            {
+              "type":"string"
+            }
+          ]
+        },
         "Get":{
             "forms": [
               {
@@ -4680,22 +4692,156 @@
             }
           ]
         },
-        "ForEach":{},
-    
-        "Set":{},
-        "SetString":{},
-        "SetInteger":{},
-        "SetBool":{},
-        "SetNumber":{},
-        "SetNULL":{},
-        "Erase":{},
-    
-        "Push":{
-
+        "ForEach":{
+          "forms": [
+            {
+              "description": "For each value in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration",
+              "parameters": [
+                {
+                  "name": "command",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        },    
+        "Set":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type": "string",
+                  "constant": "-lazy",
+                  "optional": true
+                },
+                {
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "name": "newValue",
+                  "type": "jsonvalue"
+                }
+              ]
+            }
+          ]
         },
-        "SetValues":{},
-    
-        "Remove":{}
+        "SetString":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                },
+                {
+                  "type":"string",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetInteger":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                },
+                {
+                  "type":"int64",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBool":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                },
+                {
+                  "type":"bool",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetNumber":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                },
+                {
+                  "type":"float64",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetNULL":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Erase":{
+          "forms": [
+            {
+              "description": "Removes a distributed value from the scope",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },  
+        "Push":{
+          "forms": [
+            {
+              "description": "Explicitly pushes the entire distributed scope. This should not normally be necessary, as sets of changes are generally distributed."            
+            }
+          ]
+        },
+        "SetValues":{
+          "forms": [
+            {
+              "description": "Applies changes to multiple values, as specified by a JSON object",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "jsonobject"
+                }
+              ]
+            }
+          ]
+        },    
+        "Remove":{
+          "forms": [
+            {
+              "description": "Destroys this Distributed Scope"
+            }
+          ]
+        }
       },
       "asString": {
         "constant": "distributedscope"

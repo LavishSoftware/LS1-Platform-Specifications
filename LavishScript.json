@@ -4977,8 +4977,8 @@
               "parameters": [
                 {
                   "greedy": true,
-                  "type":"array",
-                  "name": "initializer",
+                  "type":"string",
+                  "name": "initializerParams",
                   "optional": true
                 },
                 {
@@ -4997,8 +4997,8 @@
               "parameters": [
                 {
                   "greedy": true,
-                  "type":"array",
-                  "name": "initializer",
+                  "type":"string",
+                  "name": "initializerParams",
                   "optional": true
                 },
                 {
@@ -5159,8 +5159,8 @@
               "parameters": [
                 {
                   "greedy": true,
-                  "type":"array",
-                  "name": "initializer",
+                  "type":"string",
+                  "name": "initializerParams",
                   "optional": true
                 },
                 {
@@ -5179,8 +5179,8 @@
               "parameters": [
                 {
                   "greedy": true,
-                  "type":"array",
-                  "name": "initializer",
+                  "type":"string",
+                  "name": "initializerParams",
                   "optional": true
                 },
                 {
