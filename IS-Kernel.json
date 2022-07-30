@@ -995,6 +995,45 @@
               ]
             }
           ]
+        },
+        "AddDistributedScope":{
+          "forms": [
+            {
+              "minimumBuild":6947,
+              "description": "Adds a Distributed Scope, given JSON to initialize with",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name":"json"
+                }
+              ],
+              "type": "distributedscope"
+            }
+          ]
+        },
+        "DistributedScope":{
+            "forms":[
+            {
+              "type":"distributedscope",
+              "description": "Retrieves a Distributed Scope by name",
+              "minimumBuild":6947,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]       
+            }
+          ]
+        },
+        "DistributedScopes":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":6947,
+              "description": "An array of Distributed Scope names"
+            }
+          ]
         }
       },
       "methods": {
@@ -1048,6 +1087,20 @@
                   "type":"string",
                   "name": "jsonFilename"
                 },
+                {
+                  "type":"jsonobject",
+                  "name":"json"
+                }
+              ]
+            }
+          ]
+        },
+        "AddDistributedScope":{
+          "forms": [
+            {
+              "minimumBuild":6947,
+              "description": "Adds a Distributed Scope, given JSON to initialize with",
+              "parameters": [
                 {
                   "type":"jsonobject",
                   "name":"json"
@@ -4442,6 +4495,273 @@
             }
           ]
         }
+      }
+    },
+    "distributedscope":{
+      "minimumBuild":6947,
+      "description": "A Distributed Scope works like a jsonobject, with values distributed among a specified set of sessions depending on `Distribution`.",
+      "persistent": true,
+      "members": {
+        "ID":{},
+        "Name":{},
+        "Get":{
+            "forms": [
+              {
+                "type":"distributedvalue",
+                "description": "The distributedvalue with the given key",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name":"key"
+                  }
+                ]
+              }
+            ]
+        },
+        "GetInteger":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "key"
+                }
+              ],
+              "type":"int64",
+              "description": "The int64 representation of the value with the given key"
+            }
+          ]
+        },
+        "GetBool":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "key"
+                }
+              ],
+              "type":"bool",
+              "description": "The bool representation of the value with the given key"
+            }
+          ]
+        },
+        "GetNumber":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "key"
+                }
+              ],
+              "type":"float64",
+              "description": "The float64 representation of the value with the given key"
+            }
+          ]
+        },
+    
+        "Values":{
+          "forms": [
+            {
+              "type":"jsonobject",
+              "description": "A jsonobject containing the values in the scope"
+            }
+          ]
+        },    
+        "Distribution":{
+          "forms": [
+            {
+              "type":"string",
+              "description": "A Relay target used to distribute the value (e.g. \"all\")"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "type": "jsonobject",
+              "description": "A JSON object describing the Distributed Scope and containing its values"
+            }
+          ]
+        },
+    
+        "Has":{
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the scope contains a value by the given key",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "key"
+                }
+              ]
+            }
+          ]
+        },
+        "Assert":{
+          "forms": [
+            {
+              "type":"bool",
+              "description": "TRUE if the scope contains a value by the given key, which exactly matches the provided JSON value",
+              "parameters": [
+                {
+                  "type":"jsonvalue",
+                  "name":"json"
+                }
+              ]
+            }
+          ]
+        },
+        "Keys":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "description": "An array of all keys in the scope"
+            }
+          ]
+        },
+        "Size":{
+          "forms": [
+            {
+              "type":"int64",
+              "description": "Number of values in the scope"
+            }
+          ]
+        },
+        "Used":{
+          "forms": [
+            {
+              "type":"int64",
+              "description": "Number of values in the scope"
+            }
+          ]
+        },
+    
+        "OnUpdateReceived":{
+          "forms": [
+            {
+              "type":"event",
+              "description": "Fires when the distributed scope has been updated from a remote source"
+            }
+          ]
+        },
+        "OnValueAdded":{
+          "forms": [
+            {
+              "type":"event",
+              "description": "Fires when a new value is added to the scope"
+            }
+          ]
+        },
+        "OnValueRemoved":{
+          "forms": [
+            {
+              "type":"event",
+              "description": "Fires when a value is removed from the scope"
+            }
+          ]
+        },
+        "OnValueChanged":{
+          "forms": [
+            {
+              "type":"event",
+              "description": "Fires when a value is replaced"
+            }
+          ]
+        }    
+      },
+      "methods": {
+        "Clear":{
+          "forms": [
+            {
+              "description": "Clears (removes) all values from the distributed scope"              
+            }
+          ]
+        },
+        "ForEach":{},
+    
+        "Set":{},
+        "SetString":{},
+        "SetInteger":{},
+        "SetBool":{},
+        "SetNumber":{},
+        "SetNULL":{},
+        "Erase":{},
+    
+        "Push":{
+
+        },
+        "SetValues":{},
+    
+        "Remove":{}
+      },
+      "asString": {
+        "constant": "distributedscope"
+      }
+    },
+    "distributedvalue":{
+      "minimumBuild":6947,
+      "persistent": true,
+      "members": {
+        "Name":{
+          "forms": [
+            {
+              "type":"string",
+              "description": "Name of the distributed value"
+            }
+          ]
+        },
+        "Value":{
+          "forms": [
+            {
+              "type": "jsonvalue",
+              "description": "The distributed value"
+            }
+          ]
+        },
+        "OnValueChanged":{
+          "forms": [
+            {
+              "type":"event",
+              "description": "Fires when the Value is replaced. This event will not fire if an object or array are *modified*, only if they are *replaced*."
+            }
+          ]
+        },
+        "Scope":{
+          "forms": [
+            {
+              "type":"distributedscope"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "type": "jsonvalue"
+            }
+          ]
+        }    
+      },
+      "methods": {
+        "Remove":{
+          "forms": [
+            {
+              "description": "Removes the value from the distributed scope"
+            }
+          ]
+        },
+        "Push":{
+          "forms": [
+            {
+              "description": "Distributes this individual value. Note that a manual Push is not necessary for most cases, but may be useful when modifying a json object or array (as doing so will not automatically Push)."             
+            }
+          ]
+        }    
+      },
+      "asString": {
+        "member": "Value"
       }
     }
   },

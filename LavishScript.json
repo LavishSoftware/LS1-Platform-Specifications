@@ -3708,8 +3708,8 @@
               "description": "TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath",
               "parameters": [
                 {
-                  "name": "path",
-                  "type": "additional"
+                  "name": "additionalPath",
+                  "type": "string"
                 }
               ]
             }
@@ -3740,7 +3740,8 @@
                 {
                   "optional": true,
                   "type":"string",
-                  "name":"wildcard"
+                  "name":"wildcard",
+                  "default":"*"
                 }
               ]
             }
@@ -3755,7 +3756,8 @@
                 {
                   "optional": true,
                   "type":"string",
-                  "name":"wildcard"
+                  "name":"wildcard",
+                  "default":"*"
                 }
               ]
             }
@@ -3767,15 +3769,110 @@
     "mutablefilepath": {
       "baseType": "mutablestring",      
       "members": {
-        "PathExists": {},
-        "FileExists": {},
-        "Path": {},
-        "AbsolutePath": {}
+        "PathExists": {
+          "forms": [
+            {
+              "type": "bool",
+              "description": "TRUE if the given path exists"
+            }
+          ]
+        },
+        "FileExists": {
+          "forms":[
+            {
+              "type": "bool",
+              "description": "TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath",
+              "parameters": [
+                {
+                  "name": "additionalPath",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        },
+        "Path": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The string representation of this path"
+            }
+          ]
+        },
+        "AbsolutePath": {
+          "forms": [
+            {
+              "type": "string",
+              "description": "The path, converted if necessary to an absolute path"
+            }
+          ]
+        },
+        "GetFiles":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":6947,
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "name":"wildcard",
+                  "default":"*"
+                }
+              ]
+            }
+          ]
+        },
+        "GetDirectories":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":6947,
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "name":"wildcard",
+                  "default":"*"
+                }
+              ]
+            }
+          ]
+        }
       },
       "methods": {
-        "Set": {},
-        "MakeAbsolute": {},
-        "MakeSubdirectory": {}
+        "Set": {
+          "forms": [
+            {
+              "description": "Sets the path to the a value",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "MakeAbsolute": {
+          "forms": [
+            {
+              "description": "Sets the path to its Absolute value"
+            }
+          ]
+        },
+        "MakeSubdirectory": {
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"Sub-directory name"
+                }
+              ]
+            }
+          ] 
+        }
       },
       "initializer": {
         "forms": [
@@ -3792,7 +3889,9 @@
         ]
       },
       "persistent": false,
-      "asString": {}
+      "asString": {
+        "member": "Path"
+      }
     },
     "file": {
       "members": {
@@ -4348,9 +4447,35 @@
         }
       }
     },
+    "anonevent":{
+      "minimumBuild":6947,
+      "baseType": "event",
+      "persistent": true,
+      "description": "An anonymous event. Sort of like a masquerade, except it's a LavishScript event that has no Name or ID.",
+      "initializer": {
+        "forms": [
+          {
+            
+          }
+        ]
+      }
+    },
     "eventvar": {
       "baseType": "event",
-      "persistent": false
+      "description": "Registers a named event for the lifetime of the eventvar. The named event will be unregistered when the eventvar is destroyed.",
+      "persistent": false,
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "type":"string",
+                "name":"eventName"
+              }
+            ]
+          }
+        ]
+      }
     },
     "query": {
       "members": {
@@ -4644,7 +4769,45 @@
             }
           ]
         },
-        "FromJSON": {},
+        "FromJSON": {
+          "forms": [
+            {
+              "description": "Initializes an index of objects from JSON. Each object must accept a JSON value.",
+              "parameters": [
+                {
+                  "greedy": true,
+                  "type":"array",
+                  "name": "initializer",
+                  "optional": true
+                },
+                {
+                  "type":"string",
+                  "name": "JSON initializer"
+                }
+              ]
+            }
+          ]
+        },
+        "NativeFromJSON":{
+          "forms": [
+            {
+              "minimumBuild":6947,
+              "description": "Initializes an index of objects from JSON. Each object must accept a native value.",
+              "parameters": [
+                {
+                  "greedy": true,
+                  "type":"array",
+                  "name": "initializer",
+                  "optional": true
+                },
+                {
+                  "type":"string",
+                  "name": "JSON initializer"
+                }
+              ]
+            }
+          ]
+        },
         "ForEach": {
           "forms": [
             {
@@ -4671,13 +4834,27 @@
               "description": "Retrieves the element, if any, identified by the given key",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "key"
                 }
               ]
             }
           ]
         },
-        "Get": {},
+        "Get": {
+          "forms": [
+            {
+              "type":"sub-type",
+              "description": "Retrieves the element, if any, identified by the given key",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "key"
+                }
+              ]
+            }
+          ]
+        },
         "FirstValue": {
           "forms": [
             {
@@ -4726,6 +4903,15 @@
             }
           ]
         },
+        "Keys":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":6947,
+              "description": "A jsonarray of keys in the collection"
+            }
+          ]
+        },
         "AsJSON": {
           "forms": [
             {
@@ -4737,7 +4923,8 @@
               "description": "Returns a JSON array representation of this collection, with each element converted by using its AsJSON member.",
               "parameters": [
                 {
-                  "name": "array"
+                  "constant": "array",
+                  "type":"string"
                 }
               ]
             }
@@ -4751,16 +4938,58 @@
               "description": "Sets (adding, if necessary) the element identified by the given key with the given value",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "key"
                 },
                 {
-                  "name": "value"
+                  "greedy": true,
+                  "type":"array",
+                  "name": "initializer",
+                  "optional": true
                 }
               ]
             }
           ]
         },
-        "FromJSON": {},
+        "FromJSON": {
+          "forms": [
+            {
+              "description": "Initializes a collection of objects from JSON. Each object must accept a JSON value.",
+              "parameters": [
+                {
+                  "greedy": true,
+                  "type":"array",
+                  "name": "initializer",
+                  "optional": true
+                },
+                {
+                  "type":"string",
+                  "name": "JSON initializer"
+                }
+              ]
+            }
+          ]
+        },
+        "NativeFromJSON":{
+          "forms": [
+            {
+              "minimumBuild":6947,
+              "description": "Initializes a collection of objects from JSON. Each object must accept a native value.",
+              "parameters": [
+                {
+                  "greedy": true,
+                  "type":"array",
+                  "name": "initializer",
+                  "optional": true
+                },
+                {
+                  "type":"string",
+                  "name": "JSON initializer"
+                }
+              ]
+            }
+          ]
+        },
         "Erase": {
           "forms": [
             {
@@ -4895,6 +5124,7 @@
               "description": "TRUE if the given key exists in the set",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "key"
                 }
               ]
@@ -4920,6 +5150,7 @@
               "description": "Adds a given key to the set",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "key"
                 }
               ]
@@ -4932,7 +5163,21 @@
               "description": "Removes a given key from the set",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "key"
+                }
+              ]
+            }
+          ]
+        },
+        "Erase":{
+          "forms": [
+            {
+              "description": "Removes a given key from the set",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"key"
                 }
               ]
             }

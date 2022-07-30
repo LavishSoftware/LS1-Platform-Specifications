@@ -996,6 +996,14 @@
           "IsAutoPull": {},
           "IsAutoPush": {},
           "IsAutoPullOnce": {},
+          "IsPushNumeric":{
+            "forms": [
+              {
+                "minimumBuild":6947,
+                "type":"bool"
+              }
+            ]
+          },
           "PullReplaceNULL": {},
           "PullFormat": {},
           "PushFormat": {},
@@ -1011,6 +1019,18 @@
           "SetPullReplaceNULL": {},
           "SetPullFormat": {},
           "SetPushFormat": {},
+          "SetPushNumeric":{
+            "forms": [
+              {
+                "minimumBuild":6947,
+                "parameters": [
+                  {
+                    "type":"bool"
+                  }
+                ]
+              }
+            ]
+          },
           "SetPushNULLFormat": {},
           "PushValue": {},
           "PullValue": {},
