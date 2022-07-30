@@ -2635,7 +2635,7 @@
             }
           ]
         },
-        "TypeMember": {
+        "Member": {
           "forms": [
             {
               "type": "string",
@@ -2657,6 +2657,62 @@
             }
           ]
         },
+        "Method": {
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type": "string",
+              "parameters": [
+                {
+                  "name": "id",
+                  "type": "uint"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6951,
+              "type": "uint",
+              "parameters": [
+                {
+                  "name": "name",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        },
+        "Members":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Methods":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Inherits":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"type"
+            }
+          ]
+        },
+        "VariableType":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"type"
+            }
+          ]
+        },
         "PersistentClass": {
           "forms": [
             {
@@ -2668,6 +2724,14 @@
           "forms": [
             {
               "type": "jsonobject"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"jsonobject"
             }
           ]
         }
@@ -4485,8 +4549,145 @@
     },
     "scriptobjecttype": {
       "members": {
-        "Name": {},
-        "Metadata": {}
+        "Name": {
+          "forms": [
+            {
+              "type":"string"
+            }
+          ]
+        },
+        "Inherits": {
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"string"
+            }
+          ]
+        },
+        "PersistentClass": {
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"string"
+            }
+          ]
+        },
+        "Member":{
+          "name": "TRUE if a member (excluding variables) with the given name exists within the script object type (or inherited types)",
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Method":{
+          "name": "TRUE if a method with the given name exists within the script object type (or inherited types)",
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Function":{
+          "name": "TRUE if a function with the given name exists within the script object type (or inherited types)",
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Members":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"bool",
+                  "optional": true,
+                  "default":true,
+                  "name": "followIncludes"
+                }
+              ]
+            }
+          ]          
+        },
+        "Methods":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"bool",
+                  "optional": true,
+                  "default":true,
+                  "name": "followIncludes"
+                }
+              ]
+            }
+          ]          
+        },
+        "Functions":{
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"bool",
+                  "optional": true,
+                  "default":true,
+                  "name": "followIncludes"
+                }
+              ]
+            }
+          ]          
+        },
+        "Metadata": {
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "AsJSON": {
+          "forms": [
+            {
+              "minimumBuild":6951,
+              "type":"jsonobject",
+              "parameters": [
+                {
+                  "type":"bool",
+                  "optional": true,
+                  "default":true,
+                  "name": "followIncludes"
+                }
+              ]
+            }
+          ]
+        }
       },
       "asString": {
         "member": "Name"
@@ -6222,6 +6423,74 @@
             }
           ]
         },
+        "AddString":{
+          "forms":[
+            {
+              "description": "Adds a string value to the end of the array",
+              "minimumBuild":6951,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "AddInteger":{
+          "forms":[
+            {
+              "description": "Adds a new integer value to the end of the array",
+              "minimumBuild":6951,
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "AddNumber":{
+          "forms":[
+            {
+              "description": "Adds a new number (float64) value to the end of the array",
+              "minimumBuild":6951,
+              "parameters": [
+                {
+                  "type":"float64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "AddBool":{
+          "forms":[
+            {
+              "description": "Adds a new boolean value to the end of the array",
+              "minimumBuild":6951,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "AddNULL":{
+          "forms":[
+            {
+              "description": "Adds a null value to the end of the array",
+              "minimumBuild":6951
+            }
+          ]
+        },
         "Sort": {
           "forms": [
             {
@@ -7498,6 +7767,236 @@
             }
           ]
         }
+      }
+    },
+    "xmlreader":{
+      "minimumBuild":6951,
+      "members": {
+        "Error":{
+          "forms": [
+            {
+              "type":"string",
+              "description": "The error message, if XML parsing failed"
+            }
+          ]
+        },
+        "Root":{
+          "forms": [
+            {
+              "type":"xmlnode",
+              "description": "A root node that contains the actual XML nodes"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "AddEntity":{
+          "forms": [
+            {
+              "description": "Adds a custom XML Entity with a specified value",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "entityName"
+                },
+                {
+                  "type":"string",
+                  "name": "entityValue"
+                }
+              ]
+            }
+          ]
+        },
+        "Parse":{
+          "forms": [
+            {
+              "description": "Parses XML passed in as a string",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "xml"
+                }
+              ]
+            }
+          ]
+        },
+        "ParseFile":{
+          "forms": [
+            {
+              "description": "Parses an XML file",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "filename"
+                }
+              ]
+            }
+          ]
+        },
+        "Reset":{
+          "forms": [
+            {
+              "description": "Resets the XML reader to its ready state, removing any previously loaded nodes"
+            }
+          ]
+        }
+      },
+      "initializer": {
+        "forms": [
+          {
+            
+          }
+        ]
+      },
+      "asString": {
+        "constant": "xmlreader"
+      }
+    },
+    "xmlnode":{
+      "minimumBuild":6951,
+      "members": {
+        "Type":{
+          "forms": [
+            {
+              "type":"string",
+              "description": "Type of XML node, one of \"NONE\", \"ELEMENT\", \"COMMENT\", \"TEXT\", \"PI\". Mostly ELEMENT and TEXT."
+            }
+          ]
+        },
+        "Text":{
+          "forms": [
+            {
+              "type":"string",
+              "description": "The text contained by the XML node. For an ELEMENT type, this is the XML tag, e.g. \"xyz\" from \"<xyz>abc</xyz>\"; the \"abc\" would then be a TEXT Child."
+            }
+          ]
+        },    
+        "Parent":{
+          "forms": [
+            {
+              "type":"xmlnode",
+              "description": "The parent node in the XML tree"
+            }
+          ]
+        },
+        "Child":{
+          "forms": [
+            {
+              "type":"xmlnode",
+              "description": "The first child of this node"
+            }
+          ]
+        },
+        "LastChild":{
+          "forms": [
+            {
+              "type":"xmlnode",
+              "description": "The last child of this node"
+            }
+          ]
+        },
+        "Next":{
+          "forms": [
+            {
+              "type":"xmlnode",
+              "description": "The next sibling of this node"
+            }
+          ]
+        },
+        "Previous":{
+          "forms": [
+            {
+              "type":"xmlnode",
+              "description": "The previous sibling of this node"
+            }
+          ]
+        },        
+        "FindChildElement":{
+          "forms": [
+            {
+              "description": "Finds the first child ELEMENT node by name (xml tag)",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "FindNextChildElement":{
+          "forms": [
+            {
+              "description": "Finds the next child ELEMENT node by name (xml tag), from a specified node",
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name": "fromNode"
+                },
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },    
+        "Attributes":{          
+          "forms": [
+            {
+              "description": "A jsonarray of the attributes and their values",
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "description": "A JSON representation of this element. If includeDescendants is specified, this will include all descendant nodes.",
+              "type":"jsonboject",
+              "parameters": [
+                {
+                  "type":"bool",
+                  "optional": true,
+                  "default":false,
+                  "name": "includeDescendants"
+                }
+              ]
+
+            }
+          ]
+        }
+      },
+      "methods": {
+        "ForEach":{
+          "forms": [
+            {
+              "description": "For each child xmlnode, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration",
+              "parameters": [
+                {
+                  "name": "command",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "description": "For each child ELEMENT xmlnode matching the specified elementName (tag), performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration",
+              "parameters": [
+                {
+                  "name":"elementName",
+                  "type":"string"
+                },
+                {
+                  "name": "command",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "member": "Text"
       }
     }
   },
