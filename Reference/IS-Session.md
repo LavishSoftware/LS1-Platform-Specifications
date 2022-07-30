@@ -717,10 +717,17 @@ As Text: Same as `Name`
 
 ### Members
 - [string](#type-string) `Name`: Name of the data type
-- [string](#type-string) `TypeMember[` [uint](#type-uint) `id` `]`
-- [uint](#type-uint) `TypeMember[` [string](#type-string) `name` `]`
+- [string](#type-string) `Member[` [uint](#type-uint) `id` `]`
+- [uint](#type-uint) `Member[` [string](#type-string) `name` `]`
+- [string](#type-string) `Method[` [uint](#type-uint) `id` `]`
+- [uint](#type-uint) `Method[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `Members`
+- [jsonarray](#type-jsonarray) `Methods`
+- [type](#type-type) `Inherits`
+- [type](#type-type) `VariableType`
 - [string](#type-string) `PersistentClass`
 - [jsonobject](#type-jsonobject) `Metadata`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 none.
@@ -956,11 +963,11 @@ none.
 
 ### Members
 - [bool](#type-bool) `PathExists`: TRUE if the given path exists
-- [bool](#type-bool) `FileExists[` [additional](#type-additional) `path` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
+- [bool](#type-bool) `FileExists[` [string](#type-string) `additionalPath` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
 - [string](#type-string) `Path`: The string representation of this path
 - [string](#type-string) `AbsolutePath`: The string representation of this path converted to an absolute path
-- [jsonarray](#type-jsonarray) `GetFiles[` <[string](#type-string) `wildcard`> `]`
-- [jsonarray](#type-jsonarray) `GetDirectories[` <[string](#type-string) `wildcard`> `]`
+- [jsonarray](#type-jsonarray) `GetFiles[` <[string](#type-string) `wildcard`="*"> `]`
+- [jsonarray](#type-jsonarray) `GetDirectories[` <[string](#type-string) `wildcard`="*"> `]`
 
 ### Methods
 none.
@@ -973,17 +980,20 @@ none.
 ### Initializers
 - `mutablefilepath[` <[string](#type-string) `value`=""> `]`
 
+As Text: Same as `Path`
 
 ### Members
-- ??? `PathExists[`???`]`
-- ??? `FileExists[`???`]`
-- ??? `Path[`???`]`
-- ??? `AbsolutePath[`???`]`
+- [bool](#type-bool) `PathExists`: TRUE if the given path exists
+- [bool](#type-bool) `FileExists[` [string](#type-string) `additionalPath` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
+- [string](#type-string) `Path`: The string representation of this path
+- [string](#type-string) `AbsolutePath`: The path, converted if necessary to an absolute path
+- [jsonarray](#type-jsonarray) `GetFiles[` <[string](#type-string) `wildcard`="*"> `]`
+- [jsonarray](#type-jsonarray) `GetDirectories[` <[string](#type-string) `wildcard`="*"> `]`
 
 ### Methods
-- `Set[`???`]`
-- `MakeAbsolute[`???`]`
-- `MakeSubdirectory[`???`]`
+- `Set[` [string](#type-string) `value` `]`: Sets the path to the a value
+- `MakeAbsolute`: Sets the path to its Absolute value
+- `MakeSubdirectory[` [string](#type-string) `Sub-directory name` `]`
 
 
 
@@ -1099,9 +1109,26 @@ none.
 
 
 
+## Type: anonevent
+- Base Type: [event](#type-event)
+An anonymous event. Sort of like a masquerade, except it's a LavishScript event that has no Name or ID.
+
+### Initializers
+`anonevent`
+
+### Members
+none.
+### Methods
+none.
+
+
 ## Type: eventvar
 - Base Type: [event](#type-event)
 - Persistent: No ([weakref](#type-weakref) not supported)
+Registers a named event for the lifetime of the eventvar. The named event will be unregistered when the eventvar is destroyed.
+
+### Initializers
+- `eventvar[` [string](#type-string) `eventName` `]`
 
 ### Members
 none.
@@ -1124,8 +1151,17 @@ none.
 As Text: Same as `Name`
 
 ### Members
-- ??? `Name[`???`]`
-- ??? `Metadata[`???`]`
+- [string](#type-string) `Name`
+- [string](#type-string) `Inherits`
+- [string](#type-string) `PersistentClass`
+- [bool](#type-bool) `Member[` [string](#type-string) `name` `]`
+- [bool](#type-bool) `Method[` [string](#type-string) `name` `]`
+- [bool](#type-bool) `Function[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `Members[` <[bool](#type-bool) `followIncludes`=true> `]`
+- [jsonarray](#type-jsonarray) `Methods[` <[bool](#type-bool) `followIncludes`=true> `]`
+- [jsonarray](#type-jsonarray) `Functions[` <[bool](#type-bool) `followIncludes`=true> `]`
+- [jsonobject](#type-jsonobject) `Metadata`
+- [jsonobject](#type-jsonobject) `AsJSON[` <[bool](#type-bool) `followIncludes`=true> `]`
 
 ### Methods
 none.
@@ -1185,7 +1221,8 @@ none.
 - `Set[` `#` `,` ... [string](#type-string) `]`: Creates a new element in the index at the given position (destroying the previous element, if it existed).  The additional parameters will be passed to the object initialization routine for the index sub-type, and an object will be created.
 - `Insert[` ... [string](#type-string) `]`: Inserts an element in the index.  The parameters will be passed to the object initialization routine for the index sub-type, and an object will be created.  The index will be resized to fit the new object if necessary.
 - `Resize[` `#` `]`: Resizes the index such that it will hold at least this number of elements.
-- `FromJSON[`???`]`
+- `FromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes an index of objects from JSON. Each object must accept a JSON value.
+- `NativeFromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes an index of objects from JSON. Each object must accept a native value.
 - `ForEach[` [string](#type-string) `command` `]`: For each element in the index, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
@@ -1194,20 +1231,22 @@ none.
 - Base Type: [objectcontainer](#type-objectcontainer)
 
 ### Members
-- [sub-type](#type-sub-type) `Element[` `key` `]`: Retrieves the element, if any, identified by the given key
-- ??? `Get[`???`]`
+- [sub-type](#type-sub-type) `Element[` [string](#type-string) `key` `]`: Retrieves the element, if any, identified by the given key
+- [sub-type](#type-sub-type) `Get[` [string](#type-string) `key` `]`: Retrieves the element, if any, identified by the given key
 - [sub-type](#type-sub-type) `FirstValue`: Begins iterating with an internal iterator, and retrieves the first value
 - [sub-type](#type-sub-type) `NextValue`: Continues iterating with an internal iterator, retrieving the next value
 - [string](#type-string) `FirstKey`: Begins iterating with an internal iterator, and retrieves the first key
 - [string](#type-string) `NextKey`: Continues iterating with an internal iterator, retrieving the next key
 - [string](#type-string) `CurrentKey`: Retrieves the current key in the iteration (with an internal iterator)
 - [sub-type](#type-sub-type) `CurrentValue`: Retrieves the current value in the iteration (with an internal iterator)
+- [jsonarray](#type-jsonarray) `Keys`: A jsonarray of keys in the collection
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON object representation of this collection, with each element converted by using its AsJSON member. The keys from the collection will be used as keys in the JSON object
-- [unistring](#type-unistring) `AsJSON[` `array` `]`: Returns a JSON array representation of this collection, with each element converted by using its AsJSON member.
+- [unistring](#type-unistring) `AsJSON[` "array" `]`: Returns a JSON array representation of this collection, with each element converted by using its AsJSON member.
 
 ### Methods
-- `Set[` `key` `,` `value` `]`: Sets (adding, if necessary) the element identified by the given key with the given value
-- `FromJSON[`???`]`
+- `Set[` [string](#type-string) `key` `,` <... [array](#type-array) `initializer`> `]`: Sets (adding, if necessary) the element identified by the given key with the given value
+- `FromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes a collection of objects from JSON. Each object must accept a JSON value.
+- `NativeFromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes a collection of objects from JSON. Each object must accept a native value.
 - `Erase[` `key` `]`: Erases the element, if any, identified by the given key
 - `EraseByQuery[` [uint](#type-uint) `query_id` `]`: Erases any elements in the collection matching the given [[LavishScript:Object_Queries|Query]]
 - `EraseByQuery[` [uint](#type-uint) `query_id` `,` [bool](#type-bool) `remove_MATCHES` `]`: Erases any elements in the collection that either match or do not match the given [[LavishScript:Object_Queries|Query]]
@@ -1243,15 +1282,16 @@ none.
 - Base Type: [objectcontainer](#type-objectcontainer)
 
 ### Members
-- [bool](#type-bool) `Contains[` `key` `]`: TRUE if the given key exists in the set
+- [bool](#type-bool) `Contains[` [string](#type-string) `key` `]`: TRUE if the given key exists in the set
 - ??? `FirstKey[`???`]`
 - ??? `NextKey[`???`]`
 - ??? `CurrentKey[`???`]`
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON array representation of this array, with each element converted by using its AsJSON member
 
 ### Methods
-- `Add[` `key` `]`: Adds a given key to the set
-- `Remove[` `key` `]`: Removes a given key from the set
+- `Add[` [string](#type-string) `key` `]`: Adds a given key to the set
+- `Remove[` [string](#type-string) `key` `]`: Removes a given key from the set
+- `Erase[` [string](#type-string) `key` `]`: Removes a given key from the set
 - `Merge[`???`]`
 - `Intersect[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "sets A and intersect B" to this set
 - `Union[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "set A union B" to this set
@@ -1434,6 +1474,11 @@ As Text: JSON representation of the array
 - `SetBool[` [uint](#type-uint) `key` `,` [bool](#type-bool) `newValue` `]`: Sets a value within the array, to a new boolean value
 - `SetNULL[` [uint](#type-uint) `key` `]`: Sets a value within the array, to a null value
 - `Add[` [jsonvalue](#type-jsonvalue) `newValue` `]`: Adds a value to the end of the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Add["{\"subValue\":12}"]</tt>
+- `AddString[` [string](#type-string) `newValue` `]`: Adds a string value to the end of the array
+- `AddInteger[` [int64](#type-int64) `newValue` `]`: Adds a new integer value to the end of the array
+- `AddNumber[` [float64](#type-float64) `newValue` `]`: Adds a new number (float64) value to the end of the array
+- `AddBool[` [uint](#type-uint) `key` `,` [bool](#type-bool) `newValue` `]`: Adds a new boolean value to the end of the array
+- `AddNULL`: Adds a null value to the end of the array
 - `Sort[` <[string](#type-string) `keyProperty`> `]`
 - `Erase[` [uint](#type-uint) `key` `]`: Erases the nth value from the array, shifting later items toward 0
 - `EraseByQuery[` [string](#type-string) `queryText` `,` <[bool](#type-bool) `removeMatches`=true> `]`: Erases items either matching or not matching the query from the array (depending on the 2nd parameter), shifting later elements toward 0
@@ -1611,6 +1656,48 @@ none.
 - `Destroy`: Stops all running Tasks, and destroys the Task Manager itself
 - `BeginTasksFile[`???`]`
 - `BeginTasks[` `jsonarray` `]`: Begins every Task in a given JSON array of Task objects
+
+
+
+## Type: xmlreader
+
+### Initializers
+`xmlreader`
+
+As Text: "xmlreader"
+
+### Members
+- [string](#type-string) `Error`: The error message, if XML parsing failed
+- [xmlnode](#type-xmlnode) `Root`: A root node that contains the actual XML nodes
+
+### Methods
+- `AddEntity[` [string](#type-string) `entityName` `,` [string](#type-string) `entityValue` `]`: Adds a custom XML Entity with a specified value
+- `Parse[` [string](#type-string) `xml` `]`: Parses XML passed in as a string
+- `ParseFile[` [string](#type-string) `filename` `]`: Parses an XML file
+- `Reset`: Resets the XML reader to its ready state, removing any previously loaded nodes
+
+
+
+## Type: xmlnode
+
+As Text: Same as `Text`
+
+### Members
+- [string](#type-string) `Type`: Type of XML node, one of "NONE", "ELEMENT", "COMMENT", "TEXT", "PI". Mostly ELEMENT and TEXT.
+- [string](#type-string) `Text`: The text contained by the XML node. For an ELEMENT type, this is the XML tag, e.g. "xyz" from "<xyz>abc</xyz>"; the "abc" would then be a TEXT Child.
+- [xmlnode](#type-xmlnode) `Parent`: The parent node in the XML tree
+- [xmlnode](#type-xmlnode) `Child`: The first child of this node
+- [xmlnode](#type-xmlnode) `LastChild`: The last child of this node
+- [xmlnode](#type-xmlnode) `Next`: The next sibling of this node
+- [xmlnode](#type-xmlnode) `Previous`: The previous sibling of this node
+- ??? `FindChildElement[` [string](#type-string) `name` `]`: Finds the first child ELEMENT node by name (xml tag)
+- ??? `FindNextChildElement[` [weakref](#type-weakref) `fromNode` `,` [string](#type-string) `name` `]`: Finds the next child ELEMENT node by name (xml tag), from a specified node
+- [jsonarray](#type-jsonarray) `Attributes`: A jsonarray of the attributes and their values
+- [jsonboject](#type-jsonboject) `AsJSON[` <[bool](#type-bool) `includeDescendants`=false> `]`: A JSON representation of this element. If includeDescendants is specified, this will include all descendant nodes.
+
+### Methods
+- `ForEach[` [string](#type-string) `command` `]`: For each child xmlnode, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `elementName` `,` [string](#type-string) `command` `]`: For each child ELEMENT xmlnode matching the specified elementName (tag), performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
 
@@ -1869,6 +1956,7 @@ As Text: "lgui2databinding"
 - ??? `IsAutoPull[`???`]`
 - ??? `IsAutoPush[`???`]`
 - ??? `IsAutoPullOnce[`???`]`
+- [bool](#type-bool) `IsPushNumeric`
 - ??? `PullReplaceNULL[`???`]`
 - ??? `PullFormat[`???`]`
 - ??? `PushFormat[`???`]`
@@ -1884,6 +1972,7 @@ As Text: "lgui2databinding"
 - `SetPullReplaceNULL[`???`]`
 - `SetPullFormat[`???`]`
 - `SetPushFormat[`???`]`
+- `SetPushNumeric[` [bool](#type-bool) `]`
 - `SetPushNULLFormat[`???`]`
 - `PushValue[`???`]`
 - `PullValue[`???`]`
@@ -3570,6 +3659,9 @@ Restricted: Yes
 - [jsonarray](#type-jsonarray) `Agents`: Retrieves an array of JSON objects briefly describing all currently defined Agents
 - [jsonarray](#type-jsonarray) `AgentProviders`
 - [agentprovider](#type-agentprovider) `AgentProvider[` [string](#type-string) `providerName` `]`
+- [distributedscope](#type-distributedscope) `AddDistributedScope[` [jsonobject](#type-jsonobject) `json` `]`: Adds a Distributed Scope, given JSON to initialize with
+- [distributedscope](#type-distributedscope) `DistributedScope[` [string](#type-string) `name` `]`: Retrieves a Distributed Scope by name
+- [jsonarray](#type-jsonarray) `DistributedScopes`: An array of Distributed Scope names
 
 ### Methods
 - `LoadExtension[` [string](#type-string) `name` `]`: Loads <name> extension
@@ -3581,6 +3673,7 @@ Restricted: Yes
 - `FireAgentEvent[`???`]`
 - `AddAgentProvider[` [string](#type-string) `jsonFilename` `]`
 - `AddAgentProvider[` [string](#type-string) `jsonFilename` `,` [jsonobject](#type-jsonobject) `json` `]`
+- `AddDistributedScope[` [jsonobject](#type-jsonobject) `json` `]`: Adds a Distributed Scope, given JSON to initialize with
 
 
 
@@ -4589,6 +4682,64 @@ As Text: "agentprovider"
 ### Methods
 - `Execute[` [string](#type-string) `name` `,` [string](#type-string) `executable` `,` ... [string](#type-string) `params` `]`
 - `Unload[` [string](#type-string) `name` `]`
+
+
+
+## Type: distributedscope
+A Distributed Scope works like a jsonobject, with values distributed among a specified set of sessions depending on `Distribution`.
+
+As Text: "distributedscope"
+
+### Members
+- [uint](#type-uint) `ID`
+- [string](#type-string) `Name`
+- [distributedvalue](#type-distributedvalue) `Get[` [string](#type-string) `key` `]`: The distributedvalue with the given key
+- [int64](#type-int64) `GetInteger[` [string](#type-string) `key` `]`: The int64 representation of the value with the given key
+- [bool](#type-bool) `GetBool[` [string](#type-string) `key` `]`: The bool representation of the value with the given key
+- [float64](#type-float64) `GetNumber[` [string](#type-string) `key` `]`: The float64 representation of the value with the given key
+- [jsonobject](#type-jsonobject) `Values`: A jsonobject containing the values in the scope
+- [string](#type-string) `Distribution`: A Relay target used to distribute the value (e.g. "all")
+- [jsonobject](#type-jsonobject) `AsJSON`: A JSON object describing the Distributed Scope and containing its values
+- [bool](#type-bool) `Has[` [string](#type-string) `key` `]`: TRUE if the scope contains a value by the given key
+- [bool](#type-bool) `Assert[` [jsonvalue](#type-jsonvalue) `json` `]`: TRUE if the scope contains a value by the given key, which exactly matches the provided JSON value
+- [jsonarray](#type-jsonarray) `Keys`: An array of all keys in the scope
+- [int64](#type-int64) `Size`: Number of values in the scope
+- [int64](#type-int64) `Used`: Number of values in the scope
+- [event](#type-event) `OnUpdateReceived`: Fires when the distributed scope has been updated from a remote source
+- [event](#type-event) `OnValueAdded`: Fires when a new value is added to the scope
+- [event](#type-event) `OnValueRemoved`: Fires when a value is removed from the scope
+- [event](#type-event) `OnValueChanged`: Fires when a value is replaced
+
+### Methods
+- `Clear`: Clears (removes) all values from the distributed scope
+- `ForEach[` [string](#type-string) `command` `]`: For each value in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `Set[` <"-lazy"> `,` [string](#type-string) `name` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
+- `SetString[` [string](#type-string) `name` `,` [string](#type-string) `value` `]`
+- `SetInteger[` [string](#type-string) `name` `,` [int64](#type-int64) `value` `]`
+- `SetBool[` [string](#type-string) `name` `,` [bool](#type-bool) `value` `]`
+- `SetNumber[` [string](#type-string) `name` `,` [float64](#type-float64) `value` `]`
+- `SetNULL[` [string](#type-string) `name` `]`
+- `Erase[` [string](#type-string) `name` `]`: Removes a distributed value from the scope
+- `Push`: Explicitly pushes the entire distributed scope. This should not normally be necessary, as sets of changes are generally distributed.
+- `SetValues[` [string](#type-string) `jsonobject` `]`: Applies changes to multiple values, as specified by a JSON object
+- `Remove`: Destroys this Distributed Scope
+
+
+
+## Type: distributedvalue
+
+As Text: Same as `Value`
+
+### Members
+- [string](#type-string) `Name`: Name of the distributed value
+- [jsonvalue](#type-jsonvalue) `Value`: The distributed value
+- [event](#type-event) `OnValueChanged`: Fires when the Value is replaced. This event will not fire if an object or array are *modified*, only if they are *replaced*.
+- [distributedscope](#type-distributedscope) `Scope`
+- [jsonvalue](#type-jsonvalue) `AsJSON`
+
+### Methods
+- `Remove`: Removes the value from the distributed scope
+- `Push`: Distributes this individual value. Note that a manual Push is not necessary for most cases, but may be useful when modifying a json object or array (as doing so will not automatically Push).
 
 
 
