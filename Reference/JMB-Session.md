@@ -755,6 +755,9 @@ As Text: Same as `Time24`
 - `CreateShortcut[` [jsonobject](#type-jsonobject) `json` `]`
 - `SetClipboardText[`???`]`
 - `LoadDLL[` [string](#type-string) `filePath` `,` <"+imports"|"+exports"|"+direct"|"+disable"|"-imports"|"-exports"|"-direct"|"-disable"> `]`
+- `DebugBreak`
+- `DebugOutput[` [string](#type-string) `text` `]`
+- `ShowMessageBox[` [string](#type-string) `text` `,` [string](#type-string) `caption` `]`
 
 
 
@@ -802,8 +805,15 @@ As Text: Same as `Time24`
 - ??? `MetaScripts[`???`]`
 - ??? `LoadMetaScript[`???`]`
 - ??? `LoadMetaScriptJSON[`???`]`
+- [jsonarray](#type-jsonarray) `Aliases`
+- [jsonarray](#type-jsonarray) `Commands`
+- [jsonarray](#type-jsonarray) `Events`
+- [jsonarray](#type-jsonarray) `Scripts`
+- [jsonarray](#type-jsonarray) `TopLevelObjects`
+- [jsonarray](#type-jsonarray) `Types`
 
 ### Methods
+- `Echo[` ... [string](#type-string) `lines` `]`
 - `ExecuteAtom[` `name` `,` ... [string](#type-string) `]`: Executes an atom with the given name in global- or script-scope (if a script is currently in context).  Extra parameters are passed as parameters to the atom.
 - `RegisterEvent[` `name` `]`: Registers an event of <name>
 - `RegisterAlias[`???`]`
@@ -830,8 +840,12 @@ As Text: Same as `Time24`
 - [variablescope](#type-variablescope) `VariableScope`: The scripts variable scope
 - ??? `Turbo[`???`]`
 - [metascript](#type-metascript) `MetaScript`
-- ??? `Retain[`???`]`
-- ??? `Function[`???`]`
+- [bool](#type-bool) `Retain`
+- [function](#type-function) `Function[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `Functions`
+- [jsonarray](#type-jsonarray) `Atoms`
+- [jsonarray](#type-jsonarray) `ObjectDefs`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `End`: Ends execution of this script
@@ -1392,6 +1406,7 @@ As Text: JSON representation of the array
 - [int64](#type-int64) `GetInteger[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
 - [bool](#type-bool) `GetBool[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [bool](#type-bool) `GetBool[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [string](#type-string) `GetType[` ... [string](#type-string) `fieldPath` `]`: Gets the Type of a value stored within this array, by its index (1-based)
 - [uint](#type-uint) `Size`: Allocated capacity of the array
 - [uint](#type-uint) `Used`: Total number of values currently in the array
 - [string](#type-string) `Type`
@@ -1442,6 +1457,7 @@ As Text: JSON representation of the object
 - [int64](#type-int64) `GetInteger[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
 - [bool](#type-bool) `GetBool[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [bool](#type-bool) `GetBool[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [string](#type-string) `GetType[` ... [string](#type-string) `fieldPath` `]`: Gets the Type of a value stored within this object, by its name
 - [string](#type-string) `Type`
 - [string](#type-string) `AsString`
 - [unistring](#type-unistring) `AsJSON[` <"multiline"> `]`
@@ -1453,6 +1469,8 @@ As Text: JSON representation of the object
 - [bool](#type-bool) `Assert[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `,` `json` `]`: Checks whether a value is stored, multiple levels deep within jsonobjects and/or jsonarrays, AND matches the specified JSON value
 - [jsonarray](#type-jsonarray) `Keys`: A JSON array containing a list of keys from this object
 - [jsonarray](#type-jsonarray) `Values`: A JSON array containing a list of values from this object
+- [uint](#type-uint) `Used`: Number of values contained by the object
+- [uint](#type-uint) `Size`: Number of values contained by the object
 
 ### Methods
 - `GetIterator[` [weakref](#type-weakref) `iteratorObject` `]`: Sets a jsoniterator to iterate this JSON object
@@ -1630,6 +1648,7 @@ As Text: Same as `Text`
 - [xmlnode](#type-xmlnode) `Previous`: The previous sibling of this node
 - ??? `FindChildElement[` [string](#type-string) `name` `]`: Finds the first child ELEMENT node by name (xml tag)
 - ??? `FindNextChildElement[` [weakref](#type-weakref) `fromNode` `,` [string](#type-string) `name` `]`: Finds the next child ELEMENT node by name (xml tag), from a specified node
+- [bool](#type-bool) `Leaf`
 - [jsonarray](#type-jsonarray) `Attributes`: A jsonarray of the attributes and their values
 - [jsonboject](#type-jsonboject) `AsJSON[` <[bool](#type-bool) `includeDescendants`=false> `]`: A JSON representation of this element. If includeDescendants is specified, this will include all descendant nodes.
 
@@ -3498,6 +3517,7 @@ As Text: Same as `System`
 - [bool](#type-bool) `ForegroundMaxFPSCalculate`
 - [uint](#type-uint) `BackgroundMaxFPS`
 - [bool](#type-bool) `BackgroundMaxFPSCalculate`
+- [gdiwindow](#type-gdiwindow) `ForegroundWindow`
 
 ### Methods
 - `SetTaskbarAutoHide[`???`]`
