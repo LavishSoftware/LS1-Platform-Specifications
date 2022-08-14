@@ -1034,6 +1034,14 @@
               "description": "An array of Distributed Scope names"
             }
           ]
+        },
+        "AutoDebug":{
+          "forms": [
+            {
+              "minimumBuild":6967,
+              "type":"bool"
+            }
+          ]
         }
       },
       "methods": {
@@ -1104,6 +1112,85 @@
                 {
                   "type":"jsonobject",
                   "name":"json"
+                }
+              ]
+            }
+          ]
+        },
+        "Relay":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "json"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6964,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"target"
+                },
+                {
+                  "type":"string",
+                  "name":"command"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6964,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"target"
+                },
+                {
+                  "type":"string",
+                  "name":"object"
+                },
+                {
+                  "type":"string",
+                  "name":"method"
+                },
+                {
+                  "type":"string",
+                  "name":"args",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "RelayByRef":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "ref"
+                }
+              ]
+            }
+          ]
+        },
+        "SetAutoDebug":{
+          "forms": [
+            {
+              "minimumBuild":6967,
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                },
+                {
+                  "type":"string",
+                  "name": "logFilename",
+                  "optional": true
                 }
               ]
             }
@@ -1404,6 +1491,14 @@
             {
               "minimumBuild":6875,
               "type":"bool"
+            }
+          ]
+        },
+        "ForegroundWindow":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"gdiwindow"
             }
           ]
         }
@@ -4124,10 +4219,36 @@
           "restricted": true
         },
         "AddClone": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"string"
+                }
+              ]
+            }
+          ]
         },
         "RemoveClone": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"string"
+                }
+              ]
+            }
+          ]
+        },
+        "ClearClones":{
+          "restricted": true,
+          "forms": [
+            {
+              "minimumBuild":6967
+            }
+          ]
         }
       },
       "asString": {
@@ -4147,6 +4268,7 @@
         "SetPermanent": {},
         "PullFeedNameBinding":{},
         "PushFeedNameBinding":{}
+
       },
       "asString": {
         "constant": "lgui2videofeed"

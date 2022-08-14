@@ -3220,6 +3220,43 @@
               ]
             }
           ]
+        },
+        "DebugBreak":{
+          "forms": [
+            {
+              "minimumBuild":6967
+            }
+          ]
+        },
+        "DebugOutput":{
+          "forms": [
+            {
+              "minimumBuild":6967,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "ShowMessageBox":{
+          "forms": [
+            {
+              "minimumBuild":6967,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"text"
+                },
+                {
+                  "type":"string",
+                  "name": "caption"
+                }
+              ]
+            }
+          ]
         }
       },
       "persistent": false,
@@ -3438,9 +3475,71 @@
         "MetaScript": {},
         "MetaScripts": {},
         "LoadMetaScript": {},
-        "LoadMetaScriptJSON": {}
+        "LoadMetaScriptJSON": {},
+        "Aliases":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Commands":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Events":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Scripts":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "TopLevelObjects":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Types":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        }
       },
       "methods": {
+        "Echo":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "parameters": [
+                {
+                  "type":"string",
+                  "greedy": true,
+                  "name":"lines"
+                }
+              ]
+            }
+          ]
+        },        
         "ExecuteAtom": {
           "forms": [
             {
@@ -3604,8 +3703,58 @@
             }
           ]
         },
-        "Retain": {},
-        "Function": {}
+        "Retain": {
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
+        },
+        "Function": {
+          "forms": [
+            {
+              "type":"function",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "Functions":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Atoms":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "ObjectDefs":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"jsonobject"
+            }
+          ]
+        }
       },
       "methods": {
         "End": {
@@ -6186,6 +6335,22 @@
             }
           ]
         },
+        "GetType":{
+          "forms": [
+            {
+              "minimumBuild":6952,
+              "type": "string",
+              "description": "Gets the Type of a value stored within this array, by its index (1-based)",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
         "Size": {
           "forms": [
             {
@@ -6732,6 +6897,22 @@
             }
           ]
         },
+        "GetType":{
+          "forms": [
+            {
+              "minimumBuild":6952,
+              "type": "string",
+              "description": "Gets the Type of a value stored within this object, by its name",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
         "Type": {
           "forms": [
             {
@@ -6865,6 +7046,24 @@
             {
               "type": "jsonarray",
               "description": "A JSON array containing a list of values from this object"
+            }
+          ]
+        },
+        "Used":{
+          "forms": [
+            {
+              "minimumBuild":6952,
+              "type":"uint",
+              "description": "Number of values contained by the object"
+            }
+          ]
+        },
+        "Size":{
+          "forms": [
+            {
+              "minimumBuild":6952,
+              "type":"uint",
+              "description": "Number of values contained by the object"
             }
           ]
         }
@@ -7941,6 +8140,14 @@
             }
           ]
         },    
+        "Leaf":{
+          "forms": [
+            {
+              "minimumBuild":6964,
+              "type":"bool"
+            }
+          ]
+        },
         "Attributes":{          
           "forms": [
             {

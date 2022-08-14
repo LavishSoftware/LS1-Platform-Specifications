@@ -203,6 +203,7 @@
         "Attach": {
             "forms": [
                 {
+                    "minimumBuild":6967,
                     "parameters": [
                         {
                             "type": "uint",
@@ -210,11 +211,15 @@
                         },
                         {
                             "type": "string",
-                            "name": "gameName"
+                            "name": "gameName",
+                            "optional": true,
+                            "default":"Generic"
                         },
                         {
                             "type": "string",
-                            "name": "gameProfileName"
+                            "name": "gameProfileName",
+                            "optional": true,
+                            "default":"Generic Default Profile"
                         },
                         {
                             "name": "startupOptions",
