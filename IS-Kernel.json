@@ -1178,6 +1178,59 @@
             }
           ]
         },
+        "LocalExec":{
+          "forms": [
+            {
+              "minimumBuild":6968,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "json"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6968,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"command"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6968,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"object"
+                },
+                {
+                  "type":"string",
+                  "name":"method"
+                },
+                {
+                  "type":"string",
+                  "name":"args",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "LocalExecByRef":{
+          "forms": [
+            {
+              "minimumBuild":6968,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "ref"
+                }
+              ]
+            }
+          ]
+        },
         "SetAutoDebug":{
           "forms": [
             {
