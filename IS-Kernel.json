@@ -5063,6 +5063,8 @@
               ]
             },
             {
+              "minimumBuild":6991,
+              "type":"distributedscope",
               "parameters": [
                 {
                   "type":"uint",
