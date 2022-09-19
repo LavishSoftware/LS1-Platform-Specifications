@@ -5054,22 +5054,22 @@
             {
               "minimumBuild":6991,
               "type":"distributedscope",
+              "description": "Retrieves a Distributed Scope by name",
               "parameters": [
                 {
                   "type":"string",
-                  "name": "name",
-                  "description": "Retrieves a Distributed Scope by name"
+                  "name": "name"                  
                 }
               ]
             },
             {
               "minimumBuild":6991,
               "type":"distributedscope",
+              "description": "Retrieves a Distributed Scope by ID",
               "parameters": [
                 {
                   "type":"uint",
-                  "name":"id",
-                  "description": "Retrieves a Distributed Scope by ID"
+                  "name":"id"
                 }
               ]
             }
