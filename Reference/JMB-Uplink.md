@@ -336,6 +336,11 @@ LavishScript base API
 
 ### Methods
 none.
+### Static Members
+- [bool](#type-bool) `Equal[` [string](#type-string) `A` `,` [string](#type-string) `B` `]`: Tests equality (case insensitive) of two strings
+- [bool](#type-bool) `IsNULLOrEmpty[` [string](#type-string) `str` `]`: Determines if a string is NULL or empty
+- [bool](#type-bool) `IsNULLOrWhitespace[` [string](#type-string) `str` `]`: Determines if a string is NULL or empty/whitespace
+
 
 
 ## Type: rgb
@@ -625,6 +630,7 @@ none.
 
 
 ## Type: math
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - [float](#type-float) `Abs[` [float](#type-float) `value` `]`: Returns the absolute value of a given formula
@@ -665,6 +671,8 @@ As Text: Same as `Name`
 - [uint](#type-uint) `Method[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `Members`
 - [jsonarray](#type-jsonarray) `Methods`
+- [jsonarray](#type-jsonarray) `StaticMembers`
+- [jsonarray](#type-jsonarray) `StaticMethods`
 - [type](#type-type) `Inherits`
 - [type](#type-type) `VariableType`
 - [string](#type-string) `PersistentClass`
@@ -729,6 +737,7 @@ As Text: Same as `Time24`
 
 
 ## Type: system
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 
@@ -785,6 +794,7 @@ As Text: Same as `Time24`
 
 
 ## Type: lavishscript
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Members
@@ -844,6 +854,7 @@ As Text: Same as `Time24`
 - [function](#type-function) `Function[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `Functions`
 - [jsonarray](#type-jsonarray) `Atoms`
+- [scriptobjecttype](#type-scriptobjecttype) `ObjectDef[` [string](#type-string) `typeName` `]`: Retrieves a scriptobjecttype by name
 - [jsonarray](#type-jsonarray) `ObjectDefs`
 - [jsonobject](#type-jsonobject) `AsJSON`
 
@@ -1111,6 +1122,8 @@ As Text: Same as `Name`
 - [bool](#type-bool) `Function[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `Members[` <[bool](#type-bool) `followIncludes`=true> `]`
 - [jsonarray](#type-jsonarray) `Methods[` <[bool](#type-bool) `followIncludes`=true> `]`
+- [jsonarray](#type-jsonarray) `StaticMembers[` <[bool](#type-bool) `followIncludes`=true> `]`
+- [jsonarray](#type-jsonarray) `StaticMethods[` <[bool](#type-bool) `followIncludes`=true> `]`
 - [jsonarray](#type-jsonarray) `Functions[` <[bool](#type-bool) `followIncludes`=true> `]`
 - [jsonobject](#type-jsonobject) `Metadata`
 - [jsonobject](#type-jsonobject) `AsJSON[` <[bool](#type-bool) `followIncludes`=true> `]`
@@ -1494,6 +1507,7 @@ As Text: JSON representation of the object
 
 
 ## Type: lavishmachine
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Members
@@ -1678,6 +1692,7 @@ none.
 # Types
 ## Type: lgui2
 - Base Type: [lgui2layer](#type-lgui2layer)
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 As Text: "LavishGUI 2.0"
 
@@ -3481,6 +3496,7 @@ Inner Space Kernel API Specification (LavishScript)
 
 
 ## Type: display
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 As Text: Same as `System`
 
@@ -3558,6 +3574,7 @@ none.
 
 
 ## Type: audio
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - [float](#type-float) `VolumeLeft`: (Windows) Current Process left-channel volume level, as per Windows Volume Mixer. 0.0 for silent, 1.0 for full volume.
@@ -3654,6 +3671,7 @@ As Text: "TRUE"
 
 
 ## Type: keyboard
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - [string](#type-string) `System`: Name of the currently active system for keyboard input (DirectInput, Win32I)
@@ -3672,6 +3690,7 @@ As Text: "TRUE"
 
 
 ## Type: input
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - ??? `G15[`???`]`
@@ -3764,6 +3783,7 @@ none.
 
 
 ## Type: mouse
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 As Text: Same as `Position`
 
@@ -3795,6 +3815,7 @@ As Text: Same as `Position`
 
 
 ## Type: midi
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 As Text: "midi"
 
@@ -3989,6 +4010,7 @@ As Text: hex HWND
 
 
 ## Type: localization
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 As Text: Same as `Language`
 
@@ -4238,6 +4260,7 @@ As Text: "agentprovider"
 
 
 ## Type: dotnet
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - [bool](#type-bool) `Ready`
@@ -4288,6 +4311,13 @@ As Text: "distributedscope"
 - `Push`: Explicitly pushes the entire distributed scope. This should not normally be necessary, as sets of changes are generally distributed.
 - `SetValues[` [string](#type-string) `jsonobject` `]`: Applies changes to multiple values, as specified by a JSON object
 - `Remove`: Destroys this Distributed Scope
+
+### Static Members
+- [distributedscope](#type-distributedscope) `Get[` [string](#type-string) `name` `]`: Retrieves a Distributed Scope by name
+- [distributedscope](#type-distributedscope) `Get[` [uint](#type-uint) `id` `]`: Retrieves a Distributed Scope by ID
+- [distributedscope](#type-distributedscope) `New[` [jsonobject](#type-jsonobject) `json` `]`: Adds a Distributed Scope, given JSON to initialize with
+- [anonevent](#type-anonevent) `OnScopeAdded`: Event fires when a Distributed Scope is added
+- [anonevent](#type-anonevent) `OnScopeRemoved`: Event fires when a Distributed Scope is removed
 
 
 
@@ -4344,6 +4374,7 @@ none.
 ---
 # Types
 ## Type: joemultiboxer
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - [string](#type-string) `Version`
@@ -4614,6 +4645,7 @@ Inner Space Uplink API Specification (LavishScript)
 ---
 # Types
 ## Type: licenseserver
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - [uint](#type-uint) `CheckPatchTime`
@@ -4648,6 +4680,7 @@ As Text: Same as `Name`
 
 
 ## Type: speech
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - ??? `Ready[`???`]`
@@ -4677,6 +4710,7 @@ As Text: Same as `Name`
 
 
 ## Type: innerspaceuplink
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 - ??? `Game[`???`]`
@@ -4757,6 +4791,7 @@ none.
 
 
 ## Type: videofeed
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 ### Members
 none.
