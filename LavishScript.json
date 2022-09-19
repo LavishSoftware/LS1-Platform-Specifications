@@ -1246,6 +1246,57 @@
           }
         ]
       },
+      "staticMembers":{
+        "Equal":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "description": "Tests equality (case insensitive) of two strings",
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "A"
+                },
+                {
+                  "type":"string",
+                  "name": "B"
+                }
+              ]
+            }
+          ]
+        },
+        "IsNULLOrEmpty":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "description": "Determines if a string is NULL or empty",
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "str"
+                }
+              ]
+            }
+          ]
+        },
+        "IsNULLOrWhitespace":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "description": "Determines if a string is NULL or empty/whitespace",
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "str"
+                }
+              ]
+            }
+          ]
+        }
+      },
       "persistent": false
     },
     "rgb": {
@@ -2295,6 +2346,7 @@
       "persistent": false
     },
     "math": {
+      "static":true,
       "members": {
         "Abs": {
           "forms": [
@@ -2697,6 +2749,22 @@
             }
           ]
         },
+        "StaticMembers":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "StaticMethods":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "type":"jsonarray"
+            }
+          ]
+        },
         "Inherits":{
           "forms": [
             {
@@ -3021,6 +3089,7 @@
       "persistent": false
     },
     "system": {
+      "static":true,
       "members": {
         "OS": {
           "forms": [
@@ -3354,6 +3423,7 @@
       "asString": {}
     },
     "lavishscript": {
+      "static":true,
       "members": {
         "Version": {
           "forms": [
@@ -3739,10 +3809,25 @@
             }
           ]
         },
+        "ObjectDef":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "type":"scriptobjecttype",
+              "description": "Retrieves a scriptobjecttype by name",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "typeName"
+                }
+              ]
+            }
+          ]
+        },
         "ObjectDefs":{
           "forms": [
             {
-              "minimumBuild":6964,
+              "minimumBuild":6991,
               "type":"jsonarray"
             }
           ]
@@ -4797,6 +4882,38 @@
               ]
             }
           ]          
+        },
+        "StaticMembers":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"bool",
+                  "optional": true,
+                  "default":true,
+                  "name": "followIncludes"
+                }
+              ]
+            }
+          ]
+        },
+        "StaticMethods":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"bool",
+                  "optional": true,
+                  "default":true,
+                  "name": "followIncludes"
+                }
+              ]
+            }
+          ]
         },
         "Functions":{
           "forms": [
@@ -7358,6 +7475,7 @@
       }
     },
     "lavishmachine": {
+      "static":true,
       "members": {
         "NewTaskManager": {
           "forms": [

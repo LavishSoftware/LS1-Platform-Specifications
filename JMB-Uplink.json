@@ -2,7 +2,9 @@
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
     "name": "Joe Multiboxer Uplink",
     "types":{
-        "jmbuplink":{}
+        "jmbuplink":{
+            "static":true
+        }
     },
     "topLevelObjects": {
         "JMBSession":{

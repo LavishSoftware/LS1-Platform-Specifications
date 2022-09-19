@@ -82,6 +82,7 @@
                 {
                     "parameters": [
                         {
+                            "type":"string",
                             "enum": [
                                 "application",
                                 "eat",
@@ -570,6 +571,7 @@
     },
     "types": {
         "innerspacesession": {
+            "static":true,
             "restricted": true,
             "members": {
                 "Name": {
@@ -620,12 +622,33 @@
                             "type": "jsonobject"
                         }
                     ]
+                },
+                "FocusFollowsMouse":{
+                    "forms": [
+                        {
+                            "type":"bool",
+                            "minimumBuild":6982
+                        }
+                    ]
                 }
             },
             "methods": {
                 "SetFlashWindow": {
                     "forms": [
                         {
+                            "parameters": [
+                                {
+                                    "type": "bool",
+                                    "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetFocusFollowsMouse": {
+                    "forms": [
+                        {
+                            "minimumBuild":6982,
                             "parameters": [
                                 {
                                     "type": "bool",
@@ -665,6 +688,7 @@
             }
         },
         "videofeed": {
+            "static":true,
             "members": {
                 "Source": {
                     "forms": [
@@ -1121,6 +1145,7 @@
             }
         },
         "logreader": {
+            "static":true,
             "methods": {
                 "RegisterLog": {
                     "forms": [

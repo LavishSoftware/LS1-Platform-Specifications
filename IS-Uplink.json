@@ -556,6 +556,7 @@
     },
     "types": {
         "licenseserver": {
+            "static":true,
             "members": {
                 "CheckPatchTime": {
                     "forms": [
@@ -767,6 +768,7 @@
             }
         },
         "speech": {
+            "static":true,
             "members": {
                 "Ready": {}
             },
@@ -794,6 +796,7 @@
             "minimumBuild":6838
         },
         "innerspaceuplink":{
+            "static":true,
             "members": {
                 "Game":{},
                 "Games":{},
@@ -891,6 +894,7 @@
         },
         "ismenuseparator": {},
         "videofeed": {
+            "static":true,
             "methods": {
                 "RegisterSource": {},
                 "RegisterOutput": {},

@@ -3,6 +3,7 @@
     "name": "LavishGUI 2",
     "types": {
       "lgui2": {
+        "static":true,
         "baseType": "lgui2layer",
         "members": {
           "Layer": {

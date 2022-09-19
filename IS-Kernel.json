@@ -888,6 +888,7 @@
   },
   "types": {
     "innerspace": {
+      "static":true,
       "members": {
         "Version": {
           "forms": [
@@ -1248,6 +1249,25 @@
               ]
             }
           ]
+        },
+        "Minidump":{
+          "forms": [
+            {
+              "minimumBuild":6982,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "processID"
+                },
+                {
+                  "type":"string",
+                  "name": "outputFilename",
+                  "default":"auto.dmp",
+                  "optional": true
+                }
+              ]
+            }
+          ]
         }
       },
       "restricted": true
@@ -1278,6 +1298,7 @@
       }
     },
     "display": {
+      "static":true,
       "members": {
         "GetSize": {},
         "TaskbarAutoHide": {},
@@ -1740,6 +1761,7 @@
       }
     },
     "audio": {
+      "static":true,
       "members": {
         "VolumeLeft": {
           "forms": [
@@ -2118,6 +2140,7 @@
       }
     },
     "keyboard": {
+      "static":true,
       "members": {
         "System": {
           "forms": [
@@ -2176,6 +2199,7 @@
       }
     },
     "input": {
+      "static":true,
       "members": {
         "G15": {},
         "Pending": {},
@@ -2541,6 +2565,7 @@
       }
     },
     "mouse": {
+      "static":true,
       "members": {
         "Speed": {
           "forms": [
@@ -2751,6 +2776,7 @@
       }
     },
     "console": {
+      "static":true,
       "members": {
         "Open": {
           "forms": [
@@ -2817,6 +2843,7 @@
       "restricted": true
     },
     "navigation": {
+      "static":true,
       "members": {
         "World": {
           "forms": [
@@ -3382,6 +3409,7 @@
       "restricted": true
     },
     "midi": {
+      "static":true,
       "members": {
         "NumAttachedInDevices": {},
         "AttachedInDevice": {},
@@ -4089,6 +4117,7 @@
       }
     },
     "localization": {
+      "static":true,
       "members": {
         "Language": {
           "forms": [
@@ -4606,6 +4635,7 @@
       "asString": {"constant": "agentprovider"}
     },
     "dotnet":{
+      "static":true,
       "minimumBuild":6900,
       "members": {
         "Ready":{
@@ -5014,6 +5044,65 @@
           "forms": [
             {
               "description": "Destroys this Distributed Scope"
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "type":"distributedscope",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name",
+                  "description": "Retrieves a Distributed Scope by name"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id",
+                  "description": "Retrieves a Distributed Scope by ID"
+                }
+              ]
+            }
+          ]
+        },
+        "New":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "description": "Adds a Distributed Scope, given JSON to initialize with",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name":"json"
+                }
+              ],
+              "type": "distributedscope"
+            }
+          ]
+        },
+        "OnScopeAdded":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "description": "Event fires when a Distributed Scope is added",
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnScopeRemoved":{
+          "forms": [
+            {
+              "minimumBuild":6991,
+              "description": "Event fires when a Distributed Scope is removed",
+              "type":"anonevent"
             }
           ]
         }

@@ -4,6 +4,7 @@
     "types": {
         "joemultiboxer": {
             "name": "joemultiboxer",
+            "static":true,
             "members": {
                 "Version": {
                     "forms": [

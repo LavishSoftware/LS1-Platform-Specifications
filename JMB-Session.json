@@ -3,6 +3,7 @@
     "name": "Joe Multiboxer Session",
     "types":{
         "jmbsession":{
+            "static":true,
             "members": {
 
             },
