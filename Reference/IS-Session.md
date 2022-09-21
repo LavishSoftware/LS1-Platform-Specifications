@@ -790,7 +790,7 @@ As Text: Same as `Time24`
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON array representation of this array, with each element converted by using its AsJSON member
 
 ### Methods
-- `ForEach[` [string](#type-string) `command` `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
 
@@ -1235,6 +1235,12 @@ none.
 - [mutablestring](#type-mutablestring) `Expand[` [uint](#type-uint) `beginNum` `,` [uint](#type-uint) `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by spaces.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
 - [mutablestring](#type-mutablestring) `ExpandComma[` [uint](#type-uint) `beginNum` `,` [uint](#type-uint) `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by commas.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON array representation of this index, with each element converted by using its AsJSON member
+- [int64](#type-int64) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [int64](#type-int64) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
+- [object](#type-object) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [object](#type-object) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
 
 ### Methods
 - `Shift[` [uint](#type-uint) `position` `,` [uint](#type-uint) `places` `]`: Makes room for # places elements at # position, by shifting toward index.Size. The index will not be implicitly Resized, and elements at the end of the index may be destroyed.
@@ -1250,7 +1256,7 @@ none.
 - `Resize[` `#` `]`: Resizes the index such that it will hold at least this number of elements.
 - `FromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes an index of objects from JSON. Each object must accept a JSON value.
 - `NativeFromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes an index of objects from JSON. Each object must accept a native value.
-- `ForEach[` [string](#type-string) `command` `]`: For each element in the index, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the index, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
 
@@ -1269,6 +1275,12 @@ none.
 - [jsonarray](#type-jsonarray) `Keys`: A jsonarray of keys in the collection
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON object representation of this collection, with each element converted by using its AsJSON member. The keys from the collection will be used as keys in the JSON object
 - [unistring](#type-unistring) `AsJSON[` "array" `]`: Returns a JSON array representation of this collection, with each element converted by using its AsJSON member.
+- [string](#type-string) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [string](#type-string) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
+- [object](#type-object) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [object](#type-object) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
 
 ### Methods
 - `Set[` [string](#type-string) `key` `,` <... [array](#type-array) `initializer`> `]`: Sets (adding, if necessary) the element identified by the given key with the given value
@@ -1277,7 +1289,7 @@ none.
 - `Erase[` `key` `]`: Erases the element, if any, identified by the given key
 - `EraseByQuery[` [uint](#type-uint) `query_id` `]`: Erases any elements in the collection matching the given [[LavishScript:Object_Queries|Query]]
 - `EraseByQuery[` [uint](#type-uint) `query_id` `,` [bool](#type-bool) `remove_MATCHES` `]`: Erases any elements in the collection that either match or do not match the given [[LavishScript:Object_Queries|Query]]
-- `ForEach[` [string](#type-string) `command` `]`: For each element in the collection, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the collection, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
 
@@ -1323,7 +1335,7 @@ none.
 - `Intersect[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "sets A and intersect B" to this set
 - `Union[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "set A union B" to this set
 - `Not[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "set A not B" to this set
-- `ForEach[` [string](#type-string) `command` `]`: For each element in the set, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the set, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Value for each iteration
 
 
 
@@ -1488,6 +1500,14 @@ As Text: JSON representation of the array
 - [string](#type-string) `AsString`
 - [unistring](#type-unistring) `AsJSON[` <"multiline"> `]`
 - [jsonarray](#type-jsonarray) `Value`
+- [int64](#type-int64) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [int64](#type-int64) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectValues[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectValues[` [jsonobject](#type-jsonobject) `query` `]`
 
 ### Methods
 - `GetIterator[` [weakref](#type-weakref) `iteratorObject` `]`: Sets a jsoniterator to iterate this JSON array
@@ -1512,7 +1532,7 @@ As Text: JSON representation of the array
 - `EraseByQuery[` [string](#type-string) `queryText` `,` <[bool](#type-bool) `removeMatches`=true> `]`: Erases items either matching or not matching the query from the array (depending on the 2nd parameter), shifting later elements toward 0
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the array, shifting later elements toward 0
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
-- `ForEach[` [string](#type-string) `command` `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
 
@@ -1546,6 +1566,14 @@ As Text: JSON representation of the object
 - [jsonarray](#type-jsonarray) `Values`: A JSON array containing a list of values from this object
 - [uint](#type-uint) `Used`: Number of values contained by the object
 - [uint](#type-uint) `Size`: Number of values contained by the object
+- [unistring](#type-unistring) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [unistring](#type-unistring) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectValues[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectValues[` [jsonobject](#type-jsonobject) `query` `]`
 
 ### Methods
 - `GetIterator[` [weakref](#type-weakref) `iteratorObject` `]`: Sets a jsoniterator to iterate this JSON object
@@ -1562,7 +1590,7 @@ As Text: JSON representation of the object
 - `EraseByQuery[` [string](#type-string) `queryText` `,` <[bool](#type-bool) `removeMatches`=true> `]`: Erases items either matching or not matching the query from the object (depending on the 2nd parameter)
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the object
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
-- `ForEach[` [string](#type-string) `command` `]`: For each value in the object, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each value in the object, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 - `Merge[` [string](#type-string) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 - `Merge[` [jsonvalueref](#type-jsonvalueref) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 
@@ -4356,6 +4384,13 @@ As Text: "agent"
 - ??? `Provides[`???`]`
 - ??? `Conflicts[`???`]`
 - ??? `Dependencies[`???`]`
+- [anonevent](#type-anonevent) `OnAgentEvent`
+- [anonevent](#type-anonevent) `OnPulse`
+- [anonevent](#type-anonevent) `OnShutdown`
+- [anonevent](#type-anonevent) `OnStartup`
+- [anonevent](#type-anonevent) `OnPlatformPreStartup`
+- [anonevent](#type-anonevent) `OnPlatformStartup`
+- [anonevent](#type-anonevent) `OnReload`
 
 ### Methods
 - `Start`: Starts the Agent. Event handlers will start firing
@@ -4363,9 +4398,17 @@ As Text: "agent"
 - `Reload`
 - `Remove`: Stops and Removes the Agent
 - `SetAutoStart[`???`]`
-- `SetEventHandler[` `type` `,` `json` `]`: Where <tt>type</tt> is one of "global" "platform" or "process", this sets a specified event handler to the given json
-- `FireEvent[` `name` `]`: Fires the event by the specified name. Event handlers are processed in the following order: global, platform, process
-- `FireEvent[` `-reverse` `,` `name` `]`: Fires the event by the specified name, in reverse order. This is used, for example, for "onAgentShutdown" to initiate the process shutdown, then platform shutdown, then global shutdown handlers
+- `SetEventHandler[` [string](#type-string) `type` `,` [string](#type-string) `json` `]`: Where <tt>type</tt> is one of "global" "platform" or "process", this sets a specified event handler to the given json
+- `FireEvent[` [string](#type-string) `name` `]`: Fires the event by the specified name. Event handlers are processed in the following order: global, platform, process
+- `FireEvent[` "-reverse" `,` [string](#type-string) `name` `]`: Fires the event by the specified name, in reverse order. This is used, for example, for "onAgentShutdown" to initiate the process shutdown, then platform shutdown, then global shutdown handlers
+
+### Static Members
+- [agent](#type-agent) `New[` [string](#type-string) `json` `]`
+- [agent](#type-agent) `Get[` [string](#type-string) `name` `]`
+- [agent](#type-agent) `Get[` [uint](#type-uint) `id` `]`
+- [jsonarray](#type-jsonarray) `List`
+- [anonevent](#type-anonevent) `OnAgentAdded`
+- [anonevent](#type-anonevent) `OnAgentRemoved`
 
 
 
@@ -4787,6 +4830,7 @@ As Text: "distributedscope"
 - [distributedscope](#type-distributedscope) `Get[` [string](#type-string) `name` `]`: Retrieves a Distributed Scope by name
 - [distributedscope](#type-distributedscope) `Get[` [uint](#type-uint) `id` `]`: Retrieves a Distributed Scope by ID
 - [distributedscope](#type-distributedscope) `New[` [jsonobject](#type-jsonobject) `json` `]`: Adds a Distributed Scope, given JSON to initialize with
+- [jsonarray](#type-jsonarray) `List`
 - [anonevent](#type-anonevent) `OnScopeAdded`: Event fires when a Distributed Scope is added
 - [anonevent](#type-anonevent) `OnScopeRemoved`: Event fires when a Distributed Scope is removed
 
