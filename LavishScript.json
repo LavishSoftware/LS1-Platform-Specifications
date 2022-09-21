@@ -3079,6 +3079,11 @@
                 {
                   "name": "command",
                   "type": "string"
+                },
+                {
+                  "optional": true,                  
+                  "name": "filterQuery",
+                  "type": "jsonvalueref"
                 }
               ]
             }
@@ -5098,6 +5103,78 @@
               "description": "Returns a JSON array representation of this index, with each element converted by using its AsJSON member"
             }
           ]
+        },
+        "SelectKey":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"int64",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"int64",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectKeys":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectValue":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"object",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"object",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
         }
       },
       "methods": {
@@ -5283,6 +5360,11 @@
                 {
                   "name": "command",
                   "type": "string"
+                },
+                {
+                  "optional": true,                  
+                  "name": "filterQuery",
+                  "type": "jsonvalueref"
                 }
               ]
             }
@@ -5396,6 +5478,78 @@
               ]
             }
           ]
+        },
+        "SelectKey":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"string",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"string",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectKeys":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectValue":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"object",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"object",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
         }
       },
       "methods": {
@@ -5503,6 +5657,11 @@
                 {
                   "name": "command",
                   "type": "string"
+                },
+                {
+                  "optional": true,                  
+                  "name": "filterQuery",
+                  "type": "jsonvalueref"
                 }
               ]
             }
@@ -5710,6 +5869,11 @@
                 {
                   "name": "command",
                   "type": "string"
+                },
+                {
+                  "optional": true,                  
+                  "name": "filterQuery",
+                  "type": "jsonvalueref"
                 }
               ]
             }
@@ -6518,6 +6682,102 @@
               "type": "jsonarray"
             }
           ]
+        },
+        "SelectKey":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"int64",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"int64",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectKeys":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectValue":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonvalue",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonvalue",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectValues":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
         }
       },
       "methods": {
@@ -6858,6 +7118,11 @@
                 {
                   "name": "command",
                   "type": "string"
+                },
+                {
+                  "optional": true,                  
+                  "name": "filterQuery",
+                  "type": "jsonvalueref"
                 }
               ]
             }
@@ -7183,6 +7448,102 @@
               "description": "Number of values contained by the object"
             }
           ]
+        },
+        "SelectKey":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"unistring",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"unistring",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectKeys":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectValue":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonvalue",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonvalue",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectValues":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonobject",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
         }
       },
       "methods": {
@@ -7416,6 +7777,11 @@
                 {
                   "name": "command",
                   "type": "string"
+                },
+                {
+                  "optional": true,                  
+                  "name": "filterQuery",
+                  "type": "jsonvalueref"
                 }
               ]
             }

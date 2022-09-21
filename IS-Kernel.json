@@ -3861,7 +3861,63 @@
         "MinimumBuild": {},
         "Provides": {},
         "Conflicts": {},
-        "Dependencies": {}
+        "Dependencies": {},
+        "OnAgentEvent":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnPulse":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnShutdown":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnStartup":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnPlatformPreStartup":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnPlatformStartup":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnReload":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        }
       },
       "methods": {
         "Start": {
@@ -3899,9 +3955,11 @@
               "description": "Where <tt>type</tt> is one of \"global\" \"platform\" or \"process\", this sets a specified event handler to the given json",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "type"
                 },
                 {
+                  "type":"string",
                   "name": "json"
                 }
               ]
@@ -3914,6 +3972,7 @@
               "description": "Fires the event by the specified name. Event handlers are processed in the following order: global, platform, process",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "name"
                 }
               ]
@@ -3922,15 +3981,81 @@
               "description": "Fires the event by the specified name, in reverse order. This is used, for example, for \"onAgentShutdown\" to initiate the process shutdown, then platform shutdown, then global shutdown handlers",
               "parameters": [
                 {
-                  "name": "-reverse"
+                  "type":"string",
+                  "constant":"-reverse"
                 },
                 {
+                  "type":"string",
                   "name": "name"
                 }
               ]
             }
           ]
         }
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"agent",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "json"
+                }
+              ]
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"agent",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":6995,
+              "type":"agent",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            }
+          ]
+        },
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray"              
+            }
+          ]
+        },
+        "OnAgentAdded":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnAgentRemoved":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"anonevent"
+            }
+          ]
+        }        
       },
       "asString": {
         "constant": "agent"
@@ -5087,6 +5212,14 @@
                 }
               ],
               "type": "distributedscope"
+            }
+          ]
+        },
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":6995,
+              "type":"jsonarray"              
             }
           ]
         },
