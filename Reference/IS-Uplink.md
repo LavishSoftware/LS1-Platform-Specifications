@@ -729,6 +729,7 @@ As Text: Same as `Name`
 - [uint](#type-uint) `Method[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `Members`
 - [jsonarray](#type-jsonarray) `Methods`
+- [bool](#type-bool) `Static`
 - [jsonarray](#type-jsonarray) `StaticMembers`
 - [jsonarray](#type-jsonarray) `StaticMethods`
 - [type](#type-type) `Inherits`
@@ -1184,6 +1185,8 @@ As Text: Same as `Name`
 - [bool](#type-bool) `Function[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `Members[` <[bool](#type-bool) `followIncludes`=true> `]`
 - [jsonarray](#type-jsonarray) `Methods[` <[bool](#type-bool) `followIncludes`=true> `]`
+- [variablescope](#type-variablescope) `VariableScope`: The Variable Scope containing static variables for this objectdef
+- [bool](#type-bool) `Static`
 - [jsonarray](#type-jsonarray) `StaticMembers[` <[bool](#type-bool) `followIncludes`=true> `]`
 - [jsonarray](#type-jsonarray) `StaticMethods[` <[bool](#type-bool) `followIncludes`=true> `]`
 - [jsonarray](#type-jsonarray) `Functions[` <[bool](#type-bool) `followIncludes`=true> `]`
