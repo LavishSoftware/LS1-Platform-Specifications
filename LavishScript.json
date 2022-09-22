@@ -2749,6 +2749,14 @@
             }
           ]
         },
+        "Static":{
+          "forms": [
+            {
+              "minimumBuild":6997,
+              "type":"bool"
+            }
+          ]
+        },
         "StaticMembers":{
           "forms": [
             {
@@ -4887,6 +4895,23 @@
               ]
             }
           ]          
+        },
+        "VariableScope": {
+          "forms": [
+            {
+              "minimumBuild":6997,
+              "type":"variablescope",
+              "description": "The Variable Scope containing static variables for this objectdef"
+            }
+          ]
+        },        
+        "Static":{
+          "forms": [
+            {
+              "minimumBuild":6997,
+              "type":"bool"
+            }
+          ]
         },
         "StaticMembers":{
           "forms": [
