@@ -8476,6 +8476,22 @@
             }
           ]
         }
+      },
+      "staticMembers": {
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "type":"task",
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name": "id"
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "tasktype": {
@@ -8584,22 +8600,6 @@
               "parameters": [
                 {
                   "name": "name"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "staticMembers": {
-        "Get":{
-          "forms": [
-            {
-              "minimumBuild":7000,
-              "type":"task",
-              "parameters": [
-                {
-                  "type":"int64",
-                  "name": "id"
                 }
               ]
             }
