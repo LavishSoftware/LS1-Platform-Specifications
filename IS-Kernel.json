@@ -4036,7 +4036,14 @@
           "forms": [
             {
               "minimumBuild":6995,
-              "type":"jsonarray"              
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]              
             }
           ]
         },
@@ -4901,13 +4908,20 @@
               "description": "The float64 representation of the value with the given key"
             }
           ]
-        },
-    
+        },    
         "Values":{
           "forms": [
             {
-              "type":"jsonobject",
-              "description": "A jsonobject containing the values in the scope"
+              "minimumBuild":7000,
+              "type":"jsonarray",
+              "description": "A jsonarray containing the values in the scope",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
             }
           ]
         },    
@@ -4960,7 +4974,14 @@
           "forms": [
             {
               "type":"jsonarray",
-              "description": "An array of all keys in the scope"
+              "description": "An array of all keys in the scope",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
             }
           ]
         },
@@ -5030,6 +5051,11 @@
                 {
                   "name": "command",
                   "type": "string"
+                },
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
                 }
               ]
             }
@@ -5219,7 +5245,14 @@
           "forms": [
             {
               "minimumBuild":6995,
-              "type":"jsonarray"              
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]              
             }
           ]
         },

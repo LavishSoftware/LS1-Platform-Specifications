@@ -2984,6 +2984,16 @@
           }
         ]
       },
+      "staticMembers": {
+        "Now":{
+          "forms": [
+              {
+                  "minimumBuild":7000,
+                  "type":"time"
+              }
+          ]
+        }
+      },
       "persistent": false,
       "asString": {
         "member": "Time24"
@@ -4756,6 +4766,51 @@
             }
           ]
         }
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+              {
+                  "minimumBuild":7000,
+                  "type":"event",
+                  "parameters": [
+                    {
+                      "type":"string",
+                      "name": "name"
+                    }
+                  ]
+              }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+                "minimumBuild":7000,
+                "type":"event",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "name"
+                  }
+                ]
+            }
+        ]
+        },
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "anonevent":{
@@ -5140,16 +5195,6 @@
                   "name": "query"
                 }
               ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"int64",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
-                }
-              ]
             }
           ]
         },
@@ -5164,16 +5209,6 @@
                   "name": "query"
                 }
               ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonarray",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
-                }
-              ]
             }
           ]
         },
@@ -5185,16 +5220,6 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"object",
-              "parameters": [
-                {
-                  "type":"jsonobject",
                   "name": "query"
                 }
               ]
@@ -5482,7 +5507,14 @@
             {
               "type":"jsonarray",
               "minimumBuild":6947,
-              "description": "A jsonarray of keys in the collection"
+              "description": "A jsonarray of keys in the collection",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
             }
           ]
         },
@@ -6041,6 +6073,7 @@
                   "type": "object"
                 },
                 {
+                  "type":"string",
                   "name": "name"
                 },
                 {
@@ -6057,6 +6090,7 @@
               "description": "Deletes the variable in this scope with the given name, if any",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "name"
                 }
               ]
@@ -6082,6 +6116,90 @@
               ]
             }
           ]
+        },
+        "ForEach": {
+          "forms": [
+            {
+              "description": "For each variable in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration",
+              "parameters": [
+                {
+                  "name": "command",
+                  "type": "string"
+                },
+                {
+                  "optional": true,                  
+                  "name": "filterQuery",
+                  "type": "jsonvalueref"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "members": {
+        "SelectKey":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "type":"string",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "Keys":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectKeys":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "SelectValue":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "type":"object",
+              "parameters": [
+                {
+                  "type":"object",
+                  "name": "query"
+                }
+              ]
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "type":"jsonobject"
+            }
+          ]          
         }
       }
     },
@@ -6147,6 +6265,50 @@
                   "name": "iterator"
                 }
               ]
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+            {
+                "minimumBuild":7000,
+                "type":"enumtype",
+                "parameters": [
+                  {
+                    "type":"jsonvalueref",
+                    "name": "enumDefinition"
+                  }
+                ]
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+                "minimumBuild":7000,
+                "type":"enumtype",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "name"
+                  }
+                ]
+            }
+          ]
+        },
+        "List":{
+          "forms": [
+            {
+                "minimumBuild":7000,
+                "type":"jsonarray",
+                "parameters": [
+                  {
+                    "type":"jsonvalueref",
+                    "name": "filterQuery"
+                  }
+                ]
             }
           ]
         }
@@ -6500,6 +6662,24 @@
                 "type": "weakref",
                 "optional": true,
                 "default":null
+              }
+            ]
+          },
+          {
+            "minimumBuild":7000,
+            "parameters": [
+              {
+                "name": "json",
+                "type":"jsonobject"
+              }
+            ]
+          },
+          {
+            "minimumBuild":7000,
+            "parameters": [
+              {
+                "name": "json",
+                "type":"jsonarray"
               }
             ]
           }
@@ -7168,6 +7348,16 @@
           }
         ]
       },
+      "staticMembers": {
+        "New":{
+          "forms": [
+              {
+                  "minimumBuild":7000,
+                  "type":"jsonarray"
+              }
+          ]
+        }
+      },
       "asString": {
         "description": "JSON representation of the array"
       }
@@ -7444,7 +7634,14 @@
           "forms": [
             {
               "type": "jsonarray",
-              "description": "A JSON array containing a list of keys from this object"
+              "description": "A JSON array containing a list of keys from this object",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
             }
           ]
         },
@@ -7452,7 +7649,14 @@
           "forms": [
             {
               "type": "jsonarray",
-              "description": "A JSON array containing a list of values from this object"
+              "description": "A JSON array containing a list of values from this object",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
             }
           ]
         },
@@ -7860,6 +8064,16 @@
             ]
           }
         ]
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+              {
+                  "minimumBuild":7000,
+                  "type":"jsonobject"
+              }
+          ]
+        }
       },
       "asString": {
         "description": "JSON representation of the object"
@@ -8375,6 +8589,21 @@
             }
           ]
         }
+      },
+      "staticMembers": {
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7000,
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name": "id"
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "taskmanager": {
@@ -8472,6 +8701,50 @@
                   "name": "jsonarray"
                 }
               ]
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+            {
+                "minimumBuild":7000,
+                "type":"taskmanager",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "name"
+                  }
+                ]
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+                "minimumBuild":7000,
+                "type":"taskmanager",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "name"
+                  }
+                ]
+            }
+          ]
+        },
+        "List":{
+          "forms": [
+            {
+                "minimumBuild":7000,
+                "type":"jsonarray",
+                "parameters": [
+                  {
+                    "type":"jsonvalueref",
+                    "name": "filterQuery"
+                  }
+                ]
             }
           ]
         }
@@ -8968,6 +9241,11 @@
               "greedy": true
             }
           ]
+        },
+        {
+          "minimumBuild":7000,
+          "type":"object",
+          "description": "The object currently being tested within a LavishScript Select query (not to be confused with the other form of this TLO)"
         }
       ]
     },

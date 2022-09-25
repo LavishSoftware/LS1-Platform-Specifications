@@ -790,6 +790,51 @@
                 "RemoveMember":{},
                 "Execute":{}
             },
+            "staticMembers": {
+                "New":{
+                    "forms": [
+                        {
+                            "minimumBuild":7000,
+                            "type":"relaygroup",
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name": "name"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Get":{
+                    "forms": [
+                        {
+                            "minimumBuild":7000,
+                            "type":"relaygroup",
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name": "name"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "List":{
+                    "forms": [
+                        {
+                            "minimumBuild":7000,
+                            "type": "jsonarray",
+                            "parameters": [
+                                {
+                                  "optional": true,
+                                  "type":"jsonvalueref",
+                                  "name": "filterQuery"
+                                }
+                              ]
+                        }
+                    ]
+                }
+            },
             "asString": {
                 "member": "Name"
             },
