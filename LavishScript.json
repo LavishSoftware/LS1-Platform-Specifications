@@ -8595,6 +8595,7 @@
           "forms": [
             {
               "minimumBuild":7000,
+              "type":"task",
               "parameters": [
                 {
                   "type":"int64",
