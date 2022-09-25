@@ -256,6 +256,7 @@ LavishScript base API
 
 ## TLO: Select
 - [int](#type-int) `Select[` [string](#type-string) `needle` `,` ... [string](#type-string) `haystack` `]`: Finds the index of a value within `haystack` matching `needle`
+- [object](#type-object) `Select`: The object currently being tested within a LavishScript Select query (not to be confused with the other form of this TLO)
 
 ## TLO: This
 - [weakref](#type-weakref) `This`
@@ -772,6 +773,9 @@ As Text: Same as `Time24`
 - `Set[` [int](#type-int) `timestamp` `]`: Sets the value based on the given timestamp (standard UNIX timestamp, number of seconds since epoch)
 - `Update`: Updates the type after setting an individual member (NOT needed when using the Set method)
 
+### Static Members
+- [time](#type-time) `Now`
+
 
 
 ## Type: array
@@ -1133,6 +1137,11 @@ none.
 - `Execute[` ... [string](#type-string) `]`: Execute this event, optionally with any number of parameters
 - `ThisExecute[` `object` `,` ... [string](#type-string) `]`: Execute this event in the context of a given object, optionally with any number of parameters
 
+### Static Members
+- [event](#type-event) `New[` [string](#type-string) `name` `]`
+- [event](#type-event) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
 
 
 ## Type: anonevent
@@ -1239,11 +1248,8 @@ none.
 - [mutablestring](#type-mutablestring) `ExpandComma[` [uint](#type-uint) `beginNum` `,` [uint](#type-uint) `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by commas.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON array representation of this index, with each element converted by using its AsJSON member
 - [int64](#type-int64) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [int64](#type-int64) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
 - [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
 - [object](#type-object) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [object](#type-object) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
 
 ### Methods
 - `Shift[` [uint](#type-uint) `position` `,` [uint](#type-uint) `places` `]`: Makes room for # places elements at # position, by shifting toward index.Size. The index will not be implicitly Resized, and elements at the end of the index may be destroyed.
@@ -1275,7 +1281,7 @@ none.
 - [string](#type-string) `NextKey`: Continues iterating with an internal iterator, retrieving the next key
 - [string](#type-string) `CurrentKey`: Retrieves the current key in the iteration (with an internal iterator)
 - [sub-type](#type-sub-type) `CurrentValue`: Retrieves the current value in the iteration (with an internal iterator)
-- [jsonarray](#type-jsonarray) `Keys`: A jsonarray of keys in the collection
+- [jsonarray](#type-jsonarray) `Keys[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A jsonarray of keys in the collection
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON object representation of this collection, with each element converted by using its AsJSON member. The keys from the collection will be used as keys in the JSON object
 - [unistring](#type-unistring) `AsJSON[` "array" `]`: Returns a JSON array representation of this collection, with each element converted by using its AsJSON member.
 - [string](#type-string) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
@@ -1378,12 +1384,18 @@ none.
 ## Type: variablescope
 
 ### Members
-none.
+- [string](#type-string) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `Keys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [object](#type-object) `SelectValue[` [object](#type-object) `query` `]`
+- [jsonobject](#type-jsonobject) `AsJSON`
+
 ### Methods
-- `CreateVariable[` [object](#type-object) `type` `,` `name` `,` ... [string](#type-string) `]`: Creates a new variable in this scope of the given object type and name.  Any extra parameters are passed to object initialization
-- `DeleteVariable[` `name` `]`: Deletes the variable in this scope with the given name, if any
+- `CreateVariable[` [object](#type-object) `type` `,` [string](#type-string) `name` `,` ... [string](#type-string) `]`: Creates a new variable in this scope of the given object type and name.  Any extra parameters are passed to object initialization
+- `DeleteVariable[` [string](#type-string) `name` `]`: Deletes the variable in this scope with the given name, if any
 - `Clear`: Deletes all variables within this scope
 - `GetIterator[` [iterator](#type-iterator) `object` `]`: Initializes the given [[ObjectType:iterator|iterator]] object for iteration of this variable scope
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each variable in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
 
@@ -1399,6 +1411,11 @@ none.
 ### Methods
 - `SetValue[` `name` `,` `#` `]`: Assigns a value to a given name
 - `GetIterator[` `iterator` `]`: Sets an iterator for iterating the available values
+
+### Static Members
+- [enumtype](#type-enumtype) `New[` [jsonvalueref](#type-jsonvalueref) `enumDefinition` `]`
+- [enumtype](#type-enumtype) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`
 
 
 
@@ -1469,6 +1486,8 @@ As Text: JSON representation of the value
 
 ### Initializers
 - `jsonvalueref[` <[weakref](#type-weakref) `jsonValue`=null> `]`
+- `jsonvalueref[` [jsonobject](#type-jsonobject) `json` `]`
+- `jsonvalueref[` [jsonarray](#type-jsonarray) `json` `]`
 
 As Text: JSON representation of the referenced value
 
@@ -1537,6 +1556,9 @@ As Text: JSON representation of the array
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
 - `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
+### Static Members
+- [jsonarray](#type-jsonarray) `New`
+
 
 
 ## Type: jsonobject
@@ -1565,8 +1587,8 @@ As Text: JSON representation of the object
 - [bool](#type-bool) `Assert[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `matchValue` `]`
 - [bool](#type-bool) `Assert[` `valueName` `,` `json` `]`: Checks whether a value is stored within this object AND matches the specified JSON value
 - [bool](#type-bool) `Assert[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `,` `json` `]`: Checks whether a value is stored, multiple levels deep within jsonobjects and/or jsonarrays, AND matches the specified JSON value
-- [jsonarray](#type-jsonarray) `Keys`: A JSON array containing a list of keys from this object
-- [jsonarray](#type-jsonarray) `Values`: A JSON array containing a list of values from this object
+- [jsonarray](#type-jsonarray) `Keys[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A JSON array containing a list of keys from this object
+- [jsonarray](#type-jsonarray) `Values[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A JSON array containing a list of values from this object
 - [uint](#type-uint) `Used`: Number of values contained by the object
 - [uint](#type-uint) `Size`: Number of values contained by the object
 - [unistring](#type-unistring) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
@@ -1596,6 +1618,9 @@ As Text: JSON representation of the object
 - `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each value in the object, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 - `Merge[` [string](#type-string) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 - `Merge[` [jsonvalueref](#type-jsonvalueref) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
+
+### Static Members
+- [jsonobject](#type-jsonobject) `New`
 
 
 
@@ -1663,6 +1688,9 @@ As Text: JSON representation of the object
 - `Stop`: Stop the Task
 - `Toggle`: Stop or Start the Task
 
+### Static Members
+- [task](#type-task) `Get[` [int64](#type-int64) `id` `]`
+
 
 
 ## Type: tasktype
@@ -1719,6 +1747,11 @@ none.
 - `Destroy`: Stops all running Tasks, and destroys the Task Manager itself
 - `BeginTasksFile[`???`]`
 - `BeginTasks[` `jsonarray` `]`: Begins every Task in a given JSON array of Task objects
+
+### Static Members
+- [taskmanager](#type-taskmanager) `New[` [string](#type-string) `name` `]`
+- [taskmanager](#type-taskmanager) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`
 
 
 
@@ -4409,7 +4442,7 @@ As Text: "agent"
 - [agent](#type-agent) `New[` [string](#type-string) `json` `]`
 - [agent](#type-agent) `Get[` [string](#type-string) `name` `]`
 - [agent](#type-agent) `Get[` [uint](#type-uint) `id` `]`
-- [jsonarray](#type-jsonarray) `List`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 - [anonevent](#type-anonevent) `OnAgentAdded`
 - [anonevent](#type-anonevent) `OnAgentRemoved`
 
@@ -4802,12 +4835,12 @@ As Text: "distributedscope"
 - [int64](#type-int64) `GetInteger[` [string](#type-string) `key` `]`: The int64 representation of the value with the given key
 - [bool](#type-bool) `GetBool[` [string](#type-string) `key` `]`: The bool representation of the value with the given key
 - [float64](#type-float64) `GetNumber[` [string](#type-string) `key` `]`: The float64 representation of the value with the given key
-- [jsonobject](#type-jsonobject) `Values`: A jsonobject containing the values in the scope
+- [jsonarray](#type-jsonarray) `Values[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A jsonarray containing the values in the scope
 - [string](#type-string) `Distribution`: A Relay target used to distribute the value (e.g. "all")
 - [jsonobject](#type-jsonobject) `AsJSON`: A JSON object describing the Distributed Scope and containing its values
 - [bool](#type-bool) `Has[` [string](#type-string) `key` `]`: TRUE if the scope contains a value by the given key
 - [bool](#type-bool) `Assert[` [jsonvalue](#type-jsonvalue) `json` `]`: TRUE if the scope contains a value by the given key, which exactly matches the provided JSON value
-- [jsonarray](#type-jsonarray) `Keys`: An array of all keys in the scope
+- [jsonarray](#type-jsonarray) `Keys[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: An array of all keys in the scope
 - [int64](#type-int64) `Size`: Number of values in the scope
 - [int64](#type-int64) `Used`: Number of values in the scope
 - [event](#type-event) `OnUpdateReceived`: Fires when the distributed scope has been updated from a remote source
@@ -4817,7 +4850,7 @@ As Text: "distributedscope"
 
 ### Methods
 - `Clear`: Clears (removes) all values from the distributed scope
-- `ForEach[` [string](#type-string) `command` `]`: For each value in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each value in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 - `Set[` <"-lazy"> `,` [string](#type-string) `name` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
 - `SetString[` [string](#type-string) `name` `,` [string](#type-string) `value` `]`
 - `SetInteger[` [string](#type-string) `name` `,` [int64](#type-int64) `value` `]`
@@ -4833,7 +4866,7 @@ As Text: "distributedscope"
 - [distributedscope](#type-distributedscope) `Get[` [string](#type-string) `name` `]`: Retrieves a Distributed Scope by name
 - [distributedscope](#type-distributedscope) `Get[` [uint](#type-uint) `id` `]`: Retrieves a Distributed Scope by ID
 - [distributedscope](#type-distributedscope) `New[` [jsonobject](#type-jsonobject) `json` `]`: Adds a Distributed Scope, given JSON to initialize with
-- [jsonarray](#type-jsonarray) `List`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 - [anonevent](#type-anonevent) `OnScopeAdded`: Event fires when a Distributed Scope is added
 - [anonevent](#type-anonevent) `OnScopeRemoved`: Event fires when a Distributed Scope is removed
 
