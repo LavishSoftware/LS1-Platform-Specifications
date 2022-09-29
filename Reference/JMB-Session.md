@@ -1080,6 +1080,9 @@ none.
 - [event](#type-event) `Get[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
 
 
 ## Type: anonevent
@@ -1355,6 +1358,9 @@ none.
 - [enumtype](#type-enumtype) `Get[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`
 
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
 
 
 ## Type: jsonvalue
@@ -1468,19 +1474,28 @@ As Text: JSON representation of the array
 - [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
 - [jsonarray](#type-jsonarray) `SelectValues[` [jsonvalueref](#type-jsonvalueref) `query` `]`
 - [jsonarray](#type-jsonarray) `SelectValues[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `Reverse`: Gives a new jsonarray which re-references json values in reverse order
 
 ### Methods
 - `GetIterator[` [weakref](#type-weakref) `iteratorObject` `]`: Sets a jsoniterator to iterate this JSON array
 - `Clear`: Clears all values from the array
+- `Insert[` <"-lazy"> `,` [inr64](#type-inr64) `key` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
+- `Insert[` [int64](#type-int64) `key` `,` [jsonvalue](#type-jsonvalue) `json` `]`: Sets a value within the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Set[1,"{\"subValue\":12}"]</tt>
 - `Set[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
 - `Set[` [uint](#type-uint) `key` `,` [jsonvalue](#type-jsonvalue) `json` `]`: Sets a value within the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Set[1,"{\"subValue\":12}"]</tt>
 - `SetByRef[` [uint](#type-uint) `key` `,` [jsonvalueref](#type-jsonvalueref) `newValue` `]`
+- `InsertByRef[` [uint](#type-uint) `key` `,` [jsonvalueref](#type-jsonvalueref) `newValue` `]`
 - `AddByRef[` [jsonvalueref](#type-jsonvalueref) `newValue` `]`
 - `SetString[` [uint](#type-uint) `key` `,` [string](#type-string) `newValue` `]`: Sets a value within the array, to a new string value
 - `SetInteger[` [uint](#type-uint) `key` `,` [int64](#type-int64) `newValue` `]`: Sets a value within the array, to a new integer (int64) value
 - `SetNumber[` [uint](#type-uint) `key` `,` [float64](#type-float64) `newValue` `]`: Sets a value within the array, to a new number (float64) value
 - `SetBool[` [uint](#type-uint) `key` `,` [bool](#type-bool) `newValue` `]`: Sets a value within the array, to a new boolean value
 - `SetNULL[` [uint](#type-uint) `key` `]`: Sets a value within the array, to a null value
+- `InsertString[` [uint](#type-uint) `key` `,` [string](#type-string) `newValue` `]`: Inserts a string value within the array
+- `InsertInteger[` [uint](#type-uint) `key` `,` [int64](#type-int64) `newValue` `]`: Inserts an integer (int64) value within the array
+- `InsertNumber[` [uint](#type-uint) `key` `,` [float64](#type-float64) `newValue` `]`: Inserts a number (float64) value within the array
+- `InsertBool[` [uint](#type-uint) `key` `,` [bool](#type-bool) `newValue` `]`: Inserts a boolean value within the array
+- `InsertNULL[` [uint](#type-uint) `key` `]`: Inserts a null value within the array
 - `Add[` [jsonvalue](#type-jsonvalue) `newValue` `]`: Adds a value to the end of the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Add["{\"subValue\":12}"]</tt>
 - `AddString[` [string](#type-string) `newValue` `]`: Adds a string value to the end of the array
 - `AddInteger[` [int64](#type-int64) `newValue` `]`: Adds a new integer value to the end of the array
@@ -1493,6 +1508,8 @@ As Text: JSON representation of the array
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the array, shifting later elements toward 0
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
 - `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `Reverse`
+- `Swap[` [int64](#type-int64) `keyA` `,` [int64](#type-int64) `keyB` `]`
 
 ### Static Members
 - [jsonarray](#type-jsonarray) `New`
@@ -4046,6 +4063,9 @@ As Text: "agent"
 - [anonevent](#type-anonevent) `OnAgentAdded`
 - [anonevent](#type-anonevent) `OnAgentRemoved`
 
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
 
 
 ## Type: gdiwindow
@@ -4398,6 +4418,9 @@ As Text: "distributedscope"
 - [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 - [anonevent](#type-anonevent) `OnScopeAdded`: Event fires when a Distributed Scope is added
 - [anonevent](#type-anonevent) `OnScopeRemoved`: Event fires when a Distributed Scope is removed
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
