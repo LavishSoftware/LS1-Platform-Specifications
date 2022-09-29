@@ -4064,6 +4064,26 @@
           ]
         }        
       },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+              {
+                "minimumBuild":7003,
+                  "parameters": [
+                      {
+                          "type":"string",
+                          "name":"command"        
+                      },
+                      {
+                          "type":"jsonvalueref",
+                          "name": "filterQuery",
+                          "optional": true
+                      }    
+                  ]
+              }
+          ]
+        }
+      },
       "asString": {
         "constant": "agent"
       }
@@ -5272,6 +5292,26 @@
               "description": "Event fires when a Distributed Scope is removed",
               "type":"anonevent"
             }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+              {
+                "minimumBuild":7003,
+                "parameters": [
+                      {
+                          "type":"string",
+                          "name":"command"        
+                      },
+                      {
+                          "type":"jsonvalueref",
+                          "name": "filterQuery",
+                          "optional": true
+                      }    
+                  ]
+              }
           ]
         }
       },

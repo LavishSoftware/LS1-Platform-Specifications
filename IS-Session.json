@@ -630,6 +630,22 @@
                             "minimumBuild":6982
                         }
                     ]
+                },
+                "Slot":{
+                    "forms": [
+                        {
+                            "type":"int64",
+                            "minimumBuild":7003
+                        }
+                    ]
+                },
+                "IsLauncher":{
+                    "forms": [
+                        {
+                            "type":"bool",
+                            "minimumBuild":7003
+                        }
+                    ]
                 }
             },
             "methods": {
@@ -640,6 +656,19 @@
                                 {
                                     "type": "bool",
                                     "name": "newValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "SetLauncher":{
+                    "forms": [
+                        {
+                            "minimumBuild":7003,
+                            "parameters": [
+                                {
+                                    "type":"bool",
+                                    "name":"newValue"
                                 }
                             ]
                         }

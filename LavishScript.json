@@ -4811,6 +4811,26 @@
             }
           ]
         }
+      },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+              {
+                "minimumBuild":7003,
+                  "parameters": [
+                      {
+                          "type":"string",
+                          "name":"command"        
+                      },
+                      {
+                          "type":"jsonvalueref",
+                          "name": "filterQuery",
+                          "optional": true
+                      }    
+                  ]
+              }
+          ]
+        }
       }
     },
     "anonevent":{
@@ -6313,6 +6333,26 @@
           ]
         }
       },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+              {
+                "minimumBuild":7003,
+                  "parameters": [
+                      {
+                          "type":"string",
+                          "name":"command"        
+                      },
+                      {
+                          "type":"jsonvalueref",
+                          "name": "filterQuery",
+                          "optional": true
+                      }    
+                  ]
+              }
+          ]
+        }
+      },
       "persistent": false,
       "asString": {}
     },
@@ -6983,6 +7023,15 @@
               ]
             }
           ]
+        },
+        "Reverse":{
+          "forms": [
+            {
+              "minimumBuild":7003,
+              "type":"jsonarray",
+              "description": "Gives a new jsonarray which re-references json values in reverse order"
+            }
+          ]
         }
       },
       "methods": {
@@ -7003,6 +7052,42 @@
           "forms": [
             {
               "description": "Clears all values from the array"
+            }
+          ]
+        },
+        "Insert": {
+          "forms": [
+            {
+              "minimumBuild":7003,
+              "parameters": [
+                {
+                  "type": "string",
+                  "constant": "-lazy",
+                  "optional": true
+                },
+                {
+                  "name": "key",
+                  "type": "inr64"
+                },
+                {
+                  "name": "newValue",
+                  "type": "jsonvalue"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7003,
+              "description": "Sets a value within the array, to a new JSON value of any type, e.g. <tt>myJsonArray:Set[1,\"{\\\"subValue\\\":12}\"]</tt>",
+              "parameters": [
+                {
+                  "name": "key",
+                  "type":"int64"
+                },
+                {
+                  "name": "json",
+                  "type":"jsonvalue"
+                }
+              ]
             }
           ]
         },
@@ -7045,6 +7130,23 @@
           "forms": [
             {
               "minimumBuild":6921,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"jsonvalueref",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertByRef":{
+          "forms": [
+            {
+              "minimumBuild":7003,
               "parameters": [
                 {
                   "type":"uint",
@@ -7148,6 +7250,92 @@
             {
               "description": "Sets a value within the array, to a null value",
               "minimumBuild":6899,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertString":{
+          "forms":[
+            {
+              "description": "Inserts a string value within the array",
+              "minimumBuild":7003,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"string",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertInteger":{
+          "forms":[
+            {
+              "description": "Inserts an integer (int64) value within the array",
+              "minimumBuild":7003,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"int64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertNumber":{
+          "forms":[
+            {
+              "description": "Inserts a number (float64) value within the array",
+              "minimumBuild":7003,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"float64",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertBool":{
+          "forms":[
+            {
+              "description": "Inserts a boolean value within the array",
+              "minimumBuild":7003,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"key"
+                },
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertNULL":{
+          "forms":[
+            {
+              "description": "Inserts a null value within the array",
+              "minimumBuild":7003,
               "parameters": [
                 {
                   "type":"uint",
@@ -7328,6 +7516,30 @@
                   "optional": true,                  
                   "name": "filterQuery",
                   "type": "jsonvalueref"
+                }
+              ]
+            }
+          ]
+        },
+        "Reverse":{
+          "forms": [
+            {
+              "minimumBuild":7003
+            }
+          ]
+        },
+        "Swap":{
+          "forms": [
+            {
+              "minimumBuild":7003,
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name": "keyA"
+                },
+                {
+                  "type":"int64",
+                  "name":"keyB"
                 }
               ]
             }

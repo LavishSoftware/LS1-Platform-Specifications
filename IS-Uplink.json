@@ -835,10 +835,294 @@
                     ]
                 }
             },
+            "staticMethods": {
+                "ForEach":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"command"        
+                                },
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "filterQuery",
+                                    "optional": true
+                                }    
+                            ]
+                        }
+                    ]
+                }
+            },
             "asString": {
                 "member": "Name"
             },
             "minimumBuild":6838
+        },
+        "sessionlauncher":{
+            "members": {
+                "Reference":{
+                    "forms": [
+                        {
+                            "type":"sessionlauncher"
+                        }
+                    ]
+                },
+                "ID":{
+                    "forms": [
+                        {
+                            "type":"int64"
+                        }
+                    ]
+                },
+                "Game":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "GameProfile":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "Executable":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "Path":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "Parameters":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "Data":{
+                    "forms": [
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
+                "ProcessID":{
+                    "forms": [
+                        {
+                            "type":"uint"
+                        }
+                    ]
+                },
+                "Error":{
+                    "forms": [
+                        {
+                            "type":"string"
+                        }
+                    ]
+                },
+                "IsStarted":{
+                    "forms": [
+                        {
+                            "type":"bool"
+                        }
+                    ]
+                },
+                "IsCompleted":{
+                    "forms": [
+                        {
+                            "type":"bool"
+                        }
+                    ]
+                },
+                "Success":{
+                    "forms": [
+                        {
+                            "type":"bool"
+                        }
+                    ]
+                },
+                "ResultCode":{
+                    "forms": [
+                        {
+                            "type":"int"
+                        }
+                    ]
+                },
+                "StartTime":{
+                    "forms": [
+                        {
+                            "type":"time"
+                        }
+                    ]
+                },
+                "AsJSON":{
+                    "forms": [
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
+                "OnLaunchStarted":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "OnLaunchFailed":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "OnLaunchSucceeded":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "SetReference":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"weakref",
+                                    "name":"ref"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Abort":{
+                    "forms": [
+                        {
+
+                        }
+                    ]
+                },
+                "Launch":{
+                    "forms": [
+                        {
+
+                        }
+                    ]
+                }
+            },
+            "staticMembers": {
+                "New":{
+                    "forms": [
+                        {
+                            "type": "sessionlauncher",
+                            "parameters": [
+                                {
+                                    "type":"jsonvalueref",
+                                    "name":"json"        
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Get":{
+                    "forms": [
+                        {
+                            "type":"sessionlauncher",
+                            "parameters": [
+                                {
+                                    "type":"int64",
+                                    "name": "id"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "List":{
+                    "forms": [
+                        {
+                            "type":"jsonarray",
+                            "parameters": [
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "filterQuery",
+                                    "optional": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "OnSessionLauncherAdded":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "OnSessionLauncherRemoved":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                }
+            },
+            "staticMethods": {
+                "Launch":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"jsonvalueref",
+                                    "name":"joLaunchDetails"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "ForEach":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"command"        
+                                },
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "filterQuery",
+                                    "optional": true
+                                }    
+                            ]
+                        }
+                    ]
+                }
+            },
+            "initializer": {
+                "forms": [
+                    {
+                        "parameters": [
+                            {
+                                "type":"weakref",
+                                "name":"ref"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "minimumBuild":7003
         },
         "innerspaceuplink":{
             "static":true,
