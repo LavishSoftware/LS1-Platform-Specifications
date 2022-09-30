@@ -737,7 +737,7 @@ As Text: Same as `Time24`
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON array representation of this array, with each element converted by using its AsJSON member
 
 ### Methods
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1078,10 +1078,10 @@ none.
 ### Static Members
 - [event](#type-event) `New[` [string](#type-string) `name` `]`
 - [event](#type-event) `Get[` [string](#type-string) `name` `]`
-- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
 
 ### Static Methods
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1188,9 +1188,9 @@ none.
 - [mutablestring](#type-mutablestring) `Expand[` [uint](#type-uint) `beginNum` `,` [uint](#type-uint) `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by spaces.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
 - [mutablestring](#type-mutablestring) `ExpandComma[` [uint](#type-uint) `beginNum` `,` [uint](#type-uint) `length` `]`: Retrieves the text representation of each existing object in the index as quoted parameters, separated by commas.  If no parameters are given to Expand, the entire index will be used.  If only the begin # is used, the rest of the index, beginning with the element # specified, will be used.  If the length is additionally given, that number of elements from the index will be used, beginning with the element # specified as the beginning.
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON array representation of this index, with each element converted by using its AsJSON member
-- [int64](#type-int64) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [object](#type-object) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
+- [int64](#type-int64) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [object](#type-object) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
 
 ### Methods
 - `Shift[` [uint](#type-uint) `position` `,` [uint](#type-uint) `places` `]`: Makes room for # places elements at # position, by shifting toward index.Size. The index will not be implicitly Resized, and elements at the end of the index may be destroyed.
@@ -1206,7 +1206,7 @@ none.
 - `Resize[` `#` `]`: Resizes the index such that it will hold at least this number of elements.
 - `FromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes an index of objects from JSON. Each object must accept a JSON value.
 - `NativeFromJSON[` <... [string](#type-string) `initializerParams`> `,` [string](#type-string) `JSON initializer` `]`: Initializes an index of objects from JSON. Each object must accept a native value.
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the index, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the index, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1222,15 +1222,12 @@ none.
 - [string](#type-string) `NextKey`: Continues iterating with an internal iterator, retrieving the next key
 - [string](#type-string) `CurrentKey`: Retrieves the current key in the iteration (with an internal iterator)
 - [sub-type](#type-sub-type) `CurrentValue`: Retrieves the current value in the iteration (with an internal iterator)
-- [jsonarray](#type-jsonarray) `Keys[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A jsonarray of keys in the collection
+- [jsonarray](#type-jsonarray) `Keys[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A jsonarray of keys in the collection (filterQuery: see JSON definition [select](#definition-select))
 - [unistring](#type-unistring) `AsJSON`: Returns a JSON object representation of this collection, with each element converted by using its AsJSON member. The keys from the collection will be used as keys in the JSON object
 - [unistring](#type-unistring) `AsJSON[` "array" `]`: Returns a JSON array representation of this collection, with each element converted by using its AsJSON member.
-- [string](#type-string) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [string](#type-string) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
-- [object](#type-object) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [object](#type-object) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
+- [string](#type-string) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [object](#type-object) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
 
 ### Methods
 - `Set[` [string](#type-string) `key` `,` <... [array](#type-array) `initializer`> `]`: Sets (adding, if necessary) the element identified by the given key with the given value
@@ -1239,7 +1236,7 @@ none.
 - `Erase[` `key` `]`: Erases the element, if any, identified by the given key
 - `EraseByQuery[` [uint](#type-uint) `query_id` `]`: Erases any elements in the collection matching the given [[LavishScript:Object_Queries|Query]]
 - `EraseByQuery[` [uint](#type-uint) `query_id` `,` [bool](#type-bool) `remove_MATCHES` `]`: Erases any elements in the collection that either match or do not match the given [[LavishScript:Object_Queries|Query]]
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the collection, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the collection, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1285,7 +1282,7 @@ none.
 - `Intersect[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "sets A and intersect B" to this set
 - `Union[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "set A union B" to this set
 - `Not[` [set](#type-set) `A` `,` [set](#type-set) `B` `]`: Adds "set A not B" to this set
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the set, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the set, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1327,8 +1324,8 @@ none.
 ### Members
 - [string](#type-string) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
 - [jsonarray](#type-jsonarray) `Keys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [object](#type-object) `SelectValue[` [object](#type-object) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [object](#type-object) `SelectValue[` [object](#type-object) `query` `]`: (query: see JSON definition [select](#definition-select))
 - [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
@@ -1336,7 +1333,7 @@ none.
 - `DeleteVariable[` [string](#type-string) `name` `]`: Deletes the variable in this scope with the given name, if any
 - `Clear`: Deletes all variables within this scope
 - `GetIterator[` [iterator](#type-iterator) `object` `]`: Initializes the given [[ObjectType:iterator|iterator]] object for iteration of this variable scope
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each variable in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each variable in the scope, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1356,10 +1353,10 @@ none.
 ### Static Members
 - [enumtype](#type-enumtype) `New[` [jsonvalueref](#type-jsonvalueref) `enumDefinition` `]`
 - [enumtype](#type-enumtype) `Get[` [string](#type-string) `name` `]`
-- [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`
+- [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`: (filterQuery: see JSON definition [select](#definition-select))
 
 ### Static Methods
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1468,12 +1465,9 @@ As Text: JSON representation of the array
 - [jsonarray](#type-jsonarray) `Value`
 - [int64](#type-int64) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
 - [int64](#type-int64) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
-- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectValues[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectValues[` [jsonobject](#type-jsonobject) `query` `]`
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [jsonarray](#type-jsonarray) `SelectValues[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
 - [jsonarray](#type-jsonarray) `Reverse`: Gives a new jsonarray which re-references json values in reverse order
 
 ### Methods
@@ -1507,7 +1501,7 @@ As Text: JSON representation of the array
 - `EraseByQuery[` [string](#type-string) `queryText` `,` <[bool](#type-bool) `removeMatches`=true> `]`: Erases items either matching or not matching the query from the array (depending on the 2nd parameter), shifting later elements toward 0
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the array, shifting later elements toward 0
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each element in the array, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
 - `Reverse`
 - `Swap[` [int64](#type-int64) `keyA` `,` [int64](#type-int64) `keyB` `]`
 
@@ -1542,18 +1536,14 @@ As Text: JSON representation of the object
 - [bool](#type-bool) `Assert[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `matchValue` `]`
 - [bool](#type-bool) `Assert[` `valueName` `,` `json` `]`: Checks whether a value is stored within this object AND matches the specified JSON value
 - [bool](#type-bool) `Assert[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `,` `json` `]`: Checks whether a value is stored, multiple levels deep within jsonobjects and/or jsonarrays, AND matches the specified JSON value
-- [jsonarray](#type-jsonarray) `Keys[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A JSON array containing a list of keys from this object
-- [jsonarray](#type-jsonarray) `Values[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A JSON array containing a list of values from this object
+- [jsonarray](#type-jsonarray) `Keys[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A JSON array containing a list of keys from this object (filterQuery: see JSON definition [select](#definition-select))
+- [jsonarray](#type-jsonarray) `Values[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: A JSON array containing a list of values from this object (filterQuery: see JSON definition [select](#definition-select))
 - [uint](#type-uint) `Used`: Number of values contained by the object
 - [uint](#type-uint) `Size`: Number of values contained by the object
-- [unistring](#type-unistring) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [unistring](#type-unistring) `SelectKey[` [jsonobject](#type-jsonobject) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonobject](#type-jsonobject) `query` `]`
-- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonobject](#type-jsonobject) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectValues[` [jsonvalueref](#type-jsonvalueref) `query` `]`
-- [jsonarray](#type-jsonarray) `SelectValues[` [jsonobject](#type-jsonobject) `query` `]`
+- [unistring](#type-unistring) `SelectKey[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [jsonvalue](#type-jsonvalue) `SelectValue[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
+- [jsonarray](#type-jsonarray) `SelectValues[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
 
 ### Methods
 - `GetIterator[` [weakref](#type-weakref) `iteratorObject` `]`: Sets a jsoniterator to iterate this JSON object
@@ -1570,7 +1560,7 @@ As Text: JSON representation of the object
 - `EraseByQuery[` [string](#type-string) `queryText` `,` <[bool](#type-bool) `removeMatches`=true> `]`: Erases items either matching or not matching the query from the object (depending on the 2nd parameter)
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the object
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
-- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each value in the object, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each value in the object, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
 - `Merge[` [string](#type-string) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 - `Merge[` [jsonvalueref](#type-jsonvalueref) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 
@@ -1706,7 +1696,7 @@ none.
 ### Static Members
 - [taskmanager](#type-taskmanager) `New[` [string](#type-string) `name` `]`
 - [taskmanager](#type-taskmanager) `Get[` [string](#type-string) `name` `]`
-- [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`
+- [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`: (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -1753,6 +1743,76 @@ As Text: Same as `Text`
 
 
 
+
+---
+# JSON Definitions
+## Definition: select
+```json
+{
+  "properties": {
+    "member": {
+      "type": "string",
+      "description": "Name of a Member of the object being tested, to use for all properties (eval, op, with)"
+    },
+    "args": {
+      "type": "array",
+      "description": "Optional array of arguments to pass to the specified member"
+    },
+    "eval": {
+      "type": "string",
+      "description": "A LavishScript data sequence specifying a different object to test; use Select to refer to the current object (e.g. \"Select.Get[id]\")"
+    },
+    "op": {
+      "type": "string",
+      "description": "A test (or series of tests, in the case of && and ||) to perform to determine if the object matches the Select query. The specified op will then require `value`, `list`, or `select`.",
+      "enum": [
+        "==",
+        "!=",
+        "<",
+        "<=",
+        ">",
+        ">=",
+        "!",
+        "&&",
+        "||"
+      ]
+    },
+    "with": {
+      "type": "array",
+      "description": "A list of additional tests, if op succeeds (or is not present)",
+      "items": {
+        "$ref": "#/definitions/select"
+      }
+    },
+    "limit": {
+      "type": "integer",
+      "description": "A maximum number of matching results, used for SelectKeys/SelectValues"
+    },
+    "n": {
+      "type": "integer",
+      "description": "Used to select the nth matching result, used for SelectKey/SelectValue"
+    },
+    "value": {
+      "description": "A value to test the object against, for the following ops: == != < <= > >="
+    },
+    "list": {
+      "type": "array",
+      "description": "A list of additional tests, for the following ops: && ||",
+      "items": {
+        "$ref": "#/definitions/select"
+      }
+    },
+    "select": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/select"
+        }
+      ],
+      "description": "A specified test, for the following ops: !"
+    }
+  }
+}
+```
 
 LavishGUI 2 API Specification (LavishScript)
 
