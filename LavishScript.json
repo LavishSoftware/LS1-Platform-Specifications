@@ -2,6 +2,49 @@
   "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
   "name": "LavishScript",
   "description": "LavishScript base API",
+  "definitions":{
+    "select":{
+      "properties":{
+        "member":{
+          "type":"string",
+          "description":"Name of a Member of the object being tested, to use for all properties (eval, op, with)"
+        },
+        "args":{
+          "type":"array",
+          "description":"Optional array of arguments to pass to the specified member"
+        },
+        "eval":{
+          "type":"string",
+          "description":"A LavishScript data sequence specifying a different object to test; use Select to refer to the current object (e.g. \"Select.Get[id]\")"
+        },
+        "op":{
+          "type":"string",
+          "enum":["==","!=","<","<=",">",">=","!","&&","||"]
+        },
+        "with":{
+
+        },
+        "limit":{
+          "type":"integer"
+        },
+        "n":{
+          "type":"integer"
+        },
+        "value":{
+          
+        },
+        "list":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/select"  
+          }
+        },
+        "select":{
+          "$ref":"#/definitions/select"
+        }       
+      }
+    }
+  },
   "commands": {
     "Test": {},
     "Commands": {},
@@ -3101,7 +3144,10 @@
                 {
                   "optional": true,                  
                   "name": "filterQuery",
-                  "type": "jsonvalueref"
+                  "type": "jsonvalueref",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -4805,7 +4851,10 @@
                 {
                   "optional": true,
                   "type":"jsonvalueref",
-                  "name": "filterQuery"
+                  "name": "filterQuery",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -4825,7 +4874,10 @@
                       {
                           "type":"jsonvalueref",
                           "name": "filterQuery",
-                          "optional": true
+                          "optional": true,
+                          "schema":{
+                            "$ref":"#/definitions/select"
+                          }
                       }    
                   ]
               }
@@ -5212,7 +5264,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5226,7 +5281,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5240,7 +5298,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5434,7 +5495,10 @@
                 {
                   "optional": true,                  
                   "name": "filterQuery",
-                  "type": "jsonvalueref"
+                  "type": "jsonvalueref",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5532,7 +5596,10 @@
                 {
                   "optional": true,
                   "type":"jsonvalueref",
-                  "name": "filterQuery"
+                  "name": "filterQuery",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5564,17 +5631,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"string",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5588,17 +5648,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonarray",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5612,17 +5665,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"object",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5738,7 +5784,10 @@
                 {
                   "optional": true,                  
                   "name": "filterQuery",
-                  "type": "jsonvalueref"
+                  "type": "jsonvalueref",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -5950,7 +5999,10 @@
                 {
                   "optional": true,                  
                   "name": "filterQuery",
-                  "type": "jsonvalueref"
+                  "type": "jsonvalueref",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -6149,7 +6201,10 @@
                 {
                   "optional": true,                  
                   "name": "filterQuery",
-                  "type": "jsonvalueref"
+                  "type": "jsonvalueref",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -6193,7 +6248,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -6207,7 +6265,10 @@
               "parameters": [
                 {
                   "type":"object",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -6326,7 +6387,10 @@
                 "parameters": [
                   {
                     "type":"jsonvalueref",
-                    "name": "filterQuery"
+                    "name": "filterQuery",
+                    "schema":{
+                      "$ref":"#/definitions/select"
+                    }
                   }
                 ]
             }
@@ -6346,7 +6410,10 @@
                       {
                           "type":"jsonvalueref",
                           "name": "filterQuery",
-                          "optional": true
+                          "optional": true,
+                          "schema":{
+                            "$ref":"#/definitions/select"
+                          }
                       }    
                   ]
               }
@@ -6960,17 +7027,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonarray",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -6984,17 +7044,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonvalue",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7008,17 +7061,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonarray",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7515,7 +7561,10 @@
                 {
                   "optional": true,                  
                   "name": "filterQuery",
-                  "type": "jsonvalueref"
+                  "type": "jsonvalueref",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7851,7 +7900,10 @@
                 {
                   "optional": true,
                   "type":"jsonvalueref",
-                  "name": "filterQuery"
+                  "name": "filterQuery",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7866,7 +7918,10 @@
                 {
                   "optional": true,
                   "type":"jsonvalueref",
-                  "name": "filterQuery"
+                  "name": "filterQuery",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7898,17 +7953,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"unistring",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7922,17 +7970,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonarray",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7946,17 +7987,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonvalue",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -7970,17 +8004,10 @@
               "parameters": [
                 {
                   "type":"jsonvalueref",
-                  "name": "query"
-                }
-              ]
-            },
-            {
-              "minimumBuild":6995,
-              "type":"jsonarray",
-              "parameters": [
-                {
-                  "type":"jsonobject",
-                  "name": "query"
+                  "name": "query",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -8222,7 +8249,10 @@
                 {
                   "optional": true,                  
                   "name": "filterQuery",
-                  "type": "jsonvalueref"
+                  "type": "jsonvalueref",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
                 }
               ]
             }
@@ -8955,7 +8985,10 @@
                 "parameters": [
                   {
                     "type":"jsonvalueref",
-                    "name": "filterQuery"
+                    "name": "filterQuery",
+                    "schema":{
+                      "$ref":"#/definitions/select"
+                    }
                   }
                 ]
             }
