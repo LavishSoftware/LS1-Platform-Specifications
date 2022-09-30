@@ -19,28 +19,41 @@
         },
         "op":{
           "type":"string",
+          "description":"A test (or series of tests, in the case of && and ||) to perform to determine if the object matches the Select query. The specified op will then require `value`, `list`, or `select`.",
           "enum":["==","!=","<","<=",">",">=","!","&&","||"]
         },
         "with":{
-
+          "type":"array",
+          "description":"A list of additional tests, if op succeeds (or is not present)",
+          "items":{
+            "$ref":"#/definitions/select"
+          }
         },
         "limit":{
-          "type":"integer"
+          "type":"integer",
+          "description":"A maximum number of matching results, used for SelectKeys/SelectValues"
         },
         "n":{
-          "type":"integer"
+          "type":"integer",
+          "description":"Used to select the nth matching result, used for SelectKey/SelectValue"
         },
         "value":{
-          
+          "description":"A value to test the object against, for the following ops: == != < <= > >="
         },
         "list":{
           "type":"array",
+          "description":"A list of additional tests, for the following ops: && ||",
           "items":{
             "$ref":"#/definitions/select"  
           }
         },
         "select":{
-          "$ref":"#/definitions/select"
+          "allOf":[
+            {
+              "$ref":"#/definitions/select"
+            }
+          ],
+          "description":"A specified test, for the following ops: !"
         }       
       }
     }
