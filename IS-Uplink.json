@@ -734,7 +734,6 @@
                     ]
                 },
                 "Slot":{
-                    "restricted": true,
                     "forms": [
                         {
                             "type":"uint"
@@ -763,6 +762,84 @@
                 "Kill": {
                     "forms": [
                         {}
+                    ]
+                }
+            },
+            "staticMembers": {
+                "Get":{
+                    "forms": [
+                        {
+                            "minimumBuild":7004,
+                            "type":"session",
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name": "name"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "List":{
+                    "forms": [
+                        {
+                            "minimumBuild":7004,
+                            "type": "jsonarray",
+                            "parameters": [
+                                {
+                                  "optional": true,
+                                  "type":"jsonvalueref",
+                                  "name": "filterQuery"
+                                }
+                              ]
+                        }
+                    ]
+                },
+                "OnSessionAdded":{
+                    "forms": [
+                        {
+                            "minimumBuild":7004,
+                            "type":"event",
+                            "description": "Same as Event[OnSessionConnected]"
+                        }
+                    ]
+                },
+                "OnSessionRemoved":{
+                    "forms": [
+                        {
+                            "minimumBuild":7004,
+                            "type":"event",
+                            "description": "Same as Event[OnSessionDisconnected]"
+                        }
+                    ]
+                },
+                "OnSessionRenamed":{
+                    "forms": [
+                        {
+                            "minimumBuild":7004,
+                            "type":"event",
+                            "description": "Same as Event[OnSessionRenamed]"
+                        }
+                    ]
+                }
+            },
+            "staticMethods": {
+                "ForEach":{
+                    "forms": [
+                        {
+                            "minimumBuild":7004,
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"command"        
+                                },
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "filterQuery",
+                                    "optional": true
+                                }    
+                            ]
+                        }
                     ]
                 }
             },
@@ -1160,7 +1237,10 @@
                             "parameters": [
                                 {
                                     "type":"jsonvalueref",
-                                    "name":"joLaunchDetails"
+                                    "name":"joLaunchDetails",
+                                    "schema": {
+                                        "$ref":"#/definitions/sessionlauncher.new"
+                                    }
                                 }
                             ]
                         }
