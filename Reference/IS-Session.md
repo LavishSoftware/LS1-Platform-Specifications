@@ -1815,6 +1815,7 @@ As Text: Same as `Text`
 
 
 
+
 LavishGUI 2 API Specification (LavishScript)
 
 ---
@@ -3465,6 +3466,7 @@ As Text: "lgui2pagecontrol"
 
 
 
+
 Inner Space Kernel API Specification (LavishScript)
 
 ---
@@ -4912,6 +4914,7 @@ As Text: Same as `Value`
 
 
 
+
 Inner Space Session API Specification (LavishScript)
 
 ---
@@ -5166,6 +5169,7 @@ none.
 ### Methods
 - `RegisterLog[` [string](#type-string) `filenameFilter` `,` [string](#type-string) `eventname` `]`
 - `UnregisterLog[` [string](#type-string) `filenameFilter` `,` [string](#type-string) `eventname` `]`
+
 
 
 

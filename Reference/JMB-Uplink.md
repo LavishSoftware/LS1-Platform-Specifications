@@ -1753,6 +1753,7 @@ As Text: Same as `Text`
 
 
 
+
 LavishGUI 2 API Specification (LavishScript)
 
 ---
@@ -3403,6 +3404,7 @@ As Text: "lgui2pagecontrol"
 
 
 
+
 Inner Space Kernel API Specification (LavishScript)
 
 ---
@@ -4441,6 +4443,7 @@ As Text: Same as `Value`
 
 
 
+
 Joe Multiboxer Kernel API Specification (LavishScript)
 
 ---
@@ -4639,6 +4642,7 @@ As Text: "virtualfile"
 
 
 
+
 Inner Space Uplink API Specification (LavishScript)
 
 ---
@@ -4833,7 +4837,7 @@ As Text: Same as `Name`
 - [string](#type-string) `Executable`
 - [string](#type-string) `Path`
 - [string](#type-string) `Parameters`
-- [jsonobject](#type-jsonobject) `Data`
+- [jsonobject](#type-jsonobject) `Data`: (return: see JSON definition [sessionlauncher.new](#definition-sessionlaunchernew))
 - [uint](#type-uint) `ProcessID`
 - [string](#type-string) `Error`
 - [bool](#type-bool) `IsStarted`
@@ -4841,7 +4845,7 @@ As Text: Same as `Name`
 - [bool](#type-bool) `Success`
 - [int](#type-int) `ResultCode`
 - [time](#type-time) `StartTime`
-- [jsonobject](#type-jsonobject) `AsJSON`
+- [jsonobject](#type-jsonobject) `AsJSON`: (return: see JSON definition [sessionlauncher](#definition-sessionlauncher))
 - [anonevent](#type-anonevent) `OnLaunchStarted`
 - [anonevent](#type-anonevent) `OnLaunchFailed`
 - [anonevent](#type-anonevent) `OnLaunchSucceeded`
@@ -4852,7 +4856,7 @@ As Text: Same as `Name`
 - `Launch`
 
 ### Static Members
-- [sessionlauncher](#type-sessionlauncher) `New[` [jsonvalueref](#type-jsonvalueref) `json` `]`
+- [sessionlauncher](#type-sessionlauncher) `New[` [jsonvalueref](#type-jsonvalueref) `json` `]`: (json: see JSON definition [sessionlauncher.new](#definition-sessionlaunchernew))
 - [sessionlauncher](#type-sessionlauncher) `Get[` [int64](#type-int64) `id` `]`
 - [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 - [anonevent](#type-anonevent) `OnSessionLauncherAdded`
@@ -4959,4 +4963,77 @@ none.
 - `DumpOutputs[`???`]`
 
 
+
+
+---
+# JSON Definitions
+## Definition: sessionlauncher.new
+```json
+{
+  "type": "object",
+  "properties": {
+    "game": {
+      "type": "string",
+      "description": "The Inner Space Game to use for launch settings",
+      "default": "Generic"
+    },
+    "gameProfile": {
+      "type": "string",
+      "description": "If provided, the Inner Space Game Profile to use (from the 'game')"
+    },
+    "path": {
+      "type": "string",
+      "description": "The path to the executable to launch, overriding Game Profile settings"
+    },
+    "executable": {
+      "type": "string",
+      "description": "The executable filename to launch, overriding Game Profile settings"
+    },
+    "parameters": {
+      "type": "string",
+      "description": "The full parameters to pass to the executable, overriding Game Profile settings"
+    },
+    "slot": {
+      "type": "integer",
+      "description": "The pre-determined Slot number, overriding default session numbering behavior"
+    },
+    "killBeforeLaunch": {
+      "type": "string",
+      "description": "An executable filename to kill before launching this one, overriding Game Profile settings. This can be used to help make sure only one instance of a game launcher is running, etc."
+    }
+  }
+}
+```
+## Definition: sessionlauncher
+```json
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "#/definitions/sessionlauncher.new"
+    },
+    "processId": {
+      "type": "integer"
+    },
+    "started": {
+      "type": "boolean"
+    },
+    "completed": {
+      "type": "boolean"
+    },
+    "succeeded": {
+      "type": "boolean"
+    },
+    "resultCode": {
+      "type": "integer"
+    },
+    "error": {
+      "type": "string"
+    },
+    "gameProfileId": {
+      "type": "integer"
+    }
+  }
+}
+```
 

@@ -1753,6 +1753,7 @@ As Text: Same as `Text`
 
 
 
+
 LavishGUI 2 API Specification (LavishScript)
 
 ---
@@ -3403,6 +3404,7 @@ As Text: "lgui2pagecontrol"
 
 
 
+
 Inner Space Kernel API Specification (LavishScript)
 
 ---
@@ -4441,6 +4443,7 @@ As Text: Same as `Value`
 
 
 
+
 Joe Multiboxer Kernel API Specification (LavishScript)
 
 ---
@@ -4636,6 +4639,7 @@ As Text: "virtualfile"
 - `SetTarget[` [string](#type-string) `target` `]`
 - `Start`
 - `Stop`
+
 
 
 
@@ -4851,6 +4855,7 @@ none.
 
 
 
+
 Joe Multiboxer Session API Specification (LavishScript)
 
 ---
@@ -4876,6 +4881,7 @@ none.
 none.
 ### Methods
 - `DisableDPIAwareness`
+
 
 
 
