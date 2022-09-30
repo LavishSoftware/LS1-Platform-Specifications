@@ -5138,11 +5138,20 @@ As Text: Same as `Name`
 - [string](#type-string) `Executable`
 - [jsonobject](#type-jsonobject) `AsJSON`
 - [uint](#type-uint) `Slot`
-  - Restricted: Yes
 
 ### Methods
 - `Execute[` <"-noredirect"> `,` [string](#type-string) `command` `]`
 - `Kill`
+
+### Static Members
+- [session](#type-session) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+- [event](#type-event) `OnSessionAdded`: Same as Event[OnSessionConnected]
+- [event](#type-event) `OnSessionRemoved`: Same as Event[OnSessionDisconnected]
+- [event](#type-event) `OnSessionRenamed`: Same as Event[OnSessionRenamed]
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
@@ -5239,7 +5248,7 @@ As Text: Same as `Name`
 - [anonevent](#type-anonevent) `OnSessionLauncherRemoved`
 
 ### Static Methods
-- `Launch[` [jsonvalueref](#type-jsonvalueref) `joLaunchDetails` `]`
+- `Launch[` [jsonvalueref](#type-jsonvalueref) `joLaunchDetails` `]`: (joLaunchDetails: see JSON definition [sessionlauncher.new](#definition-sessionlaunchernew))
 - `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
