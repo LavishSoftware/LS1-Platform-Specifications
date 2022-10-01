@@ -5253,6 +5253,39 @@ As Text: Same as `Name`
 
 
 
+## Type: slotobserver
+
+### Initializers
+- `slotobserver[` [weakref](#type-weakref) `ref` `]`
+
+### Members
+- [slotobserver](#type-slotobserver) `Reference`
+- [uint](#type-uint) `Slot`
+- [sessionlauncher](#type-sessionlauncher) `NewLauncher[` [jsonvalueref](#type-jsonvalueref) `joLauncherInfo` `]`: Returns a new sessionlauncher, for this slot, if there is not already a sessionlauncher in progress for the slot (joLauncherInfo: see JSON definition [sessionlauncher.new](#definition-sessionlaunchernew))
+- [anonevent](#type-anonevent) `OnSessionAdded`
+- [anonevent](#type-anonevent) `OnSessionLost`
+- [anonevent](#type-anonevent) `OnMainSessionUpdated`
+- [anonevent](#type-anonevent) `OnMainSessionLost`
+- [jsonobject](#type-jsonobject) `Sessions`
+- [jsonobject](#type-jsonobject) `AsJSON`
+
+### Methods
+- `SetReference`
+- `Launch[` [jsonvalueref](#type-jsonvalueref) `joLauncherInfo` `]`: Initiates a launch via new sessionlauncher, for this slot, if there is not already a sessionlauncher in progress for the slot (joLauncherInfo: see JSON definition [sessionlauncher.new](#definition-sessionlaunchernew))
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Members
+- [slotobserver](#type-slotobserver) `New[` [uint](#type-uint) `slotNumber` `]`
+- [slotobserver](#type-slotobserver) `Get[` [uint](#type-uint) `slotNumber` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+- [anonevent](#type-anonevent) `OnSlotObserverAdded`
+- [anonevent](#type-anonevent) `OnSlotObserverRemoved`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+
+
 ## Type: innerspaceuplink
 - Static: Yes (All Members/Methods also work as Static Members/Methods)
 
