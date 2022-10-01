@@ -1278,6 +1278,214 @@
             },
             "minimumBuild":7003
         },
+        "slotobserver":{
+            "minimumBuild":7005,
+            "members": {
+                "Reference":{
+                    "forms":[
+                        {
+                            "type":"slotobserver"
+                        }
+                    ]
+                },
+                "Slot":{
+                    "forms": [
+                        {
+                            "type":"uint"
+                        }
+                    ]
+                },
+                "NewLauncher":{
+                    "forms": [
+                        {
+                            "description": "Returns a new sessionlauncher, for this slot, if there is not already a sessionlauncher in progress for the slot",
+                            "type":"sessionlauncher",
+                            "parameters": [
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "joLauncherInfo",
+                                    "schema": {
+                                        "$ref":"#/definitions/sessionlauncher.new"
+                                    }                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "OnSessionAdded":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "OnSessionLost":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "OnMainSessionUpdated":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "OnMainSessionLost":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "Sessions":{
+                    "forms": [
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
+                "AsJSON":{
+                    "forms": [
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                }
+            },
+            "methods": {
+                "SetReference":{
+                    "forms": [
+                        {
+                            "type":"weakref"
+                        }
+                    ]
+                },
+                "Launch":{
+                    "forms": [
+                        {
+                            "description": "Initiates a launch via new sessionlauncher, for this slot, if there is not already a sessionlauncher in progress for the slot",
+                            "type":"sessionlauncher",
+                            "parameters": [
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "joLauncherInfo",
+                                    "schema": {
+                                        "$ref":"#/definitions/sessionlauncher.new"
+                                    }                                    
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "ForEach":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"command"        
+                                },
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "filterQuery",
+                                    "optional": true
+                                }    
+                            ]
+                        }
+                    ]
+                }
+            },
+            "staticMembers":{
+                "New":{
+                    "forms": [
+                        {
+                            "type":"slotobserver",
+                            "parameters": [
+                                {
+                                    "type":"uint",
+                                    "name": "slotNumber"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "Get":{
+                    "forms": [
+                        {
+                            "type":"slotobserver",
+                            "parameters": [
+                                {
+                                    "type":"uint",
+                                    "name": "slotNumber"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "List":{
+                    "forms": [
+                        {
+                            "type": "jsonarray",
+                            "parameters": [
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "filterQuery",
+                                    "optional": true
+                                }    
+                            ]
+                        }
+                    ]
+                },
+                "OnSlotObserverAdded":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                },
+                "OnSlotObserverRemoved":{
+                    "forms": [
+                        {
+                            "type":"anonevent"
+                        }
+                    ]
+                }
+            },
+            "staticMethods":{
+                "ForEach":{
+                    "forms": [
+                        {
+                            "parameters": [
+                                {
+                                    "type":"string",
+                                    "name":"command"        
+                                },
+                                {
+                                    "type":"jsonvalueref",
+                                    "name": "filterQuery",
+                                    "optional": true
+                                }    
+                            ]
+                        }
+                    ]
+                }
+            },
+            "initializer": {
+                "forms": [
+                    {
+                        "parameters": [
+                            {
+                                "type":"weakref",
+                                "name":"ref"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
         "innerspaceuplink":{
             "static":true,
             "members": {
