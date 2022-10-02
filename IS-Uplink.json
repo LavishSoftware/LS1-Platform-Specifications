@@ -1111,6 +1111,13 @@
                         }
                     ]
                 },
+                "Metadata":{
+                    "forms": [
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
                 "AsJSON":{
                     "forms": [
                         {
@@ -1163,7 +1170,7 @@
                         }
                     ]
                 },
-                "Launch":{
+                "Start":{
                     "forms": [
                         {
 
@@ -1341,6 +1348,13 @@
                     ]
                 },
                 "Sessions":{
+                    "forms": [
+                        {
+                            "type":"jsonobject"
+                        }
+                    ]
+                },
+                "Metadata":{
                     "forms": [
                         {
                             "type":"jsonobject"
