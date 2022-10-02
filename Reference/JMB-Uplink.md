@@ -4916,6 +4916,7 @@ As Text: Same as `Name`
 - [bool](#type-bool) `Success`
 - [int](#type-int) `ResultCode`
 - [time](#type-time) `StartTime`
+- [jsonobject](#type-jsonobject) `Metadata`
 - [jsonobject](#type-jsonobject) `AsJSON`: (return: see JSON definition [sessionlauncher](#definition-sessionlauncher))
 - [anonevent](#type-anonevent) `OnLaunchStarted`
 - [anonevent](#type-anonevent) `OnLaunchFailed`
@@ -4924,7 +4925,7 @@ As Text: Same as `Name`
 ### Methods
 - `SetReference[` [weakref](#type-weakref) `ref` `]`
 - `Abort`
-- `Launch`
+- `Start`
 
 ### Static Members
 - [sessionlauncher](#type-sessionlauncher) `New[` [jsonvalueref](#type-jsonvalueref) `json` `]`: (json: see JSON definition [sessionlauncher.new](#definition-sessionlaunchernew))
@@ -4953,6 +4954,7 @@ As Text: Same as `Name`
 - [anonevent](#type-anonevent) `OnMainSessionUpdated`
 - [anonevent](#type-anonevent) `OnMainSessionLost`
 - [jsonobject](#type-jsonobject) `Sessions`
+- [jsonobject](#type-jsonobject) `Metadata`
 - [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
