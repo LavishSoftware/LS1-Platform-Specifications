@@ -262,6 +262,10 @@ LavishScript base API
 - `Dec`: Decrements this int by 1
 - `Set[` [int](#type-int) `expression` `]`: Sets this int to a given value
 
+### Static Members
+- [int](#type-int) `Min`
+- [int](#type-int) `Max`
+
 
 
 ## Type: uint
@@ -290,6 +294,10 @@ LavishScript base API
 - `Dec[` <[uint](#type-uint) `expression`=1> `]`: Decrements this uint by a given amount
 - `Dec`: Decrements this uint by 1
 - `Set[` [formula](#type-formula) `]`: Sets this uint to a given value
+
+### Static Members
+- [uint](#type-uint) `Min`
+- [uint](#type-uint) `Max`
 
 
 
@@ -380,6 +388,10 @@ As Text: Same as `Hex`
 - `Dec`: Decrements this bye by 1
 - `Set[` [byte](#type-byte) `expression` `]`: Sets this bye to a given value
 
+### Static Members
+- [byte](#type-byte) `Min`
+- [byte](#type-byte) `Max`
+
 
 
 ## Type: bool
@@ -435,6 +447,9 @@ none.
 ## Type: float
 - Persistent: No ([weakref](#type-weakref) not supported)
 
+### Initializers
+- `float[` <[float](#type-float) `value`=0.0> `]`
+
 
 ### Members
 - [float](#type-float) `Inc[` <[float](#type-float) `expression`=1.0> `]`: Returns this float, plus a given amount
@@ -457,10 +472,17 @@ none.
 - `Dec`: Decrements this float by 1.0
 - `Set[` [float](#type-float) `expression` `]`: Sets this float to a given value
 
+### Static Members
+- [float](#type-float) `Min`
+- [float](#type-float) `Max`
+
 
 
 ## Type: int64
 - Persistent: No ([weakref](#type-weakref) not supported)
+
+### Initializers
+- `int64[` <[int64](#type-int64) `value`=0> `]`
 
 
 ### Members
@@ -480,10 +502,17 @@ none.
 - `Dec`: Decrements this int64 by 1
 - `Set[` [int64](#type-int64) `expression` `]`: Sets this int64 to a given value
 
+### Static Members
+- [int64](#type-int64) `Min`
+- [int64](#type-int64) `Max`
+
 
 
 ## Type: float64
 - Persistent: No ([weakref](#type-weakref) not supported)
+
+### Initializers
+- `float64[` <[float64](#type-float64) `value`=0.0> `]`
 
 
 ### Members
@@ -506,6 +535,10 @@ none.
 - `Dec[` <[float64](#type-float64) `expression`=1> `]`: Decrements this float64 by a given amount
 - `Dec`: Decrements this float64 by 1.0
 - `Set[` [float64](#type-float64) `expression` `]`: Sets this float64 to a given value
+
+### Static Members
+- [float64](#type-float64) `Min`
+- [float64](#type-float64) `Max`
 
 
 
@@ -812,9 +845,9 @@ As Text: Same as `Time24`
 - [filepath](#type-filepath) `Executable`: Executable filename for the current process
 - ??? `CommandLine[`???`]`
 - [variablescope](#type-variablescope) `VariableScope`: The global variable scope
-- [uint](#type-uint) `CreateQuery[` `expression` `]`: ([[LavishScript:Object Queries|Object Queries]]) Creates a query with the given expression -- e.g. ${LavishScript.CreateQuery[Name=="Bonkers"]}
-- [string](#type-string) `RetrieveQueryExpression[` `#` `]`: ([[LavishScript:Object Queries|Object Queries]]) Retrieves the query expression for a previously created query, by ID
-- [bool](#type-bool) `QueryEvaluate[` `#` `,` `object` `]`: ([[LavishScript:Object Queries|Object Queries]]) Determines if the given object matches the given query
+- [uint](#type-uint) `CreateQuery[` [string](#type-string) `expression` `]`: ([[LavishScript:Object Queries|Object Queries]]) Creates a query with the given expression -- e.g. ${LavishScript.CreateQuery[Name=="Bonkers"]}
+- [string](#type-string) `RetrieveQueryExpression[` [uint](#type-uint) `queryID` `]`: ([[LavishScript:Object Queries|Object Queries]]) Retrieves the query expression for a previously created query, by ID
+- [bool](#type-bool) `QueryEvaluate[` [uint](#type-uint) `queryID` `,` [weakref](#type-weakref) `object` `]`: ([[LavishScript:Object Queries|Object Queries]]) Determines if the given object matches the given query
 - ??? `Is64Bit[`???`]`
 - ??? `MetaScript[`???`]`
 - ??? `MetaScripts[`???`]`
@@ -826,17 +859,22 @@ As Text: Same as `Time24`
 - [jsonarray](#type-jsonarray) `Scripts`
 - [jsonarray](#type-jsonarray) `TopLevelObjects`
 - [jsonarray](#type-jsonarray) `Types`
+- [string](#type-string) `LastError`
+- [bool](#type-bool) `LastErrorSpam`
+- [anonevent](#type-anonevent) `OnSetLastError`
 
 ### Methods
 - `Echo[` ... [string](#type-string) `lines` `]`
-- `ExecuteAtom[` `name` `,` ... [string](#type-string) `]`: Executes an atom with the given name in global- or script-scope (if a script is currently in context).  Extra parameters are passed as parameters to the atom.
-- `RegisterEvent[` `name` `]`: Registers an event of <name>
+- `ExecuteAtom[` [string](#type-string) `name` `,` ... [string](#type-string) `]`: Executes an atom with the given name in global- or script-scope (if a script is currently in context).  Extra parameters are passed as parameters to the atom.
+- `RegisterEvent[` [string](#type-string) `name` `]`: Registers an event of <name>
 - `RegisterAlias[`???`]`
 - `LoadModule[`???`]`
-- `Eval[` `command` `,` [weakref](#type-weakref) `index:string` `]`: Evaluates the given command, directing any lines of output into an index:string
-- `RegisterEnum[` `typeName` `,` `bool` `]`: Registers a new enum and LavishScript Object Type with <typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO
+- `Eval[` [string](#type-string) `command` `,` [weakref](#type-weakref) `index:string` `]`: Evaluates the given command, directing any lines of output into an index:string
+- `RegisterEnum[` [string](#type-string) `typeName` `,` <[bool](#type-bool) `isFlags`=false> `]`: Registers a new enum and LavishScript Object Type with <typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO
 - `LoadMetaScript[`???`]`
 - `LoadMetaScriptJSON[`???`]`
+- `SetLastError[` [string](#type-string) `value` `]`
+- `SetLastErrorSpam[` [bool](#type-bool) `value` `]`
 
 
 
@@ -861,6 +899,10 @@ As Text: Same as `Time24`
 - [jsonarray](#type-jsonarray) `Atoms`
 - [scriptobjecttype](#type-scriptobjecttype) `ObjectDef[` [string](#type-string) `typeName` `]`: Retrieves a scriptobjecttype by name
 - [jsonarray](#type-jsonarray) `ObjectDefs`
+- [string](#type-string) `LastError`
+- [bool](#type-bool) `LastErrorSpam`
+- [anonevent](#type-anonevent) `OnSetLastError`
+- [anonevent](#type-anonevent) `OnExit`
 - [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
@@ -878,8 +920,20 @@ As Text: Same as `Time24`
 - `DumpProfiling`: Dumps the entire script into the console.
 - `EnableDebugLogging[` `filename` `]`: Enables full debug logging to file.
 - `DisableDebugLogging`: Disables full debug logging
-- `SetRetain[`???`]`
+- `SetLastError[` [string](#type-string) `value` `]`
+- `SetLastErrorSpam[` [bool](#type-bool) `value` `]`
+- `SetRetain[` [bool](#type-bool) `value` `]`
 - `Turbo[`???`]`
+
+### Static Members
+- ??? `New[` [string](#type-string) `full_filename` `,` <... [string](#type-string) `script_params`> `]`
+- ??? `Get[` [string](#type-string) `filename` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+- [anonevent](#type-anonevent) `OnScriptStarted`
+- [anonevent](#type-anonevent) `OnScriptStopped`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
 
 
 
