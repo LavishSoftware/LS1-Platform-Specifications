@@ -926,8 +926,8 @@ As Text: Same as `Time24`
 - `Turbo[`???`]`
 
 ### Static Members
-- ??? `New[` [string](#type-string) `full_filename` `,` <... [string](#type-string) `script_params`> `]`
-- ??? `Get[` [string](#type-string) `filename` `]`
+- [script](#type-script) `New[` [string](#type-string) `full_filename` `,` <... [string](#type-string) `script_params`> `]`
+- [script](#type-script) `Get[` [string](#type-string) `filename` `]`
 - [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
 - [anonevent](#type-anonevent) `OnScriptStarted`
 - [anonevent](#type-anonevent) `OnScriptStopped`
