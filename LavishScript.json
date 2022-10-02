@@ -677,6 +677,24 @@
           ]
         }
       },
+      "staticMembers": {
+        "Min":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"int"
+            }
+          ]
+        },
+        "Max":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"int"
+            }
+          ]
+        }
+      },
       "initializer": {
         "forms": [
           {
@@ -862,6 +880,24 @@
                   "type": "formula"
                 }
               ]
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "Min":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"uint"
+            }
+          ]
+        },
+        "Max":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"uint"
             }
           ]
         }
@@ -1516,6 +1552,24 @@
           ]
         }
       },
+      "staticMembers": {
+        "Min":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"byte"
+            }
+          ]
+        },
+        "Max":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"byte"
+            }
+          ]
+        }
+      },
       "initializer": {
         "forms": [
           {
@@ -1893,6 +1947,38 @@
           ]
         }
       },
+      "staticMembers": {
+        "Min":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"float"
+            }
+          ]
+        },
+        "Max":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"float"
+            }
+          ]
+        }
+      },
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "name": "value",
+                "type":"float",
+                "optional": true,
+                "default":0.0
+              }
+            ]
+          }
+        ]
+      },
       "persistent": false,
       "asString": {}
     },
@@ -2050,6 +2136,38 @@
             }
           ]
         }
+      },
+      "staticMembers": {
+        "Min":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"int64"
+            }
+          ]
+        },
+        "Max":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"int64"
+            }
+          ]
+        }
+      },
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "name": "value",
+                "type":"int64",
+                "optional": true,
+                "default":0
+              }
+            ]
+          }
+        ]
       },
       "persistent": false,
       "asString": {}
@@ -2244,6 +2362,38 @@
             }
           ]
         }
+      },
+      "staticMembers": {
+        "Min":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"float64"
+            }
+          ]
+        },
+        "Max":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"float64"
+            }
+          ]
+        }
+      },
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "name": "value",
+                "type":"float64",
+                "optional": true,
+                "default":0.0
+              }
+            ]
+          }
+        ]
       },
       "persistent": false,
       "asString": {}
@@ -3588,6 +3738,7 @@
               "description": "([[LavishScript:Object Queries|Object Queries]]) Creates a query with the given expression -- e.g. ${LavishScript.CreateQuery[Name==\"Bonkers\"]}",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "expression"
                 }
               ]
@@ -3601,7 +3752,8 @@
               "description": "([[LavishScript:Object Queries|Object Queries]]) Retrieves the query expression for a previously created query, by ID",
               "parameters": [
                 {
-                  "name": "#"
+                  "type":"uint",
+                  "name": "queryID"
                 }
               ]
             }
@@ -3614,9 +3766,11 @@
               "description": "([[LavishScript:Object Queries|Object Queries]]) Determines if the given object matches the given query",
               "parameters": [
                 {
-                  "name": "#"
+                  "type":"uint",
+                  "name": "queryID"
                 },
                 {
+                  "type":"weakref",
                   "name": "object"
                 }
               ]
@@ -3675,6 +3829,30 @@
               "type":"jsonarray"
             }
           ]
+        },
+        "LastError":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"string"
+            }
+          ]
+        },
+        "LastErrorSpam":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"bool"
+            }
+          ]
+        },
+        "OnSetLastError":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"anonevent"
+            }
+          ]
         }
       },
       "methods": {
@@ -3698,6 +3876,7 @@
               "description": "Executes an atom with the given name in global- or script-scope (if a script is currently in context).  Extra parameters are passed as parameters to the atom.",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "name"
                 },
                 {
@@ -3714,6 +3893,7 @@
               "description": "Registers an event of <name>",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "name"
                 }
               ]
@@ -3728,6 +3908,7 @@
               "description": "Evaluates the given command, directing any lines of output into an index:string",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "command"
                 },
                 {
@@ -3744,17 +3925,47 @@
               "description": "Registers a new enum and LavishScript Object Type with <typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO",
               "parameters": [
                 {
+                  "type":"string",
                   "name": "typeName"
                 },
                 {
-                  "name": "bool"
+                  "type": "bool",
+                  "name": "isFlags",
+                  "optional": true,
+                  "default":false
                 }
               ]
             }
           ]
         },
         "LoadMetaScript": {},
-        "LoadMetaScriptJSON": {}
+        "LoadMetaScriptJSON": {},
+        "SetLastError":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetLastErrorSpam":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name":"value"
+                }
+              ]
+            }
+          ]
+        }
       },
       "persistent": false
     },
@@ -3914,6 +4125,38 @@
             }
           ]
         },
+        "LastError":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"string"
+            }
+          ]
+        },
+        "LastErrorSpam":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"bool"
+            }
+          ]
+        },
+        "OnSetLastError":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnExit":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"anonevent"
+            }
+          ]
+        },
         "AsJSON":{
           "forms": [
             {
@@ -4041,8 +4284,136 @@
             }
           ]
         },
-        "SetRetain": {},
+        "SetLastError":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"value"    
+                }
+              ]
+            }
+          ]
+        },
+        "SetLastErrorSpam":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
+        "SetRetain": {
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name": "value"
+                }
+              ]
+            }
+          ]
+        },
         "Turbo": {}
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "full_filename"
+                },
+                {
+                  "greedy": true,
+                  "type":"string",
+                  "name": "script_params",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "filename"
+                }
+              ]
+            }
+          ]
+        },
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "OnScriptStarted":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"anonevent"
+            }
+          ]
+        },
+        "OnScriptStopped":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+              "type":"anonevent"
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+            {
+              "minimumBuild":7007,
+                "parameters": [
+                    {
+                        "type":"string",
+                        "name":"command"        
+                    },
+                    {
+                        "type":"jsonvalueref",
+                        "name": "filterQuery",
+                        "optional": true,
+                        "schema":{
+                          "$ref":"#/definitions/select"
+                        }
+                    }    
+                ]
+            }
+          ]
+        }
       }
     },
     "function": {
