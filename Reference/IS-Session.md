@@ -5195,6 +5195,8 @@ As Text: Same as `Name`
 - [int64](#type-int64) `Slot`
 - [bool](#type-bool) `IsLauncher`
 - [jsonobject](#type-jsonobject) `Metadata`
+- [anonevent](#type-anonevent) `OnPreStartup`: Event fires prior to Session Pre-Startup Sequence. No longer exists (is NULL) after execution
+- [anonevent](#type-anonevent) `OnStartup`: Event fires prior to Session Startup Sequence. No longer exists (is NULL) after execution
 
 ### Methods
 - `SetFlashWindow[` [bool](#type-bool) `newValue` `]`
