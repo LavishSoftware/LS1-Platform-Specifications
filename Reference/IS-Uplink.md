@@ -5474,6 +5474,10 @@ none.
     "killBeforeLaunch": {
       "type": "string",
       "description": "An executable filename to kill before launching this one, overriding Game Profile settings. This can be used to help make sure only one instance of a game launcher is running, etc."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Metadata to provide to the new Session, to be accessible within the Session via innerspacesession.Metadata"
     }
   }
 }

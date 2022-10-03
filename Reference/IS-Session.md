@@ -5194,6 +5194,7 @@ As Text: Same as `Name`
 - [bool](#type-bool) `FocusFollowsMouse`
 - [int64](#type-int64) `Slot`
 - [bool](#type-bool) `IsLauncher`
+- [jsonobject](#type-jsonobject) `Metadata`
 
 ### Methods
 - `SetFlashWindow[` [bool](#type-bool) `newValue` `]`
