@@ -654,6 +654,24 @@
                             "minimumBuild":7008
                         }
                     ]
+                },
+                "OnPreStartup":{
+                    "forms":[
+                        {
+                            "description": "Event fires prior to Session Pre-Startup Sequence. No longer exists (is NULL) after execution",
+                            "type":"anonevent",
+                            "minimumBuild":7011
+                        }
+                    ]
+                },
+                "OnStartup":{
+                    "forms":[
+                        {
+                            "description": "Event fires prior to Session Startup Sequence. No longer exists (is NULL) after execution",
+                            "type":"anonevent",
+                            "minimumBuild":7011
+                        }
+                    ]
                 }
             },
             "methods": {
