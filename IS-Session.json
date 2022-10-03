@@ -646,6 +646,14 @@
                             "minimumBuild":7003
                         }
                     ]
+                },
+                "Metadata":{
+                    "forms": [
+                        {
+                            "type":"jsonobject",
+                            "minimumBuild":7008
+                        }
+                    ]
                 }
             },
             "methods": {
