@@ -980,6 +980,49 @@
                   "type": "string"
                 }
               ]
+            },
+            {
+              "minimumBuild":7015,
+              "type":"int64",
+              "description": "Returns the 1-based position of the first of several substrings to be found in the original string, or NULL",
+              "parameters": [
+                {
+                  "greedy": true,
+                  "type":"string",
+                  "name": "possible_needles"
+                }
+              ]
+            }
+          ]
+        },
+        "FindAnyOf":{
+          "forms": [
+            {
+              "minimumBuild":7015,
+              "type":"jsonobject",
+              "description": "Returns the 1-based position, and what was found, of the first of several substrings to be found in the original string, or NULL",
+              "parameters": [
+                {
+                  "greedy": true,
+                  "type":"string",
+                  "name":"possible_needles"
+                }
+              ]
+            }
+          ]
+        },
+        "FindAnyOfArray":{
+          "forms": [
+            {
+              "minimumBuild":7015,
+              "type":"jsonobject",
+              "description": "Returns the 1-based position, and what was found, of the first of several substrings to be found in the original string, or NULL",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "arrayOfStrings"
+                }
+              ]
             }
           ]
         },
