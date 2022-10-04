@@ -935,7 +935,7 @@ As Text: Same as `Time24`
 - `RegisterEnum[` [string](#type-string) `typeName` `,` <[bool](#type-bool) `isFlags`=false> `]`: Registers a new enum and LavishScript Object Type with <typeName>. An optional second parameter controls whether the enum is flags, meaning that multiple values may be combined as part of the same value -- if not provided, the default is FALSE. After registering, value names can be added to the enum type via the Enum TLO
 - `LoadMetaScript[`???`]`
 - `LoadMetaScriptJSON[`???`]`
-- `SetLastError[` [string](#type-string) `value` `]`
+- `SetLastError[` <[string](#type-string) `value`=""> `]`
 - `SetLastErrorSpam[` [bool](#type-bool) `value` `]`
 
 
@@ -982,7 +982,7 @@ As Text: Same as `Time24`
 - `DumpProfiling`: Dumps the entire script into the console.
 - `EnableDebugLogging[` `filename` `]`: Enables full debug logging to file.
 - `DisableDebugLogging`: Disables full debug logging
-- `SetLastError[` [string](#type-string) `value` `]`
+- `SetLastError[` <[string](#type-string) `value`=""> `]`
 - `SetLastErrorSpam[` [bool](#type-bool) `value` `]`
 - `SetRetain[` [bool](#type-bool) `value` `]`
 - `Turbo[`???`]`
