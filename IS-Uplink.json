@@ -1358,6 +1358,14 @@
                         }
                     ]
                 },
+                "MainSession":{
+                    "forms": [
+                        {
+                            "minimumBuild":7013,
+                            "type":"session"
+                        }
+                    ]
+                },
                 "Metadata":{
                     "forms": [
                         {

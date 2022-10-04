@@ -3947,7 +3947,9 @@
               "parameters": [
                 {
                   "type":"string",
-                  "name":"value"
+                  "name":"value",
+                  "optional": true,
+                  "default":""
                 }
               ]
             }
@@ -4291,7 +4293,9 @@
               "parameters": [
                 {
                   "type":"string",
-                  "name":"value"    
+                  "name":"value",
+                  "optional": true,
+                  "default":""
                 }
               ]
             }
