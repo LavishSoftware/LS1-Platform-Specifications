@@ -370,6 +370,9 @@ LavishScript base API
 - [string](#type-string) `Left[` [int](#type-int) `length` `]`: Returns a string containing the leftmost # characters of the original string. A negative number can be used to give the leftmost (Length-#)
 - [string](#type-string) `Right[` [int](#type-int) `length` `]`: Returns a string containing the rightmost # characters of the original string. A negative number can be used to give the rightmost (Length-#)
 - [int64](#type-int64) `Find[` [string](#type-string) `needle` `]`: Returns the 1-based position of a given substring in the original string, or NULL
+- [int64](#type-int64) `Find[` ... [string](#type-string) `possible_needles` `]`: Returns the 1-based position of the first of several substrings to be found in the original string, or NULL
+- [jsonobject](#type-jsonobject) `FindAnyOf[` ... [string](#type-string) `possible_needles` `]`: Returns the 1-based position, and what was found, of the first of several substrings to be found in the original string, or NULL
+- [jsonobject](#type-jsonobject) `FindAnyOfArray[` [jsonvalueref](#type-jsonvalueref) `arrayOfStrings` `]`: Returns the 1-based position, and what was found, of the first of several substrings to be found in the original string, or NULL
 - [int64](#type-int64) `Length`: Returns the length of the string
 - [string](#type-string) `Upper`: Returns a string containing the original string in all upper case
 - [string](#type-string) `Lower`: Returns a string containing the original string in all lower case
