@@ -4475,16 +4475,34 @@
         "Path": {
           "forms": [
             {
-              "type": "string",
-              "description": "The string representation of this path"
+              "type": "unistring",
+              "description": "The unistring representation of this path"
+            }
+          ]
+        },
+        "PathOnly": {
+          "forms": [
+            {
+              "type": "unistring",
+              "minimumBuild":7014,
+              "description": "The unistring representation of this path, minus the filename (portion after last /)"
+            }
+          ]
+        },
+        "FilenameOnly": {
+          "forms": [
+            {
+              "type": "unistring",
+              "minimumBuild":7014,
+              "description": "The unistring representation of the filename, minus the path (portion before last /)"
             }
           ]
         },
         "AbsolutePath": {
           "forms": [
             {
-              "type": "string",
-              "description": "The string representation of this path converted to an absolute path"
+              "type": "unistring",
+              "description": "The unistring representation of this path converted to an absolute path"
             }
           ]
         },
@@ -4553,6 +4571,24 @@
             {
               "type": "string",
               "description": "The string representation of this path"
+            }
+          ]
+        },
+        "PathOnly": {
+          "forms": [
+            {
+              "minimumBuild":7014,
+              "type": "string",
+              "description": "The string representation of this path, minus the filename (portion after last /)"
+            }
+          ]
+        },
+        "FilenameOnly": {
+          "forms": [
+            {
+              "minimumBuild":7014,
+              "type": "string",
+              "description": "The string representation of the filename, minus the path (portion before last /)"
             }
           ]
         },
