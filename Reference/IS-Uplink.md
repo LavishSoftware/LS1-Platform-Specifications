@@ -1048,8 +1048,10 @@ none.
 ### Members
 - [bool](#type-bool) `PathExists`: TRUE if the given path exists
 - [bool](#type-bool) `FileExists[` [string](#type-string) `additionalPath` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
-- [string](#type-string) `Path`: The string representation of this path
-- [string](#type-string) `AbsolutePath`: The string representation of this path converted to an absolute path
+- [unistring](#type-unistring) `Path`: The unistring representation of this path
+- [unistring](#type-unistring) `PathOnly`: The unistring representation of this path, minus the filename (portion after last /)
+- [unistring](#type-unistring) `FilenameOnly`: The unistring representation of the filename, minus the path (portion before last /)
+- [unistring](#type-unistring) `AbsolutePath`: The unistring representation of this path converted to an absolute path
 - [jsonarray](#type-jsonarray) `GetFiles[` <[string](#type-string) `wildcard`="*"> `]`
 - [jsonarray](#type-jsonarray) `GetDirectories[` <[string](#type-string) `wildcard`="*"> `]`
 
@@ -1070,6 +1072,8 @@ As Text: Same as `Path`
 - [bool](#type-bool) `PathExists`: TRUE if the given path exists
 - [bool](#type-bool) `FileExists[` [string](#type-string) `additionalPath` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
 - [string](#type-string) `Path`: The string representation of this path
+- [string](#type-string) `PathOnly`: The string representation of this path, minus the filename (portion after last /)
+- [string](#type-string) `FilenameOnly`: The string representation of the filename, minus the path (portion before last /)
 - [string](#type-string) `AbsolutePath`: The path, converted if necessary to an absolute path
 - [jsonarray](#type-jsonarray) `GetFiles[` <[string](#type-string) `wildcard`="*"> `]`
 - [jsonarray](#type-jsonarray) `GetDirectories[` <[string](#type-string) `wildcard`="*"> `]`
@@ -5189,7 +5193,7 @@ As Text: Same as `Name`
 - [bool](#type-bool) `IsLocal`
 - [uint](#type-uint) `PID`
 - [gdiwindow](#type-gdiwindow) `Window`
-- [string](#type-string) `Executable`
+- [filepath](#type-filepath) `Executable`
 - [jsonobject](#type-jsonobject) `AsJSON`
 - [uint](#type-uint) `Slot`
 
