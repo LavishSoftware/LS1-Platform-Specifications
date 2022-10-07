@@ -2601,6 +2601,7 @@ As Text: "lgui2itemlist"
 - ??? `SelectedItemBindingProperty[`???`]`
 - ??? `ItemByProperty[`???`]`
 - ??? `ItemByValue[`???`]`
+- [bool](#type-bool) `IsMultiselect`
 
 ### Methods
 - `ClearItems`: Clears all Items from the Item List
@@ -2615,6 +2616,7 @@ As Text: "lgui2itemlist"
 - `PushSelectedItemBinding[`???`]`
 - `PullSelectedItemBinding[`???`]`
 - `Sort[`???`]`
+- `SetMultiselect[` [bool](#type-bool) `]`
 
 
 
@@ -2808,6 +2810,41 @@ As Text: "lgui2expander"
 ### Methods
 - `SetExpanded[` `TRUE/FALSE` `]`: Sets a new Expanded state
 - `ToggleExpanded`: Toggles the Expanded state, regardless of the current value
+
+
+
+## Type: lgui2filepicker
+- Base Type: [lgui2contentbase](#type-lgui2contentbase)
+
+As Text: "lgui2contentbase"
+
+### Members
+- [bool](#type-bool) `IsFolderMode`
+- [bool](#type-bool) `IsMultiselect`
+- [string](#type-string) `Path`
+- [string](#type-string) `Filename`
+- [string](#type-string) `Wildcard`
+- [string](#type-string) `Value`
+- [jsonarray](#type-jsonarray) `Values`
+- [jsonarray](#type-jsonarray) `FileList`
+- [bool](#type-bool) `RequireExisting`
+- [bool](#type-bool) `IsAutoRefreshFileList`
+- [lgui2databinding](#type-lgui2databinding) `ValueBinding`
+
+### Methods
+- `SetFolderMode[` [bool](#type-bool) `]`
+- `SetMultiselect[` [bool](#type-bool) `]`
+- `SetAutoRefreshFileList[` [bool](#type-bool) `]`
+- `SetRequireExisting[` [bool](#type-bool) `]`
+- `SetPath[` [string](#type-string) `]`
+- `SetFilename[` [string](#type-string) `]`
+- `SetWildcard[` [string](#type-string) `]`
+- `SetValue[` [string](#type-string) `]`
+- `SetValues[` [jsonvalueref](#type-jsonvalueref) `]`
+- `SetFileList[` [jsonvalueref](#type-jsonvalueref) `]`
+- `RefreshFileList`
+- `PullValueBinding`
+- `PushValueBinding`
 
 
 
