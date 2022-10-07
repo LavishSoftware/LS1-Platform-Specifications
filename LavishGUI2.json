@@ -3575,7 +3575,15 @@
           "SelectedItemBinding": {},
           "SelectedItemBindingProperty": {},
           "ItemByProperty": {},
-          "ItemByValue": {}
+          "ItemByValue": {},
+          "IsMultiselect":{
+            "forms": [
+              {
+                "type":"bool",
+                "minimumBuild":7018
+              }
+            ]
+          }
         },
         "methods": {
           "ClearItems": {
@@ -3661,7 +3669,19 @@
           "PullItemsBinding": {},
           "PushSelectedItemBinding": {},
           "PullSelectedItemBinding": {},
-          "Sort": {}
+          "Sort": {},
+          "SetMultiselect":{
+            "forms": [
+              {
+                "minimumBuild":7018,
+                "parameters": [
+                  {
+                    "type":"bool"
+                  }
+                ]
+              }
+            ]
+          }
         },
         "asString": {
           "constant": "lgui2itemlist"
@@ -4392,6 +4412,217 @@
         },
         "asString": {
           "constant": "lgui2expander"
+        }
+      },
+      "lgui2filepicker":{
+        "baseType": "lgui2contentbase",
+        "minimumBuild":7018,
+        "members": {
+          "IsFolderMode":{
+            "forms": [
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "IsMultiselect":{
+            "forms": [
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "Path":{
+            "forms": [
+              {
+                "type":"string"
+              }
+            ]
+          },
+          "Filename":{
+            "forms": [
+              {
+                "type":"string"
+              }
+            ]
+          },
+          "Wildcard":{
+            "forms": [
+              {
+                "type":"string"
+              }
+            ]
+          },
+          "Value":{
+            "forms": [
+              {
+                "type":"string"
+              }
+            ]
+          },
+          "Values":{
+            "forms": [
+              {
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "FileList":{
+            "forms": [
+              {
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "RequireExisting":{
+            "forms": [
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "IsAutoRefreshFileList":{
+            "forms": [
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "ValueBinding":{
+            "forms": [
+              {
+                "type":"lgui2databinding"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "SetFolderMode":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetMultiselect":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetAutoRefreshFileList":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"bool"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetRequireExisting":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"bool"
+                  }
+                ]
+              }
+            ]
+          },
+    
+          "SetPath":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"string"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetFilename":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"string"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetWildcard":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"string"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetValue":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"string"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetValues":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"jsonvalueref"
+                  }
+                ]
+              }
+            ]
+          },
+          "SetFileList":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"jsonvalueref"
+                  }
+                ]
+              }
+            ]
+          },
+    
+          "RefreshFileList":{
+            "forms": [
+            ]
+          },
+    
+          "PullValueBinding":{
+            "forms": []
+          },
+          "PushValueBinding":{
+            "forms": []
+          }
+        },
+        "asString": {
+          "constant": "lgui2contentbase"
         }
       },
       "lgui2imagebox": {
