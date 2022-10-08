@@ -1535,6 +1535,10 @@ As Text: JSON representation of the value
 - `WriteFile[` `filename` `]`: Writes the JSON to file, in condensed single-line form.
 - `WriteFile[` `filename` `,` `multiline` `]`: Writes the JSON to file, optionally in multi-line form, with "\r\n" (Windows) line splitting
 
+### Static Members
+- [jsonvalue](#type-jsonvalue) `New[` <"-lazy"> `,` [string](#type-string) `json` `]`
+- [jsonvalue](#type-jsonvalue) `ParseFile[` [filepath](#type-filepath) `filename` `]`
+
 
 
 ## Type: jsoniterator
@@ -1665,7 +1669,7 @@ As Text: JSON representation of the array
 - `Swap[` [int64](#type-int64) `keyA` `,` [int64](#type-int64) `keyB` `]`
 
 ### Static Members
-- [jsonarray](#type-jsonarray) `New`
+- [jsonarray](#type-jsonarray) `New[` <[string](#type-string) `jsonArray`="[]"> `]`
 
 
 
@@ -1724,7 +1728,8 @@ As Text: JSON representation of the object
 - `Merge[` [jsonvalueref](#type-jsonvalueref) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 
 ### Static Members
-- [jsonobject](#type-jsonobject) `New`
+- [jsonobject](#type-jsonobject) `New[` <[string](#type-string) `jsonObject`="{}"> `]`
+- [jsonobject](#type-jsonobject) `ParseFile[` [filepath](#type-filepath) `filename` `]`
 
 
 
