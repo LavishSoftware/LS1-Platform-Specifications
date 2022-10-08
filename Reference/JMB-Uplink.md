@@ -234,6 +234,10 @@ LavishScript base API
 
 
 ---
+# Enums
+none.
+
+---
 # Types
 ## Type: int
 - Persistent: No ([weakref](#type-weakref) not supported)
@@ -1406,15 +1410,47 @@ none.
 - [string](#type-string) `Name`: Name of the enum type
 - [int64](#type-int64) `ValueByName[` `name` `]`: Retrieves a value by its name
 - [string](#type-string) `NameByValue[` `#` `]`: Retrieves a name by a given value (or for flags, a set of names from the combined value)
+- [jsonarray](#type-jsonarray) `Names`
+- [jsonarray](#type-jsonarray) `Values`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `SetValue[` `name` `,` `#` `]`: Assigns a value to a given name
-- `GetIterator[` `iterator` `]`: Sets an iterator for iterating the available values
+- `GetIterator[` [iterator](#type-iterator) `]`: Sets an iterator for iterating the available values
 
 ### Static Members
 - [enumtype](#type-enumtype) `New[` [jsonvalueref](#type-jsonvalueref) `enumDefinition` `]`
 - [enumtype](#type-enumtype) `Get[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`: (filterQuery: see JSON definition [select](#definition-select))
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
+
+
+## Type: enumvaluetype
+All enum value types are an instance of this type
+
+### Initializers
+- `enumvaluetype[` [int64](#type-int64) `]`
+- `enumvaluetype[` [string](#type-string) `]`
+
+As Text: The Name(s) for the current value, if possible. Otherwise, the int64 value
+
+### Members
+- [int64](#type-int64) `Value`
+- [string](#type-string) `Name`
+- [enumtype](#type-enumtype) `Type`
+
+### Methods
+- `Set[` [int64](#type-int64) `]`
+- `Set[` [string](#type-string) `]`
+
+### Static Members
+- [enumvaluetype](#type-enumvaluetype) `Get[` [string](#type-string) `]`
+- [enumvaluetype](#type-enumvaluetype) `Get[` [int64](#type-int64) `]`
+- [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`: (filterQuery: see JSON definition [select](#definition-select))
+- [jsonobject](#type-jsonobject) `EnumAsJSON`
 
 ### Static Methods
 - `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
@@ -1889,6 +1925,122 @@ none.
 # Top-Level Objects
 ## TLO: LGUI2
 - [lgui2](#type-lgui2) `LGUI2`
+
+
+---
+# Enums
+## Type: elgui2anchormode
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `static` = 0
+- [int64](#type-int64) `cursor` = 1
+- [int64](#type-int64) `element` = 2
+
+## Type: elgui2animationframestate
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `continue` = 1
+- [int64](#type-int64) `start` = 0
+- [int64](#type-int64) `stop` = -1
+
+## Type: elgui2dpad
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `RELEASED` = -1
+- [int64](#type-int64) `N` = 0
+- [int64](#type-int64) `NE` = 45
+- [int64](#type-int64) `E` = 90
+- [int64](#type-int64) `SE` = 135
+- [int64](#type-int64) `S` = 180
+- [int64](#type-int64) `SW` = 225
+- [int64](#type-int64) `W` = 270
+- [int64](#type-int64) `NW` = 315
+
+## Type: elgui2edge
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `top` = 0
+- [int64](#type-int64) `left` = 1
+- [int64](#type-int64) `bottom` = 2
+- [int64](#type-int64) `right` = 3
+
+## Type: elgui2fontflags
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `USE_NONE` = 0
+- [int64](#type-int64) `USE_FACE` = 1
+- [int64](#type-int64) `USE_HEIGHT` = 2
+- [int64](#type-int64) `USE_FIXED` = 4
+- [int64](#type-int64) `USE_BOLD` = 8
+- [int64](#type-int64) `USE_ALL` = `USE_FACE` | `USE_HEIGHT` | `USE_FIXED` | `USE_BOLD`
+
+## Type: elgui2horizontalalignment
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `none` = -1
+- [int64](#type-int64) `left` = 0
+- [int64](#type-int64) `center` = 1
+- [int64](#type-int64) `right` = 2
+- [int64](#type-int64) `stretch` = 3
+
+## Type: elgui2imageorientation
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `normal` = 0
+- [int64](#type-int64) `mirrorHorizontal` = 1
+- [int64](#type-int64) `mirrorVertical` = 2
+
+## Type: elgui2progresstext
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `none` = 0
+- [int64](#type-int64) `percent` = 1
+- [int64](#type-int64) `value` = 2
+- [int64](#type-int64) `valueSlashMax` = 3
+
+## Type: elgui2sizetocontent
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `neither` = 0
+- [int64](#type-int64) `width` = 1
+- [int64](#type-int64) `height` = 2
+- [int64](#type-int64) `both` = 3
+
+## Type: elgui2scrollbar
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `none` = 0
+- [int64](#type-int64) `auto` = 1
+- [int64](#type-int64) `always` = 2
+- [int64](#type-int64) `fit` = 3
+
+## Type: elgui2verticalalignment
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `none` = -1
+- [int64](#type-int64) `top` = 0
+- [int64](#type-int64) `center` = 1
+- [int64](#type-int64) `bottom` = 2
+- [int64](#type-int64) `stretch` = 3
+
+## Type: elgui2visibility
+- Base Type: [enumvaluetype](#type-enumvaluetype)
+
+Enumeration values/static members:
+- [int64](#type-int64) `collapsed` = -1
+- [int64](#type-int64) `hidden` = 0
+- [int64](#type-int64) `visible` = 1
 
 
 ---
@@ -3708,6 +3860,10 @@ Inner Space Kernel API Specification (LavishScript)
 
 
 ---
+# Enums
+none.
+
+---
 # Types
 ## Type: dataset
 
@@ -4636,6 +4792,10 @@ none.
 
 
 ---
+# Enums
+none.
+
+---
 # Types
 ## Type: joemultiboxer
 - Static: Yes (All Members/Methods also work as Static Members/Methods)
@@ -4906,6 +5066,10 @@ Inner Space Uplink API Specification (LavishScript)
 ## TLO: ISUplink
 - [innerspaceuplink](#type-innerspaceuplink) `ISUplink`
 
+
+---
+# Enums
+none.
 
 ---
 # Types
