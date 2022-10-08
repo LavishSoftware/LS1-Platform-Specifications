@@ -7145,6 +7145,41 @@
           ]
         }
       },
+      "staticMembers": {
+        "New":{
+          "forms": [
+            {
+              "minimumBuild":7025,
+              "type":"jsonvalue",
+              "parameters": [
+                {
+                  "type":"string",
+                  "constant": "-lazy",
+                  "optional": true
+                },
+                {
+                  "type":"string",
+                  "name":"json"
+                }
+              ]
+            }
+          ]
+        },
+        "ParseFile":{
+          "forms": [
+            {
+              "minimumBuild":7025,
+              "type":"jsonvalue",
+              "parameters": [
+                {
+                  "type":"filepath",
+                  "name": "filename"
+                }
+              ]
+            }
+          ]
+        }
+      },
       "asString": {
         "description": "JSON representation of the value"
       }
@@ -8242,10 +8277,18 @@
       "staticMembers": {
         "New":{
           "forms": [
-              {
-                  "minimumBuild":7000,
-                  "type":"jsonarray"
-              }
+            {
+              "minimumBuild":7025,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "jsonArray",
+                  "optional": true,
+                  "default":"[]"
+                }
+              ]
+            }
           ]
         }
       },
@@ -8941,9 +8984,31 @@
         "New":{
           "forms": [
               {
-                  "minimumBuild":7000,
-                  "type":"jsonobject"
+                  "minimumBuild":7025,
+                  "type":"jsonobject",
+                  "parameters": [
+                    {
+                      "type":"string",
+                      "name": "jsonObject",
+                      "optional": true,
+                      "default":"{}"
+                    }
+                  ]
               }
+          ]
+        },
+        "ParseFile":{
+          "forms": [
+            {
+              "minimumBuild":7025,
+              "type":"jsonobject",
+              "parameters": [
+                {
+                  "type":"filepath",
+                  "name": "filename"
+                }
+              ]
+            }
           ]
         }
       },
