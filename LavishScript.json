@@ -6788,6 +6788,27 @@
               ]
             }
           ]
+        },
+        "Names":{
+          "forms": [
+            {
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Values":{
+          "forms": [
+            {
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
         }
       },
       "methods": {
@@ -6812,7 +6833,7 @@
               "description": "Sets an iterator for iterating the available values",
               "parameters": [
                 {
-                  "name": "iterator"
+                  "type": "iterator"
                 }
               ]
             }
@@ -6891,6 +6912,146 @@
       },
       "persistent": false,
       "asString": {}
+    },
+    "enumvaluetype":{
+      "members": {
+        "Value":{
+          "forms": [
+            {
+              "type":"int64"
+            }
+          ]
+        },
+        "Name":{
+          "forms": [
+            {
+              "type":"string"
+            }
+          ]
+        },
+        "Type":{
+          "forms": [
+            {
+              "minimumBuild":7024,
+              "type": "enumtype"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Set":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"int64"
+                }
+              ]
+            },
+            {
+              "parameters": [
+                {
+                  "type":"string"
+                }
+              ]
+            }  
+          ]
+        }
+      },
+      "staticMembers": {
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7024,
+              "type":"enumvaluetype",
+              "parameters": [
+                {
+                  "type":"string"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7024,
+              "type":"enumvaluetype",
+              "parameters": [
+                {
+                  "type":"int64"
+                }
+              ]
+            }
+          ]
+        },
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":7024,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "filterQuery",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
+                }
+              ]  
+            }
+          ]         
+        },
+        "EnumAsJSON":{
+          "forms": [
+            {
+              "minimumBuild":7024,
+              "type":"jsonobject"
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+              {
+                "minimumBuild":7024,
+                  "parameters": [
+                      {
+                          "type":"string",
+                          "name":"command"        
+                      },
+                      {
+                          "type":"jsonvalueref",
+                          "name": "filterQuery",
+                          "optional": true,
+                          "schema":{
+                            "$ref":"#/definitions/select"
+                          }
+                      }    
+                  ]
+              }
+          ]          
+        }
+      },
+      "initializer": {
+        "forms": [
+          {
+            "parameters": [
+              {
+                "type":"int64"
+              }
+            ]
+          },
+          {
+            "parameters": [
+              {
+                "type":"string"
+              }
+            ]
+          }
+        ]
+      },
+      "asString": {
+        "description": "The Name(s) for the current value, if possible. Otherwise, the int64 value"
+      },
+      "description": "All enum value types are an instance of this type"
     },
     "jsonvalue": {
       "variableType": "jsonvaluecontainer",

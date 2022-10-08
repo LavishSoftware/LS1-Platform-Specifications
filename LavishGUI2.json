@@ -1,6 +1,115 @@
 {
     "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
     "name": "LavishGUI 2",
+    "enums": {
+      "elgui2anchormode":{
+        "static":0,
+        "cursor":1,
+        "element":2
+      },
+      "elgui2animationframestate":{
+        "values": {
+          "continue":1,
+          "start":0,
+          "stop":-1
+        }
+      },
+      "elgui2dpad":{
+        "values": {
+          "RELEASED":-1,
+          "N":0,
+          "NE":45,
+          "E":90,
+          "SE":135,
+          "S":180,
+          "SW":225,
+          "W":270,
+          "NW":315
+        }
+      },
+      "elgui2edge":{
+        "values": {
+          "top":0,
+          "left":1,
+          "bottom":2,
+          "right":3
+        }
+      },
+      "elgui2fontflags":{
+        "flags": true,
+        "values": {
+          "USE_NONE":0,
+          "USE_FACE":1,
+          "USE_HEIGHT":2,
+          "USE_FIXED":4,
+          "USE_BOLD":8,
+          "USE_ALL":{
+            "value": [
+              "USE_FACE",
+              "USE_HEIGHT",
+              "USE_FIXED",
+              "USE_BOLD"
+            ]
+          }        
+        }
+      },
+      "elgui2horizontalalignment":{
+        "values": {
+          "none":-1,          
+          "left":0,
+          "center":1,
+          "right":2,
+          "stretch":3
+        }
+      },
+      "elgui2imageorientation":{
+        "flags": true,
+        "values": {
+          "normal":0,
+          "mirrorHorizontal":1,
+          "mirrorVertical":2
+        }
+      },
+      "elgui2progresstext":{
+        "none":0,
+        "percent":1,
+        "value":2,
+        "valueSlashMax":3
+      },
+      "elgui2sizetocontent":{
+        "flags": true,
+        "values": {
+          "neither":0,
+          "width":1,
+          "height":2,
+          "both":3
+        }
+      },
+      "elgui2scrollbar":{
+        "values": {
+          "none":0,
+          "auto":1,
+          "always":2,
+          "fit":3  
+        }
+      },
+      "elgui2verticalalignment":{
+        "values": {
+          "none":-1,          
+          "top":0,
+          "center":1,
+          "bottom":2,
+          "stretch":3
+        }
+      },
+      "elgui2visibility":{
+        "values": {
+          "collapsed":-1,
+          "hidden":0,
+          "visible":1
+        }
+      }
+    },
     "types": {
       "lgui2": {
         "static":true,
