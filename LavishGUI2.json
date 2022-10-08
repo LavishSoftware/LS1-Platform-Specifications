@@ -3,9 +3,11 @@
     "name": "LavishGUI 2",
     "enums": {
       "elgui2anchormode":{
-        "static":0,
-        "cursor":1,
-        "element":2
+        "values":{
+          "static":0,
+          "cursor":1,
+          "element":2
+        }
       },
       "elgui2animationframestate":{
         "values": {
@@ -71,10 +73,12 @@
         }
       },
       "elgui2progresstext":{
-        "none":0,
-        "percent":1,
-        "value":2,
-        "valueSlashMax":3
+        "values":{
+          "none":0,
+          "percent":1,
+          "value":2,
+          "valueSlashMax":3
+        }
       },
       "elgui2sizetocontent":{
         "flags": true,
