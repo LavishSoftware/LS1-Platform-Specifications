@@ -4155,7 +4155,8 @@ As Text: Same as `Name`
 - [float](#type-float) `Position`: Value between 0 and 1 indicating the axis position.  Generally 0 is to the left or downward, and 1 is to the right or upward.  Some axes are a bit more strange, such as Xbox 360 conroller triggers, where the value is the average position of the two triggers -- 0 is left trigger pulled, 1 is right trigger pulled, and 0.5 indicates both triggers are at rest, or both pulled.  The precision of this position is entirely based on the device and its driver (e.g. the values will not just be 0, 0.5, or 1, there might be thousands of possible values).
 
 ### Methods
-none.
+- `SetPosition[` [float](#type-float) `newValue` `]`
+
 
 
 ## Type: dpad
@@ -4169,7 +4170,8 @@ As Text: Same as `Name`
 - [float](#type-float) `Position`: Value between 0.00 and 360.00 clockwise, indicating the position as a direction.  A value of -1 indicates that the d-pad is at rest (in the middle)
 
 ### Methods
-none.
+- `SetPosition[` [float](#type-float) `newValue` `]`
+
 
 
 ## Type: inputdevice
@@ -4181,6 +4183,30 @@ none.
 
 ### Methods
 - `SelectKeySet[`???`]`
+
+
+
+## Type: joystick
+
+### Members
+- [uint](#type-uint) `ID`
+- [int](#type-int) `SystemID`
+- [uint](#type-uint) `ManufacturerID`
+- [uint](#type-uint) `ProductID`
+- [jsonobject](#type-jsonobject) `Caps`
+- [jsonobject](#type-jsonobject) `AsJSON`
+- [bool](#type-bool) `Polling`
+
+### Methods
+- `SetPolling[` [bool](#type-bool) `newValue` `]`
+
+### Static Members
+- [joystick](#type-joystick) `New[` [jsonvalueref](#type-jsonvalueref) `joystickDefinition` `]`: (joystickDefinition: see JSON definition [joystickDefinition](#definition-joystickDefinition))
+- [joystick](#type-joystick) `Get[` [uint](#type-uint) `joystickID` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
@@ -4762,6 +4788,69 @@ As Text: Same as `Value`
 
 
 
+
+---
+# JSON Definitions
+## Definition: joystickDefinition
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "default": 1,
+      "description": "If not specified, the joystick will define the first joystick (#1)"
+    },
+    "systemId": {
+      "type": "integer",
+      "default": 0,
+      "description": "If not specified, the joystick will not refer to a system joystick"
+    },
+    "name": {
+      "type": "string",
+      "default": "Virtual Joystick"
+    },
+    "hasPOV": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasZ": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasR": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasU": {
+      "type": "boolean",
+      "default": true
+    },
+    "hasV": {
+      "type": "boolean",
+      "default": true
+    },
+    "numButtons": {
+      "type": "integer",
+      "default": 32
+    },
+    "numAxes": {
+      "type": "integer",
+      "default": 6
+    },
+    "mid": {
+      "type": "integer",
+      "default": 0,
+      "description": "Manufacturer ID number"
+    },
+    "pid": {
+      "type": "integer",
+      "default": 0,
+      "description": "Product ID number"
+    }
+  }
+}
+```
 
 Joe Multiboxer Kernel API Specification (LavishScript)
 
