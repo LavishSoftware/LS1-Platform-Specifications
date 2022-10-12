@@ -2,6 +2,65 @@
   "$schema": "http://www.lavishsoft.com/schema/ls1APISpec.json",
   "name": "Inner Space Kernel",
   "description": "",
+  "definitions": {
+    "joystickDefinition":{
+      "type":"object",
+      "properties":{
+        "id":{
+            "type":"integer",
+            "default":1,
+            "description":"If not specified, the joystick will define the first joystick (#1)"
+        },
+        "systemId":{
+          "type":"integer",
+          "default":0,
+          "description":"If not specified, the joystick will not refer to a system joystick"
+        },
+        "name":{
+          "type":"string",
+          "default":"Virtual Joystick"
+        },
+        "hasPOV":{
+          "type":"boolean",
+          "default":true
+        },
+        "hasZ":{
+          "type":"boolean",
+          "default":true
+        },
+        "hasR":{
+          "type":"boolean",
+          "default":true
+        },
+        "hasU":{
+          "type":"boolean",
+          "default":true
+        },
+        "hasV":{
+          "type":"boolean",
+          "default":true
+        },
+        "numButtons":{
+          "type":"integer",
+          "default":32
+        },
+        "numAxes":{
+          "type":"integer",
+          "default":6
+        },
+        "mid":{
+          "type":"integer",
+          "default":0,
+          "description":"Manufacturer ID number"
+        },
+        "pid":{
+          "type":"integer",
+          "default":0,
+          "description":"Product ID number"
+        }
+      }
+    }
+  },
   "commands": {
     "Version": {
       "forms": [
@@ -2511,6 +2570,17 @@
           ]
         }
       },
+      "methods": {
+        "SetPosition":{
+          "forms": [
+            {
+              "minimumBuild":7030,
+              "type":"float",
+              "name":"newValue"
+            }
+          ]
+        }
+      },
       "asString": {
         "member": "Name"
       }
@@ -2550,6 +2620,17 @@
           ]
         }
       },
+      "methods": {
+        "SetPosition":{
+          "forms": [
+            {
+              "minimumBuild":7030,
+              "type":"float",
+              "name":"newValue"
+            }
+          ]
+        }
+      },
       "asString": {
         "member": "Name"
       }
@@ -2562,6 +2643,136 @@
       },
       "methods": {
         "SelectKeySet": {}
+      }
+    },
+    "joystick":{
+      "minimumBuild":7030,
+      "members": {
+        "ID":{
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
+        "SystemID":{
+          "forms": [
+            {
+              "type":"int"
+            }
+          ]
+        },
+        "ManufacturerID":{
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
+        "ProductID":{
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
+        "Caps":{
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "Polling":{
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
+        }    
+      },
+      "methods": {
+        "SetPolling":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name": "newValue"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "joystickDefinition",
+                  "schema":{
+                    "$ref":"#/definitions/joystickDefinition"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "joystickID"
+                }
+              ]
+            }
+          ]
+        },
+        "List":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]              
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+              {
+                  "parameters": [
+                      {
+                          "type":"string",
+                          "name":"command"        
+                      },
+                      {
+                          "type":"jsonvalueref",
+                          "name": "filterQuery",
+                          "optional": true
+                      }    
+                  ]
+              }
+          ]
+        }
       }
     },
     "mouse": {
