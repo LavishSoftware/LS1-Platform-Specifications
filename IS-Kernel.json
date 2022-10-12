@@ -2575,8 +2575,12 @@
           "forms": [
             {
               "minimumBuild":7030,
-              "type":"float",
-              "name":"newValue"
+              "parameters": [
+                {
+                  "type":"float",
+                  "name":"newValue"    
+                }
+              ]
             }
           ]
         }
@@ -2625,8 +2629,12 @@
           "forms": [
             {
               "minimumBuild":7030,
-              "type":"float",
-              "name":"newValue"
+              "parameters": [
+                {
+                  "type":"float",
+                  "name":"newValue"    
+                }
+              ]
             }
           ]
         }
@@ -2716,6 +2724,7 @@
         "New":{
           "forms": [
             {
+              "type":"joystick",
               "parameters": [
                 {
                   "type":"jsonvalueref",
@@ -2731,6 +2740,7 @@
         "Get":{
           "forms": [
             {
+              "type":"joystick",
               "parameters": [
                 {
                   "type":"uint",
