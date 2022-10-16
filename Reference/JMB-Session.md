@@ -1549,6 +1549,7 @@ As Text: JSON representation of the referenced value
 As Text: JSON representation of the array
 
 ### Members
+- [jsonarray](#type-jsonarray) `Duplicate`: Returns a deep copy (completely new and separate clone) of the array
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [...](#type-...) `Get[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
@@ -1619,6 +1620,7 @@ As Text: JSON representation of the array
 As Text: JSON representation of the object
 
 ### Members
+- [jsonobject](#type-jsonobject) `Duplicate`: Returns a deep copy (completely new and separate clone) of the object
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [...](#type-...) `Get[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name

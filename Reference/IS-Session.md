@@ -1611,6 +1611,7 @@ As Text: JSON representation of the referenced value
 As Text: JSON representation of the array
 
 ### Members
+- [jsonarray](#type-jsonarray) `Duplicate`: Returns a deep copy (completely new and separate clone) of the array
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [...](#type-...) `Get[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
@@ -1681,6 +1682,7 @@ As Text: JSON representation of the array
 As Text: JSON representation of the object
 
 ### Members
+- [jsonobject](#type-jsonobject) `Duplicate`: Returns a deep copy (completely new and separate clone) of the object
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [...](#type-...) `Get[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
@@ -5493,8 +5495,12 @@ As Text: Same as `Name`
 - [int64](#type-int64) `Slot`
 - [bool](#type-bool) `IsLauncher`
 - [jsonobject](#type-jsonobject) `Metadata`
-- [anonevent](#type-anonevent) `OnPreStartup`: Event fires prior to Session Pre-Startup Sequence. No longer exists (is NULL) after execution
-- [anonevent](#type-anonevent) `OnStartup`: Event fires prior to Session Startup Sequence. No longer exists (is NULL) after execution
+- [anonevent](#type-anonevent) `OnPreStartup`: Event fires prior to Session Pre-Startup Sequence.
+- [anonevent](#type-anonevent) `OnStartup`: Event fires prior to Session Startup Sequence.
+- [anonevent](#type-anonevent) `OnPreStartupCompleted`: Event fires immediately following the Session Pre-Startup Sequence.
+- [anonevent](#type-anonevent) `OnStartupCompleted`: Event fires immediately following the Session Startup Sequence.
+- [anonevent](#type-anonevent) `OnWindowCaptured`: Event fires when the application's main window has been captured
+- [anonevent](#type-anonevent) `OnFocused`: Event fires when the window has been focused by the Fovus (uplink) command
 
 ### Methods
 - `SetFlashWindow[` [bool](#type-bool) `newValue` `]`
