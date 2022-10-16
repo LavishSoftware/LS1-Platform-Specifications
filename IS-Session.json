@@ -658,7 +658,7 @@
                 "OnPreStartup":{
                     "forms":[
                         {
-                            "description": "Event fires prior to Session Pre-Startup Sequence. No longer exists (is NULL) after execution",
+                            "description": "Event fires prior to Session Pre-Startup Sequence.",
                             "type":"anonevent",
                             "minimumBuild":7011
                         }
@@ -667,9 +667,45 @@
                 "OnStartup":{
                     "forms":[
                         {
-                            "description": "Event fires prior to Session Startup Sequence. No longer exists (is NULL) after execution",
+                            "description": "Event fires prior to Session Startup Sequence.",
                             "type":"anonevent",
                             "minimumBuild":7011
+                        }
+                    ]
+                },
+                "OnPreStartupCompleted":{
+                    "forms":[
+                        {
+                            "description": "Event fires immediately following the Session Pre-Startup Sequence.",
+                            "type":"anonevent",
+                            "minimumBuild":7035
+                        }
+                    ]
+                },
+                "OnStartupCompleted":{
+                    "forms":[
+                        {
+                            "description": "Event fires immediately following the Session Startup Sequence.",
+                            "type":"anonevent",
+                            "minimumBuild":7035
+                        }
+                    ]
+                },
+                "OnWindowCaptured":{
+                    "forms":[
+                        {
+                            "description": "Event fires when the application's main window has been captured",
+                            "type":"anonevent",
+                            "minimumBuild":7035
+                        }
+                    ]
+                },
+                "OnFocused":{
+                    "forms":[
+                        {
+                            "description": "Event fires when the window has been focused by the Fovus (uplink) command",
+                            "type":"anonevent",
+                            "minimumBuild":7035
                         }
                     ]
                 }

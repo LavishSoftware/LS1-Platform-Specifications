@@ -7463,6 +7463,15 @@
     },
     "jsonarray": {
       "members": {
+        "Duplicate":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":7035,
+              "description": "Returns a deep copy (completely new and separate clone) of the array"
+            }
+          ]
+        },
         "Get": {
           "forms": [
             {
@@ -8298,6 +8307,15 @@
     },
     "jsonobject": {
       "members": {
+        "Duplicate":{
+          "forms": [
+            {
+              "type":"jsonobject",
+              "minimumBuild":7035,
+              "description": "Returns a deep copy (completely new and separate clone) of the object"
+            }
+          ]
+        },
         "Get": {
           "forms": [
             {
