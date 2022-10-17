@@ -7486,11 +7486,42 @@
               ]
             },
             {
-              "type": "...",
+              "type": "object",
               "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects",
               "parameters": [
                 {
                   "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "GetContainer": {
+          "forms": [
+            {
+              "type": "jsonvaluecontainer",
+              "description": "Gets a jsonvaluecontainer which holds a value within this array",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "type": "jsonvaluecontainer",
+              "description": "Gets a jsonvaluecontainer multiple levels deep within jsonobjects and/or jsonarrays",
+              "parameters": [
+                {
+                  "name": "valueName"
                 },
                 {
                   "name": "valueName2"
@@ -8330,8 +8361,39 @@
               ]
             },
             {
-              "type": "...",
+              "type": "object",
               "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays",
+              "parameters": [
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "GetContainer": {
+          "forms": [
+            {
+              "type": "jsonvaluecontainer",
+              "description": "Gets a jsonvaluecontainer which holds a value within this object, by its name",
+              "parameters": [
+                {
+                  "name": "fieldPath",
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "type": "jsonvaluecontainer",
+              "description": "Gets a jsonvaluecontainer multiple levels deep within jsonobjects and/or jsonarrays",
               "parameters": [
                 {
                   "name": "valueName"
