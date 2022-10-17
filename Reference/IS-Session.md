@@ -1613,7 +1613,9 @@ As Text: JSON representation of the array
 ### Members
 - [jsonarray](#type-jsonarray) `Duplicate`: Returns a deep copy (completely new and separate clone) of the array
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
-- [...](#type-...) `Get[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [object](#type-object) `Get[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` ... [string](#type-string) `fieldPath` `]`: Gets a jsonvaluecontainer which holds a value within this array
+- [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a jsonvaluecontainer multiple levels deep within jsonobjects and/or jsonarrays
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [float64](#type-float64) `GetNumber[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
 - [int64](#type-int64) `GetInteger[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
@@ -1684,7 +1686,9 @@ As Text: JSON representation of the object
 ### Members
 - [jsonobject](#type-jsonobject) `Duplicate`: Returns a deep copy (completely new and separate clone) of the object
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
-- [...](#type-...) `Get[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [object](#type-object) `Get[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` ... [string](#type-string) `fieldPath` `]`: Gets a jsonvaluecontainer which holds a value within this object, by its name
+- [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a jsonvaluecontainer multiple levels deep within jsonobjects and/or jsonarrays
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [float64](#type-float64) `GetNumber[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
 - [int64](#type-int64) `GetInteger[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
