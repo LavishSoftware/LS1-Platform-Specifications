@@ -3061,6 +3061,63 @@
           ]
         }
       },
+      "staticMembers": {
+        "Get":{
+          "forms": [
+            {
+                "minimumBuild":7042,
+                "type":"type",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "name"
+                  }
+                ]
+            }
+        ]
+        },
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":7042,
+              "type":"jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+              {
+                "minimumBuild":7042,
+                  "parameters": [
+                      {
+                          "type":"string",
+                          "name":"command"        
+                      },
+                      {
+                          "type":"jsonvalueref",
+                          "name": "filterQuery",
+                          "optional": true,
+                          "schema":{
+                            "$ref":"#/definitions/select"
+                          }
+                      }    
+                  ]
+              }
+          ]
+        }
+      },
       "persistent": false,
       "asString": {
         "member": "Name"
@@ -7500,12 +7557,41 @@
                   "greedy": true
                 }
               ]
+            },
+            {
+              "type": "object",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
             }
           ]
         },
         "GetContainer": {
           "forms": [
             {
+              "minimumBuild":7036,
               "type": "jsonvaluecontainer",
               "description": "Gets a jsonvaluecontainer which holds a value within this array",
               "parameters": [
@@ -7564,6 +7650,34 @@
                   "greedy": true
                 }
               ]
+            },
+            {
+              "type": "float64",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
             }
           ]
         },
@@ -7597,6 +7711,34 @@
                   "greedy": true
                 }
               ]
+            },
+            {
+              "type": "int64",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
             }
           ]
         },
@@ -7619,6 +7761,34 @@
               "type": "bool",
               "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects",
               "parameters": [
+                {
+                  "name": "#"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "type": "bool",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
                 {
                   "name": "#"
                 },
@@ -8375,12 +8545,41 @@
                   "greedy": true
                 }
               ]
+            },
+            {
+              "type": "object",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
             }
           ]
         },
         "GetContainer": {
           "forms": [
             {
+              "minimumBuild":7036,
               "type": "jsonvaluecontainer",
               "description": "Gets a jsonvaluecontainer which holds a value within this object, by its name",
               "parameters": [
@@ -8439,6 +8638,34 @@
                   "greedy": true
                 }
               ]
+            },
+            {
+              "type": "float64",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
             }
           ]
         },
@@ -8472,6 +8699,34 @@
                   "greedy": true
                 }
               ]
+            },
+            {
+              "type": "int64",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
             }
           ]
         },
@@ -8494,6 +8749,34 @@
               "type": "bool",
               "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays",
               "parameters": [
+                {
+                  "name": "valueName"
+                },
+                {
+                  "name": "valueName2"
+                },
+                {
+                  "type": "string",
+                  "greedy": true
+                }
+              ]
+            },
+            {
+              "type": "bool",
+              "minimumBuild":7042,
+              "description": "Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "constant": "-default",
+                  "followingParameters": [
+                    {
+                      "type": "jsonvalue",
+                      "name": "defaultValue"
+                    }
+                  ]
+                },
                 {
                   "name": "valueName"
                 },
@@ -9963,7 +10246,7 @@
           "forms": [
             {
               "description": "A JSON representation of this element. If includeDescendants is specified, this will include all descendant nodes.",
-              "type":"jsonboject",
+              "type":"jsonobject",
               "parameters": [
                 {
                   "type":"bool",
