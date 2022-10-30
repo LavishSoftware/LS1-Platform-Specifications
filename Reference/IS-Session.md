@@ -781,6 +781,13 @@ As Text: Same as `Name`
 
 ### Methods
 none.
+### Static Members
+- [type](#type-type) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
 
 
 ## Type: time
@@ -1614,14 +1621,18 @@ As Text: JSON representation of the array
 - [jsonarray](#type-jsonarray) `Duplicate`: Returns a deep copy (completely new and separate clone) of the array
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [object](#type-object) `Get[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [object](#type-object) `Get[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found
 - [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` ... [string](#type-string) `fieldPath` `]`: Gets a jsonvaluecontainer which holds a value within this array
 - [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a jsonvaluecontainer multiple levels deep within jsonobjects and/or jsonarrays
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [float64](#type-float64) `GetNumber[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [float64](#type-float64) `GetNumber[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found
 - [int64](#type-int64) `GetInteger[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [int64](#type-int64) `GetInteger[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [int64](#type-int64) `GetInteger[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found
 - [bool](#type-bool) `GetBool[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [bool](#type-bool) `GetBool[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
+- [bool](#type-bool) `GetBool[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects, with a default value if not found
 - [string](#type-string) `GetType[` ... [string](#type-string) `fieldPath` `]`: Gets the Type of a value stored within this array, by its index (1-based)
 - [uint](#type-uint) `Size`: Allocated capacity of the array
 - [uint](#type-uint) `Used`: Total number of values currently in the array
@@ -1687,14 +1698,18 @@ As Text: JSON representation of the object
 - [jsonobject](#type-jsonobject) `Duplicate`: Returns a deep copy (completely new and separate clone) of the object
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [object](#type-object) `Get[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [object](#type-object) `Get[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found
 - [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` ... [string](#type-string) `fieldPath` `]`: Gets a jsonvaluecontainer which holds a value within this object, by its name
 - [jsonvaluecontainer](#type-jsonvaluecontainer) `GetContainer[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a jsonvaluecontainer multiple levels deep within jsonobjects and/or jsonarrays
 - [float64](#type-float64) `GetNumber[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [float64](#type-float64) `GetNumber[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [float64](#type-float64) `GetNumber[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found
 - [int64](#type-int64) `GetInteger[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [int64](#type-int64) `GetInteger[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [int64](#type-int64) `GetInteger[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found
 - [bool](#type-bool) `GetBool[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [bool](#type-bool) `GetBool[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
+- [bool](#type-bool) `GetBool[` <"-default" `,` [jsonvalue](#type-jsonvalue) `defaultValue`> `,` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays, with a default value if not found
 - [string](#type-string) `GetType[` ... [string](#type-string) `fieldPath` `]`: Gets the Type of a value stored within this object, by its name
 - [string](#type-string) `Type`
 - [string](#type-string) `AsString`
@@ -1905,7 +1920,7 @@ As Text: Same as `Text`
 - ??? `FindNextChildElement[` [weakref](#type-weakref) `fromNode` `,` [string](#type-string) `name` `]`: Finds the next child ELEMENT node by name (xml tag), from a specified node
 - [bool](#type-bool) `Leaf`
 - [jsonarray](#type-jsonarray) `Attributes`: A jsonarray of the attributes and their values
-- [jsonboject](#type-jsonboject) `AsJSON[` <[bool](#type-bool) `includeDescendants`=false> `]`: A JSON representation of this element. If includeDescendants is specified, this will include all descendant nodes.
+- [jsonobject](#type-jsonobject) `AsJSON[` <[bool](#type-bool) `includeDescendants`=false> `]`: A JSON representation of this element. If includeDescendants is specified, this will include all descendant nodes.
 
 ### Methods
 - `ForEach[` [string](#type-string) `command` `]`: For each child xmlnode, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
