@@ -535,6 +535,36 @@
             }
           ]
         },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this int, multiplied by a given amount",
+              "type":"int",
+              "parameters": [
+                {
+                  "type":"int",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this int, multiplied by a given amount",
+              "type":"int",
+              "parameters": [
+                {
+                  "type":"int",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
         "Float": {
           "forms": [
             {
@@ -663,6 +693,34 @@
             }
           ]
         },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Multiplies this int by a given amount",
+              "parameters": [
+                {
+                  "type":"int",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Divides this int by a given amount",
+              "parameters": [
+                {
+                  "type":"int",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
         "Set": {
           "forms": [
             {
@@ -744,6 +802,36 @@
                   "type": "uint",
                   "optional": true,
                   "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this uint, multiplied by a given amount",
+              "type":"uint",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this uint, multiplied by a given amount",
+              "type":"uint",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "expression"
                 }
               ]
             }
@@ -868,6 +956,34 @@
             },
             {
               "description": "Decrements this uint by 1"
+            }
+          ]
+        },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Multiplies this uint by a given amount",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Divides this uint by a given amount",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "expression"
+                }
+              ]
             }
           ]
         },
@@ -1835,6 +1951,36 @@
             }
           ]
         },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this float, multiplied by a given amount",
+              "type":"float",
+              "parameters": [
+                {
+                  "type":"float",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this float, divided by a given amount",
+              "type":"float",
+              "parameters": [
+                {
+                  "type":"float",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
         "Deci": {
           "forms": [
             {
@@ -1976,6 +2122,34 @@
             }
           ]
         },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Multiplies this float by a given amount",
+              "parameters": [
+                {
+                  "type":"float",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Divides this float by a given amount",
+              "parameters": [
+                {
+                  "type":"float",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
         "Set": {
           "forms": [
             {
@@ -2056,6 +2230,36 @@
                   "type": "int64",
                   "optional": true,
                   "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this int64, multiplied by a given amount",
+              "type":"int64",
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this int64, multiplied by a given amount",
+              "type":"int64",
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name": "expression"
                 }
               ]
             }
@@ -2166,6 +2370,34 @@
             }
           ]
         },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Multiplies this int64 by a given amount",
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Divides this int64 by a given amount",
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
         "Set": {
           "forms": [
             {
@@ -2246,6 +2478,36 @@
                   "type": "float64",
                   "optional": true,
                   "default": 1
+                }
+              ]
+            }
+          ]
+        },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this float64, multiplied by a given amount",
+              "type":"float64",
+              "parameters": [
+                {
+                  "type":"float64",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Returns this float64, divided by a given amount",
+              "type":"float64",
+              "parameters": [
+                {
+                  "type":"float64",
+                  "name": "expression"
                 }
               ]
             }
@@ -2389,6 +2651,34 @@
             },
             {
               "description": "Decrements this float64 by 1.0"
+            }
+          ]
+        },
+        "Mul":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Multiplies this float64 by a given amount",
+              "parameters": [
+                {
+                  "type":"float64",
+                  "name": "expression"
+                }
+              ]
+            }
+          ]
+        },
+        "Div":{
+          "forms": [
+            {
+              "minimumBuild":7047,
+              "description": "Divides this float64 by a given amount",
+              "parameters": [
+                {
+                  "type":"float64",
+                  "name": "expression"
+                }
+              ]
             }
           ]
         },
@@ -7524,7 +7814,7 @@
           "forms": [
             {
               "type":"jsonarray",
-              "minimumBuild":7035,
+              "minimumBuild":7047,
               "description": "Returns a deep copy (completely new and separate clone) of the array"
             }
           ]
@@ -8512,7 +8802,7 @@
           "forms": [
             {
               "type":"jsonobject",
-              "minimumBuild":7035,
+              "minimumBuild":7047,
               "description": "Returns a deep copy (completely new and separate clone) of the object"
             }
           ]
@@ -9297,22 +9587,7 @@
         "Merge":{
           "forms": [
             {
-              "minimumBuild":6921,
-              "parameters": [
-                {
-                  "type":"string",
-                  "name":"jsonObject"
-                },
-                {
-                  "type":"bool",
-                  "name": "replace",
-                  "optional": true,
-                  "default":true
-                }
-              ]
-            },
-            {
-              "minimumBuild":6921,
+              "minimumBuild":7047,
               "parameters": [
                 {
                   "type":"jsonvalueref",

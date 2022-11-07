@@ -260,6 +260,38 @@
                 "description": "When processing a [[LGUI2:Trigger|Trigger]], this is the element or other object that owns the trigger"
               }
             ]
+          },
+          "Layers":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "ElementTypes":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "AnimationTypes":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "Skins":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray"
+              }
+            ]
           }
         },
         "methods": {
@@ -2377,6 +2409,63 @@
             ]
           }
         },
+        "staticMembers": {
+          "Get":{
+            "forms": [
+              {
+                  "minimumBuild":7047,
+                  "type":"lgui2layer",
+                  "parameters": [
+                    {
+                      "type":"string",
+                      "name": "name"
+                    }
+                  ]
+              }
+          ]
+          },
+          "List":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray",
+                "parameters": [
+                  {
+                    "optional": true,
+                    "type":"jsonvalueref",
+                    "name": "filterQuery",
+                    "schema":{
+                      "$ref":"#/definitions/select"
+                    }
+                  }
+                ]
+              }
+            ]
+          }  
+        },
+        "staticMethods": {
+          "ForEach":{
+            "forms": [
+                {
+                  "minimumBuild":7047,
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "name":"command"        
+                        },
+                        {
+                            "type":"jsonvalueref",
+                            "name": "filterQuery",
+                            "optional": true,
+                            "schema":{
+                              "$ref":"#/definitions/select"
+                            }
+                        }    
+                    ]
+                }
+            ]
+          }  
+        },
         "asString": {
           "member": "Name"
         }
@@ -2420,8 +2509,64 @@
               }
             ]
           },
-          "Font": {},
-          "Brush": {}
+          "Font": {
+            "forms": [
+              {
+                "type":"lgui2font",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "Brush": {
+            "forms": [
+              {
+                "type":"lgui2brush",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "name"
+                  }
+                ]
+              }
+            ]
+          },
+          "Templates":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "Brushes":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "Fonts":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "AsJSON":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonobject"
+              }
+            ]
+          }
         },
         "methods": {
           "SetTemplate": {
@@ -2459,6 +2604,148 @@
         },
         "methods": {
           "Unregister": {}
+        },
+        "staticMembers": {
+          "Get":{
+            "forms": [
+              {
+                  "minimumBuild":7047,
+                  "type":"lgui2animationtype",
+                  "parameters": [
+                    {
+                      "type":"string",
+                      "name": "name"
+                    }
+                  ]
+              }
+          ]
+          },
+          "List":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray",
+                "parameters": [
+                  {
+                    "optional": true,
+                    "type":"jsonvalueref",
+                    "name": "filterQuery",
+                    "schema":{
+                      "$ref":"#/definitions/select"
+                    }
+                  }
+                ]
+              }
+            ]
+          }  
+        },
+        "staticMethods": {
+          "ForEach":{
+            "forms": [
+                {
+                  "minimumBuild":7047,
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "name":"command"        
+                        },
+                        {
+                            "type":"jsonvalueref",
+                            "name": "filterQuery",
+                            "optional": true,
+                            "schema":{
+                              "$ref":"#/definitions/select"
+                            }
+                        }    
+                    ]
+                }
+            ]
+          }  
+        },
+        "asString": {
+          "member": "Name"
+        }
+      },
+      "lgui2elementtype":{
+        "members": {
+          "Name":{
+            "forms": [
+              {
+                "type":"string"
+              }
+            ]
+          },
+          "IsType":{
+            "forms": [
+              {
+                "type":"bool",
+                "description": "Determines if another LGUI2 element type is, or derives from, this one",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name": "typeName"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "staticMembers": {
+          "Get":{
+            "forms": [
+              {
+                  "minimumBuild":7047,
+                  "type":"lgui2elementtype",
+                  "parameters": [
+                    {
+                      "type":"string",
+                      "name": "name"
+                    }
+                  ]
+              }
+          ]
+          },
+          "List":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"jsonarray",
+                "parameters": [
+                  {
+                    "optional": true,
+                    "type":"jsonvalueref",
+                    "name": "filterQuery",
+                    "schema":{
+                      "$ref":"#/definitions/select"
+                    }
+                  }
+                ]
+              }
+            ]
+          }  
+        },
+        "staticMethods": {
+          "ForEach":{
+            "forms": [
+                {
+                  "minimumBuild":7047,
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "name":"command"        
+                        },
+                        {
+                            "type":"jsonvalueref",
+                            "name": "filterQuery",
+                            "optional": true,
+                            "schema":{
+                              "$ref":"#/definitions/select"
+                            }
+                        }    
+                    ]
+                }
+            ]
+          }  
         },
         "asString": {
           "member": "Name"
@@ -2874,6 +3161,33 @@
           }
         },
         "methods": {
+          "ForEachChild":{
+            "forms": [
+                {
+                  "minimumBuild":7047,
+                    "parameters": [
+                        {
+                          "type":"string",
+                          "optional":true,
+                          "enum":["logical","visual"],
+                          "constant": "true"
+                        },
+                        {
+                            "type":"string",
+                            "name":"command"        
+                        },
+                        {
+                            "type":"jsonvalueref",
+                            "name": "filterQuery",
+                            "optional": true,
+                            "schema":{
+                              "$ref":"#/definitions/select"
+                            }
+                        }    
+                    ]
+                }
+            ]
+          },
           "SetName": {
             "forms": [
               {
@@ -3343,6 +3657,77 @@
             ]
           }
         },
+        "staticMembers": {
+          "Get":{
+            "forms": [
+              {
+                "minimumBuild":7047,
+                "type":"lgui2elementtype",
+                "parameters": [
+                  {
+                    "type":"int64",
+                    "name": "id"
+                  }
+                ]
+            },
+            {
+                  "minimumBuild":7047,
+                  "type":"lgui2elementtype",
+                  "parameters": [
+                    {
+                      "type":"string",
+                      "name": "name"
+                    }
+                  ]
+              }
+          ]
+          }  
+        },
+        "staticMethods": {
+          "ForEach":{
+            "forms": [
+                {
+                  "minimumBuild":7047,
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "name":"command"        
+                        },
+                        {
+                            "type":"jsonvalueref",
+                            "name": "filterQuery",
+                            "optional": true,
+                            "schema":{
+                              "$ref":"#/definitions/select"
+                            }
+                        }    
+                    ]
+                }
+            ]
+          },
+          "ForEachGlobal":{            
+            "forms": [
+                {
+                  "description": "Same as ForEach, but only using elements in the global name table",
+                  "minimumBuild":7047,
+                    "parameters": [
+                        {
+                            "type":"string",
+                            "name":"command"        
+                        },
+                        {
+                            "type":"jsonvalueref",
+                            "name": "filterQuery",
+                            "optional": true,
+                            "schema":{
+                              "$ref":"#/definitions/select"
+                            }
+                        }    
+                    ]
+                }
+            ]
+          }  
+        },        
         "asString": {
           "constant": "lgui2element"
         }
