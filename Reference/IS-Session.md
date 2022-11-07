@@ -307,6 +307,8 @@ none.
 ### Members
 - [int](#type-int) `Inc[` <[int](#type-int) `expression`=1> `]`: Returns this int, plus a given amount
 - [int](#type-int) `Dec[` <[int](#type-int) `expression`=1> `]`: Returns this int, minus a given amount
+- [int](#type-int) `Mul[` [int](#type-int) `expression` `]`: Returns this int, multiplied by a given amount
+- [int](#type-int) `Div[` [int](#type-int) `expression` `]`: Returns this int, multiplied by a given amount
 - [float](#type-float) `Float`: This number, converted to a float
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` [uint](#type-uint) `digits` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
@@ -322,6 +324,8 @@ none.
 - `Inc`: Increments this int by 1
 - `Dec[` <[int](#type-int) `expression`=1> `]`: Decrements this int by a given amount
 - `Dec`: Decrements this int by 1
+- `Mul[` [int](#type-int) `expression` `]`: Multiplies this int by a given amount
+- `Div[` [int](#type-int) `expression` `]`: Divides this int by a given amount
 - `Set[` [int](#type-int) `expression` `]`: Sets this int to a given value
 
 ### Static Members
@@ -340,6 +344,8 @@ none.
 ### Members
 - [uint](#type-uint) `Inc[` <[uint](#type-uint) `expression`=1> `]`: Returns this uint, plus a given amount
 - [uint](#type-uint) `Dec[` <[uint](#type-uint) `expression`=1> `]`: Returns this uint, minus a given amount
+- [uint](#type-uint) `Mul[` [uint](#type-uint) `expression` `]`: Returns this uint, multiplied by a given amount
+- [uint](#type-uint) `Div[` [uint](#type-uint) `expression` `]`: Returns this uint, multiplied by a given amount
 - [float](#type-float) `Float`: This number, converted to a float
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` `#` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
@@ -355,6 +361,8 @@ none.
 - `Inc`: Increments this uint by 1
 - `Dec[` <[uint](#type-uint) `expression`=1> `]`: Decrements this uint by a given amount
 - `Dec`: Decrements this uint by 1
+- `Mul[` [uint](#type-uint) `expression` `]`: Multiplies this uint by a given amount
+- `Div[` [uint](#type-uint) `expression` `]`: Divides this uint by a given amount
 - `Set[` [formula](#type-formula) `]`: Sets this uint to a given value
 
 ### Static Members
@@ -519,6 +527,8 @@ none.
 ### Members
 - [float](#type-float) `Inc[` <[float](#type-float) `expression`=1.0> `]`: Returns this float, plus a given amount
 - [float](#type-float) `Dec[` <[float](#type-float) `expression`=1.0> `]`: Returns this float, minus a given amount
+- [float](#type-float) `Mul[` [float](#type-float) `expression` `]`: Returns this float, multiplied by a given amount
+- [float](#type-float) `Div[` [float](#type-float) `expression` `]`: Returns this float, divided by a given amount
 - [string](#type-string) `Deci`: The value of this float, to the nearest tenth
 - [string](#type-string) `Centi`: The value of this float, to the nearest hundredth
 - [string](#type-string) `Milli`: The value of this float, to the nearest thousandth
@@ -535,6 +545,8 @@ none.
 - `Inc`: Increments this float by 1.0
 - `Dec[` <[float](#type-float) `expression`=1.0> `]`: Decrements this float by a given amount
 - `Dec`: Decrements this float by 1.0
+- `Mul[` [float](#type-float) `expression` `]`: Multiplies this float by a given amount
+- `Div[` [float](#type-float) `expression` `]`: Divides this float by a given amount
 - `Set[` [float](#type-float) `expression` `]`: Sets this float to a given value
 
 ### Static Members
@@ -553,6 +565,8 @@ none.
 ### Members
 - [int64](#type-int64) `Inc[` <[int64](#type-int64) `expression`=1> `]`: Returns this int64, plus a given amount
 - [int64](#type-int64) `Dec[` <[int64](#type-int64) `expression`=1> `]`: Returns this int64, minus a given amount
+- [int64](#type-int64) `Mul[` [int64](#type-int64) `expression` `]`: Returns this int64, multiplied by a given amount
+- [int64](#type-int64) `Div[` [int64](#type-int64) `expression` `]`: Returns this int64, multiplied by a given amount
 - [float](#type-float) `Float`: This number, converted to a float (NOTE: Float is only accurate to 32 bits of precision)
 - [string](#type-string) `Hex`: A hexadecimal string equivalent to this number
 - [string](#type-string) `LeadingZeroes[` `#` `]`: A string representation of this number, with at least this many decimal places.  The number will be lead with zeroes to reach the desired length
@@ -565,6 +579,8 @@ none.
 - `Inc`: Increments this int64 by 1
 - `Dec[` <[int64](#type-int64) `expression`=1> `]`: Decrements this int64 by a given amount
 - `Dec`: Decrements this int64 by 1
+- `Mul[` [int64](#type-int64) `expression` `]`: Multiplies this int64 by a given amount
+- `Div[` [int64](#type-int64) `expression` `]`: Divides this int64 by a given amount
 - `Set[` [int64](#type-int64) `expression` `]`: Sets this int64 to a given value
 
 ### Static Members
@@ -583,6 +599,8 @@ none.
 ### Members
 - [float64](#type-float64) `Inc[` <[float64](#type-float64) `expression`=1> `]`: Returns this float64, plus a given amount
 - [float64](#type-float64) `Dec[` <[float64](#type-float64) `expression`=1> `]`: Returns this float64, minus a given amount
+- [float64](#type-float64) `Mul[` [float64](#type-float64) `expression` `]`: Returns this float64, multiplied by a given amount
+- [float64](#type-float64) `Div[` [float64](#type-float64) `expression` `]`: Returns this float64, divided by a given amount
 - [string](#type-string) `Deci`: The value of this float, to the nearest tenth
 - [string](#type-string) `Centi`: The value of this float, to the nearest hundredth
 - [string](#type-string) `Milli`: The value of this float, to the nearest thousandth
@@ -599,6 +617,8 @@ none.
 - `Inc`: Increments this float64 by 1.0
 - `Dec[` <[float64](#type-float64) `expression`=1> `]`: Decrements this float64 by a given amount
 - `Dec`: Decrements this float64 by 1.0
+- `Mul[` [float64](#type-float64) `expression` `]`: Multiplies this float64 by a given amount
+- `Div[` [float64](#type-float64) `expression` `]`: Divides this float64 by a given amount
 - `Set[` [float64](#type-float64) `expression` `]`: Sets this float64 to a given value
 
 ### Static Members
@@ -1745,7 +1765,6 @@ As Text: JSON representation of the object
 - `EraseByQuery[` [Query](#type-Query) `ID` `]`: Erases items matching the query from the object
 - `WriteFile[` [string](#type-string) `filePath` `,` <"multiline"> `,` <[string](#type-string) `lineSplit`="\\r\\n"> `]`
 - `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each value in the object, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration (filterQuery: see JSON definition [select](#definition-select))
-- `Merge[` [string](#type-string) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 - `Merge[` [jsonvalueref](#type-jsonvalueref) `jsonObject` `,` <[bool](#type-bool) `replace`=true> `]`
 
 ### Static Members
@@ -2152,6 +2171,10 @@ As Text: "LavishGUI 2.0"
 - [jsonvalue](#type-jsonvalue) `TemplateValue[` [string](#type-string) `templateName` `,` [string](#type-string) `valueName` `]`: Retrieves a skinned Template value, applying the current Skin stack
 - [object](#type-object) `DataBindingContext`: When processing a [[LGUI2:Data Binding|Data Binding]], this is the element or other object that owns the binding
 - [object](#type-object) `TriggerContext`: When processing a [[LGUI2:Trigger|Trigger]], this is the element or other object that owns the trigger
+- [jsonarray](#type-jsonarray) `Layers`
+- [jsonarray](#type-jsonarray) `ElementTypes`
+- [jsonarray](#type-jsonarray) `AnimationTypes`
+- [jsonarray](#type-jsonarray) `Skins`
 
 ### Methods
 - `Clear`
@@ -2594,6 +2617,13 @@ As Text: Same as `Name`
 - `UnloadBindingsFile[`???`]`
 - `SetFontScale[` `float` `]`: Sets a new scaling factor to be applied to font sizes for this layer
 
+### Static Members
+- [lgui2layer](#type-lgui2layer) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
 
 
 ## Type: lgui2skin
@@ -2604,8 +2634,12 @@ As Text: Same as `Name`
 - [string](#type-string) `Name`: Name of the layer, such as "base" (the default layer)
 - [jsonvalue](#type-jsonvalue) `Template[` `templateName` `]`: Retrieves a Template from this Skin, by name
 - [jsonvalue](#type-jsonvalue) `TemplateValue[` `templateName` `,` `valueKey` `]`: Retrieves a Templated value from this Skin, given the Template name, and Key to the value
-- ??? `Font[`???`]`
-- ??? `Brush[`???`]`
+- [lgui2font](#type-lgui2font) `Font[` [string](#type-string) `name` `]`
+- [lgui2brush](#type-lgui2brush) `Brush[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `Templates`
+- [jsonarray](#type-jsonarray) `Brushes`
+- [jsonarray](#type-jsonarray) `Fonts`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `SetTemplate[` `name` `,` `json` `]`: Sets a template within the Skin
@@ -2623,6 +2657,32 @@ As Text: Same as `Name`
 
 ### Methods
 - `Unregister[`???`]`
+
+### Static Members
+- [lgui2animationtype](#type-lgui2animationtype) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
+
+
+## Type: lgui2elementtype
+
+As Text: Same as `Name`
+
+### Members
+- [string](#type-string) `Name`
+- [bool](#type-bool) `IsType[` [string](#type-string) `typeName` `]`: Determines if another LGUI2 element type is, or derives from, this one
+
+### Methods
+none.
+### Static Members
+- [lgui2elementtype](#type-lgui2elementtype) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
 
 
 
@@ -2681,6 +2741,7 @@ As Text: "lgui2element"
 - [lgui2databinding](#type-lgui2databinding) `ContextBinding`
 
 ### Methods
+- `ForEachChild[` <"true"> `,` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
 - `SetName[` `value` `]`: Assigns a new value to the Name
 - `SetVisibility[` [elgui2visibility](#type-elgui2visibility) `]`
 - `SetAcceptsKeyboardFocus[` `bool` `]`: Sets whether the element accepts keyboard focus, allowing non-mouse input events to route to this element
@@ -2727,6 +2788,14 @@ As Text: "lgui2element"
 - `UnsetDragDropItem`
 - `SetContext[` [weakref](#type-weakref) `ref` `]`
 - `PullContextBinding`
+
+### Static Members
+- [lgui2elementtype](#type-lgui2elementtype) `Get[` [int64](#type-int64) `id` `]`
+- [lgui2elementtype](#type-lgui2elementtype) `Get[` [string](#type-string) `name` `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: (filterQuery: see JSON definition [select](#definition-select))
+- `ForEachGlobal[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: Same as ForEach, but only using elements in the global name table (filterQuery: see JSON definition [select](#definition-select))
 
 
 
