@@ -327,6 +327,7 @@ none.
 - [int64](#type-int64) `Find[` ... [string](#type-string) `possible_needles` `]`: Returns the 1-based position of the first of several substrings to be found in the original string, or NULL
 - [jsonobject](#type-jsonobject) `FindAnyOf[` ... [string](#type-string) `possible_needles` `]`: Returns the 1-based position, and what was found, of the first of several substrings to be found in the original string, or NULL
 - [jsonobject](#type-jsonobject) `FindAnyOfArray[` [jsonvalueref](#type-jsonvalueref) `arrayOfStrings` `]`: Returns the 1-based position, and what was found, of the first of several substrings to be found in the original string, or NULL
+- [int64](#type-int64) `FindFrom[` [uint](#type-uint) `position` `,` [string](#type-string) `needle` `]`
 - [int64](#type-int64) `Length`: Returns the length of the string
 - [string](#type-string) `Upper`: Returns a string containing the original string in all upper case
 - [string](#type-string) `Lower`: Returns a string containing the original string in all lower case
@@ -882,6 +883,7 @@ As Text: Same as `Time24`
 - [uint](#type-uint) `CreateQuery[` [string](#type-string) `expression` `]`: ([[LavishScript:Object Queries|Object Queries]]) Creates a query with the given expression -- e.g. ${LavishScript.CreateQuery[Name=="Bonkers"]}
 - [string](#type-string) `RetrieveQueryExpression[` [uint](#type-uint) `queryID` `]`: ([[LavishScript:Object Queries|Object Queries]]) Retrieves the query expression for a previously created query, by ID
 - [bool](#type-bool) `QueryEvaluate[` [uint](#type-uint) `queryID` `,` [weakref](#type-weakref) `object` `]`: ([[LavishScript:Object Queries|Object Queries]]) Determines if the given object matches the given query
+- [bool](#type-bool) `SelectEvaluate[` [weakref](#type-weakref) `object` `,` [jsonvalueref](#type-jsonvalueref) `joSelect` `]`: (joSelect: see JSON definition [select](#definition-select))
 - ??? `Is64Bit[`???`]`
 - ??? `MetaScript[`???`]`
 - ??? `MetaScripts[`???`]`
@@ -1018,6 +1020,7 @@ none.
 - Persistent: No ([weakref](#type-weakref) not supported)
 
 ### Members
+- [bool](#type-bool) `IsDirectory[` <[string](#type-string) `appendPath`> `]`: TRUE if that's a folder
 - [bool](#type-bool) `PathExists`: TRUE if the given path exists
 - [bool](#type-bool) `FileExists[` [string](#type-string) `additionalPath` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
 - [unistring](#type-unistring) `Path`: The unistring representation of this path
@@ -1029,6 +1032,9 @@ none.
 
 ### Methods
 none.
+### Static Members
+- [filepath](#type-filepath) `Get[` [string](#type-string) `filePath` `]`
+
 
 
 ## Type: mutablefilepath
@@ -1041,6 +1047,7 @@ none.
 As Text: Same as `Path`
 
 ### Members
+- [bool](#type-bool) `IsDirectory[` <[string](#type-string) `appendPath`> `]`: TRUE if that's a folder
 - [bool](#type-bool) `PathExists`: TRUE if the given path exists
 - [bool](#type-bool) `FileExists[` [string](#type-string) `additionalPath` `]`: TRUE if the given additional path exists.  This can be a directory OR file, and can be an absolute path or a path relative to this filepath
 - [string](#type-string) `Path`: The string representation of this path
@@ -1537,6 +1544,7 @@ As Text: JSON representation of the value
 As Text: JSON representation of the value
 
 ### Members
+- [bool](#type-bool) `Equal[` [jsonvalueref](#type-jsonvalueref) `other` `]`
 - [string](#type-string) `AsString`: The contained value as a string
 - [unistring](#type-unistring) `AsJSON[` <"multiline"> `]`: The contained value as multiline JSON text
 - [string](#type-string) `AsJSON`: The contained value as single-line JSON text
@@ -1576,6 +1584,9 @@ As Text: JSON representation of the referenced value
 As Text: JSON representation of the array
 
 ### Members
+- [bool](#type-bool) `Equal[` [jsonvalueref](#type-jsonvalueref) `jaOther` `]`
+- [int64](#type-int64) `Contains[` [jsonvalue](#type-jsonvalue) `value` `]`: Returns the position of the first item found matching this value
+- [int64](#type-int64) `ContainsReference[` [jsonvalueref](#type-jsonvalueref) `value` `]`: Returns the discovered position, if the jsonarray contains A REFERENCE TO THE SAME JSON VALUE (not just a matching value!)
 - [jsonarray](#type-jsonarray) `Duplicate`: Returns a deep copy (completely new and separate clone) of the array
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this array, by its index (1-based)
 - [object](#type-object) `Get[` `#` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonarrays and/or jsonobjects
@@ -1653,6 +1664,10 @@ As Text: JSON representation of the array
 As Text: JSON representation of the object
 
 ### Members
+- [bool](#type-bool) `Equal[` [jsonvalueref](#type-jsonvalueref) `joOther` `]`
+- [bool](#type-bool) `MatchesSchema[` [jsonvalueref](#type-jsonvalueref) `joSchema` `]`
+- [jsonobject](#type-jsonobject) `GetMatchingSchema[` [jsonvalueref](#type-jsonvalueref) `joSchema` `]`: Retrieves all matching sub-schemas
+- [jsonobject](#type-jsonobject) `Diff[` [jsonvalueref](#type-jsonvalueref) `joNewerObject` `]`: Retrieves an additive changeset between this and a newer version of this object. Additive means items from this object that are not in joNewerObject are ignored. The diff may be merged with the original object to produce a templated joNewerObject.
 - [jsonobject](#type-jsonobject) `Duplicate`: Returns a deep copy (completely new and separate clone) of the object
 - [object](#type-object) `Get[` ... [string](#type-string) `fieldPath` `]`: Gets a value stored within this object, by its name
 - [object](#type-object) `Get[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Gets a stored value multiple levels deep within jsonobjects and/or jsonarrays
@@ -1673,7 +1688,7 @@ As Text: JSON representation of the object
 - [string](#type-string) `AsString`
 - [unistring](#type-unistring) `AsJSON[` <"multiline"> `]`
 - [jsonobject](#type-jsonobject) `Value`
-- [bool](#type-bool) `Has[` ... [string](#type-string) `fieldPath` `]`: Checks whether a value is stored within this object, by its name
+- [bool](#type-bool) `Has[` < ["-notnull"|"-string"|"-array"|"-object"]> `,` ... [string](#type-string) `fieldPath` `]`: Checks whether a value is stored within this object, by its name
 - [bool](#type-bool) `Has[` `valueName` `,` `valueName2` `,` ... [string](#type-string) `]`: Checks whether a value is stored, multiple levels deep within jsonobjects and/or jsonarrays
 - [bool](#type-bool) `Assert[` <"-lazy"> `,` ... [string](#type-string) `fieldPath` `,` [jsonvalue](#type-jsonvalue) `matchValue` `]`
 - [bool](#type-bool) `Assert[` `valueName` `,` `json` `]`: Checks whether a value is stored within this object AND matches the specified JSON value
@@ -1836,6 +1851,7 @@ none.
 - `BeginTasks[` `jsonarray` `]`: Begins every Task in a given JSON array of Task objects
 
 ### Static Members
+- [taskmanager](#type-taskmanager) `Default`: The 'default' provided task manager
 - [taskmanager](#type-taskmanager) `New[` [string](#type-string) `name` `]`
 - [taskmanager](#type-taskmanager) `Get[` [string](#type-string) `name` `]`
 - [jsonarray](#type-jsonarray) `List[` [jsonvalueref](#type-jsonvalueref) `filterQuery` `]`: (filterQuery: see JSON definition [select](#definition-select))
@@ -2068,6 +2084,7 @@ Enumeration values/static members:
 - [int64](#type-int64) `auto` = 1
 - [int64](#type-int64) `always` = 2
 - [int64](#type-int64) `fit` = 3
+- [int64](#type-int64) `fitparent` = 4
 
 ## Type: elgui2verticalalignment
 - Base Type: [enumvaluetype](#type-enumvaluetype)
@@ -2670,6 +2687,10 @@ As Text: "lgui2element"
 - [lgui2element](#type-lgui2element) `LastChild`: The last visual child, if any, of this element
 - [lgui2element](#type-lgui2element) `PreviousSibling`: The previous visual sibling, if any, from this element
 - [lgui2element](#type-lgui2element) `NextSibling`: The next visual sibling, if any, from this element
+- [jsonarray](#type-jsonarray) `Styles`
+- [jsonarray](#type-jsonarray) `Triggers`
+- [jsonarray](#type-jsonarray) `Animations`
+- [jsonarray](#type-jsonarray) `InputHooks`
 - [jsonvalue](#type-jsonvalue) `Style[` `name` `]`: Retrieves a [[LGUI2:Style|Style]] by name
 - [lgui2animation](#type-lgui2animation) `Animation[` `name` `]`: Retrieves a loaded [[LGUI2:Animation|Animation]] by name
 - [lgui2trigger](#type-lgui2trigger) `Trigger[` `name` `]`: Retrieves a [[LGUI2:Trigger|Trigger]] by name
@@ -3809,6 +3830,17 @@ As Text: "lgui2pagecontrol"
 
 
 
+## Type: lgui2dynamic
+- Base Type: [lgui2contentbase](#type-lgui2contentbase)
+
+### Members
+- [lgui2databinding](#type-lgui2databinding) `ContentBinding`
+
+### Methods
+- `PullContentBinding`
+
+
+
 
 Inner Space Kernel API Specification (LavishScript)
 
@@ -4380,6 +4412,11 @@ As Text: "midiindevice"
 - `Close`: Closes the midiindevice, which will then be removed from MIDI.InDevices and must be opened again via MIDI:OpenDeviceIn
 - `SetRetain[`???`]`
 
+### Static Members
+- [jsonarray](#type-jsonarray) `List`
+- [midiindevice](#type-midiindevice) `Get[` [uint](#type-uint) `id` `]`
+- [midiindevice](#type-midiindevice) `Get[` [string](#type-string) `name` `]`
+
 
 
 ## Type: midioutdevice
@@ -4408,6 +4445,11 @@ As Text: "midioutdevice"
 - `SendPolyphonicAftertouchInt[`???`]`
 - `SendChannelAftertouchInt[`???`]`
 - `Close[`???`]`
+
+### Static Members
+- [jsonarray](#type-jsonarray) `List`
+- [midioutdevice](#type-midioutdevice) `Get[` [uint](#type-uint) `id` `]`
+- [midioutdevice](#type-midioutdevice) `Get[` [string](#type-string) `name` `]`
 
 
 
@@ -4487,6 +4529,7 @@ As Text: "agent"
 - `Stop`: Stops the Agent. Event handlers will stop firing
 - `Reload`
 - `Remove`: Stops and Removes the Agent
+- `Uninstall`: Uninstalls the Agent
 - `SetAutoStart[`???`]`
 - `SetEventHandler[` [string](#type-string) `type` `,` [string](#type-string) `json` `]`: Where <tt>type</tt> is one of "global" "platform" or "process", this sets a specified event handler to the given json
 - `FireEvent[` [string](#type-string) `name` `]`: Fires the event by the specified name. Event handlers are processed in the following order: global, platform, process
@@ -4587,6 +4630,13 @@ As Text: "lgui2remotecontrol"
 ### Members
 
 ### Methods
+
+### Static Members
+- [jsonarray](#type-jsonarray) `Senders`
+- [bool](#type-bool) `RemoteControlAllowed`
+
+### Static Methods
+- `SetRemoteControlAllowed[` [bool](#type-bool) `newValue` `]`
 
 
 
@@ -4756,17 +4806,25 @@ As Text: Same as `Text`
 As Text: "agentprovider"
 
 ### Members
-- ??? `ID[`???`]`
-- ??? `Name[`???`]`
-- ??? `URL[`???`]`
-- ??? `Description[`???`]`
-- ??? `Listing[` [string](#type-string) `listingCodeName` `]`
-- ??? `Listings[`???`]`
-- ??? `AsJSON[`???`]`
+- [uint](#type-uint) `ID`
+- [unistring](#type-unistring) `Name`
+- [string](#type-string) `URL`
+- [unistring](#type-unistring) `Description`
+- [agentlisting](#type-agentlisting) `Listing[` [string](#type-string) `listingCodeName` `]`
+- [jsonobject](#type-jsonobject) `Listings`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `BeginRefresh[`???`]`
 - `Remove[`???`]`
+
+### Static Members
+- [agentprovider](#type-agentprovider) `New[` [string](#type-string) `filename` `,` <[jsonvalueref](#type-jsonvalueref) `joProvider`> `]`
+- [agentprovider](#type-agentprovider) `Get[` [string](#type-string) `name` `]`
+- [agentprovider](#type-agentprovider) `Get[` [uint](#type-uint) `id` `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`: For each listing in the provider, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration
 
 
 
@@ -4775,18 +4833,18 @@ As Text: "agentprovider"
 As Text: "agentprovider"
 
 ### Members
-- ??? `CodeName[`???`]`
-- ??? `Name[`???`]`
-- ??? `Version[`???`]`
-- ??? `URL[`???`]`
-- ??? `Description[`???`]`
-- ??? `MinimumBuild[`???`]`
-- ??? `Provider[`???`]`
-- ??? `HasDownload[`???`]`
-- ??? `Collection[`???`]`
-- ??? `DownloadedCollection[`???`]`
-- ??? `Downloaded[`???`]`
-- ??? `Downloading[`???`]`
+- [unistring](#type-unistring) `CodeName`
+- [unistring](#type-unistring) `Name`
+- [unistring](#type-unistring) `Version`
+- [string](#type-string) `URL`
+- [unistring](#type-unistring) `Description`
+- [uint](#type-uint) `MinimumBuild`
+- [agentprovider](#type-agentprovider) `Provider`
+- [bool](#type-bool) `HasDownload`
+- [jsonobject](#type-jsonobject) `Collection`
+- [jsonobject](#type-jsonobject) `DownloadedCollection`
+- [bool](#type-bool) `Downloaded`
+- [bool](#type-bool) `Downloading`
 
 ### Methods
 - `BeginDownload[`???`]`
