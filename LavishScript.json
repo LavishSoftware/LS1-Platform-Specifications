@@ -1142,6 +1142,24 @@
             }
           ]
         },
+        "FindFrom":{
+          "forms": [
+            {
+              "minimumBuild":7069,
+              "type":"int64",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "position"
+                },
+                {
+                  "type":"string",
+                  "name": "needle"
+                }
+              ]
+            }
+          ]
+        },
         "Length": {
           "forms": [
             {
@@ -4167,6 +4185,27 @@
             }
           ]
         },
+        "SelectEvaluate":{
+          "forms": [
+            {
+              "minimumBuild":7062,
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name": "object"
+                },
+                {
+                  "type":"jsonvalueref",
+                  "name":"joSelect",
+                  "schema":{
+                    "$ref":"#/definitions/select"
+                  }
+                }
+              ]
+            }
+          ]
+        },
         "Is64Bit": {},
         "MetaScript": {},
         "MetaScripts": {},
@@ -4840,6 +4879,22 @@
       "variableType": "mutablefilepath",
       "baseType": "unistring",
       "members": {
+        "IsDirectory":{
+          "forms": [
+            {
+              "minimumBuild":7072,
+              "type":"bool",
+              "description": "TRUE if that's a folder",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "name": "appendPath"
+                }
+              ]
+            }
+          ]
+        },
         "PathExists": {
           "forms": [
             {
@@ -4929,11 +4984,43 @@
           ]
         }
       },
+      "staticMembers": {
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7072,
+              "type":"filepath",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "filePath"
+                }
+              ]
+            }
+          ]
+        }
+      },
       "persistent": false
     },
     "mutablefilepath": {
       "baseType": "mutablestring",      
       "members": {
+        "IsDirectory":{
+          "forms": [
+            {
+              "minimumBuild":7072,
+              "type":"bool",
+              "description": "TRUE if that's a folder",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type":"string",
+                  "name": "appendPath"
+                }
+              ]
+            }
+          ]
+        },
         "PathExists": {
           "forms": [
             {
@@ -7632,6 +7719,20 @@
     "jsonvaluecontainer": {
       "baseType": "jsonvalue",
       "members": {
+        "Equal":{
+          "forms": [
+            {
+              "minimumBuild":7069,
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "other"
+                }
+              ]
+            }
+          ]
+        },
         "AsString": {
           "forms": [
             {
@@ -7810,6 +7911,50 @@
     },
     "jsonarray": {
       "members": {
+        "Equal":{
+          "forms": [
+            {
+              "minimumBuild":7069,
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "jaOther"
+                }
+              ]
+            }
+          ]
+        },
+        "Contains":{
+          "forms": [
+            {
+              "minimumBuild":7069,
+              "description": "Returns the position of the first item found matching this value",
+              "parameters": [
+                {
+                  "type":"jsonvalue",
+                  "name":"value"    
+                }
+              ],
+              "type":"int64"
+            }
+          ]
+        },
+        "ContainsReference":{
+          "forms": [
+            {
+              "description": "Returns the discovered position, if the jsonarray contains A REFERENCE TO THE SAME JSON VALUE (not just a matching value!)",
+              "minimumBuild":7069,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name":"value"    
+                }
+              ],
+              "type":"int64"
+            }
+          ]
+        },
         "Duplicate":{
           "forms": [
             {
@@ -8798,6 +8943,64 @@
     },
     "jsonobject": {
       "members": {
+        "Equal":{
+          "forms": [
+            {
+              "minimumBuild":7069,
+              "type":"bool",
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "joOther"
+                }
+              ]
+            }
+          ]
+        },
+        "MatchesSchema":{
+          "forms": [
+            {
+              "type":"bool",
+              "minimumBuild":7069,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name":"joSchema"
+                }
+              ]              
+            }
+          ]
+        },
+        "GetMatchingSchema":{
+          "forms": [
+            {
+              "description": "Retrieves all matching sub-schemas",
+              "type":"jsonobject",
+              "minimumBuild":7069,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "joSchema"
+                }
+              ]
+            }
+          ]
+        },
+        "Diff":{
+          "forms": [
+            {
+              "description": "Retrieves an additive changeset between this and a newer version of this object. Additive means items from this object that are not in joNewerObject are ignored. The diff may be merged with the original object to produce a templated joNewerObject.",
+              "type":"jsonobject",
+              "minimumBuild":7072,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "joNewerObject"
+                }
+              ]
+            }
+          ]
+        },
         "Duplicate":{
           "forms": [
             {
@@ -9138,6 +9341,27 @@
               "type": "bool",
               "description": "Checks whether a value is stored within this object, by its name",
               "parameters": [
+                {
+                  "optional": true,
+                  "parameterGroup": [
+                    {
+                      "type":"string",
+                      "constant": "-notnull"
+                    },
+                    {
+                      "type":"string",
+                      "constant": "-string"
+                    },
+                    {
+                      "type":"string",
+                      "constant": "-array"
+                    },
+                    {
+                      "type":"string",
+                      "constant": "-object"
+                    }
+                  ]
+                },
                 {
                   "name": "fieldPath",
                   "type": "string",
@@ -10282,6 +10506,15 @@
         }
       },
       "staticMembers": {
+        "Default":{
+          "forms": [
+            {
+              "minimumBuild":7051,
+              "type":"taskmanager",
+              "description": "The 'default' provided task manager"
+            }
+          ]
+        },
         "New":{
           "forms": [
             {

@@ -1137,6 +1137,19 @@
           ]
         },
         "FireAgentEvent": {},
+        "LoadAgentProviderPackage":{
+          "forms": [
+            {
+              "minimumBuild":7051,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "joPackage"
+                }
+              ]
+            }
+          ]
+        },
         "AddAgentProvider":{
           "forms": [
             {
@@ -3786,6 +3799,40 @@
         },
         "SetRetain": {}
       },
+      "staticMembers": {
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":7072,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7072,
+              "type":"midiindevice",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7072,
+              "type":"midiindevice",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        }
+      },
       "asString": {
         "constant": "midiindevice"
       }
@@ -3813,6 +3860,40 @@
         "SendPolyphonicAftertouchInt": {},
         "SendChannelAftertouchInt": {},
         "Close": {}
+      },
+      "staticMembers": {
+        "List":{
+          "forms": [
+            {
+              "minimumBuild":7072,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7072,
+              "type":"midioutdevice",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7072,
+              "type":"midioutdevice",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        }
       },
       "asString": {
         "constant": "midioutdevice"
@@ -4166,6 +4247,14 @@
           "forms": [
             {
               "description": "Stops and Removes the Agent"
+            }
+          ]
+        },
+        "Uninstall":{
+          "forms": [
+            {
+              "minimumBuild":7051,
+              "description": "Uninstalls the Agent"
             }
           ]
         },
@@ -4706,6 +4795,39 @@
           ]
         }
       },
+      "staticMembers": {
+        "Senders":{
+          "forms": [
+            {
+              "minimumBuild":7062,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "RemoteControlAllowed":{
+          "forms": [
+            {
+              "minimumBuild":7062,
+              "type":"bool"
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "SetRemoteControlAllowed":{
+          "forms": [
+            {
+              "minimumBuild":7062,
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        }
+      },
       "asString": {
         "constant": "lgui2remotecontrol"
       }
@@ -4905,21 +5027,37 @@
       "minimumBuild":6871,
       "members": {
         "ID":{
-          "type":"uint"
-        },
-        "Name":{
-          "type":"unistring"
-        },
-        "URL":{
-          "type":"string"
-        },
-        "Description":{
-          "type":"unistring"
-        },
-        "Listing":{
-          "type":"agentlisting",
           "forms": [
             {
+          "type":"uint"
+            }
+          ]
+        },
+        "Name":{
+          "forms": [
+            {
+          "type":"unistring"
+            }
+          ]
+        },
+        "URL":{
+          "forms": [
+            {
+            "type":"string"
+            }
+          ]
+        },
+        "Description":{
+          "forms": [
+            {
+            "type":"unistring"
+            }
+          ]
+        },
+        "Listing":{
+          "forms": [
+            {
+              "type":"agentlisting",
               "parameters": [
                 {
                   "type":"string",
@@ -4930,15 +5068,89 @@
           ]
         },
         "Listings":{
-          "type":"jsonobject"
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
         },
         "AsJSON":{
-          "type":"jsonobject"
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
         }
       },
       "methods": {
         "BeginRefresh":{},
         "Remove":{}
+      },
+      "staticMembers": {
+        "New":{
+          "forms": [
+            {
+              "minimumBuild":7051,
+              "type":"agentprovider",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "filename"
+                },
+                {
+                  "type":"jsonvalueref",
+                  "name": "joProvider",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        },
+        "Get":{
+          "forms": [
+            {
+              "minimumBuild":7051,
+              "type":"agentprovider",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7051,
+              "type":"agentprovider",
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name": "id"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach":{
+          "forms": [
+            {
+              "minimumBuild":7051,
+              "description": "For each listing in the provider, performs the specified code. The [[TLO:ForEach|ForEach Top-Level Object]] is used to access the Key or Value for each iteration",
+              "parameters": [
+                {
+                  "name": "command",
+                  "type": "string"
+                },
+                {
+                  "optional": true,
+                  "type":"jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
       },
       "asString": {"constant": "agentprovider"}
     },
@@ -4946,40 +5158,88 @@
       "minimumBuild":6871,
       "members": {
         "CodeName":{
+          "forms": [
+            {
           "type":"unistring"
+            }
+          ]
         },
         "Name":{
+          "forms": [
+            {
           "type":"unistring"
+            }
+          ]
         },
         "Version":{
+          "forms": [
+            {
           "type":"unistring"
+            }
+          ]
         },
         "URL":{
+          "forms": [
+            {
           "type":"string"
+            }
+          ]
         },
         "Description":{
+          "forms": [
+            {
           "type":"unistring"
+            }
+          ]
         },
         "MinimumBuild":{
+          "forms": [
+            {
           "type":"uint"
+            }
+          ]
         },
         "Provider":{
+          "forms": [
+            {
           "type":"agentprovider"
+            }
+          ]
         },
         "HasDownload":{
+          "forms": [
+            {
           "type":"bool"
+            }
+          ]
         },
         "Collection":{
+          "forms": [
+            {
           "type":"jsonobject"
+            }
+          ]
         },
         "DownloadedCollection":{
+          "forms": [
+            {
           "type":"jsonobject"
+            }
+          ]
         },
         "Downloaded":{
+          "forms": [
+            {
           "type":"bool"
+            }
+          ]
         },
         "Downloading":{
+          "forms": [
+            {
           "type":"bool"
+            }
+          ]
         }
       },
       "methods": {

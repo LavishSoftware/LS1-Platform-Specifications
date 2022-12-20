@@ -94,7 +94,8 @@
           "none":0,
           "auto":1,
           "always":2,
-          "fit":3  
+          "fit":3,
+          "fitparent":4  
         }
       },
       "elgui2verticalalignment":{
@@ -3087,6 +3088,34 @@
               {
                 "type": "lgui2element",
                 "description": "The next visual sibling, if any, from this element"
+              }
+            ]
+          },
+          "Styles":{
+            "forms": [
+              {
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "Triggers":{
+            "forms": [
+              {
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "Animations":{
+            "forms": [
+              {
+                "type":"jsonarray"
+              }
+            ]
+          },
+          "InputHooks":{
+            "forms": [
+              {
+                "type":"jsonarray"
               }
             ]
           },
@@ -7761,6 +7790,28 @@
         },
         "asString": {
           "constant": "lgui2pagecontrol"
+        }
+      },
+      "lgui2dynamic":{
+        "minimumBuild":7051,
+        "baseType":"lgui2contentbase",
+        "members": {
+          "ContentBinding":{
+            "forms": [
+              {
+                "type":"lgui2databinding"
+              }
+            ]
+          }
+        },
+        "methods": {
+          "PullContentBinding":{
+            "forms": [
+              {
+
+              }
+            ]
+          }
         }
       }
     },
