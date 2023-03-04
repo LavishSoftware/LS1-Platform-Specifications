@@ -444,6 +444,32 @@
                 "description": "TRUE if the event has been acknowledged as handled."
               }
             ]
+          },
+          "Event":{
+            "forms": [
+              {
+                "type": "jsonobject",
+                "description": "The event being fired.",
+                "minimumBuild":7106
+              }
+            ]
+          },
+          "Element":{
+              "forms": [
+                {
+                  "type": "jsonobject",
+                  "description": "The current element firing the event.",
+                  "minimumBuild":7106
+                }
+              ]
+          },
+          "AsJSON":{
+            "forms": [
+              {
+                "type":"jsonobject",
+                "minimumBuild":7106
+              }
+            ]
           }
         },
         "methods": {
@@ -3630,7 +3656,13 @@
                 "description": "Applies a new [[LGUI2:Animation|Animation]] defined by the provided json",
                 "parameters": [
                   {
+                    "type":"jsonvalueref",
                     "name": "json"
+                  },
+                  {
+                    "type":"bool",
+                    "name":"forceStart",
+                    "default":true                  
                   }
                 ]
               }
@@ -4110,6 +4142,14 @@
                 "minimumBuild":7018
               }
             ]
+          },
+          "ItemsSource":{
+            "forms": [
+              {
+                "type":"jsonarray",
+                "minimumBuild":7106
+              }
+            ]
           }
         },
         "methods": {
@@ -4206,6 +4246,26 @@
                     "type":"bool"
                   }
                 ]
+              }
+            ]
+          },
+          "SetItemsSource":{
+            "forms": [
+              {
+                "minimumBuild":7106,
+                "parameters":[
+                  {
+                    "type":"jsonvalueref",
+                    "name":"jaItemsSource"
+                  }
+                ]
+              }
+            ]
+          },
+          "RefreshItems":{
+            "forms": [
+              {
+                "minimumBuild":7106                
               }
             ]
           }
@@ -5218,7 +5278,13 @@
         "members": {
           "Value": {},
           "ValueBinding": {},
-          "IsMultipleControlMode": {},
+          "IsMultipleControlMode": {
+            "forms": [
+              {
+                "type":"bool"
+              }
+            ]
+          },
           "Summary": {},
           "IsComboMode":{
             "forms": [
@@ -5230,7 +5296,18 @@
           }
         },
         "methods": {
-          "SetMultipleControlMode": {},
+          "SetMultipleControlMode": {
+            "forms": [
+              {
+                "parameters":[
+                  {
+                    "type":"bool",
+                    "name":"newValue"
+                  }
+                ]
+              }
+            ]
+          },
           "SetValue": {},
           "PullValueBinding": {},
           "PushValueBinding": {},
@@ -5254,6 +5331,31 @@
       },
       "lgui2listbox": {
         "baseType": "lgui2itemlist",
+        "members":{
+          "Reorderable":{
+            "forms": [
+              {
+                "type":"bool",
+                "minimumBuild":7106
+              }
+            ]
+          }
+        },
+        "methods":{
+          "SetReorderable":{
+            "forms": [
+              {
+                "minimumBuild":7106,
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"newValue"
+                  }
+                ]
+              }
+            ]
+          }
+        },
         "asString": {
           "constant": "lgui2listbox"
         }
@@ -5766,6 +5868,36 @@
         },
         "asString": {
           "constant": "lgui2itemview"
+        }
+      },
+      "lgui2autocompletebox":{
+        "minimumBuild":7106,
+        "BaseType":"lgui2textbox",
+        "members":{
+          "Dictionary":{
+            "forms": [
+              {
+                "type":"jsonobject"
+              }
+            ]
+          },
+          "Suggestions":{
+            "forms": [
+              {
+                "type":"jsonarray",
+                "parameters": [
+                  {
+                    "type":"string",
+                    "name":"text",
+                    "optional": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "asString": {
+          "constant":"lgui2autocompletebox"
         }
       },
       "lgui2combobox": {

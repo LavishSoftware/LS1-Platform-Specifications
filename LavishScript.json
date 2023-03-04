@@ -3367,7 +3367,8 @@
               "type":"jsonobject"
             }
           ]
-        }
+        },
+        "Create":{}
       },
       "staticMembers": {
         "Get":{
@@ -6013,7 +6014,8 @@
               ]
             }
           ]
-        }
+        },
+        "Create":{}
       },
       "asString": {
         "member": "Name"
@@ -7184,6 +7186,33 @@
               "type":"jsonobject"
             }
           ]          
+        },
+        "Create":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"typeName"
+                },
+                {
+                  "greedy": true,
+                  "type":"array",
+                  "name": "initializerArgs",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        },
+        "Used":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "int64"
+            }
+          ]
         }
       }
     },
@@ -7816,7 +7845,7 @@
             }
           ]
         },
-        "ImportINI":{
+        "ParseINIFile":{
           "forms": [
             {
               "description": "Sets the contained json value to the contents of a specified INI file converted to json",
@@ -10798,6 +10827,107 @@
       },
       "asString": {
         "member": "Text"
+      }
+    },
+    "autocomplete":{
+      "minimumBuild":7106,
+      "members":{
+        "Search":{
+          "forms": [
+            {
+              "type":"jsonobject",
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"text"
+                }
+              ]
+            }
+          ]
+        },
+        "Dictionary":{
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "IsCaseSensitive":{
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
+        },
+        "Has":{
+          "forms": [
+            {
+              "type":"bool",
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"value"
+                }
+              ]
+            }
+          ]
+        },
+        "HasMore":{
+          "forms": [
+            {
+              "type":"bool",
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"value"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "methods":{
+        "SetCaseSensitive":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetDictionary":{
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"jsonvalueref",
+                  "name":"newDictionary"
+                }
+              ]
+            }
+          ]
+        },
+        "Refresh":{
+          "forms": [
+            {
+
+            }
+          ]
+        }
+      },
+      "initializer": {
+        "forms": [
+          {
+            
+          }
+        ]
+      },
+      "asString":{
+        "constant":"autocomplete"
       }
     }
   },

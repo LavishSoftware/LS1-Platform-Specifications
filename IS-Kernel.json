@@ -1826,9 +1826,76 @@
             }
           ]
         },
-        "asJSON": {}
+        "AsJSON": {
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        }
       },
-      "asString": {
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "monitor",
+              "parameters": [
+                {
+                  "type": "uint",
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "type":"monitor",
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+    "asString": {
         "description": "The monitor's 'name' according to Windows"
       }
     },
@@ -2146,6 +2213,14 @@
               "description": "The command executed when this bind is released"
             }
           ]
+        },
+        "AsJSON": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"jsonobject"
+            }
+          ]
         }
       },
       "methods": {
@@ -2203,6 +2278,57 @@
           "forms": [
             {
               "description": "Deletes the bind"
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "bind",
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "name"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
             }
           ]
         }
@@ -2519,6 +2645,14 @@
               "description": "TRUE if this button is pressed"
             }
           ]
+        },
+        "AsJSON": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"jsonobject"
+            }
+          ]
         }
       },
       "methods": {
@@ -2546,6 +2680,74 @@
             }
           ]
         }
+      },
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "button",
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "type":"button",
+              "parameters": [
+                {
+                  "type":"string",
+                  "constant": "-id"
+                },
+                {
+                  "type":"int",
+                  "name":"id"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "member": "Name"
       }
     },
     "axis": {
@@ -2581,6 +2783,14 @@
               "description": "Value between 0 and 1 indicating the axis position.  Generally 0 is to the left or downward, and 1 is to the right or upward.  Some axes are a bit more strange, such as Xbox 360 conroller triggers, where the value is the average position of the two triggers -- 0 is left trigger pulled, 1 is right trigger pulled, and 0.5 indicates both triggers are at rest, or both pulled.  The precision of this position is entirely based on the device and its driver (e.g. the values will not just be 0, 0.5, or 1, there might be thousands of possible values)."
             }
           ]
+        },
+        "AsJSON": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"jsonobject"
+            }
+          ]
         }
       },
       "methods": {
@@ -2592,6 +2802,71 @@
                 {
                   "type":"float",
                   "name":"newValue"    
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "axis",
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "type":"axis",
+              "parameters": [
+                {
+                  "type":"string",
+                  "constant": "-id"
+                },
+                {
+                  "type":"int",
+                  "name":"id"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
                 }
               ]
             }
@@ -2635,6 +2910,14 @@
               "description": "Value between 0.00 and 360.00 clockwise, indicating the position as a direction.  A value of -1 indicates that the d-pad is at rest (in the middle)"
             }
           ]
+        },
+        "AsJSON": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"jsonobject"
+            }
+          ]
         }
       },
       "methods": {
@@ -2652,6 +2935,71 @@
           ]
         }
       },
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "dpad",
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "type":"dpad",
+              "parameters": [
+                {
+                  "type":"string",
+                  "constant": "-id"
+                },
+                {
+                  "type":"int",
+                  "name":"id"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
       "asString": {
         "member": "Name"
       }
@@ -2660,10 +3008,82 @@
       "members": {
         "Name": {},
         "ID": {},
-        "CurrentKeySet": {}
+        "CurrentKeySet": {},
+        "AsJSON":{
+          "forms": [
+            {
+              "type":"jsonobject",
+              "minimumBuild":7106
+            }
+          ]
+        }
       },
       "methods": {
         "SelectKeySet": {}
+      },
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "inputdevice",
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "type":"inputdevice",
+              "parameters": [
+                {
+                  "type":"int",
+                  "name":"id"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "member": "Name"
       }
     },
     "joystick":{
@@ -3645,9 +4065,22 @@
     "midi": {
       "static":true,
       "members": {
-        "NumAttachedInDevices": {},
-        "AttachedInDevice": {},
-        "AttachedInDevices": {},
+        "NumAttachedInDevices": {
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
+        "AttachedInDevice": {
+        },
+        "AttachedInDevices": {
+          "forms": [
+            {
+              "type":"jsonarray"
+            }
+          ]
+        },
         "InDevice": {
           "forms": [
             {
@@ -3661,7 +4094,13 @@
             }
           ]
         },
-        "NumInDevices": {},
+        "NumInDevices": {
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
         "InDevices": {
           "forms": [
             {
@@ -3670,12 +4109,78 @@
             }
           ]
         },
-        "NumAttachedOutDevices": {},
+        "NumAttachedOutDevices": {
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
         "AttachedOutDevice": {},
-        "AttachedOutDevices": {},
-        "OutDevice": {},
-        "NumOutDevices": {},
-        "OutDevices": {}
+        "AttachedOutDevices": {
+          "forms": [
+            {
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "OutDevice": {
+
+        },
+        "NumOutDevices": {
+          "forms": [
+            {
+              "type":"uint"
+            }
+          ]
+        },
+        "OutDevices": {
+          "forms": [
+            {
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "PatchTypes":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Patches":{
+          "forms": [
+          {
+            "minimumBuild":7106,
+            "type":"jsonarray"
+          }
+        ]
+        },
+        "Patch":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"midipatch",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"patchName"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "type":"midipatch",
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name":"patchID"
+                }
+              ]
+            }
+          ]
+        }
       },
       "methods": {
         "OpenAllDevicesIn": {
@@ -3724,9 +4229,73 @@
             }
           ]
         },
-        "OpenAllDevicesOut": {},
-        "CloseAllDevicesOut": {},
-        "OpenDeviceOut": {}
+        "OpenAllDevicesOut": {
+          "forms": [
+            {
+
+            }
+          ]
+        },
+        "CloseAllDevicesOut": {
+          "forms": [
+            {
+
+            }
+          ]
+        },
+        "OpenDeviceOut": {},
+        "LoadPackageFile":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"filepath",
+                  "name":"packageFile"
+                }
+              ]
+            }
+          ]
+        },
+        "UnloadPackageFile":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"filepath",
+                  "name":"packageFile"
+                }
+              ]
+            }
+          ]
+        },
+        "LoadPackage":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"jsonvalueref",
+                  "name":"joPackage"
+                }
+              ]
+            }
+          ]
+        },
+        "UnloadPackage":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"jsonvalueref",
+                  "name":"joPackage"
+                }
+              ]
+            }
+          ]
+        }
       },
       "asString": {
         "constant": "midi"
@@ -3766,7 +4335,21 @@
             }
           ]
         },
-        "Retain": {}
+        "Retain": {
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
+        },
+        "Output":{
+          "forms": [
+            {
+              "type":"midipatch",
+              "minimumBuild":7106
+            }
+          ]
+        }
       },
       "methods": {
         "Start": {
@@ -3797,7 +4380,54 @@
             }
           ]
         },
-        "SetRetain": {}
+        "SetRetain": {
+          "forms": [
+            {
+              "description":"Sets whether to keep the device in the background",
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetOutput":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "description": "Detaches the selected output patch"
+            },
+            {
+             "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name":"midiPatch"
+                }
+              ]
+            }
+          ]
+        }
       },
       "staticMembers": {
         "List":{
@@ -3833,19 +4463,83 @@
           ]
         }
       },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
       "asString": {
         "constant": "midiindevice"
       }
     },
     "midioutdevice": {
       "members": {
-        "AsJSON": {},
-        "Metadata": {},
-        "Name": {},
-        "DeviceName": {}
+        "AsJSON": {
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "Metadata": {
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "Name": {
+          "forms": [
+            {
+              "type":"unistring"
+            }
+          ]
+        },
+        "DeviceName": {
+          "forms": [
+            {
+              "type":"unistring"
+            }
+          ]
+        },
+        "Patch":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"midipatch"
+            }
+          ]
+        }
       },
       "methods": {
         "SendMessage": {},
+        "SendJSON":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type":"jsonvalueref"
+                }
+              ]
+            }
+          ]
+        },
         "SendSysEx": {},
         "SendNoteOn": {},
         "SendNoteOff": {},
@@ -3895,8 +4589,358 @@
           ]
         }
       },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
       "asString": {
         "constant": "midioutdevice"
+      }
+    },
+    "midiscene":{
+      "minimumBuild":7106,
+      "members": {
+        "AsJSON":{
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "Name":{
+          "forms": [
+            {
+              "type":"unistring"
+            }
+          ]
+        },
+        "Active":{
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "Start":{
+          "forms": [
+            {
+
+            }
+          ]
+        },
+        "Stop":{
+          "forms": [{}]
+        },
+        "Destroy":{
+          "forms": [{}]
+        }
+      },
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "type":"midiscene",
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        },
+        "New":{
+          "forms": [
+            {
+              "type":"midiscene",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"sceneName"
+                },
+                {
+                  "type":"jsonvalueref",
+                  "name":"joMidiSceneDefinition"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "constant":"midiscene"
+      }
+    },
+    "midipatch":{
+      "minimumBuild":7106,
+      "members": {
+        "ID":{
+          "forms": [
+            {
+              "type":"int64"
+            }
+          ]
+        },
+        "Name":{
+          "forms": [
+            {
+              "type":"unistring"
+            }
+          ]
+        },
+        "Type":{
+          "forms": [
+            {
+              "type":"unistring"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "type":"jsonobject"
+            }
+          ]
+        },
+        "Output":{
+          "forms": [
+            {
+              "type":"midipatch"
+            }
+          ]
+        },
+        "Active":{
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "SetValue":{
+          "forms": [
+            {
+              "type":"string",
+              "name":"valueName"
+            },
+            {
+              "type":"jsonvalue",
+              "name":"newValue"
+            }
+          ]
+        },
+        "SetOutput":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "description": "Detaches the selected output patch"
+            },
+            {
+             "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7106,
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name":"midiPatch"
+                }
+              ]
+            }
+          ]
+        },
+        "SetActive":{
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "Send":{
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"midiCommandLine"
+                }
+              ]
+            }
+          ]
+        },
+        "SendSysEx": {},
+        "SendNoteOn": {},
+        "SendNoteOff": {},
+        "SendNoteOnInt": {},
+        "SendNoteOffInt": {},
+        "SendProgram": {},
+        "SendControl": {},
+        "SendControlInt": {},
+        "SendPitchWheel": {},
+        "SendPolyphonicAftertouch": {},
+        "SendChannelAftertouch": {},
+        "SendPolyphonicAftertouchInt": {},
+        "SendChannelAftertouchInt": {},
+        "SendJSON":{
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"jsonvalueref"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "type":"midipatch",
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "type":"midipatch",
+              "parameters":[
+                {
+                  "type":"int64",
+                  "name":"patchID"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        },
+        "New":{
+          "forms": [
+            {
+              "type":"midiscene",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"sceneName"
+                },
+                {
+                  "type":"jsonvalueref",
+                  "name":"joMidiSceneDefinition"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString": {
+        "constant":"midipatch"
       }
     },
     "midiinevent": {
@@ -4508,7 +5552,15 @@
             }
           ]
         },
-        "Style": {}
+        "Style": {},
+        "Valid":{
+          "forms":[
+            {
+              "type":"bool",
+              "minimumBuild":7106
+            }
+          ]
+        }
       },
       "methods": {
         "Set": {},
@@ -4714,11 +5766,29 @@
     "lgui2videofeedsource": {
       "baseType": "lgui2element",
       "members": {
-        "FeedName": {},
-        "Feed": {}
+        "FeedName": {
+          "forms": [
+            {
+              "type":"string"
+            }
+          ]
+        },
+        "Feed": {
+          "forms": [
+            {
+              "type":"videofeed"
+            }
+          ]
+        }
       },
       "methods": {
-        "SetFeedName": {}
+        "SetFeedName": {
+          "forms": [
+            {
+              "type":"string"
+            }
+          ]
+        }
       },
       "asString": {
         "constant": "lgui2videofeedsource"
@@ -4728,39 +5798,160 @@
       "baseType": "lgui2element",
       "members": {
         "KeyboardEnabled": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
         },
         "MouseEnabled": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
         },
         "MouseFeedbackEnabled": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
         },
         "UseLocalBindings": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
         },
         "SendForegroundOnly": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "type":"bool"
+            }
+          ]
         },
         "Clones": {
           "restricted": true
+        },
+        "OffsetByChildWindow":{
+          "restricted":true,
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"bool"
+            }
+          ]
+        },
+        "AutoOffsetByChildWindow":{
+          "restricted":true,
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"bool"
+            }
+          ]
         }
       },
       "methods": {
         "SetKeyboardEnabled": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]              
+            }
+          ]
         },
         "SetMouseEnabled": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]              
+            }
+          ]
         },
         "SetMouseFeedbackEnabled": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]              
+            }
+          ]
         },
         "SetUseLocalBindings": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]              
+            }
+          ]
         },
         "SetSendForegroundOnly": {
-          "restricted": true
+          "restricted": true,
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]              
+            }
+          ]
+        },
+        "SetOffsetByChildWindow":{
+          "restricted":true,
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]              
+            }
+          ]
+        },
+        "SetAutoOffsetByChildWindow":{
+          "restricted":true,
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]              
+            }
+          ]
         },
         "AddClone": {
           "restricted": true,
@@ -5054,6 +6245,14 @@
             }
           ]
         },
+        "NewestListing":{
+          "forms": [
+            {
+              "minimumBuild":7106,
+              "type":"agentlisting"
+            }
+          ]
+        },
         "Listing":{
           "forms": [
             {
@@ -5238,6 +6437,13 @@
           "forms": [
             {
           "type":"bool"
+            }
+          ]
+        },
+        "AsJSON":{
+          "forms": [
+            {
+              "type":"jsonobject"
             }
           ]
         }

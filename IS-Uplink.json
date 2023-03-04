@@ -1615,6 +1615,7 @@
             "static":true,
             "methods": {
                 "RegisterSource": {},
+                "RegisterOtherWindowSource":{},
                 "RegisterOutput": {},
                 "UnregisterSource": {},
                 "UnregisterOutput": {},
