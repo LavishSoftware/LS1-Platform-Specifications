@@ -799,6 +799,7 @@ As Text: Same as `Name`
 - [string](#type-string) `PersistentClass`
 - [jsonobject](#type-jsonobject) `Metadata`
 - [jsonobject](#type-jsonobject) `AsJSON`
+- ??? `Create[`???`]`
 
 ### Methods
 none.
@@ -1303,6 +1304,7 @@ As Text: Same as `Name`
 - [jsonarray](#type-jsonarray) `Functions[` <[bool](#type-bool) `followIncludes`=true> `]`
 - [jsonobject](#type-jsonobject) `Metadata`
 - [jsonobject](#type-jsonobject) `AsJSON[` <[bool](#type-bool) `followIncludes`=true> `]`
+- ??? `Create[`???`]`
 
 ### Methods
 none.
@@ -1488,6 +1490,8 @@ none.
 - [jsonarray](#type-jsonarray) `SelectKeys[` [jsonvalueref](#type-jsonvalueref) `query` `]`: (query: see JSON definition [select](#definition-select))
 - [object](#type-object) `SelectValue[` [object](#type-object) `query` `]`: (query: see JSON definition [select](#definition-select))
 - [jsonobject](#type-jsonobject) `AsJSON`
+- ??? `Create[` [string](#type-string) `typeName` `,` <... [array](#type-array) `initializerArgs`> `]`
+- [int64](#type-int64) `Used`
 
 ### Methods
 - `CreateVariable[` [object](#type-object) `type` `,` [string](#type-string) `name` `,` ... [string](#type-string) `]`: Creates a new variable in this scope of the given object type and name.  Any extra parameters are passed to object initialization
@@ -1617,7 +1621,7 @@ As Text: JSON representation of the value
 - `SetValue[` <"-lazy"> `,` [jsonvalue](#type-jsonvalue) `newValue` `]`
 - `SetValue[` `json` `]`: Sets the contained json value, e.g. myJsonValueContainer:SetValue["{\"someValue\":17}"] will set myJsonValueContainers value to a jsonobject that in turn contains one value
 - `ParseFile[` [string](#type-string) `filename` `]`: Sets the contained json value to the contents of a specified json file
-- `ImportINI[` [string](#type-string) `filename` `]`: Sets the contained json value to the contents of a specified INI file converted to json
+- `ParseINIFile[` [string](#type-string) `filename` `]`: Sets the contained json value to the contents of a specified INI file converted to json
 
 
 
@@ -1963,6 +1967,27 @@ As Text: Same as `Text`
 
 
 
+## Type: autocomplete
+
+### Initializers
+`autocomplete`
+
+As Text: "autocomplete"
+
+### Members
+- [jsonobject](#type-jsonobject) `Search[` [string](#type-string) `text` `]`
+- [jsonobject](#type-jsonobject) `Dictionary`
+- [bool](#type-bool) `IsCaseSensitive`
+- [bool](#type-bool) `Has[` [string](#type-string) `value` `]`
+- [bool](#type-bool) `HasMore[` [string](#type-string) `value` `]`
+
+### Methods
+- `SetCaseSensitive[` [bool](#type-bool) `newValue` `]`
+- `SetDictionary[` [jsonvalueref](#type-jsonvalueref) `newDictionary` `]`
+- `Refresh`
+
+
+
 
 ---
 # JSON Definitions
@@ -2216,6 +2241,9 @@ As Text: "lgui2eventargs"
 - [jsonobject](#type-jsonobject) `Args`: Any properties passed with the event
 - [jsonvalue](#type-jsonvalue) `Args[` [string](#type-string) `key` `]`: A value from the Args object, by its key
 - [bool](#type-bool) `Handled`: TRUE if the event has been acknowledged as handled.
+- [jsonobject](#type-jsonobject) `Event`: The event being fired.
+- [jsonobject](#type-jsonobject) `Element`: The current element firing the event.
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `SetHandled`: Sets the event "Handled" state to TRUE. This is generally recommended within event handlers. Hooks in particular will ignore the Handled state.
@@ -2312,6 +2340,7 @@ As Text: "lgui2brush"
 - `SetImageOrientation[` [elgui2imageorientation](#type-elgui2imageorientation) `]`
 - `SetImage[` `filename` `]`
 - `SetImage[` `filename` `,` `colorKey` `]`
+- `SetImage[` [weakref](#type-weakref) `binary` `,` [uint](#type-uint) `transparencyColor`=0 `]`
 - `SetImageBrushName[`???`]`
 - `SetPixelShader[` `json` `]`
 - `SetVertexShader[`???`]`
@@ -2417,6 +2446,7 @@ As Text: "lgui2databinding"
 - ??? `PushFormat[`???`]`
 - ??? `PushNULLFormat[`???`]`
 - ??? `PullValue[`???`]`
+- [jsonobject](#type-jsonobject) `PullRequest`
 - ??? `AsJSON[`???`]`
 
 ### Methods
@@ -2429,6 +2459,7 @@ As Text: "lgui2databinding"
 - `SetPushFormat[`???`]`
 - `SetPushNumeric[` [bool](#type-bool) `]`
 - `SetPushNULLFormat[`???`]`
+- `SetPullRequest[` [jsonvalueref](#type-jsonvalueref) `joRequest` `]`
 - `PushValue[`???`]`
 - `PullValue[`???`]`
 - `ApplyStyleJSON[`???`]`
@@ -2800,7 +2831,7 @@ As Text: "lgui2element"
 - `ApplyStyleJSON[`???`]`
 - `SetStyle[` `name` `,` `json` `]`: Adds a [[LGUI2:Style|Style]] with the provided name to the element
 - `RemoveStyle[` `name` `]`: Removes a [[LGUI2:Style|Style]] by name
-- `Animate[` `json` `]`: Applies a new [[LGUI2:Animation|Animation]] defined by the provided json
+- `Animate[` [jsonvalueref](#type-jsonvalueref) `json` `,` [bool](#type-bool) `forceStart`=true `]`: Applies a new [[LGUI2:Animation|Animation]] defined by the provided json
 - `SetColor[`???`]`
 - `SetFont[`???`]`
 - `BubbleToTop`: Bubbles the element to the top of Z-order. This element will be moved over the top of other elements where Strata is less than or equal to its own, and the process will repeat with the elements visual ancestors
@@ -2932,6 +2963,7 @@ As Text: "lgui2itemlist"
 - ??? `ItemByProperty[`???`]`
 - ??? `ItemByValue[`???`]`
 - [bool](#type-bool) `IsMultiselect`
+- [jsonarray](#type-jsonarray) `ItemsSource`
 
 ### Methods
 - `ClearItems`: Clears all Items from the Item List
@@ -2947,6 +2979,8 @@ As Text: "lgui2itemlist"
 - `PullSelectedItemBinding[`???`]`
 - `Sort[`???`]`
 - `SetMultiselect[` [bool](#type-bool) `]`
+- `SetItemsSource[` [jsonvalueref](#type-jsonvalueref) `jaItemsSource` `]`
+- `RefreshItems`
 
 
 
@@ -3186,10 +3220,12 @@ As Text: "lgui2imagebox"
 ### Members
 - [lgui2brush](#type-lgui2brush) `ImageBrush`: The [[LGUI2:Brush|Brush]] used for the subject of the imagebox
 - [bool](#type-bool) `ScaleToFit`: TRUE if the image should be scaled to fit
+- [lgui2databinding](#type-lgui2databinding) `ImageBinding`
 
 ### Methods
 - `SetImageBrush[` `json` `]`: Sets a new [[LGUI2:Brush|Brush]] for the imagebox
 - `SetScaleToFit[` `TRUE/FALSE` `]`: Sets a new ScaleToFit value
+- `PullImageBinding`
 
 
 
@@ -3201,16 +3237,37 @@ As Text: "lgui2inputpicker"
 ### Members
 - ??? `Value[`???`]`
 - ??? `ValueBinding[`???`]`
-- ??? `IsMultipleControlMode[`???`]`
+- [bool](#type-bool) `IsMultipleControlMode`
 - ??? `Summary[`???`]`
 - [bool](#type-bool) `IsComboMode`
 
 ### Methods
-- `SetMultipleControlMode[`???`]`
+- `SetMultipleControlMode[` [bool](#type-bool) `newValue` `]`
 - `SetValue[`???`]`
 - `PullValueBinding[`???`]`
 - `PushValueBinding[`???`]`
 - `SetComboMode[` [bool](#type-bool) `value` `]`
+
+
+
+## Type: lgui2ldiopatch
+- Base Type: [lgui2contentbase](#type-lgui2contentbase)
+
+As Text: "lgui2ldiopatch"
+
+### Members
+- [bool](#type-bool) `BlockLocal`
+- [bool](#type-bool) `UseLocalBindings`
+- [bool](#type-bool) `UseKeyboard`
+- [bool](#type-bool) `UseMouse`
+- [bool](#type-bool) `UseOther`
+
+### Methods
+- `SetBlockLocal[` [bool](#type-bool) `newValue` `]`
+- `SetUseLocalBindings[` [bool](#type-bool) `newValue` `]`
+- `SetUseKeyboard[` [bool](#type-bool) `newValue` `]`
+- `SetUseMouse[` [bool](#type-bool) `newValue` `]`
+- `SetUseOther[` [bool](#type-bool) `newValue` `]`
 
 
 
@@ -3220,9 +3277,11 @@ As Text: "lgui2inputpicker"
 As Text: "lgui2listbox"
 
 ### Members
-none.
+- [bool](#type-bool) `Reorderable`
+
 ### Methods
-none.
+- `SetReorderable[` [bool](#type-bool) `newValue` `]`
+
 
 
 ## Type: lgui2map
@@ -3345,6 +3404,19 @@ As Text: "lgui2itemview"
 ### Members
 - [lgui2itemlist](#type-lgui2itemlist) `ItemList`: The lgui2itemlist containing the Item
 - [lgui2item](#type-lgui2item) `Item`: The lgui2item responsible for this view
+
+### Methods
+none.
+
+
+## Type: lgui2autocompletebox
+- Base Type: [lgui2textbox](#type-lgui2textbox)
+
+As Text: "lgui2autocompletebox"
+
+### Members
+- [jsonobject](#type-jsonobject) `Dictionary`
+- [jsonarray](#type-jsonarray) `Suggestions[` <[string](#type-string) `text`> `]`
 
 ### Methods
 none.
@@ -4123,7 +4195,7 @@ Inner Space Kernel API Specification (LavishScript)
 ### Syntax
 * `Relay` <[string](#type-string) `target`> "-echo" <... [string](#type-string) `message`>
 * `Relay` <[string](#type-string) `target`> "-event" <[string](#type-string) `eventName`> [... [string](#type-string) `eventParam`]
-* `Relay` <[string](#type-string) `target`> ["-noredirect"] <... [string](#type-string) `command`>
+* `Relay` <[string](#type-string) `target`> ["-host"] ["-noredirect"] <... [string](#type-string) `command`>
 
 ## Command: DotNet
 - Restricted: Yes
@@ -4239,12 +4311,17 @@ none.
 - `Relay[` [string](#type-string) `target` `,` [string](#type-string) `command` `]`
 - `Relay[` [string](#type-string) `target` `,` [string](#type-string) `object` `,` [string](#type-string) `method` `,` ... [string](#type-string) `args` `]`
 - `RelayByRef[` [jsonvalueref](#type-jsonvalueref) `ref` `]`
+- `HostRelay[` [string](#type-string) `json` `]`
+- `HostRelay[` [string](#type-string) `target` `,` [string](#type-string) `command` `]`
+- `HostRelay[` [string](#type-string) `target` `,` [string](#type-string) `object` `,` [string](#type-string) `method` `,` ... [string](#type-string) `args` `]`
+- `HostRelayByRef[` [jsonvalueref](#type-jsonvalueref) `ref` `]`
 - `LocalExec[` [string](#type-string) `json` `]`
 - `LocalExec[` [string](#type-string) `command` `]`
 - `LocalExec[` [string](#type-string) `object` `,` [string](#type-string) `method` `,` ... [string](#type-string) `args` `]`
 - `LocalExecByRef[` [jsonvalueref](#type-jsonvalueref) `ref` `]`
 - `SetAutoDebug[` [bool](#type-bool) `newValue` `,` <[string](#type-string) `logFilename`> `]`
 - `Minidump[` [uint](#type-uint) `processID` `,` <[string](#type-string) `outputFilename`="auto.dmp"> `]`
+- `ConnectHost`
 
 
 
@@ -4351,10 +4428,18 @@ As Text: The monitor's 'name' according to Windows
 - [bool](#type-bool) `IsPrimary`: TRUE if the monitor is the Primary monitor
 - ??? `ID[`???`]`
 - [string](#type-string) `Name`: Name of the monitor (e.g. \\.\DISPLAY1 -- you will need to use string.Escape to see the entire thing, or use string.Right[1] to get the monitor number for example)
-- ??? `asJSON[`???`]`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 none.
+### Static Members
+- [monitor](#type-monitor) `Get[` [uint](#type-uint) `id` `]`
+- [monitor](#type-monitor) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
 
 
 ## Type: audio
@@ -4442,6 +4527,7 @@ As Text: "TRUE"
 - [string](#type-string) `Combo`: The key combination used for the bind
 - [string](#type-string) `PressCommand`: The command executed when this bind is pressed
 - [string](#type-string) `ReleaseCommand`: The command executed when this bind is released
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `SetName[` `name` `]`: Renames the bind
@@ -4452,6 +4538,13 @@ As Text: "TRUE"
 - `Release[`???`]`
 - `Delete`: Deletes the bind
 
+### Static Members
+- [bind](#type-bind) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
 
 
 ## Type: keyboard
@@ -4459,6 +4552,11 @@ As Text: "TRUE"
 
 ### Members
 - [string](#type-string) `System`: Name of the currently active system for keyboard input (DirectInput, Win32I)
+- [ldiopatch](#type-ldiopatch) `InPatch`
+- [ldiopatch](#type-ldiopatch) `Listener`
+- [ldiopatch](#type-ldiopatch) `BackgroundListener`
+- [ldiopatch](#type-ldiopatch) `OutPatch`
+  - Restricted: Yes
 
 ### Methods
 - `Bind[` `name` `,` [key](#type-key) `combination` `,` `command` `]`: Binds a command to a key combination, with a given name (see [[ISSession:Bind (Command)|Bind command]])
@@ -4470,6 +4568,10 @@ As Text: "TRUE"
 - `GetBindIterator[`???`]`
 - `DisableBinds[`???`]`
 - `EnableBinds[`???`]`
+- `SetListener[` [string](#type-string) `ldioPatchName` `]`
+- `SetBackgroundListener[` [string](#type-string) `ldioPatchName` `]`
+- `SetInPatch[` [string](#type-string) `ldioPatchName` `]`
+  - Restricted: Yes
 
 
 
@@ -4516,11 +4618,14 @@ As Text: "TRUE"
 
 ## Type: button
 
+As Text: Same as `Name`
+
 ### Members
 - [string](#type-string) `Name`: Name of the button
 - [string](#type-string) `Device`: Name of the input device hosting this button
 - [uint](#type-uint) `ID`: ID number of the button -- 255 and under are assigned by Windows, 256 and above are generated by Inner Space for non-keyboard buttons
 - [bool](#type-bool) `Pressed`: TRUE if this button is pressed
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `Press`: Presses and releases the button
@@ -4529,6 +4634,14 @@ As Text: "TRUE"
   - Restricted: Yes
 - `Release`: Releases the (pressed) button
   - Restricted: Yes
+
+### Static Members
+- [button](#type-button) `Get[` [string](#type-string) `name` `]`
+- [button](#type-button) `Get[` "-id" `,` [int](#type-int) `id` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
@@ -4541,9 +4654,18 @@ As Text: Same as `Name`
 - [string](#type-string) `Device`: Name of the input device hosting this axis
 - [uint](#type-uint) `ID`: ID number of the axis (independent of buttons or d-pads)
 - [float](#type-float) `Position`: Value between 0 and 1 indicating the axis position.  Generally 0 is to the left or downward, and 1 is to the right or upward.  Some axes are a bit more strange, such as Xbox 360 conroller triggers, where the value is the average position of the two triggers -- 0 is left trigger pulled, 1 is right trigger pulled, and 0.5 indicates both triggers are at rest, or both pulled.  The precision of this position is entirely based on the device and its driver (e.g. the values will not just be 0, 0.5, or 1, there might be thousands of possible values).
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `SetPosition[` [float](#type-float) `newValue` `]`
+
+### Static Members
+- [axis](#type-axis) `Get[` [string](#type-string) `name` `]`
+- [axis](#type-axis) `Get[` "-id" `,` [int](#type-int) `id` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
@@ -4556,21 +4678,46 @@ As Text: Same as `Name`
 - [string](#type-string) `Device`: Name of the input device hosting this d-pad
 - [uint](#type-uint) `ID`: ID number of the d-pad (independent of axes or buttons)
 - [float](#type-float) `Position`: Value between 0.00 and 360.00 clockwise, indicating the position as a direction.  A value of -1 indicates that the d-pad is at rest (in the middle)
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `SetPosition[` [float](#type-float) `newValue` `]`
+
+### Static Members
+- [dpad](#type-dpad) `Get[` [string](#type-string) `name` `]`
+- [dpad](#type-dpad) `Get[` "-id" `,` [int](#type-int) `id` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
 ## Type: inputdevice
 
+As Text: Same as `Name`
+
 ### Members
-- ??? `Name[`???`]`
+- [string](#type-string) `Name`
 - ??? `ID[`???`]`
-- ??? `CurrentKeySet[`???`]`
+- [string](#type-string) `CurrentKeySet`
+- [ldiopatch](#type-ldiopatch) `InPatch`
+- [ldiopatch](#type-ldiopatch) `Listener`
+- [ldiopatch](#type-ldiopatch) `BackgroundListener`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `SelectKeySet[`???`]`
+- `SetListener[` [string](#type-string) `ldioPatchName` `]`
+- `SetBackgroundListener[` [string](#type-string) `ldioPatchName` `]`
+
+### Static Members
+- [inputdevice](#type-inputdevice) `Get[` [string](#type-string) `name` `]`
+- [inputdevice](#type-inputdevice) `Get[` [int](#type-int) `id` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
@@ -4623,6 +4770,11 @@ As Text: Same as `Position`
 - [bool](#type-bool) `Cursor`: TRUE if system cursor is visible
 - [bool](#type-bool) `BackgroundCursor`: TRUE if Inner Space is rendering the cursor (while the game is inactive)
   - Restricted: Yes
+- [ldiopatch](#type-ldiopatch) `InPatch`
+- [ldiopatch](#type-ldiopatch) `Listener`
+- [ldiopatch](#type-ldiopatch) `BackgroundListener`
+- [ldiopatch](#type-ldiopatch) `OutPatch`
+  - Restricted: Yes
 
 ### Methods
 - `LeftClick`: Presses and immediately releases the left mouse button
@@ -4647,6 +4799,10 @@ As Text: Same as `Position`
 - `DisableAcceleration`: Disables system mouse acceleration -- this will cause system lag when applied
 - `ShowCursor`
 - `HideCursor`
+- `SetListener[` [string](#type-string) `ldioPatchName` `]`
+- `SetBackgroundListener[` [string](#type-string) `ldioPatchName` `]`
+- `SetInPatch[` [string](#type-string) `ldioPatchName` `]`
+  - Restricted: Yes
 
 
 
@@ -4765,33 +4921,52 @@ As Text: Same as `Name`
 
 
 
+## Type: ldio
+- Static: Yes (All Members/Methods also work as Static Members/Methods)
+
+As Text: "ldio"
+
+### Members
+- [jsonarray](#type-jsonarray) `PatchTypes`
+- [jsonarray](#type-jsonarray) `Patches`
+- [ldiopatch](#type-ldiopatch) `Patch[` [string](#type-string) `patchName` `]`
+- [ldiopatch](#type-ldiopatch) `Patch[` [int64](#type-int64) `patchID` `]`
+
+### Methods
+- `UnloadPackageFile[` [filepath](#type-filepath) `packageFile` `]`
+- `LoadPackage[` [jsonvalueref](#type-jsonvalueref) `joPackage` `]`
+- `UnloadPackage[` [jsonvalueref](#type-jsonvalueref) `joPackage` `]`
+
+
+
 ## Type: midi
 - Static: Yes (All Members/Methods also work as Static Members/Methods)
 
 As Text: "midi"
 
 ### Members
-- ??? `NumAttachedInDevices[`???`]`
+- [uint](#type-uint) `NumAttachedInDevices`
 - ??? `AttachedInDevice[`???`]`
-- ??? `AttachedInDevices[`???`]`
+- [jsonarray](#type-jsonarray) `AttachedInDevices`
 - [midiindevice](#type-midiindevice) `InDevice[` `#` `]`: A MIDI In Device by its ID number (NOT the same number as Attached devices)
-- ??? `NumInDevices[`???`]`
+- [uint](#type-uint) `NumInDevices`
 - [jsonarray](#type-jsonarray) `InDevices`: A JSON array describing all open MIDI In devices
-- ??? `NumAttachedOutDevices[`???`]`
+- [uint](#type-uint) `NumAttachedOutDevices`
 - ??? `AttachedOutDevice[`???`]`
-- ??? `AttachedOutDevices[`???`]`
+- [jsonarray](#type-jsonarray) `AttachedOutDevices`
 - ??? `OutDevice[`???`]`
-- ??? `NumOutDevices[`???`]`
-- ??? `OutDevices[`???`]`
+- [uint](#type-uint) `NumOutDevices`
+- [jsonarray](#type-jsonarray) `OutDevices`
 
 ### Methods
 - `OpenAllDevicesIn`: Opens all MIDI In devices, with controls mapped through [[LavishGUI 2]]. The port names will be generated as MIDI 1, MIDI 2, etc
 - `CloseAllDevicesIn`: Closes all open MIDI In devices
 - `OpenDeviceIn[` `#` `,` `portName` `]`: Opens the #th attached MIDI device (1-based), with controls mapped through [[LavishGUI 2]]. The specified portName is assigned to the device and can be used with the InDevice member
 - `OpenDeviceIn[` `#` `,` `portName` `,` `object` `,` `method` `]`: Opens the #th attached MIDI device (1-based), with controls mapped through a [[LavishScript]] object method. The specified portName is assigned to the device and can be used with the InDevice member
-- `OpenAllDevicesOut[`???`]`
-- `CloseAllDevicesOut[`???`]`
+- `OpenAllDevicesOut`
+- `CloseAllDevicesOut`
 - `OpenDeviceOut[`???`]`
+- `LoadPackageFile[` [filepath](#type-filepath) `packageFile` `]`
 
 
 
@@ -4804,19 +4979,39 @@ As Text: "midiindevice"
 - [jsonobject](#type-jsonobject) `Metadata`: Metadata associated with this device
 - [unistring](#type-unistring) `Name`: The Port Name from this device, as passed to MIDI:OpenDeviceIn
 - [unistring](#type-unistring) `DeviceName`: The Name of the device itself, as specified by the device
-- ??? `Retain[`???`]`
+- [bool](#type-bool) `Retain`
+- [bool](#type-bool) `Muted`
+- [ldiopatch](#type-ldiopatch) `Output`
+- [ldiopatch](#type-ldiopatch) `Feedback`
 
 ### Methods
 - `Start`: Starts receiving MIDI input, to the receiver specified to MIDI:OpenDeviceIn (either [[LavishGUI 2]] or a LavishScript object method)
 - `Stop`: Stops receiving MIDI input
 - `Reset`: Resets MIDI input
 - `Close`: Closes the midiindevice, which will then be removed from MIDI.InDevices and must be opened again via MIDI:OpenDeviceIn
-- `SetRetain[`???`]`
+- `SetRetain[` [bool](#type-bool) `newValue` `]`: Sets whether to keep the device in the background
+- `SetMute[` [bool](#type-bool) `newValue` `]`
+- `InsertOutput`: Detaches the selected output patch
+- `InsertOutput[` [string](#type-string) `name` `]`
+- `InsertOutput[` [uint](#type-uint) `id` `]`
+- `InsertOutput[` [weakref](#type-weakref) `ldiopatch` `]`
+- `SetOutput`: Detaches the selected output patch
+- `SetOutput[` [string](#type-string) `name` `]`
+- `SetOutput[` [uint](#type-uint) `id` `]`
+- `SetOutput[` [weakref](#type-weakref) `ldiopatch` `]`
+- `SetFeedback`: Detaches the selected feedback patch
+- `SetFeedback[` [string](#type-string) `name` `]`
+- `SetFeedback[` [uint](#type-uint) `id` `]`
+- `SetFeedback[` [weakref](#type-weakref) `ldiopatch` `]`
+- `Simulate[` [string](#type-string) `command` `]`
 
 ### Static Members
 - [jsonarray](#type-jsonarray) `List`
 - [midiindevice](#type-midiindevice) `Get[` [uint](#type-uint) `id` `]`
 - [midiindevice](#type-midiindevice) `Get[` [string](#type-string) `name` `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
@@ -4825,13 +5020,15 @@ As Text: "midiindevice"
 As Text: "midioutdevice"
 
 ### Members
-- ??? `AsJSON[`???`]`
-- ??? `Metadata[`???`]`
-- ??? `Name[`???`]`
-- ??? `DeviceName[`???`]`
+- [jsonobject](#type-jsonobject) `AsJSON`
+- [jsonobject](#type-jsonobject) `Metadata`
+- [unistring](#type-unistring) `Name`
+- [unistring](#type-unistring) `DeviceName`
+- [ldiopatch](#type-ldiopatch) `Patch`
 
 ### Methods
 - `SendMessage[`???`]`
+- `SendJSON[` [jsonvalueref](#type-jsonvalueref) `]`
 - `SendSysEx[`???`]`
 - `SendNoteOn[`???`]`
 - `SendNoteOff[`???`]`
@@ -4851,6 +5048,90 @@ As Text: "midioutdevice"
 - [jsonarray](#type-jsonarray) `List`
 - [midioutdevice](#type-midioutdevice) `Get[` [uint](#type-uint) `id` `]`
 - [midioutdevice](#type-midioutdevice) `Get[` [string](#type-string) `name` `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+
+
+## Type: ldioscene
+
+As Text: "ldioscene"
+
+### Members
+- [jsonobject](#type-jsonobject) `AsJSON`
+- [unistring](#type-unistring) `Name`
+- [bool](#type-bool) `Active`
+
+### Methods
+- `Start`
+- `Stop`
+- `Destroy`
+
+### Static Members
+- [ldioscene](#type-ldioscene) `Get[` [string](#type-string) `name` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+- [ldioscene](#type-ldioscene) `New[` [string](#type-string) `sceneName` `,` [jsonvalueref](#type-jsonvalueref) `joldiosceneDefinition` `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+
+
+
+## Type: ldiopatch
+
+As Text: "ldiopatch"
+
+### Members
+- [int64](#type-int64) `ID`
+- [unistring](#type-unistring) `Name`
+- [unistring](#type-unistring) `Type`
+- [jsonobject](#type-jsonobject) `AsJSON`
+- [ldiopatch](#type-ldiopatch) `Output`
+- [ldiopatch](#type-ldiopatch) `Listener`
+- [bool](#type-bool) `Active`
+
+### Methods
+- `ApplyJSON[` [jsonvalueref](#type-jsonvalueref) `joSettings` `]`
+- `SetValue`
+- `SetValue`
+- `SetListener`: Detaches the selected listener patch
+- `SetListener[` [string](#type-string) `name` `]`
+- `SetListener[` [uint](#type-uint) `id` `]`
+- `SetListener[` [weakref](#type-weakref) `ldiopatch` `]`
+- `SetOutput`: Detaches the selected output patch
+- `SetOutput[` [string](#type-string) `name` `]`
+- `SetOutput[` [uint](#type-uint) `id` `]`
+- `SetOutput[` [weakref](#type-weakref) `ldiopatch` `]`
+- `InsertOutput`: Detaches the selected output patch
+- `InsertOutput[` [string](#type-string) `name` `]`
+- `InsertOutput[` [uint](#type-uint) `id` `]`
+- `InsertOutput[` [weakref](#type-weakref) `ldiopatch` `]`
+- `SetActive[` [bool](#type-bool) `newValue` `]`
+- `Send[` [string](#type-string) `midiCommandLine` `]`
+- `SendSysEx[`???`]`
+- `SendNoteOn[`???`]`
+- `SendNoteOff[`???`]`
+- `SendNoteOnInt[`???`]`
+- `SendNoteOffInt[`???`]`
+- `SendProgram[`???`]`
+- `SendControl[`???`]`
+- `SendControlInt[`???`]`
+- `SendPitchWheel[`???`]`
+- `SendPolyphonicAftertouch[`???`]`
+- `SendChannelAftertouch[`???`]`
+- `SendPolyphonicAftertouchInt[`???`]`
+- `SendChannelAftertouchInt[`???`]`
+- `SendJSON[` [jsonvalueref](#type-jsonvalueref) `]`
+
+### Static Members
+- [ldiopatch](#type-ldiopatch) `Get[` [string](#type-string) `name` `]`
+- [ldiopatch](#type-ldiopatch) `Get[` [int64](#type-int64) `patchID` `]`
+- [jsonarray](#type-jsonarray) `List[` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
+- [ldioscene](#type-ldioscene) `New[` [string](#type-string) `sceneName` `,` [jsonvalueref](#type-jsonvalueref) `joldiosceneDefinition` `]`
+
+### Static Methods
+- `ForEach[` [string](#type-string) `command` `,` <[jsonvalueref](#type-jsonvalueref) `filterQuery`> `]`
 
 
 
@@ -4885,6 +5166,7 @@ As Text: "webrequest"
 - [string](#type-string) `Filename`: The output filename, when interpreting as file
 - [jsonobject](#type-jsonobject) `Result`: A JSON object containing response codes and data received as a result of the request
 - [binary](#type-binary) `Binary`: A binary object containing the servers response content
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `FromJSON[` `json` `]`: Initializes the webrequest via a JSON object. The webrequest must be in its Idle (Reset) state
@@ -4992,6 +5274,7 @@ As Text: hex HWND
 - [???](#type-???) `AlwaysOnTop`
 - [???](#type-???) `Frame`
 - ??? `Style[`???`]`
+- [bool](#type-bool) `Valid`
 
 ### Methods
 - `Set[`???`]`
@@ -5046,11 +5329,11 @@ As Text: Same as `Language`
 As Text: "lgui2videofeedsource"
 
 ### Members
-- ??? `FeedName[`???`]`
-- ??? `Feed[`???`]`
+- [string](#type-string) `FeedName`
+- [videofeed](#type-videofeed) `Feed`
 
 ### Methods
-- `SetFeedName[`???`]`
+- `SetFeedName`
 
 
 
@@ -5060,29 +5343,37 @@ As Text: "lgui2videofeedsource"
 As Text: "lgui2remotecontrol"
 
 ### Members
-- ??? `KeyboardEnabled[`???`]`
+- [bool](#type-bool) `KeyboardEnabled`
   - Restricted: Yes
-- ??? `MouseEnabled[`???`]`
+- [bool](#type-bool) `MouseEnabled`
   - Restricted: Yes
-- ??? `MouseFeedbackEnabled[`???`]`
+- [bool](#type-bool) `MouseFeedbackEnabled`
   - Restricted: Yes
-- ??? `UseLocalBindings[`???`]`
+- [bool](#type-bool) `UseLocalBindings`
   - Restricted: Yes
-- ??? `SendForegroundOnly[`???`]`
+- [bool](#type-bool) `SendForegroundOnly`
   - Restricted: Yes
 - ??? `Clones[`???`]`
   - Restricted: Yes
+- [bool](#type-bool) `OffsetByChildWindow`
+  - Restricted: Yes
+- [bool](#type-bool) `AutoOffsetByChildWindow`
+  - Restricted: Yes
 
 ### Methods
-- `SetKeyboardEnabled[`???`]`
+- `SetKeyboardEnabled[` [bool](#type-bool) `newValue` `]`
   - Restricted: Yes
-- `SetMouseEnabled[`???`]`
+- `SetMouseEnabled[` [bool](#type-bool) `newValue` `]`
   - Restricted: Yes
-- `SetMouseFeedbackEnabled[`???`]`
+- `SetMouseFeedbackEnabled[` [bool](#type-bool) `newValue` `]`
   - Restricted: Yes
-- `SetUseLocalBindings[`???`]`
+- `SetUseLocalBindings[` [bool](#type-bool) `newValue` `]`
   - Restricted: Yes
-- `SetSendForegroundOnly[`???`]`
+- `SetSendForegroundOnly[` [bool](#type-bool) `newValue` `]`
+  - Restricted: Yes
+- `SetOffsetByChildWindow[` [bool](#type-bool) `newValue` `]`
+  - Restricted: Yes
+- `SetAutoOffsetByChildWindow[` [bool](#type-bool) `newValue` `]`
   - Restricted: Yes
 - `AddClone[` [string](#type-string) `]`
   - Restricted: Yes
@@ -5282,6 +5573,7 @@ As Text: "agentprovider"
 - [unistring](#type-unistring) `Name`
 - [string](#type-string) `URL`
 - [unistring](#type-unistring) `Description`
+- [agentlisting](#type-agentlisting) `NewestListing`
 - [agentlisting](#type-agentlisting) `Listing[` [string](#type-string) `listingCodeName` `]`
 - [jsonobject](#type-jsonobject) `Listings`
 - [jsonobject](#type-jsonobject) `AsJSON`
@@ -5317,6 +5609,7 @@ As Text: "agentprovider"
 - [jsonobject](#type-jsonobject) `DownloadedCollection`
 - [bool](#type-bool) `Downloaded`
 - [bool](#type-bool) `Downloading`
+- [jsonobject](#type-jsonobject) `AsJSON`
 
 ### Methods
 - `BeginDownload[`???`]`
@@ -5878,6 +6171,7 @@ none.
 none.
 ### Methods
 - `RegisterSource[`???`]`
+- `RegisterOtherWindowSource[`???`]`
 - `RegisterOutput[`???`]`
 - `UnregisterSource[`???`]`
 - `UnregisterOutput[`???`]`
