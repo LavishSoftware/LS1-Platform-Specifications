@@ -821,6 +821,20 @@
                     "name": "colorKey"
                   }
                 ]
+              },
+              {
+                  "parameters": [
+                    {
+                      "type":"weakref",
+                      "name":"binary"
+                    },
+                    {
+                      "type":"uint",
+                      "name":"transparencyColor",
+                      "default":0
+                    }
+                  ],
+                  "minimumBuild":7111
               }
             ]
           },
@@ -1182,6 +1196,14 @@
           "PushFormat": {},
           "PushNULLFormat": {},
           "PullValue": {},
+          "PullRequest":{
+            "forms": [
+              {
+                "type":"jsonobject",
+                "minimumBuild":7111
+              }
+            ]
+          },
           "AsJSON": {}
         },
         "methods": {
@@ -1205,6 +1227,19 @@
             ]
           },
           "SetPushNULLFormat": {},
+          "SetPullRequest":{
+            "forms": [
+              {
+                "parameters": [
+                  {
+                    "type":"jsonvalueref",
+                    "name":"joRequest"
+                  }
+                ],
+                "minimumBuild":7111
+              }
+            ]
+          },
           "PushValue": {},
           "PullValue": {},
           "ApplyStyleJSON": {}
@@ -5241,6 +5276,14 @@
                 "description": "TRUE if the image should be scaled to fit"
               }
             ]
+          },
+          "ImageBinding":{
+            "forms":[
+              {
+                "type":"lgui2databinding",
+                "minimumBuild":7111                
+              }
+            ]
           }
         },
         "methods": {
@@ -5265,6 +5308,13 @@
                     "name": "TRUE/FALSE"
                   }
                 ]
+              }
+            ]
+          },
+          "PullImageBinding":{
+            "forms":[
+              {
+                "minimumBuild":7111
               }
             ]
           }
@@ -5327,6 +5377,112 @@
         },
         "asString": {
           "constant": "lgui2inputpicker"
+        }
+      },
+      "lgui2ldiopatch":{
+        "minimumBuild":7113,
+        "baseType":"lgui2contentbase",
+        "members":{
+          "BlockLocal":{
+            "forms":[
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "UseLocalBindings":{
+            "forms": [
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "UseKeyboard":{
+            "forms":[
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "UseMouse":{
+            "forms":[
+              {
+                "type":"bool"
+              }
+            ]
+          },
+          "UseOther":{
+            "forms":[
+              {
+                "type":"bool"
+              }
+            ]
+          }
+        },
+        "methods":{
+          "SetBlockLocal":{
+            "forms":[
+              {
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"newValue"
+                  }
+                ]
+              }            
+            ]
+          },
+          "SetUseLocalBindings":{
+            "forms":[
+              {
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"newValue"
+                  }
+                ]
+              }            
+            ]
+          },
+          "SetUseKeyboard":{
+            "forms":[
+              {
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"newValue"
+                  }
+                ]
+              }            
+            ]
+          },
+          "SetUseMouse":{
+            "forms":[
+              {
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"newValue"
+                  }
+                ]
+              }            
+            ]
+          },
+          "SetUseOther":{
+            "forms":[
+              {
+                "parameters": [
+                  {
+                    "type":"bool",
+                    "name":"newValue"
+                  }
+                ]
+              }            
+            ]
+          }
+        },
+        "asString": {
+          "constant":"lgui2ldiopatch"
         }
       },
       "lgui2listbox": {

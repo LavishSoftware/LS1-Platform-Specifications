@@ -775,6 +775,11 @@
             },
             {
               "type": "string",
+              "constant": "-host",
+              "optional": true
+            },
+            {
+              "type": "string",
               "constant": "-noredirect",
               "optional": true
             },
@@ -1251,6 +1256,67 @@
             }
           ]
         },
+        "HostRelay":{
+          "forms": [
+            {
+              "minimumBuild":7119,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name": "json"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7119,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"target"
+                },
+                {
+                  "type":"string",
+                  "name":"command"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7119,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"target"
+                },
+                {
+                  "type":"string",
+                  "name":"object"
+                },
+                {
+                  "type":"string",
+                  "name":"method"
+                },
+                {
+                  "type":"string",
+                  "name":"args",
+                  "greedy": true
+                }
+              ]
+            }
+          ]
+        },
+        "HostRelayByRef":{
+          "forms": [
+            {
+              "minimumBuild":7119,
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "ref"
+                }
+              ]
+            }
+          ]
+        },
         "LocalExec":{
           "forms": [
             {
@@ -1338,6 +1404,13 @@
                   "optional": true
                 }
               ]
+            }
+          ]
+        },
+        "ConnectHost":{
+          "forms": [
+            {
+              "minimumBuild":7119
             }
           ]
         }
@@ -2347,6 +2420,39 @@
               "description": "Name of the currently active system for keyboard input (DirectInput, Win32I)"
             }
           ]
+        },
+        "InPatch":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "Listener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "BackgroundListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "OutPatch":{
+          "restricted":true,
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
         }
       },
       "methods": {
@@ -2393,7 +2499,47 @@
         "GetDeviceIterator": {},
         "GetBindIterator": {},
         "DisableBinds": {},
-        "EnableBinds": {}
+        "EnableBinds": {},
+        "SetListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBackgroundListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        },
+        "SetInPatch":{
+          "restricted": true,
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "input": {
@@ -3006,9 +3152,45 @@
     },
     "inputdevice": {
       "members": {
-        "Name": {},
+        "Name": {
+          "forms": [
+            {
+              "type":"string"
+            }
+          ]
+        },
         "ID": {},
-        "CurrentKeySet": {},
+        "CurrentKeySet": {
+          "forms":[
+            {
+              "type":"string"
+            }
+          ]
+        },
+        "InPatch":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "Listener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "BackgroundListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
         "AsJSON":{
           "forms": [
             {
@@ -3019,13 +3201,39 @@
         }
       },
       "methods": {
-        "SelectKeySet": {}
+        "SelectKeySet": {},
+        "SetListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBackgroundListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        }      
       },
       "staticMembers": {
         "Get": {
           "forms": [
             {
-              "minimumBuild":7106,
+              "minimumBuild":7116,
               "type": "inputdevice",
               "parameters": [
                 {
@@ -3035,7 +3243,7 @@
               ]
             },
             {
-              "minimumBuild":7106,
+              "minimumBuild":7116,
               "type":"inputdevice",
               "parameters": [
                 {
@@ -3049,7 +3257,7 @@
         "List": {
           "forms": [
             {
-              "minimumBuild":7106,
+              "minimumBuild":7116,
               "type": "jsonarray",
               "parameters": [
                 {
@@ -3066,7 +3274,7 @@
         "ForEach": {
           "forms": [
             {
-              "minimumBuild":7106,
+              "minimumBuild":7116,
               "parameters": [
                 {
                   "type": "string",
@@ -3309,6 +3517,39 @@
               "description": "TRUE if Inner Space is rendering the cursor (while the game is inactive)"
             }
           ]
+        },
+        "InPatch":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "Listener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "BackgroundListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "OutPatch":{
+          "restricted":true,
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "type":"ldiopatch"
+            }
+          ]
         }
       },
       "methods": {
@@ -3423,7 +3664,47 @@
           "forms": [
             {}
           ]
-        }
+        },
+        "SetListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBackgroundListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        },
+        "SetInPatch":{
+          "restricted": true,
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        }      
       },
       "asString": {
         "member": "Position"
@@ -4062,6 +4343,89 @@
       },
       "restricted": true
     },
+    "ldio":{
+      "static":true,
+      "minimumBuild":7116,
+      "members":{
+        "PatchTypes":{
+          "forms": [
+            {
+              "type":"jsonarray"
+            }
+          ]
+        },
+        "Patches":{
+          "forms": [
+          {
+            "type":"jsonarray"
+          }
+        ]
+        },
+        "Patch":{
+          "forms": [
+            {
+              "type":"ldiopatch",
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"patchName"
+                }
+              ]
+            },
+            {
+              "type":"ldiopatch",
+              "parameters": [
+                {
+                  "type":"int64",
+                  "name":"patchID"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "methods":{
+        "UnloadPackageFile":{
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"filepath",
+                  "name":"packageFile"
+                }
+              ]
+            }
+          ]
+        },
+        "LoadPackage":{
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"jsonvalueref",
+                  "name":"joPackage"
+                }
+              ]
+            }
+          ]
+        },
+        "UnloadPackage":{
+          "forms": [
+            {
+              "parameters":[
+                {
+                  "type":"jsonvalueref",
+                  "name":"joPackage"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "asString":{
+        "constant":"ldio"
+      }
+    },
     "midi": {
       "static":true,
       "members": {
@@ -4140,46 +4504,6 @@
               "type":"jsonarray"
             }
           ]
-        },
-        "PatchTypes":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "type":"jsonarray"
-            }
-          ]
-        },
-        "Patches":{
-          "forms": [
-          {
-            "minimumBuild":7106,
-            "type":"jsonarray"
-          }
-        ]
-        },
-        "Patch":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "type":"midipatch",
-              "parameters": [
-                {
-                  "type":"string",
-                  "name":"patchName"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7106,
-              "type":"midipatch",
-              "parameters": [
-                {
-                  "type":"int64",
-                  "name":"patchID"
-                }
-              ]
-            }
-          ]
         }
       },
       "methods": {
@@ -4256,46 +4580,7 @@
               ]
             }
           ]
-        },
-        "UnloadPackageFile":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "parameters":[
-                {
-                  "type":"filepath",
-                  "name":"packageFile"
-                }
-              ]
-            }
-          ]
-        },
-        "LoadPackage":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "parameters":[
-                {
-                  "type":"jsonvalueref",
-                  "name":"joPackage"
-                }
-              ]
-            }
-          ]
-        },
-        "UnloadPackage":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "parameters":[
-                {
-                  "type":"jsonvalueref",
-                  "name":"joPackage"
-                }
-              ]
-            }
-          ]
-        }
+        }        
       },
       "asString": {
         "constant": "midi"
@@ -4342,11 +4627,27 @@
             }
           ]
         },
+        "Muted": {
+          "forms": [
+            {
+              "type":"bool",
+              "minimumBuild":7111
+            }
+          ]
+        },
         "Output":{
           "forms": [
             {
-              "type":"midipatch",
+              "type":"ldiopatch",
               "minimumBuild":7106
+            }
+          ]
+        },
+        "Feedback":{
+          "forms":[
+            {
+              "type":"ldiopatch",
+              "minimumBuild":7116
             }
           ]
         }
@@ -4393,6 +4694,54 @@
             }
           ]
         },
+        "SetMute": {
+          "forms": [
+            {
+              "minimumBuild":7111,
+              "parameters":[
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertOutput":{
+          "forms": [
+            {
+              "minimumBuild":7111,
+              "description": "Detaches the selected output patch"
+            },
+            {
+             "minimumBuild":7111,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7111,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name":"ldiopatch"
+                }
+              ]
+            }
+          ]
+        },
         "SetOutput":{
           "forms": [
             {
@@ -4422,7 +4771,55 @@
               "parameters": [
                 {
                   "type":"weakref",
-                  "name":"midiPatch"
+                  "name":"ldiopatch"
+                }
+              ]
+            }
+          ]
+        },
+        "SetFeedback":{
+          "forms": [
+            {
+              "minimumBuild":7111,
+              "description": "Detaches the selected feedback patch"
+            },
+            {
+             "minimumBuild":7111,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7111,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name":"ldiopatch"
+                }
+              ]
+            }
+          ]
+        },
+        "Simulate":{
+          "forms":[
+            {
+              "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"command"
                 }
               ]
             }
@@ -4521,7 +4918,7 @@
           "forms": [
             {
               "minimumBuild":7106,
-              "type":"midipatch"
+              "type":"ldiopatch"
             }
           ]
         }
@@ -4613,8 +5010,8 @@
         "constant": "midioutdevice"
       }
     },
-    "midiscene":{
-      "minimumBuild":7106,
+    "ldioscene":{
+      "minimumBuild":7116,
       "members": {
         "AsJSON":{
           "forms": [
@@ -4657,7 +5054,7 @@
         "Get": {
           "forms": [
             {
-              "type":"midiscene",
+              "type":"ldioscene",
               "parameters":[
                 {
                   "type":"string",
@@ -4684,7 +5081,7 @@
         "New":{
           "forms": [
             {
-              "type":"midiscene",
+              "type":"ldioscene",
               "parameters": [
                 {
                   "type":"string",
@@ -4692,7 +5089,7 @@
                 },
                 {
                   "type":"jsonvalueref",
-                  "name":"joMidiSceneDefinition"
+                  "name":"joldiosceneDefinition"
                 }
               ]
             }
@@ -4719,10 +5116,10 @@
         }
       },
       "asString": {
-        "constant":"midiscene"
+        "constant":"ldioscene"
       }
     },
-    "midipatch":{
+    "ldiopatch":{
       "minimumBuild":7106,
       "members": {
         "ID":{
@@ -4756,7 +5153,15 @@
         "Output":{
           "forms": [
             {
-              "type":"midipatch"
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "Listener":{
+          "forms": [
+            {
+              "type":"ldiopatch",
+              "minimumBuild":7116
             }
           ]
         },
@@ -4769,6 +5174,18 @@
         }
       },
       "methods": {
+        "ApplyJSON": {
+          "forms": [
+            {
+              "parameters": [
+                {
+                  "type":"jsonvalueref",
+                  "name": "joSettings"
+                }
+              ]
+            }
+          ]
+        },
         "SetValue":{
           "forms": [
             {
@@ -4778,6 +5195,41 @@
             {
               "type":"jsonvalue",
               "name":"newValue"
+            }
+          ]
+        },
+        "SetListener":{
+          "forms": [
+            {
+              "minimumBuild":7116,
+              "description": "Detaches the selected listener patch"
+            },
+            {
+             "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name":"ldiopatch"
+                }
+              ]
             }
           ]
         },
@@ -4810,7 +5262,42 @@
               "parameters": [
                 {
                   "type":"weakref",
-                  "name":"midiPatch"
+                  "name":"ldiopatch"
+                }
+              ]
+            }
+          ]
+        },
+        "InsertOutput":{
+          "forms": [
+            {
+              "minimumBuild":7111,
+              "description": "Detaches the selected output patch"
+            },
+            {
+             "minimumBuild":7111,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7111,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name":"ldiopatch"
                 }
               ]
             }
@@ -4869,7 +5356,7 @@
         "Get": {
           "forms": [
             {
-              "type":"midipatch",
+              "type":"ldiopatch",
               "parameters":[
                 {
                   "type":"string",
@@ -4878,7 +5365,7 @@
               ]
             },
             {
-              "type":"midipatch",
+              "type":"ldiopatch",
               "parameters":[
                 {
                   "type":"int64",
@@ -4905,7 +5392,7 @@
         "New":{
           "forms": [
             {
-              "type":"midiscene",
+              "type":"ldioscene",
               "parameters": [
                 {
                   "type":"string",
@@ -4913,7 +5400,7 @@
                 },
                 {
                   "type":"jsonvalueref",
-                  "name":"joMidiSceneDefinition"
+                  "name":"joldiosceneDefinition"
                 }
               ]
             }
@@ -4940,7 +5427,7 @@
         }
       },
       "asString": {
-        "constant":"midipatch"
+        "constant":"ldiopatch"
       }
     },
     "midiinevent": {
@@ -5077,6 +5564,14 @@
             {
               "type": "binary",
               "description": "A binary object containing the servers response content"
+            }
+          ]
+        },
+        "AsJSON": {
+          "forms": [
+            {
+              "type":"jsonobject",
+              "minimumBuild":7111
             }
           ]
         }
