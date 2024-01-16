@@ -1720,6 +1720,22 @@
               "type":"gdiwindow"
             }
           ]
+        },
+        "Listener":{
+          "forms": [
+            {
+              "type":"ldiopatch",
+              "minimumBuild":7217
+            }
+          ]
+        },
+        "CaptureDevices":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":7217
+            }
+          ]
         }
       },
       "methods": {
@@ -1776,6 +1792,20 @@
                   "name": "value"
                 }
               ]
+            }
+          ]
+        },
+        "SetListener":{
+          "forms": [
+            {
+              "minimumBuild":7217
+            }
+          ]
+        },
+        "SetCaptureListener":{
+          "forms": [
+            {
+              "minimumBuild":7217
             }
           ]
         }
@@ -2057,7 +2087,21 @@
             }
           ]
         },
-        "EngineVolumes": {}
+        "EngineVolumes": {},
+        "Listener":{
+          "forms": [
+            {
+              "minimumBuild":7217
+            }
+          ]
+        },
+        "CaptureDevices":{
+          "forms": [
+            {
+              "minimumBuild":7217
+            }
+          ]
+        }
       },
       "methods": {
         "FadeVolume": {
@@ -2207,6 +2251,13 @@
               ]
             }
           ]
+        },
+        "SetListener":{
+          "forms": [
+            {
+              "minimumBuild":7217
+            }
+          ]
         }
       }
     },
@@ -2220,7 +2271,15 @@
         "Volumes": {},
         "NowPlaying": {},
         "IsStarted": {},
-        "IsPaused": {}
+        "IsPaused": {},
+        "FrequencyRatio":{
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "type":"float"
+            }
+          ]
+        }
       },
       "methods": {
         "SetVolume": {},
@@ -2230,7 +2289,79 @@
         "Pause": {},
         "ClearQueue": {},
         "PlayStream": {},
-        "EnqueueStream": {}
+        "EnqueueStream": {},
+        "SetFrequencyRatio":{
+          "forms": [
+            {
+              "minimumBuild":7217
+            }
+          ]
+        }
+      },      
+      "staticMembers": {
+        "New": {
+          "forms": [
+            {
+              "type":"audiovoice",
+              "minimumBuild":7217,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            }
+          ]
+        },
+        "Get": {
+          "forms": [
+            {
+              "type":"audiovoice",
+              "minimumBuild":7217,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
       },
       "asString": {
         "constant": "audiovoice"
@@ -2248,6 +2379,57 @@
       "methods": {
         "BeginLoad": {},
         "Unload": {}
+      },  
+      "staticMembers": {
+        "Get": {
+          "forms": [
+            {
+              "type":"audiostream",
+              "minimumBuild":7217,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            }
+          ]
+        },
+        "List": {
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "type": "jsonarray",
+              "parameters": [
+                {
+                  "optional": true,
+                  "type": "jsonvalueref",
+                  "name": "filterQuery"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "staticMethods": {
+        "ForEach": {
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "parameters": [
+                {
+                  "type": "string",
+                  "name": "command"
+                },
+                {
+                  "type": "jsonvalueref",
+                  "name": "filterQuery",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
       },
       "asString": {
         "constant": "audiostream"
@@ -2606,7 +2788,32 @@
               "type": "bool"
             }
           ]
+        },
+        "TrackInputReports":{
+          "forms": [
+            {
+              "type":"bool",
+              "minimumBuild":7217
+            }
+          ]
         }
+      },
+      "methods": {
+        "Bind":{},
+        "GetButtonIterator":{},
+        "GetAxisIterator":{},
+        "GetDPadIterator":{},
+        "GetDeviceIterator":{},
+        "GetBindIterator":{},
+        "EnableBinds":{},
+        "DisableBinds":{},    
+        "SetTrackInputReports":{
+          "forms": [
+            {
+              "minimumBuild":7217
+            }
+          ]
+        }    
       }
     },
     "g15": {
@@ -3191,6 +3398,46 @@
             }
           ]
         },
+        "ForegroundPatch":{
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "BackgroundPatch":{
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "type":"ldiopatch"
+            }
+          ]
+        },
+        "Retain":{
+          "forms":[
+            {
+              "type":"bool",
+              "minimumBuild":7217
+            }
+          ]
+        },
+        "VendorID":{
+          "forms": [
+            {
+              "type":"uint",
+              "minimumBuild":7217
+            }
+          ]
+        },
+        "ProductID":{
+          "forms": [
+            {
+              "type":"uint",
+              "minimumBuild":7217
+            }
+          ]
+        },
         "AsJSON":{
           "forms": [
             {
@@ -3202,6 +3449,45 @@
       },
       "methods": {
         "SelectKeySet": {},
+        "SetRetain":{
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "parameters": [
+                {
+                  "type":"bool",
+                  "name":"newValue"
+                }
+              ]
+            }
+          ]
+        },
+        "SetForegroundPatch":{
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        },
+        "SetBackgroundPatch":{
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "parameters":[
+                {
+                  "type":"string",
+                  "name":"ldioPatchName"
+                }
+              ]
+            }
+          ]
+        },
         "SetListener":{
           "forms": [
             {
@@ -4426,590 +4712,6 @@
         "constant":"ldio"
       }
     },
-    "midi": {
-      "static":true,
-      "members": {
-        "NumAttachedInDevices": {
-          "forms": [
-            {
-              "type":"uint"
-            }
-          ]
-        },
-        "AttachedInDevice": {
-        },
-        "AttachedInDevices": {
-          "forms": [
-            {
-              "type":"jsonarray"
-            }
-          ]
-        },
-        "InDevice": {
-          "forms": [
-            {
-              "type": "midiindevice",
-              "description": "A MIDI In Device by its ID number (NOT the same number as Attached devices)",
-              "parameters": [
-                {
-                  "name": "#"
-                }
-              ]
-            }
-          ]
-        },
-        "NumInDevices": {
-          "forms": [
-            {
-              "type":"uint"
-            }
-          ]
-        },
-        "InDevices": {
-          "forms": [
-            {
-              "type": "jsonarray",
-              "description": "A JSON array describing all open MIDI In devices"
-            }
-          ]
-        },
-        "NumAttachedOutDevices": {
-          "forms": [
-            {
-              "type":"uint"
-            }
-          ]
-        },
-        "AttachedOutDevice": {},
-        "AttachedOutDevices": {
-          "forms": [
-            {
-              "type":"jsonarray"
-            }
-          ]
-        },
-        "OutDevice": {
-
-        },
-        "NumOutDevices": {
-          "forms": [
-            {
-              "type":"uint"
-            }
-          ]
-        },
-        "OutDevices": {
-          "forms": [
-            {
-              "type":"jsonarray"
-            }
-          ]
-        }
-      },
-      "methods": {
-        "OpenAllDevicesIn": {
-          "forms": [
-            {
-              "description": "Opens all MIDI In devices, with controls mapped through [[LavishGUI 2]]. The port names will be generated as MIDI 1, MIDI 2, etc"
-            }
-          ]
-        },
-        "CloseAllDevicesIn": {
-          "forms": [
-            {
-              "description": "Closes all open MIDI In devices"
-            }
-          ]
-        },
-        "OpenDeviceIn": {
-          "forms": [
-            {
-              "description": "Opens the #th attached MIDI device (1-based), with controls mapped through [[LavishGUI 2]]. The specified portName is assigned to the device and can be used with the InDevice member",
-              "parameters": [
-                {
-                  "name": "#"
-                },
-                {
-                  "name": "portName"
-                }
-              ]
-            },
-            {
-              "description": "Opens the #th attached MIDI device (1-based), with controls mapped through a [[LavishScript]] object method. The specified portName is assigned to the device and can be used with the InDevice member",
-              "parameters": [
-                {
-                  "name": "#"
-                },
-                {
-                  "name": "portName"
-                },
-                {
-                  "name": "object"
-                },
-                {
-                  "name": "method"
-                }
-              ]
-            }
-          ]
-        },
-        "OpenAllDevicesOut": {
-          "forms": [
-            {
-
-            }
-          ]
-        },
-        "CloseAllDevicesOut": {
-          "forms": [
-            {
-
-            }
-          ]
-        },
-        "OpenDeviceOut": {},
-        "LoadPackageFile":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "parameters":[
-                {
-                  "type":"filepath",
-                  "name":"packageFile"
-                }
-              ]
-            }
-          ]
-        }        
-      },
-      "asString": {
-        "constant": "midi"
-      }
-    },
-    "midiindevice": {
-      "members": {
-        "AsJSON": {
-          "forms": [
-            {
-              "type": "jsonobject",
-              "description": "A JSON summary of this device"
-            }
-          ]
-        },
-        "Metadata": {
-          "forms": [
-            {
-              "type": "jsonobject",
-              "description": "Metadata associated with this device"
-            }
-          ]
-        },
-        "Name": {
-          "forms": [
-            {
-              "type": "unistring",
-              "description": "The Port Name from this device, as passed to MIDI:OpenDeviceIn"
-            }
-          ]
-        },
-        "DeviceName": {
-          "forms": [
-            {
-              "type": "unistring",
-              "description": "The Name of the device itself, as specified by the device"
-            }
-          ]
-        },
-        "Retain": {
-          "forms": [
-            {
-              "type":"bool"
-            }
-          ]
-        },
-        "Muted": {
-          "forms": [
-            {
-              "type":"bool",
-              "minimumBuild":7111
-            }
-          ]
-        },
-        "Output":{
-          "forms": [
-            {
-              "type":"ldiopatch",
-              "minimumBuild":7106
-            }
-          ]
-        },
-        "Feedback":{
-          "forms":[
-            {
-              "type":"ldiopatch",
-              "minimumBuild":7116
-            }
-          ]
-        }
-      },
-      "methods": {
-        "Start": {
-          "forms": [
-            {
-              "description": "Starts receiving MIDI input, to the receiver specified to MIDI:OpenDeviceIn (either [[LavishGUI 2]] or a LavishScript object method)"
-            }
-          ]
-        },
-        "Stop": {
-          "forms": [
-            {
-              "description": "Stops receiving MIDI input"
-            }
-          ]
-        },
-        "Reset": {
-          "forms": [
-            {
-              "description": "Resets MIDI input"
-            }
-          ]
-        },
-        "Close": {
-          "forms": [
-            {
-              "description": "Closes the midiindevice, which will then be removed from MIDI.InDevices and must be opened again via MIDI:OpenDeviceIn"
-            }
-          ]
-        },
-        "SetRetain": {
-          "forms": [
-            {
-              "description":"Sets whether to keep the device in the background",
-              "parameters":[
-                {
-                  "type":"bool",
-                  "name":"newValue"
-                }
-              ]
-            }
-          ]
-        },
-        "SetMute": {
-          "forms": [
-            {
-              "minimumBuild":7111,
-              "parameters":[
-                {
-                  "type":"bool",
-                  "name":"newValue"
-                }
-              ]
-            }
-          ]
-        },
-        "InsertOutput":{
-          "forms": [
-            {
-              "minimumBuild":7111,
-              "description": "Detaches the selected output patch"
-            },
-            {
-             "minimumBuild":7111,
-              "parameters": [
-                {
-                  "type":"string",
-                  "name":"name"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7111,
-              "parameters": [
-                {
-                  "type":"uint",
-                  "name":"id"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7116,
-              "parameters": [
-                {
-                  "type":"weakref",
-                  "name":"ldiopatch"
-                }
-              ]
-            }
-          ]
-        },
-        "SetOutput":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "description": "Detaches the selected output patch"
-            },
-            {
-             "minimumBuild":7106,
-              "parameters": [
-                {
-                  "type":"string",
-                  "name":"name"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7106,
-              "parameters": [
-                {
-                  "type":"uint",
-                  "name":"id"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7106,
-              "parameters": [
-                {
-                  "type":"weakref",
-                  "name":"ldiopatch"
-                }
-              ]
-            }
-          ]
-        },
-        "SetFeedback":{
-          "forms": [
-            {
-              "minimumBuild":7111,
-              "description": "Detaches the selected feedback patch"
-            },
-            {
-             "minimumBuild":7111,
-              "parameters": [
-                {
-                  "type":"string",
-                  "name":"name"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7111,
-              "parameters": [
-                {
-                  "type":"uint",
-                  "name":"id"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7116,
-              "parameters": [
-                {
-                  "type":"weakref",
-                  "name":"ldiopatch"
-                }
-              ]
-            }
-          ]
-        },
-        "Simulate":{
-          "forms":[
-            {
-              "minimumBuild":7116,
-              "parameters": [
-                {
-                  "type":"string",
-                  "name":"command"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "staticMembers": {
-        "List":{
-          "forms": [
-            {
-              "minimumBuild":7072,
-              "type":"jsonarray"
-            }
-          ]
-        },
-        "Get":{
-          "forms": [
-            {
-              "minimumBuild":7072,
-              "type":"midiindevice",
-              "parameters": [
-                {
-                  "type":"uint",
-                  "name": "id"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7072,
-              "type":"midiindevice",
-              "parameters": [
-                {
-                  "type":"string",
-                  "name": "name"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "staticMethods": {
-        "ForEach": {
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "parameters": [
-                {
-                  "type": "string",
-                  "name": "command"
-                },
-                {
-                  "type": "jsonvalueref",
-                  "name": "filterQuery",
-                  "optional": true
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "asString": {
-        "constant": "midiindevice"
-      }
-    },
-    "midioutdevice": {
-      "members": {
-        "AsJSON": {
-          "forms": [
-            {
-              "type":"jsonobject"
-            }
-          ]
-        },
-        "Metadata": {
-          "forms": [
-            {
-              "type":"jsonobject"
-            }
-          ]
-        },
-        "Name": {
-          "forms": [
-            {
-              "type":"unistring"
-            }
-          ]
-        },
-        "DeviceName": {
-          "forms": [
-            {
-              "type":"unistring"
-            }
-          ]
-        },
-        "Patch":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "type":"ldiopatch"
-            }
-          ]
-        }
-      },
-      "methods": {
-        "SendMessage": {},
-        "SendJSON":{
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "parameters": [
-                {
-                  "type":"jsonvalueref"
-                }
-              ]
-            }
-          ]
-        },
-        "SendSysEx": {},
-        "SendNoteOn": {},
-        "SendNoteOff": {},
-        "SendNoteOnInt": {},
-        "SendNoteOffInt": {},
-        "SendProgram": {},
-        "SendControl": {},
-        "SendControlInt": {},
-        "SendPitchWheel": {},
-        "SendPolyphonicAftertouch": {},
-        "SendChannelAftertouch": {},
-        "SendPolyphonicAftertouchInt": {},
-        "SendChannelAftertouchInt": {},
-        "Close": {}
-      },
-      "staticMembers": {
-        "List":{
-          "forms": [
-            {
-              "minimumBuild":7072,
-              "type":"jsonarray"
-            }
-          ]
-        },
-        "Get":{
-          "forms": [
-            {
-              "minimumBuild":7072,
-              "type":"midioutdevice",
-              "parameters": [
-                {
-                  "type":"uint",
-                  "name": "id"
-                }
-              ]
-            },
-            {
-              "minimumBuild":7072,
-              "type":"midioutdevice",
-              "parameters": [
-                {
-                  "type":"string",
-                  "name": "name"
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "staticMethods": {
-        "ForEach": {
-          "forms": [
-            {
-              "minimumBuild":7106,
-              "parameters": [
-                {
-                  "type": "string",
-                  "name": "command"
-                },
-                {
-                  "type": "jsonvalueref",
-                  "name": "filterQuery",
-                  "optional": true
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "asString": {
-        "constant": "midioutdevice"
-      }
-    },
     "ldioscene":{
       "minimumBuild":7116,
       "members": {
@@ -5165,6 +4867,14 @@
             }
           ]
         },
+        "Feedback":{
+          "forms": [
+            {
+              "type":"ldiopatch",
+              "minimumBuild":7217
+            }
+          ]
+        },
         "Active":{
           "forms": [
             {
@@ -5224,6 +4934,41 @@
             },
             {
               "minimumBuild":7116,
+              "parameters": [
+                {
+                  "type":"weakref",
+                  "name":"ldiopatch"
+                }
+              ]
+            }
+          ]
+        },
+        "SetFeedback":{
+          "forms": [
+            {
+              "minimumBuild":7217,
+              "description": "Detaches the selected output patch"
+            },
+            {
+             "minimumBuild":7217,
+              "parameters": [
+                {
+                  "type":"string",
+                  "name":"name"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7217,
+              "parameters": [
+                {
+                  "type":"uint",
+                  "name":"id"
+                }
+              ]
+            },
+            {
+              "minimumBuild":7217,
               "parameters": [
                 {
                   "type":"weakref",
@@ -5430,83 +5175,19 @@
         "constant":"ldiopatch"
       }
     },
-    "midiinevent": {
+    "ldioevent": {
       "members": {
-        "Message": {
-          "forms": [
-            {
-              "type": "emidimessage",
-              "description": "The Windows MIDI message: Open, Close, Data, LongData, Error, LongError"
-            }
-          ]
+        "Route": {
         },
-        "Byte1": {
-          "forms": [
-            {
-              "type": "uint",
-              "description": "Byte 1 of Data"
-            }
-          ]
+        "Command":{
+
         },
-        "Byte2": {
-          "forms": [
-            {
-              "type": "uint",
-              "description": "Byte 2 of Data"
-            }
-          ]
-        },
-        "Value": {
-          "forms": [
-            {
-              "type": "uint",
-              "description": "This is a combination of Status, Byte1 and Byte2 (rather, they are derived from this value)"
-            }
-          ]
-        },
-        "Timestamp": {
-          "forms": [
-            {
-              "type": "uint",
-              "description": "The MIDI timestamp from the event. This is the length of time since the midiindevice was Started or Reset"
-            }
-          ]
-        },
-        "Device": {
-          "forms": [
-            {
-              "type": "midiindevice",
-              "description": "The midiindevice that produced the event"
-            }
-          ]
-        },
-        "Status": {
-          "forms": [
-            {
-              "type": "uint",
-              "description": "This is generally a combination of StatusCode and Channel (rather, they are derived from this value)"
-            }
-          ]
-        },
-        "StatusCode": {
-          "forms": [
-            {
-              "type": "emidistatuscode",
-              "description": "The MIDI Status Code: NoteOff, NoteOn, PolyphonicAftertouch, Control, Program, ChannelAftertouch, Pitch, System"
-            }
-          ]
-        },
-        "Channel": {
-          "forms": [
-            {
-              "type": "uint",
-              "description": "For Channel-based Status Codes (all but System), this is the MIDI channel number"
-            }
-          ]
+        "Args":{
+
         }
       },
       "asString": {
-        "constant": "midiinevent"
+        "constant": "ldioevent"
       }
     },
     "webrequest": {
@@ -5540,6 +5221,14 @@
             {
               "type": "jsonarray",
               "description": "A JSON array containing a list of objects that describe each POST parameter"
+            }
+          ]
+        },
+        "Headers":{
+          "forms": [
+            {
+              "type":"jsonarray",
+              "minimumBuild":7217
             }
           ]
         },

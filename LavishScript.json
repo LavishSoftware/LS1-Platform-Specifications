@@ -1341,12 +1341,12 @@
               "description": "\"Tokenizes\" the string by the given separator and returns the #th token",
               "parameters": [
                 {
-                  "name": "token",
-                  "type": "string"
-                },
-                {
                   "name": "numToken",
                   "type": "uint"
+                },
+                {
+                  "name": "separator",
+                  "type": "string"
                 }
               ]
             }
